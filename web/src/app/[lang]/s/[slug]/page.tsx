@@ -61,7 +61,7 @@ async function ShopView({ params }: Props) {
 
   return (
     <>
-      <header className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-line bg-card p-4">
+      <header className="panel mb-8 flex flex-wrap items-center gap-5 p-5">
         {/* eslint-disable-next-line @next/next/no-img-element -- a QR code drawn on the spot, not a photo */}
         <img
           src={`data:image/svg+xml;utf8,${encodeURIComponent(qrSvg)}`}

@@ -24,7 +24,7 @@ export default async function SafetyPage({ params }: Props) {
 
         <ul className="mt-5 grid gap-2">
           {s.tips.map((tip) => (
-            <li key={tip} className="rounded-lg border border-line bg-card px-4 py-3 font-medium">
+            <li key={tip} className="panel px-4 py-3 font-medium">
               {tip}
             </li>
           ))}

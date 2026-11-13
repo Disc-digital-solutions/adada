@@ -8,9 +8,9 @@ import { LangSwitch } from "./LangSwitch";
 /** The bar at the top of every page: name, search (on wide screens), language, post. */
 export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-card">
+    <header className="sticky top-0 z-20 border-b border-line bg-card/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5 md:px-6">
-        <Link href={`/${lang}`} className="flex items-center gap-2 text-[17px] font-bold tracking-tight">
+        <Link href={`/${lang}`} className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-ink">
           {/* The mark is the price tag itself. */}
           <span aria-hidden className="price-tag !px-0 h-5 w-7" />
           <span>{site.name}</span>

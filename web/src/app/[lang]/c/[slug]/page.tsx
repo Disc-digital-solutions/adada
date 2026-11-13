@@ -42,14 +42,20 @@ export default async function ServicePage({ params, searchParams }: Props) {
 
   return (
     <>
-      <section style={{ background: tone.bg }}>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-6 md:px-6 md:py-9">
-          <ServiceBadge service={service} size="lg" onTone />
+      <section className="border-b border-line bg-card">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-6 md:px-6 md:py-8">
+          <ServiceBadge service={service} size="lg" />
           <div className="min-w-0 flex-1">
-            <p className="text-[13px] font-semibold uppercase tracking-wide" style={{ color: tone.fg }}>
-              {groupOf(service).name[lang]}
-            </p>
-            <h1 className="text-2xl font-bold tracking-tight md:text-4xl">{service.name[lang]}</h1>
+            <nav className="eyebrow" aria-label="breadcrumb">
+              <Link href={`/${lang}/services`} className="hover:text-ink">
+                {t.services.title}
+              </Link>
+              <span className="mx-1.5">/</span>
+              <Link href={`/${lang}/services#${service.group}`} style={{ color: tone.fg }} className="hover:underline">
+                {groupOf(service).name[lang]}
+              </Link>
+            </nav>
+            <h1 className="mt-0.5 text-2xl font-bold tracking-tight md:text-[34px]">{service.name[lang]}</h1>
             <p className="mt-1 text-ink-soft">{service.blurb[lang]}</p>
           </div>
           <Link href={postHref} className="btn btn-primary w-full sm:w-auto">
@@ -65,7 +71,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
         </Suspense>
 
         <section className="mt-10">
-          <h2 className="mb-3 text-lg font-bold">{t.services.related}</h2>
+          <h2 className="section-title mb-4">{t.services.related}</h2>
           <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.filter((s) => s.group === service.group && s.slug !== service.slug).map((s) => (
               <ServiceRow key={s.slug} service={s} lang={lang} count={0} />
@@ -120,7 +126,7 @@ async function ServiceListings({
         </>
       ) : (
         // No ads yet: the plan's "by hand first". A person finds it for you on WhatsApp.
-        <div className="rounded-2xl border-2 border-dashed border-line bg-card p-6 text-center md:p-10">
+        <div className="panel p-6 text-center md:p-10">
           <h2 className="text-lg font-semibold">{t.services.emptyTitle}</h2>
           <p className="mx-auto mt-1 max-w-md text-ink-soft">{t.services.emptyBody}</p>
           {askLink ? (
@@ -132,7 +138,7 @@ async function ServiceListings({
         </div>
       )}
 
-      <aside className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-line bg-card p-5">
+      <aside className="panel mt-8 flex flex-wrap items-center gap-4 p-5">
         <div className="min-w-0 flex-1">
           <h2 className="font-semibold">{t.services.providerTitle}</h2>
           <p className="text-sm text-ink-soft">{t.services.providerBody}</p>

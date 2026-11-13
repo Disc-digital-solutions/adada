@@ -42,8 +42,8 @@ function Groups({ lang, counts }: { lang: Lang; counts: Record<string, number> }
     <div className="mt-6 grid gap-8">
       {GROUPS.map((group) => (
         <section key={group.slug} id={group.slug} className="scroll-mt-20">
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold">
-            <span aria-hidden className="h-3 w-3 rounded-full" style={{ background: group.tone.fg }} />
+          <h2 className="section-title mb-3 flex items-center gap-2">
+            <span aria-hidden className="h-2.5 w-2.5 rounded-full" style={{ background: group.tone.fg }} />
             {group.name[lang]}
           </h2>
           <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">

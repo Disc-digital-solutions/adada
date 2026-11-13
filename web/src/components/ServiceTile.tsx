@@ -15,8 +15,8 @@ export function ServiceBadge({
   onTone?: boolean;
 }) {
   const tone = groupOf(service).tone;
-  const box = { sm: "h-9 w-9 rounded-lg", md: "h-12 w-12 rounded-xl", lg: "h-16 w-16 rounded-2xl" }[size];
-  const icon = { sm: 20, md: 26, lg: 34 }[size];
+  const box = { sm: "h-9 w-9 rounded-lg", md: "h-11 w-11 rounded-xl", lg: "h-14 w-14 rounded-xl" }[size];
+  const icon = { sm: 19, md: 23, lg: 28 }[size];
   return (
     <span aria-hidden className={`grid shrink-0 place-items-center ${box}`} style={{ background: onTone ? "#ffffff" : tone.bg, color: tone.fg }}>
       <ServiceIcon name={service.icon} width={icon} height={icon} />
@@ -24,21 +24,16 @@ export function ServiceBadge({
   );
 }
 
-/** One service in the home grid: badge on top, name under it, how many ads. */
-export function ServiceTile({ service, lang, count }: { service: Service; lang: Lang; count?: number }) {
+/** One service in the home grid: badge on top, name under it. */
+export function ServiceTile({ service, lang }: { service: Service; lang: Lang }) {
   return (
     <li>
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="flex h-full flex-col items-center gap-2 rounded-2xl border border-line bg-card px-2 py-3 text-center transition hover:-translate-y-0.5 hover:border-sea hover:shadow-[0_6px_20px_-12px_rgb(16_36_46/0.45)]"
+        className="panel flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center transition hover:border-sea/60"
       >
         <ServiceBadge service={service} />
-        <span className="line-clamp-2 text-[13px] font-semibold leading-tight md:text-sm">{service.name[lang]}</span>
-        {count !== undefined ? (
-          <span className="text-[11px] font-medium text-ink-soft" dir="ltr">
-            {count > 0 ? count : "·"}
-          </span>
-        ) : null}
+        <span className="line-clamp-2 text-[12.5px] font-medium leading-tight md:text-[13.5px]">{service.name[lang]}</span>
       </Link>
     </li>
   );
@@ -51,7 +46,7 @@ export function ServiceRow({ service, lang, count }: { service: Service; lang: L
     <li className="min-w-0">
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="flex items-center gap-3 rounded-2xl border border-line bg-card p-3 transition hover:border-sea"
+        className="panel flex items-center gap-3 p-3 transition hover:border-sea/60"
       >
         <ServiceBadge service={service} />
         <span className="min-w-0 flex-1">
@@ -87,9 +82,9 @@ export function ServiceArt({
   return (
     <div
       className={`relative flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden ${className}`}
-      style={{ background: `radial-gradient(circle at 30% 20%, #ffffff99, transparent 60%), ${tone.bg}`, color: tone.fg }}
+      style={{ background: `linear-gradient(160deg, #ffffff 0%, ${tone.bg} 100%)`, color: tone.fg }}
     >
-      <ServiceIcon name={service.icon} width="38%" height="38%" strokeWidth={1.4} />
+      <ServiceIcon name={service.icon} width="30%" height="30%" strokeWidth={1.25} />
       {label ? (
         <span className="px-3 text-center text-[13px] font-semibold uppercase tracking-wide opacity-80">{service.name[lang]}</span>
       ) : null}

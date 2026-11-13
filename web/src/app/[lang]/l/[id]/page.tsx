@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { cityName } from "@/components/ListingCard";
 import { Photo } from "@/components/Photo";
-import { PriceTag, priceText } from "@/components/PriceTag";
+import { priceText } from "@/components/PriceTag";
 import { CopyTextButton } from "@/components/CopyTextButton";
 import { ServiceArt } from "@/components/ServiceTile";
 import { ShareButton } from "@/components/ShareButton";
@@ -124,7 +124,11 @@ async function ListingView({ params, searchParams }: Props) {
 
         <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
           {wanted && listing.price !== null ? <span className="text-sm text-ink-soft">{t.listing.budget}</span> : null}
-          <PriceTag listing={listing} lang={lang} t={t} large />
+          {priceText(listing, lang, t) ? (
+            <span className="text-[28px] font-bold tabular-nums tracking-tight md:text-[32px]">
+              <bdi>{priceText(listing, lang, t)}</bdi>
+            </span>
+          ) : null}
           {sold ? <span className="sold-stamp !static !rotate-0">{t.listing.sold}</span> : null}
         </div>
 
@@ -154,7 +158,7 @@ async function ListingView({ params, searchParams }: Props) {
           {listing.description}
         </p>
 
-        <section className="mt-6 rounded-xl border border-line bg-card p-4">
+        <section className="panel mt-6 p-4">
           <h2 className="text-[13px] font-semibold text-ink-soft">{t.listing.seller}</h2>
           <p className="mt-0.5 text-[17px] font-semibold" dir="auto">
             {listing.seller.name}

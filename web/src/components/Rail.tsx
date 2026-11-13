@@ -31,11 +31,11 @@ export function Rail({
 }) {
   if (listings.length === 0) return null;
   return (
-    <section className="mt-9">
-      <div className="mb-3 flex items-end gap-3">
+    <section className="mt-11">
+      <div className="mb-4 flex items-end gap-3">
         {icon}
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold tracking-tight md:text-xl">{title}</h2>
+          <h2 className="section-title">{title}</h2>
           {hint ? <p className="text-[13px] text-ink-soft">{hint}</p> : null}
         </div>
         <Link href={href} className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">

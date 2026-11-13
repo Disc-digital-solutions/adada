@@ -23,7 +23,7 @@ export function FilterForm({
 }) {
   const s = t.search;
   return (
-    <form action={`/${lang}/search`} className="grid gap-3 rounded-xl border border-line bg-card p-3 md:grid-cols-6 md:p-4">
+    <form action={`/${lang}/search`} className="panel grid gap-3 p-3 md:grid-cols-6 md:p-4">
       <label className="relative md:col-span-6">
         <span className="sr-only">{s.placeholder}</span>
         <SearchIcon className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-ink-soft" />

@@ -121,7 +121,7 @@ export function PostForm({
   return (
     <div className="grid gap-5">
       {/* Sellers already wrote this ad once, in a group. Let them paste it instead of typing it again. */}
-      <section className="rounded-xl border-[1.5px] border-dashed border-sea/50 bg-sea-wash/40 p-4">
+      <section className="panel border-sea/30 bg-sea-wash/40 p-4">
         <label htmlFor="paste" className="label !mb-1">
           {p.pasteTitle}
         </label>
@@ -151,7 +151,7 @@ export function PostForm({
         {mode === "off" ? <p className="notice">{p.notConnected}</p> : null}
         {mode === "whatsapp" ? <p className="notice">{p.whatsappNote}</p> : null}
 
-        <fieldset className="flex gap-1 rounded-xl border-[1.5px] border-line bg-card p-1">
+        <fieldset className="flex gap-1 rounded-xl border border-line bg-card p-1">
           <legend className="sr-only">{t.search.kind}</legend>
           <label className={choice}>
             <input type="radio" name="kind" value="offer" checked={kind === "offer"} onChange={() => setKind("offer")} className="sr-only" />
