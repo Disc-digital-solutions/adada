@@ -34,7 +34,7 @@ export default async function PostPage({ params, searchParams }: Props) {
 
 /** Decides how the form sends an ad, and hands it the lists it needs. The form itself is in components/PostForm. */
 async function PostFormLoader({ lang, searchParams }: { lang: Lang; searchParams: Props["searchParams"] }) {
-  const { kind } = await searchParams;
+  const { kind, category } = await searchParams;
   const repo = getRepo();
   const categories = await repo.allCategories();
   const mode: PostMode = !repo.isDemo ? "direct" : site.teamWhatsapp ? "whatsapp" : "off";
@@ -46,6 +46,7 @@ async function PostFormLoader({ lang, searchParams }: { lang: Lang; searchParams
       categories={categories.map((c) => ({ slug: c.slug, name: c.name[lang] }))}
       cities={CITIES.map((c) => ({ slug: c.slug, name: c.name[lang] }))}
       initialKind={kind === "wanted" ? "wanted" : "offer"}
+      initialCategory={categories.some((c) => c.slug === category) ? (category as string) : ""}
       mode={mode}
       teamPhone={site.teamWhatsapp}
       siteName={site.name}

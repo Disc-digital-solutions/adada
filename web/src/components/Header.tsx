@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Dictionary } from "@/i18n";
 import type { Lang } from "@/i18n/config";
 import { site } from "@/site.config";
-import { HomeIcon, PlusIcon, SearchIcon, ShieldIcon } from "./icons";
+import { GridIcon, HomeIcon, PlusIcon, SearchIcon, ShieldIcon } from "./icons";
 import { LangSwitch } from "./LangSwitch";
 
 /** The bar at the top of every page: name, search (on wide screens), language, post. */
@@ -25,9 +25,13 @@ export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
         </form>
 
         <div className="ms-auto flex items-center gap-2">
+          <Link href={`/${lang}/services`} className="btn btn-quiet hidden !min-h-9 !px-3 !py-1 md:inline-flex">
+            <GridIcon width={18} height={18} />
+            {t.nav.services}
+          </Link>
           <Link href={`/${lang}/safety`} className="btn btn-quiet hidden !min-h-9 !px-3 !py-1 md:inline-flex">
             <ShieldIcon width={18} height={18} />
-            {t.nav.safety}
+            <span className="hidden lg:inline">{t.nav.safety}</span>
           </Link>
           <LangSwitch current={lang} label={t.nav.language} />
           <Link href={`/${lang}/post`} className="btn btn-primary hidden !min-h-9 md:inline-flex">
@@ -50,15 +54,19 @@ export function BottomNav({ lang, t }: { lang: Lang; t: Dictionary }) {
           <HomeIcon />
           {t.nav.home}
         </Link>
-        <Link href={`/${lang}/search`} className={item}>
-          <SearchIcon />
-          {t.nav.search}
+        <Link href={`/${lang}/services`} className={item}>
+          <GridIcon />
+          {t.nav.services}
         </Link>
         <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-sea-deep">
           <span className="-mt-4 grid h-12 w-12 place-items-center rounded-full bg-sea text-white shadow-[0_2px_0_var(--color-sea-deep)]">
             <PlusIcon />
           </span>
           {t.nav.post}
+        </Link>
+        <Link href={`/${lang}/search`} className={item}>
+          <SearchIcon />
+          {t.nav.search}
         </Link>
         <Link href={`/${lang}/safety`} className={item}>
           <ShieldIcon />

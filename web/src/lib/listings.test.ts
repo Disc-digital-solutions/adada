@@ -87,6 +87,15 @@ describe("filterListings", () => {
     expect(ids(filterListings([make(), phone], { ...all, category: "electronics" }, NOW))).toEqual([phone.id]);
   });
 
+  test("filters by any of several categories, for a service screen", () => {
+    const phone = make({ category: "electronics" });
+    const book = make({ category: "books" });
+    const room = make({ category: "rooms" });
+    expect(ids(filterListings([phone, book, room], { ...all, categories: ["electronics", "books"] }, NOW)).sort()).toEqual(
+      [phone.id, book.id].sort(),
+    );
+  });
+
   test("filters by city", () => {
     const inNicosia = make({ city: "nicosia" });
     expect(ids(filterListings([make(), inNicosia], { ...all, city: "nicosia" }, NOW))).toEqual([inNicosia.id]);

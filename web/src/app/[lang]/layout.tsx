@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Readex_Pro } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Footer } from "@/components/Footer";
 import { BottomNav, Header } from "@/components/Header";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LANG, LANGS, dirOf, isLang } from "@/i18n/config";
@@ -45,6 +46,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         ) : null}
         <Header lang={lang} t={t} />
         <main>{children}</main>
+        <Footer lang={lang} t={t} />
         <BottomNav lang={lang} t={t} />
       </body>
     </html>

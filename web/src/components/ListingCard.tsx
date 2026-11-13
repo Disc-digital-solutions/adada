@@ -6,6 +6,7 @@ import type { Listing } from "@/lib/types";
 import { CITIES } from "@/site.config";
 import { Photo } from "./Photo";
 import { PriceTag, priceText } from "./PriceTag";
+import { ServiceArt } from "./ServiceTile";
 
 export function cityName(slug: string, lang: Lang): string {
   return CITIES.find((city) => city.slug === slug)?.name[lang] ?? slug;
@@ -25,6 +26,8 @@ export function ListingCard({
 }) {
   const sold = listing.status === "sold";
   const cover = listing.photos[0];
+  // An offer without a photo (a service, a job) shows its service's picture instead.
+  const art = !cover && listing.kind === "offer";
   const budget = listing.kind === "wanted" ? priceText(listing, lang, t) : null;
 
   return (
@@ -34,6 +37,13 @@ export function ListingCard({
           <div className="relative aspect-square overflow-hidden rounded-xl bg-card">
             <Photo src={cover} alt="" className={sold ? "opacity-60 grayscale" : ""} />
             {sold ? <span className="sold-stamp">{t.listing.sold}</span> : null}
+            <span className="absolute bottom-2 start-2">
+              <PriceTag listing={listing} lang={lang} t={t} />
+            </span>
+          </div>
+        ) : art ? (
+          <div className="relative aspect-square overflow-hidden rounded-xl">
+            <ServiceArt category={listing.category} lang={lang} />
             <span className="absolute bottom-2 start-2">
               <PriceTag listing={listing} lang={lang} t={t} />
             </span>
@@ -53,12 +63,12 @@ export function ListingCard({
           </div>
         )}
 
-        {cover ? (
+        {cover || art ? (
           <h3 dir="auto" className="mt-2 line-clamp-2 text-[15px] font-medium leading-snug group-hover:text-sea-deep">
             {listing.title}
           </h3>
         ) : null}
-        <p className={`flex justify-between gap-2 text-[13px] text-ink-soft ${cover ? "mt-0.5" : "mt-2"}`}>
+        <p className={`flex justify-between gap-2 text-[13px] text-ink-soft ${cover || art ? "mt-0.5" : "mt-2"}`}>
           <span className="truncate">{cityName(listing.city, lang)}</span>
           <span className="shrink-0">{timeAgo(listing.createdAt, nowMs, lang)}</span>
         </p>

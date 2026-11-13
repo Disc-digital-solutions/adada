@@ -3,6 +3,7 @@ North Cyprus "everything app" - partner pack
 START HERE
 
 0. IDEA-REVIEW.md         NEW. A second look at the idea: seven proposed changes, and what was added to the website.
+0. SCREENS.md             NEW. Every screen the app needs: 9 built, 20 for Level 1, about 43 in all.
 1. EVERYTHING-SO-FAR.md   One file with everything: what is done, what comes next, the roadmap.
 2. FEATURE-MAP.html       Open it in a browser. The whole plan on one page: 211 features, easy to hard.
 3. screens/               Pictures of the website as it is today. The ads are samples; none are real.

@@ -31,6 +31,7 @@ function matches(listing: Listing, filter: ListingFilter): boolean {
     if (!found) return false;
   }
   if (filter.category && listing.category !== filter.category) return false;
+  if (filter.categories && !filter.categories.includes(listing.category)) return false;
   if (filter.city && listing.city !== filter.city) return false;
   if (filter.kind && listing.kind !== filter.kind) return false;
 

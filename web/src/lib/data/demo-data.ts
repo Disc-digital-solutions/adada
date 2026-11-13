@@ -15,6 +15,20 @@ export const DEMO_CATEGORIES: Category[] = [
   { slug: "books", sort: 6, name: { tr: "Kitap ve ders", en: "Books and study", ar: "كتب ودراسة" } },
   { slug: "clothes", sort: 7, name: { tr: "Giyim", en: "Clothes", ar: "ملابس" } },
   { slug: "other", sort: 8, name: { tr: "Diğer", en: "Other", ar: "أخرى" } },
+  { slug: "dorms", sort: 9, name: { tr: "Yurt", en: "Dorms", ar: "سكن طلابي" } },
+  { slug: "agencies", sort: 10, name: { tr: "Emlak ofisi (kiralık)", en: "Agency rentals", ar: "مكاتب عقارية (إيجار)" } },
+  { slug: "cars", sort: 11, name: { tr: "Otomobil", en: "Cars", ar: "سيارات" } },
+  { slug: "car-rental", sort: 12, name: { tr: "Araç kiralama", en: "Car rental", ar: "تأجير سيارات" } },
+  { slug: "towing", sort: 13, name: { tr: "Çekici", en: "Towing", ar: "سحب السيارات" } },
+  { slug: "car-service", sort: 14, name: { tr: "Oto servis ve lastik", en: "Car service and tyres", ar: "صيانة وإطارات" } },
+  { slug: "cleaning", sort: 15, name: { tr: "Temizlik ve ev hizmetleri", en: "Cleaning and home help", ar: "تنظيف وخدمات منزلية" } },
+  { slug: "construction", sort: 16, name: { tr: "İnşaat ve tadilat", en: "Building and repairs", ar: "بناء وترميم" } },
+  { slug: "professionals", sort: 17, name: { tr: "Profesyoneller", en: "Professionals", ar: "مهنيون" } },
+  { slug: "education", sort: 18, name: { tr: "Eğitim danışmanlığı", en: "Education agents", ar: "وكالات تعليمية" } },
+  { slug: "arrival", sort: 19, name: { tr: "Varış hizmetleri", en: "Arrival help", ar: "خدمات الوصول" } },
+  { slug: "jobs", sort: 20, name: { tr: "İş ilanları", en: "Jobs", ar: "وظائف" } },
+  { slug: "freelance", sort: 21, name: { tr: "Serbest çalışma", en: "Freelance", ar: "عمل حر" } },
+  { slug: "rides", sort: 22, name: { tr: "Yolculuk ve seyahat", en: "Rides and travel", ar: "رحلات وتنقل" } },
 ];
 
 export const DEMO_SELLERS = {
@@ -22,6 +36,14 @@ export const DEMO_SELLERS = {
   elif: { name: "Elif Y.", shopSlug: "elif", city: "famagusta" },
   chidi: { name: "Chidi O.", shopSlug: "chidi", city: "nicosia" },
   evler: { name: "Mağusa Öğrenci Evleri", shopSlug: "magusa-evleri", city: "famagusta" },
+  yurt: { name: "Sakarya Öğrenci Yurdu", shopSlug: "sakarya-yurdu", city: "famagusta" },
+  emlak: { name: "Mavi Ev Emlak", shopSlug: "mavi-ev", city: "kyrenia" },
+  rent: { name: "Deniz Rent a Car", shopSlug: "deniz-rent", city: "famagusta" },
+  oto: { name: "Hasan Oto Kurtarma", shopSlug: "hasan-oto", city: "famagusta" },
+  temiz: { name: "Ayşe Temizlik", shopSlug: "ayse-temizlik", city: "famagusta" },
+  usta: { name: "Burak Usta Tadilat", shopSlug: "burak-usta", city: "kyrenia" },
+  atlas: { name: "Atlas Student Agency", shopSlug: "atlas-agency", city: "nicosia" },
+  lina: { name: "Lina's Arrival Help", shopSlug: "lina-arrival", city: "famagusta" },
 } satisfies Record<string, Seller>;
 
 export interface DemoListing {
@@ -130,5 +152,102 @@ export const DEMO_LISTINGS: DemoListing[] = [
     title: "Removed sample ad",
     description: "This sample shows what a removed ad looks like.",
     price: 100, currency: "TRY", category: "other", city: "famagusta", photos: ["/demo/kettle.svg"],
+  },
+  // Services and businesses. No photos: their cards show the service's own picture.
+  {
+    id: "d20", kind: "offer", status: "live", seller: "yurt", ageMin: 40, views: 88,
+    title: "Tek kişilik yurt odası – kampüse 3 dk",
+    description: "Banyolu tek kişilik oda, internet ve temizlik dahil. Ortak mutfak, çalışma salonu. Dönemlik veya aylık.",
+    price: 220, currency: "GBP", category: "dorms", city: "famagusta", photos: [],
+  },
+  {
+    id: "d21", kind: "offer", status: "live", seller: "yurt", ageMin: 3 * HOUR, views: 61,
+    title: "Shared dorm room with meals",
+    description: "Two-person room, breakfast and dinner included, laundry on every floor. Free beds from February.",
+    price: 160, currency: "GBP", category: "dorms", city: "famagusta", photos: [],
+  },
+  {
+    id: "d22", kind: "offer", status: "live", seller: "emlak", ageMin: 6 * HOUR, views: 119,
+    title: "1+1 flat, Kyrenia centre – 6 months minimum",
+    description: "Furnished, sea view from the balcony, five minutes to the harbour. Rentals only.",
+    price: 400, currency: "GBP", category: "agencies", city: "kyrenia", photos: [],
+  },
+  {
+    id: "d23", kind: "offer", status: "live", seller: "chidi", ageMin: 8 * HOUR, views: 240,
+    title: "Toyota Vitz 2014, automatic",
+    description: "92,000 km, new tyres, road tax paid until June. Right-hand drive.",
+    price: 7800, currency: "GBP", category: "cars", city: "nicosia", photos: [],
+  },
+  {
+    id: "d24", kind: "offer", status: "live", seller: "elif", ageMin: 1 * DAY, views: 175,
+    title: "Honda Fit 2012 – sahibinden",
+    description: "Otomatik, bakımları yapıldı, kazasız. Muayene yeni.",
+    price: 6500, currency: "GBP", category: "cars", city: "famagusta", photos: [],
+  },
+  {
+    id: "d25", kind: "offer", status: "live", seller: "rent", ageMin: 2 * HOUR, views: 132,
+    title: "Car rental from £25 a day – airport delivery",
+    description: "Small automatics for students, weekly and monthly prices. Delivery to Ercan airport and campus.",
+    price: 25, currency: "GBP", category: "car-rental", city: "famagusta", photos: [],
+  },
+  {
+    id: "d26", kind: "offer", status: "live", seller: "oto", ageMin: 5 * HOUR, views: 47,
+    title: "7/24 çekici – Mağusa ve İskele",
+    description: "Gece gündüz yol yardımı ve çekici. Akü takviyesi, lastik değişimi.",
+    price: null, currency: "TRY", category: "towing", city: "famagusta", photos: [],
+  },
+  {
+    id: "d27", kind: "offer", status: "live", seller: "oto", ageMin: 1 * DAY + 4 * HOUR, views: 29,
+    title: "Lastik değişimi ve balans",
+    description: "Dört lastik değişimi ve balans. Randevusuz gelebilirsiniz.",
+    price: 600, currency: "TRY", category: "car-service", city: "famagusta", photos: [],
+  },
+  {
+    id: "d28", kind: "offer", status: "live", seller: "temiz", ageMin: 4 * HOUR, views: 58,
+    title: "Move-out cleaning for student flats",
+    description: "Full clean before you hand back the keys, so you get your deposit back. Two cleaners, about three hours.",
+    price: 1500, currency: "TRY", category: "cleaning", city: "famagusta", photos: [],
+  },
+  {
+    id: "d29", kind: "offer", status: "live", seller: "usta", ageMin: 2 * DAY, views: 34,
+    title: "Boya, badana ve küçük tadilat",
+    description: "Daire boyama, alçı, fayans tamiri. Ücretsiz keşif.",
+    price: null, currency: "TRY", category: "construction", city: "kyrenia", photos: [],
+  },
+  {
+    id: "d30", kind: "offer", status: "live", seller: "atlas", ageMin: 7 * HOUR, views: 210,
+    title: "University applications – free first consultation",
+    description: "Help choosing a programme, applying, and getting the acceptance letter. English, Arabic and French.",
+    price: 0, currency: "GBP", category: "education", city: "nicosia", photos: [],
+  },
+  {
+    id: "d31", kind: "offer", status: "live", seller: "lina", ageMin: 1 * HOUR, views: 95,
+    title: "Ercan airport pickup to Famagusta",
+    description: "Meet at arrivals with your name on a sign, any hour. Up to three people with luggage.",
+    price: 35, currency: "GBP", category: "arrival", city: "famagusta", photos: [],
+  },
+  {
+    id: "d32", kind: "offer", status: "live", seller: "lina", ageMin: 1 * DAY + 1 * HOUR, views: 143,
+    title: "مساعدة الوصول: شريحة، سكن أول ليلة، تصريح الإقامة",
+    description: "نستقبلك ونساعدك في شراء شريحة هاتف، وحجز أول ليلة، وأوراق تصريح الإقامة. بالعربية والإنجليزية.",
+    price: 50, currency: "GBP", category: "arrival", city: "famagusta", photos: [],
+  },
+  {
+    id: "d33", kind: "offer", status: "live", seller: "elif", ageMin: 9 * HOUR, views: 102,
+    title: "Kafeye yarı zamanlı barista aranıyor",
+    description: "Akşam vardiyası, haftada 4 gün. Türkçe veya İngilizce yeterli. Deneyim şart değil.",
+    price: null, currency: "TRY", category: "jobs", city: "famagusta", photos: [],
+  },
+  {
+    id: "d34", kind: "offer", status: "live", seller: "ahmad", ageMin: 1 * DAY + 8 * HOUR, views: 38,
+    title: "Arabic – English – Turkish translation",
+    description: "Documents, CVs and university letters. Price per page, same-day delivery for short texts.",
+    price: 10, currency: "GBP", category: "freelance", city: "famagusta", photos: [],
+  },
+  {
+    id: "d35", kind: "wanted", status: "live", seller: "chidi", ageMin: 2 * DAY + 2 * HOUR, views: 27,
+    title: "Student looking for part-time work",
+    description: "Weekends and evenings. English and French, some Turkish. Shop, café or delivery.",
+    price: null, currency: "TRY", category: "jobs", city: "nicosia", photos: [],
   },
 ];

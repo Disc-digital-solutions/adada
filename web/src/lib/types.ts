@@ -51,6 +51,8 @@ export type Sort = "newest" | "cheapest" | "dearest";
 export interface ListingFilter {
   q?: string;
   category?: string;
+  /** Any of these categories: a service screen shows several at once. */
+  categories?: string[];
   city?: string;
   kind?: Kind;
   currency?: Currency;

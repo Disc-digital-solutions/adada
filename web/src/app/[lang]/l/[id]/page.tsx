@@ -6,6 +6,7 @@ import { cityName } from "@/components/ListingCard";
 import { Photo } from "@/components/Photo";
 import { PriceTag, priceText } from "@/components/PriceTag";
 import { CopyTextButton } from "@/components/CopyTextButton";
+import { ServiceArt } from "@/components/ServiceTile";
 import { ShareButton } from "@/components/ShareButton";
 import { ChatIcon, FlagIcon } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -108,9 +109,14 @@ async function ListingView({ params, searchParams }: Props) {
             </div>
           ))}
         </div>
-      ) : null}
+      ) : wanted ? null : (
+        // A service or a job without photos: its service's picture, so the page does not look empty.
+        <div className="-mx-4 aspect-[4/3] overflow-hidden md:mx-0 md:aspect-square md:rounded-xl">
+          <ServiceArt category={listing.category} lang={lang} label />
+        </div>
+      )}
 
-      <div className={listing.photos.length === 0 ? "md:col-span-2 md:max-w-2xl" : ""}>
+      <div className={listing.photos.length === 0 && wanted ? "md:col-span-2 md:max-w-2xl" : ""}>
         {wanted ? <p className="mb-1 text-sm font-semibold text-sea-deep">{t.listing.wanted}</p> : null}
         <h1 dir="auto" className="text-[24px] font-bold leading-tight tracking-tight md:text-[28px]">
           {listing.title}

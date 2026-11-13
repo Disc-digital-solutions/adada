@@ -29,6 +29,7 @@ export function PostForm({
   categories,
   cities,
   initialKind,
+  initialCategory,
   mode,
   teamPhone,
   siteName,
@@ -38,6 +39,8 @@ export function PostForm({
   categories: Option[];
   cities: Option[];
   initialKind: Kind;
+  /** From ?category= when the seller comes from a service screen. */
+  initialCategory: string;
   mode: PostMode;
   teamPhone: string;
   siteName: string;
@@ -48,7 +51,7 @@ export function PostForm({
   const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState<Currency>("TRY");
   const [free, setFree] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(initialCategory);
   const [city, setCity] = useState("famagusta");
   const [description, setDescription] = useState("");
   const [pasted, setPasted] = useState("");
