@@ -1,0 +1,22 @@
+import type { City } from "./lib/types";
+
+/**
+ * Everything about the site that is a decision, not code.
+ * The name is a WORKING NAME (decision 7 in ../README.md). Change it here only.
+ */
+export const site = {
+  name: "Island Market",
+  /** The public address, used in shared links and QR codes. Set NEXT_PUBLIC_SITE_URL when deployed. */
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3240").replace(/\/$/, ""),
+  themeColor: "#0a6c88",
+} as const;
+
+/** The six districts. Launch is Famagusta, but any city can be chosen. */
+export const CITIES: City[] = [
+  { slug: "famagusta", name: { tr: "Gazimağusa", en: "Famagusta", ar: "فاماغوستا" } },
+  { slug: "nicosia", name: { tr: "Lefkoşa", en: "Nicosia", ar: "نيقوسيا" } },
+  { slug: "kyrenia", name: { tr: "Girne", en: "Kyrenia", ar: "كيرينيا" } },
+  { slug: "iskele", name: { tr: "İskele", en: "Iskele", ar: "إسكيله" } },
+  { slug: "guzelyurt", name: { tr: "Güzelyurt", en: "Guzelyurt", ar: "غوزليورت" } },
+  { slug: "lefke", name: { tr: "Lefke", en: "Lefke", ar: "ليفكه" } },
+];

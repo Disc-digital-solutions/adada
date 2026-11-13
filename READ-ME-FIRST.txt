@@ -1,0 +1,26 @@
+North Cyprus "everything app" - partner pack
+
+START HERE
+
+1. EVERYTHING-SO-FAR.md   One file with everything: what is done, what comes next, the roadmap.
+2. FEATURE-MAP.html       Open it in a browser. The whole plan on one page: 211 features, easy to hard.
+3. screens/               Pictures of the website as it is today. The ads are samples; none are real.
+
+THE REST
+
+4. LEVEL-1-SPEC.md        Exactly what is being built first, and the state of each part.
+5. BUILD-LADDER.md        Every feature by level.   FEATURES.md: every feature by category.
+6. COMPETITORS.md         Who already exists in North Cyprus, and a sheet for testing each app by hand.
+7. VALIDATION-KIT.md      The seven-day Facebook count, and the questions for sellers, dorms and landlords.
+8. web/                   The website's code.
+
+TO RUN THE WEBSITE ON YOUR COMPUTER (optional)
+
+1. Install Node.js (the current LTS version) from nodejs.org
+2. Open a terminal in the "web" folder
+3. npm install            (in Windows PowerShell: npm.cmd install)
+4. npm run dev            (in Windows PowerShell: npm.cmd run dev)
+5. Open http://localhost:3240
+
+"Island Market" is a working name. The Turkish wording still needs a native read: please mark anything
+that sounds wrong.

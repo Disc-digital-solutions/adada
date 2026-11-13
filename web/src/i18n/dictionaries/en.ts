@@ -1,0 +1,121 @@
+import type { PluralForms } from "../plural";
+
+const adCount: PluralForms = { one: "{n} ad", other: "{n} ads" };
+const seenBy: PluralForms = { one: "Seen by {n} person", other: "Seen by {n} people" };
+
+/** English is the reference: Turkish and Arabic must have exactly these keys. */
+export const en = {
+  site: {
+    tagline: "Buy, sell and rent in North Cyprus",
+    intro: "Post an ad in a minute. Message the seller on WhatsApp.",
+  },
+  nav: {
+    home: "Home",
+    search: "Search",
+    post: "Post an ad",
+    safety: "Stay safe",
+    language: "Language",
+  },
+  demo: {
+    banner: "Sample ads only. The database is not connected yet.",
+    noSeller: "This is a sample ad, so there is no seller to message.",
+  },
+  home: {
+    newest: "Newest ads",
+    seeAll: "See all ads",
+  },
+  search: {
+    placeholder: "What are you looking for?",
+    submit: "Search",
+    title: "Search",
+    category: "Category",
+    anyCategory: "All categories",
+    city: "City",
+    anyCity: "All cities",
+    kind: "Type",
+    anyKind: "Selling and wanted",
+    offers: "Selling",
+    wanted: "Wanted",
+    currency: "Price in",
+    anyCurrency: "Any currency",
+    min: "From",
+    max: "To",
+    priceHint: "Choose a currency to filter or sort by price.",
+    sort: "Sort by",
+    newest: "Newest",
+    cheapest: "Cheapest",
+    dearest: "Most expensive",
+    apply: "Show results",
+    clear: "Clear filters",
+    results: adCount,
+    emptyTitle: "No ads match this search",
+    emptyBody: "Say what you are looking for and let sellers find you.",
+    postWanted: "Post a wanted ad",
+  },
+  listing: {
+    free: "Free",
+    wanted: "Wanted",
+    budget: "Budget",
+    sold: "Sold",
+    soldNotice: "This item is sold.",
+    removedNotice: "This ad was removed.",
+    seenBy,
+    seller: "Seller",
+    viewShop: "See all ads from this seller",
+    whatsapp: "Message on WhatsApp",
+    share: "Share",
+    copied: "Link copied",
+    contactTemplate: 'Hi, I saw "{title}" on {site}: {url}',
+    safetyNote: "Meet in a public place. Never pay before you see the item.",
+    photoOf: "Photo {n} of {total}",
+  },
+  shop: {
+    ads: adCount,
+    empty: "This seller has no ads right now.",
+    qrCaption: "Scan to open this shop",
+    share: "Share this shop",
+  },
+  post: {
+    title: "Post an ad",
+    selling: "I am selling",
+    looking: "I am looking for",
+    photos: "Photos",
+    photosHint: "Up to 8. The first one is the cover.",
+    titleLabel: "Title",
+    titleHint: "For example: Study desk, like new",
+    price: "Price",
+    freeToggle: "I am giving it away for free",
+    category: "Category",
+    city: "City",
+    description: "Description",
+    descriptionHint: "Condition, size, when it can be collected",
+    submit: "Publish ad",
+    notConnected: "Posting opens when the database is connected.",
+    banned:
+      "Not allowed: weapons, drugs and medicine, alcohol and tobacco, fake goods, live animals, doing someone's graded work, adult services, permits or documents for sale, property for sale.",
+  },
+  safety: {
+    title: "Stay safe",
+    intro: "Most deals go well. These rules protect you from the few that do not.",
+    tips: [
+      "Never send money before you see the item.",
+      "Never pay a deposit for a flat you have not visited.",
+      "Meet in a public place, in daylight.",
+      "Be careful when a price is too good to be true.",
+      "Never send a photo of your ID, passport or bank card.",
+      "Tell us when an ad looks wrong.",
+    ],
+    meetTitle: "Safe places to meet",
+    meetPlaces: ["The main gate of your campus", "In front of a busy café or supermarket", "In front of a police station"],
+    scamTitle: "This week's scam",
+    scamBody:
+      "The “landlord” says he is abroad and asks for a deposit to post you the key. Never send money for a flat you have not visited.",
+  },
+  notFound: {
+    title: "This page does not exist",
+    body: "The ad may have been removed, or the link may be wrong.",
+    home: "Go to the home page",
+  },
+};
+
+export type Dictionary = typeof en;
