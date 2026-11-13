@@ -5,14 +5,18 @@ import { Suspense } from "react";
 import { cityName } from "@/components/ListingCard";
 import { Photo } from "@/components/Photo";
 import { PriceTag, priceText } from "@/components/PriceTag";
+import { CopyTextButton } from "@/components/CopyTextButton";
 import { ShareButton } from "@/components/ShareButton";
-import { ChatIcon } from "@/components/icons";
+import { ChatIcon, FlagIcon } from "@/components/icons";
 import { getDictionary } from "@/i18n";
-import { isLang } from "@/i18n/config";
+import { LANGS, isLang } from "@/i18n/config";
 import { plural } from "@/i18n/plural";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
 import { timeAgo } from "@/lib/format";
+import { groupPost } from "@/lib/share-text";
+import { whatsappLink } from "@/lib/whatsapp";
+import { site } from "@/site.config";
 
 type Props = PageProps<"/[lang]/l/[id]">;
 
@@ -67,6 +71,22 @@ async function ListingView({ params, searchParams }: Props) {
   const sold = listing.status === "sold";
   const wanted = listing.kind === "wanted";
 
+  // The text for the seller's groups: the reader's language first, then the others, and one link
+  // with no language in it, so every reader opens the ad in their own language.
+  const groupText = groupPost({
+    title: wanted ? `${t.listing.wanted}: ${listing.title}` : listing.title,
+    price: priceText(listing, lang, t),
+    city: cityName(listing.city, lang),
+    lines: [lang, ...LANGS.filter((l) => l !== lang)].map((l) => {
+      const words = getDictionary(l).listing;
+      return wanted ? words.groupLineWanted : words.groupLine;
+    }),
+    url: `${site.url}/l/${listing.id}`,
+  });
+  const reportLink = site.teamWhatsapp
+    ? whatsappLink(site.teamWhatsapp, t.listing.reportMessage.replace("{url}", `${site.url}/${lang}/l/${listing.id}`))
+    : null;
+
   return (
     <article className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[minmax(0,1fr)_22rem] md:items-start">
       {listing.photos.length > 0 ? (
@@ -119,6 +139,7 @@ async function ListingView({ params, searchParams }: Props) {
               {t.listing.whatsapp}
             </a>
             <ShareButton title={listing.title} label={t.listing.share} copiedLabel={t.listing.copied} />
+            <CopyTextButton text={groupText} label={t.listing.copyForGroups} copiedLabel={t.listing.copiedForGroups} />
           </div>
         )}
         {sold ? null : <p className="hint">{t.listing.safetyNote}</p>}
@@ -136,6 +157,14 @@ async function ListingView({ params, searchParams }: Props) {
             {t.listing.viewShop}
           </Link>
         </section>
+
+        {/* Reports go to a person on the team's WhatsApp line until the reports table exists. */}
+        {reportLink ? (
+          <a href={reportLink} rel="nofollow noopener" target="_blank" className="mt-4 inline-flex items-center gap-1.5 text-sm text-ink-soft underline underline-offset-4 hover:text-ink">
+            <FlagIcon width={16} height={16} />
+            {t.listing.report}
+          </a>
+        ) : null}
       </div>
     </article>
   );

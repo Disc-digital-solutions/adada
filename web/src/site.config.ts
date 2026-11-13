@@ -9,6 +9,12 @@ export const site = {
   /** The public address, used in shared links and QR codes. Set NEXT_PUBLIC_SITE_URL when deployed. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3240").replace(/\/$/, ""),
   themeColor: "#0a6c88",
+  /**
+   * The team's WhatsApp line, country code first, e.g. +905331234567. Set NEXT_PUBLIC_TEAM_WHATSAPP.
+   * While the database is not connected, posting and reporting go to this line and a person
+   * handles them ("by hand before by code"). Empty = those buttons stay off.
+   */
+  teamWhatsapp: (process.env.NEXT_PUBLIC_TEAM_WHATSAPP ?? "").trim(),
 } as const;
 
 /** The six districts. Launch is Famagusta, but any city can be chosen. */

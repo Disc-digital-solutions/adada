@@ -3,12 +3,14 @@ import { notFound } from "next/navigation";
 import QRCode from "qrcode";
 import { Suspense } from "react";
 import { GridSkeleton, ListingGrid, cityName } from "@/components/ListingCard";
+import { CopyTextButton } from "@/components/CopyTextButton";
 import { ShareButton } from "@/components/ShareButton";
 import { getDictionary } from "@/i18n";
-import { isLang } from "@/i18n/config";
+import { LANGS, isLang } from "@/i18n/config";
 import { plural } from "@/i18n/plural";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
+import { groupPost } from "@/lib/share-text";
 import { site } from "@/site.config";
 
 type Props = PageProps<"/[lang]/s/[slug]">;
@@ -44,6 +46,13 @@ async function ShopView({ params }: Props) {
   const t = getDictionary(lang);
   // The shared link has no language in it: each visitor gets the shop in their own.
   const shopUrl = `${site.url}/s/${shop.seller.shopSlug}`;
+  const groupText = groupPost({
+    title: shop.seller.name,
+    price: null,
+    city: cityName(shop.seller.city, lang),
+    lines: [lang, ...LANGS.filter((l) => l !== lang)].map((l) => getDictionary(l).shop.groupLine),
+    url: shopUrl,
+  });
   const qrSvg = await QRCode.toString(shopUrl, {
     type: "svg",
     margin: 1,
@@ -69,8 +78,9 @@ async function ShopView({ params }: Props) {
             {cityName(shop.seller.city, lang)}, {plural(lang, shop.listings.length, t.shop.ads)}
           </p>
           <p className="hint">{t.shop.qrCaption}</p>
-          <div className="mt-3">
+          <div className="mt-3 flex flex-wrap gap-2">
             <ShareButton title={shop.seller.name} label={t.shop.share} copiedLabel={t.listing.copied} />
+            <CopyTextButton text={groupText} label={t.listing.copyForGroups} copiedLabel={t.listing.copiedForGroups} />
           </div>
         </div>
       </header>

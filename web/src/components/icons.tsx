@@ -60,3 +60,16 @@ export const ChatIcon = (props: SVGProps<SVGSVGElement>) => (
     <path d="M4 19l1.3-3.8A8 8 0 1 1 8.7 19z" />
   </Icon>
 );
+
+export const CopyIcon = (props: SVGProps<SVGSVGElement>) => (
+  <Icon {...props}>
+    <rect x="9" y="9" width="11" height="11" rx="2" />
+    <path d="M5 15V5a1 1 0 0 1 1-1h10" />
+  </Icon>
+);
+
+export const FlagIcon = (props: SVGProps<SVGSVGElement>) => (
+  <Icon {...props}>
+    <path d="M5 21V4M5 4h11l-2 4 2 4H5" />
+  </Icon>
+);

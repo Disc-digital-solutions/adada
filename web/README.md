@@ -28,7 +28,7 @@ npm.cmd run check
 npm.cmd run build
 ```
 
-`test` runs the 80 checks of the logic. `check` runs lint, types and tests together. `build` makes the
+`test` runs the 106 checks of the logic. `check` runs lint, types and tests together. `build` makes the
 version that would go online, and fails if a page breaks the framework's rules.
 
 ## What works today (13 Nov 2026)
@@ -46,7 +46,9 @@ Everything below runs on **sample ads**. The dark bar at the top of the site say
 | Safety page | Works |
 | "Page does not exist" in each language | Works |
 | Add to phone home screen (opens like an app) | Manifest and icons are in place. **Not yet tried on a real phone** |
-| Post an ad | The form is there. **It cannot publish yet** |
+| Post an ad | The form is there, and pasting a group post fills it in. Until the database is connected, it sends the ad to the team's WhatsApp line (set `NEXT_PUBLIC_TEAM_WHATSAPP`); without that number it cannot publish |
+| Copy for your groups | Works, on every ad and shop: one line per language and a link that opens in the reader's language |
+| Report an ad | Opens WhatsApp to the team's line, when the number is set |
 | Sign in, my ads, favourites, reports, admin, tap counting | **Not built**. They need the database |
 
 ## What is needed next
@@ -63,7 +65,7 @@ A database. The plan uses Supabase (login, database, photo storage).
 |---|---|
 | `src/app/[lang]/` | The pages. One folder per address: `search`, `l/[id]` (an ad), `s/[slug]` (a shop), `post`, `safety` |
 | `src/components/` | Pieces of pages: the ad card, the price tag, the header, the filter form |
-| `src/lib/` | The logic, with a test file beside each: prices and dates (`format`), search (`listings`), WhatsApp links (`whatsapp`) |
+| `src/lib/` | The logic, with a test file beside each: prices and dates (`format`), search (`listings`), WhatsApp links (`whatsapp`), reading a pasted group post (`parse-post`), group and team texts (`share-text`) |
 | `src/lib/data/` | Where ads come from. `repo.ts` lists the questions pages may ask; `demo-repo.ts` answers them from sample data |
 | `src/i18n/` | Languages: which exist, the words in each (`dictionaries/`), plurals |
 | `src/proxy.ts` | Runs before every page: adds the language to an address that has none |

@@ -13,7 +13,7 @@ The code is in `web/`. It runs on sample ads.
 
 | Slice | State |
 |---|---|
-| 1 Post a listing | Form built; **cannot publish** (needs sign-in and the database) |
+| 1 Post a listing | Form built, and a pasted group post fills it in. Until sign-in and the database exist, it sends the ad to the team's WhatsApp line for a person to publish (see `IDEA-REVIEW.md`) |
 | 2 Browse and search | Built, except favourites (needs sign-in) |
 | 3 Listing page | Built. The view counter and tap counter show sample numbers until the database exists |
 | 4 My listings, shop, QR | Shop page and QR built; my listings, mark as sold and leaving sale not built |
