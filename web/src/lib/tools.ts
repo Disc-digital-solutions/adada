@@ -19,6 +19,16 @@ export const TOOLS: Tool[] = [
     blurb: { tr: "Polis, ambulans, itfaiye, nöbetçi eczane", en: "Police, ambulance, fire, duty pharmacy", ar: "الشرطة، الإسعاف، الإطفاء، الصيدلية المناوبة" },
   },
   {
+    href: "help", icon: "chat2",
+    name: { tr: "Öğrenci soruları", en: "Student questions", ar: "أسئلة الطلاب" },
+    blurb: { tr: "Banka hesabı, depozito, vize ve oturma izni", en: "Bank accounts, deposits, visas and permits", ar: "الحساب البنكي، العربون، التأشيرة والإقامة" },
+  },
+  {
+    href: "tools/permit", icon: "calendar",
+    name: { tr: "Oturma iznim", en: "My residence permit", ar: "تصريح إقامتي" },
+    blurb: { tr: "Kalan gün, takvim hatırlatması, belge listesi", en: "Days left, calendar reminders, papers checklist", ar: "الأيام المتبقية، تذكيرات، قائمة الأوراق" },
+  },
+  {
     href: "plan", icon: "map",
     name: { tr: "Varış planım", en: "My arrival plan", ar: "خطة وصولي" },
     blurb: { tr: "Şehir, bütçe, tarih: gerçek ilanlarla bir plan", en: "City, budget, date: a plan built from real ads", ar: "المدينة والميزانية والتاريخ: خطة من إعلانات حقيقية" },

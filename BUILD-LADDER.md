@@ -6,13 +6,13 @@ Build order = level order. Each level is a working product by itself.
 
 | Level | Name | After this level, a user can… | Why it is this hard | Running cost | Features |
 |---|---|---|---|---|---|
-| **L1** | Marketplace core | Post anything with photos and a price, get a shop link, browse, search, and contact the seller on WhatsApp. | Forms, lists and photos. Nothing live, no money, little that can go badly wrong. | A domain name; free hosting tiers to start | 31 |
-| **L2** | Categories, directories, translation | Find dorms, car rentals, tow trucks, cleaners, construction firms, freelancers, cars and flats, each with proper filters and a company page, in their own language. | The same building blocks as L1, many more of them, plus small outside services. | Small: a little per SMS and per translated listing | 112 |
+| **L1** | Marketplace core | Post anything with photos and a price, get a shop link, browse, search, and contact the seller on WhatsApp. | Forms, lists and photos. Nothing live, no money, little that can go badly wrong. | A domain name; free hosting tiers to start | 32 |
+| **L2** | Categories, directories, translation | Find dorms, car rentals, tow trucks, cleaners, construction firms, freelancers, cars and flats, each with proper filters and a company page, in their own language. | The same building blocks as L1, many more of them, plus small outside services. | Small: a little per SMS and per translated listing | 114 |
 | **L3** | Live and smart | Chat inside the app in their own language, ask several providers for quotes, get reminders and AI help. | Live messaging and outside AI services: more moving parts, a cost per use, harder to test. | Per use: chat translation, AI; app-store fees | 67 |
 | **L4** | Time and money | Reserve a dorm room or a cleaner for a date and pay online. | A mistake double-books a room or loses real money. Needs a payment provider, refunds, records. | Payment commissions; an accountant | 47 |
 | **L5** | Live money and movement | Call the nearest tow truck and watch it come; pay a freelancer safely; bid in a live auction. | Live location, money held for other people, many providers online at once, legal duties. | Staff | 15 |
 
-Plus **6** things that need no code at all. Total: **278** features.
+Plus **6** things that need no code at all. Total: **281** features.
 
 ## Do it by hand first
 
@@ -65,7 +65,7 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | ENH-04 | Leaving-sale week: a campaign each May–June on every campus | Enhancements | Done by a person, no code | · |
 | RE-12 | Lawyer-checked tenancy contract for a fixed fee | Real estate agencies | Done by a person, no code | · |
 
-## L1: Easy (31)
+## L1: Easy (32)
 
 *Marketplace core.* Forms, lists and photos. Nothing live, no money, little that can go badly wrong.
 
@@ -102,8 +102,9 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | LST-21 | Paste a group post and the form fills itself in | Listings | A form and a list | · |
 | ENH-27 | Emergency page: police, ambulance, fire, duty pharmacy, embassies, in three languages | Enhancements | A page of text | · |
 | ENH-30 | Accessibility: large text, screen readers, contrast | Enhancements | Works across every category at once | · |
+| ARR-09 | Student questions: bank accounts, money from home, rent deposits, visas and permits, with ask-on-WhatsApp | Arrival services | A page of text | · |
 
-## L2: Easy-to-medium (112)
+## L2: Easy-to-medium (114)
 
 *Categories, directories, translation.* The same building blocks as L1, many more of them, plus small outside services.
 
@@ -220,6 +221,8 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | MORE-05 | Restaurant and café guide with student deals (no delivery) | More local categories | Same blocks as L1, more of them | · |
 | PRO-05 | Childcare and tutors, by language | Professionals | Same blocks as L1, more of them | · |
 | TOUR-01 | Tourist experiences: boat trips, tours, diving, transfers, in five languages | Tourism and experiences | Same blocks as L1, more of them | · |
+| ARR-10 | Residence-permit reminder: days left, calendar reminders, papers checklist | Arrival services | Same blocks as L1, more of them | ARR-09 |
+| ARR-11 | Leaving-the-island checklist: diploma, deposit, bills, bank, permit | Arrival services | A page of text | ENH-04 |
 | MED-01 | Clinic pages with price ranges and enquiries in the visitor's language | Medical and dental visitors | Waits for legal advice, not for code | · |
 
 ## L3: Medium (67)

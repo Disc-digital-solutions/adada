@@ -144,6 +144,43 @@ export const GUIDES: Guide[] = [
       { link: "c/cars", text: { tr: "Satılık araçlar.", en: "Cars for sale.", ar: "سيارات للبيع." } },
     ],
   },
+  {
+    slug: "bank",
+    icon: "receipt",
+    title: { tr: "Banka hesabı açmak", en: "Opening a bank account", ar: "فتح حساب بنكي" },
+    intro: {
+      tr: "Öğrencilerin çoğu ilk ayında açar. İstekler bankaya göre değişir; bu genel bir yoldur.",
+      en: "Most students open one in their first month. Each bank asks for slightly different things; this is the usual path.",
+      ar: "يفتح معظم الطلاب حساباً في شهرهم الأول. تختلف الطلبات من بنك لآخر؛ هذا هو الطريق المعتاد.",
+    },
+    steps: [
+      { text: { tr: "Pasaportunu, öğrenci belgeni ve varsa oturma iznini veya başvuru makbuzunu hazırla.", en: "Have your passport, student certificate and, if you have it, your residence permit or its application receipt.", ar: "جهّز جواز سفرك وشهادة الطالب، وتصريح الإقامة أو إيصال طلبه إن وُجد." } },
+      { link: "guides/sim", text: { tr: "Yerel bir telefon numarası al; bankalar çoğu zaman ister.", en: "Get a local phone number first; banks often ask for one.", ar: "احصل على رقم هاتف محلي أولاً؛ كثيراً ما تطلبه البنوك." } },
+      { text: { tr: "İki üç bankaya sor: öğrenci hesabı, kart ücreti, döviz hesabı ve havale ücretleri.", en: "Ask two or three banks: student accounts, card fees, foreign-currency accounts and transfer fees.", ar: "اسأل بنكين أو ثلاثة: حسابات الطلاب، رسوم البطاقة، الحساب بالعملة الأجنبية، ورسوم الحوالات." } },
+      { text: { tr: "Kira sterlinse bir döviz hesabı da açmayı düşün.", en: "If your rent is in pounds, think about a foreign-currency account too.", ar: "إن كان إيجارك بالجنيه ففكّر في حساب بالعملة الأجنبية أيضاً." } },
+      { text: { tr: "IBAN ve SWIFT/BIC bilgilerini ailene gönder; ilk havalenin geldiğini kontrol et.", en: "Send your IBAN and SWIFT/BIC to your family, and check the first transfer arrives.", ar: "أرسل رقم IBAN وSWIFT/BIC لأهلك، وتأكد من وصول أول حوالة." } },
+      { link: "help", text: { tr: "Daha fazla soru: öğrenci soruları sayfası.", en: "More questions: the student questions page.", ar: "أسئلة أخرى: صفحة أسئلة الطلاب." } },
+    ],
+  },
+  {
+    slug: "leaving",
+    icon: "plane",
+    title: { tr: "Adadan ayrılırken", en: "Leaving the island", ar: "عند مغادرة الجزيرة" },
+    intro: {
+      tr: "Okul bittiğinde veya taşındığında, hiçbir şeyi geride bırakmamak için.",
+      en: "When you finish your studies or move away, so nothing is left behind.",
+      ar: "عند إنهاء الدراسة أو الانتقال، كي لا يبقى شيء معلّقاً.",
+    },
+    steps: [
+      { text: { tr: "Diplomanı, transkriptini ve gerekiyorsa tasdikli kopyalarını al.", en: "Collect your diploma, transcript and, if you need them, certified copies.", ar: "استلم شهادتك وكشف العلامات، ونسخاً مصدّقة إن احتجت." } },
+      { link: "c/buy-sell", text: { tr: "Götürmeyeceklerini sat; tümünü tek bağlantıda paylaş.", en: "Sell what you will not take, and share it all in one link.", ar: "بِع ما لن تأخذه، وشارك كل شيء برابط واحد." } },
+      { link: "tools/deposit", text: { tr: "Evi teslim et ve depozitonu yazılı iste.", en: "Hand back the flat and ask for your deposit in writing.", ar: "سلّم الشقة واطلب العربون كتابةً." } },
+      { text: { tr: "Son faturaları öde; elektrik ve interneti kapattır.", en: "Pay the last bills and close electricity and internet.", ar: "ادفع آخر الفواتير وأغلق الكهرباء والإنترنت." } },
+      { text: { tr: "Banka hesabını kapat ya da yurt dışından kullanabilecek misin, sor.", en: "Close your bank account, or ask whether you can use it from abroad.", ar: "أغلق حسابك البنكي أو اسأل هل يمكنك استخدامه من الخارج." } },
+      { text: { tr: "İzninin iptal edilmesi gerekip gerekmediğini uluslararası ofise sor.", en: "Ask the international office whether your permit must be cancelled.", ar: "اسأل المكتب الدولي هل يجب إلغاء تصريحك." } },
+      { link: "c/storage", text: { tr: "Geri döneceksen eşyanı yaz boyunca sakla.", en: "Coming back? Store your things over the summer.", ar: "ستعود؟ خزّن أغراضك خلال الصيف." } },
+    ],
+  },
 ];
 
 export function guideBySlug(slug: string): Guide | undefined {

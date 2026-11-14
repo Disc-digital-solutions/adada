@@ -299,11 +299,14 @@ Modes: Quote → Book
 
 | ID | Feature | Level | Job | Easy first version |
 |---|---|---|---|---|
+| ARR-09 | Student questions: bank accounts, money from home, rent deposits, visas and permits, with ask-on-WhatsApp | L1 | Brings users | · |
 | ARR-01 | Request form for airport pickup | L2 | Earns | · |
 | ARR-02 | Arrival bundle sold by hand: pickup, SIM, first nights, permit help | L2 | Earns | · |
 | ARR-03 | Guides: SIM card, bank account, receiving money from home | L2 | Brings users | · |
 | ARR-07 | Utilities setup helper: electricity, water, internet | L2 | Brings users | · |
 | ARR-08 | SIM and home internet plans compared | L2 | Brings users | · |
+| ARR-10 | Residence-permit reminder: days left, calendar reminders, papers checklist | L2 | Brings people back | ARR-09 |
+| ARR-11 | Leaving-the-island checklist: diploma, deposit, bills, bank, permit | L2 | Brings people back | ENH-04 |
 | ARR-04 | Guided arrival checklist that tracks your progress | L3 | Brings people back | ENH-05 |
 | ARR-06 | New-arrival plan built from real ads: room, pickup, SIM, permit | L3 | Brings users | ENH-05 |
 | ARR-05 | Buying the arrival bundle in the app | L4 | Earns | ARR-02 |

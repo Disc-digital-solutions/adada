@@ -61,6 +61,19 @@ delivery or taxis.
 | — | Tools and guides hub | `/tools`, `/guides`, and a row on the home page |
 | — | Arrival checklist and address helper (ENH-05, ENH-06 from the original plan) | `/guides/arrival`, `/guides/address` |
 
+## Added 14 Nov (later): student questions
+
+| ID | Feature | Where |
+|---|---|---|
+| ARR-09 | Student questions: 17 answers on bank accounts, money from home, paying rent, deposits, visas, the residence permit, renewing it, working, crossing to the south and leaving; "ask us on WhatsApp" for anything else | `/help` |
+| ARR-10 | Residence-permit reminder: days left, start-renewing date, reminders added to the phone's calendar, papers checklist | `/tools/permit` |
+| ARR-11 | Leaving-the-island checklist | `/guides/leaving` |
+| ARR-03 | Bank account guide (already in the plan; now built) | `/guides/bank` |
+
+The answers are general and checked with no bank or office yet. They avoid fees, bank names and
+nationality rules on purpose and always say who gives the final answer (the university's international
+office, or the bank). Check them with an international office before launch.
+
 ## Built — a person does the work behind a WhatsApp button
 
 Each has its own screen with "How it works" and "Request on WhatsApp" (it needs `NEXT_PUBLIC_TEAM_WHATSAPP`).

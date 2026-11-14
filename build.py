@@ -433,6 +433,9 @@ F = [
     ("PRO-05", 2, "Childcare and tutors, by language", "more", "demand", ""),
     ("TOUR-01", 2, "Tourist experiences: boat trips, tours, diving, transfers, in five languages", "more", "earn", ""),
     ("TOUR-02", 4, "Experience booking with dates and group size", "cal", "earn", "TOUR-01"),
+    ("ARR-09", 1, "Student questions: bank accounts, money from home, rent deposits, visas and permits, with ask-on-WhatsApp", "page", "demand", ""),
+    ("ARR-10", 2, "Residence-permit reminder: days left, calendar reminders, papers checklist", "more", "back", "ARR-09"),
+    ("ARR-11", 2, "Leaving-the-island checklist: diploma, deposit, bills, bank, permit", "page", "back", "ENH-04"),
     ("MED-01", 2, "Clinic pages with price ranges and enquiries in the visitor's language", "law", "earn", ""),
 ]
 
