@@ -33,9 +33,14 @@ Rule for income: **private users list free; professionals pay.**
 | ACC-12 | Reply rate and reply time shown on profiles | L3 | Builds trust |
 | ACC-13 | Warning in chat when someone asks for a deposit before a viewing | L3 | Builds trust |
 | ACC-14 | Duplicate-listing detection | L3 | Builds trust |
+| ACC-20 | "Price looks wrong" warning when a rent is far below the area's usual price | L3 | Builds trust |
+| ACC-21 | Team accounts: several staff post under one business | L3 | Brings listings |
+| ACC-22 | Scam map: reported scams by area and kind | L3 | Builds trust |
+| ACC-23 | Trust score from checked ID, reply rate, reviews and account age | L3 | Builds trust |
 | ACC-15 | Verification from uploaded documents | L4 | Builds trust |
 | ACC-16 | Copied-photo and too-cheap-price detection | L4 | Builds trust |
 | ACC-17 | Dispute handling for bookings and payments | L4 | Builds trust |
+| ACC-24 | Scam-ring detection across accounts: same number, photos or wording | L4 | Builds trust |
 | ACC-18 | Protected deposits held by the platform | L5 | Earns |
 | ACC-19 | Hidden phone numbers | L5 | Builds trust |
 
@@ -51,15 +56,18 @@ Rule for income: **private users list free; professionals pay.**
 | LST-06 | "Wanted" posts: the buyer posts the need | L1 | Brings users |
 | LST-07 | "Leaving the island" sale: several items on one page | L1 | Brings listings |
 | LST-08 | Categories appear only once they have listings | L1 | Builds trust |
+| LST-21 | Paste a group post and the form fills itself in | L1 | Brings listings |
 | LST-09 | Own fields and filters per category | L2 | Brings users |
 | LST-10 | Categories and their fields editable from the admin panel | L2 | Runs the site |
 | LST-11 | Listings translated automatically when saved (Turkish, English, Arabic) | L2 | Brings users |
 | LST-12 | Listings expire; the owner confirms "still available" or it is hidden | L2 | Builds trust |
 | LST-13 | Video on listings | L2 | Builds trust |
 | LST-14 | Share cards for WhatsApp and Instagram stories | L2 | Brings users |
+| LST-22 | Holiday mode: pause all my ads with one tap | L2 | Brings people back |
 | LST-15 | Photo → suggested category, title, description and price | L3 | Brings listings |
 | LST-16 | Bulk upload for dealers and agencies | L3 | Brings listings |
 | LST-17 | "3 people saved this, lower the price to tell them" | L3 | Brings people back |
+| LST-20 | Voice posting: say the ad, it is written, priced and put in a category | L3 | Brings listings |
 | LST-18 | Paste an Instagram or Facebook link → draft listing | L4 | Brings listings |
 | LST-19 | 360° tours | L4 | Builds trust |
 
@@ -77,6 +85,7 @@ Rule for income: **private users list free; professionals pay.**
 | SRCH-08 | Plain-language search in any language | L3 | Brings users |
 | SRCH-09 | Home screen that changes by who you are: student, resident, newcomer, business | L3 | Brings people back |
 | SRCH-10 | Price-drop alerts | L3 | Brings people back |
+| SRCH-12 | Smart alerts in plain words, sent on WhatsApp | L3 | Brings people back |
 | SRCH-11 | Price insight: typical price, "good price" badge, price history | L4 | Builds trust |
 
 ### Talking to each other
@@ -89,6 +98,7 @@ Rule for income: **private users list free; professionals pay.**
 | TALK-03 | In-app chat | L3 | Brings people back |
 | TALK-04 | Automatic translation inside chat, with "show original" | L3 | Brings users |
 | TALK-05 | Notifications | L3 | Brings people back |
+| TALK-10 | The app inside WhatsApp: post, search and alerts by chat | L3 | Brings listings |
 | TALK-06 | Offers, counter-offers and viewing appointments inside chat | L4 | Brings users |
 | TALK-07 | Shared business inbox for several staff | L4 | Earns |
 | TALK-08 | Voice notes transcribed and translated | L4 | Brings users |
@@ -101,6 +111,7 @@ Rule for income: **private users list free; professionals pay.**
 | LANG-02 | Interface in Arabic (right-to-left), right after launch | L1 | Brings users |
 | LANG-03 | Prices converted to TRY/GBP/EUR/USD at the day's rate | L2 | Brings users |
 | LANG-04 | Interface in Russian, Persian and French | L2 | Brings users |
+| LANG-05 | Best exchange rate nearby, compared across exchange offices | L3 | Brings people back |
 
 ### Engines
 
@@ -125,9 +136,12 @@ Rule for income: **private users list free; professionals pay.**
 | ADM-02 | View and WhatsApp-tap counts per listing: the one number to watch | L1 | Runs the site |
 | ADM-03 | Checking queue for new listings | L2 | Builds trust |
 | ADM-04 | Banners, guide pages and promo codes | L2 | Runs the site |
+| ADM-09 | Ambassador dashboard: ads brought in, taps, leaderboard, earnings | L2 | Brings listings |
 | ADM-05 | Health dashboard per category and city, including searches that found nothing | L3 | Runs the site |
 | ADM-06 | Staff roles and a record of admin actions | L3 | Runs the site |
 | ADM-07 | Support tickets | L3 | Runs the site |
+| ADM-10 | Partner data access under contract for universities, banks and agencies | L4 | Earns |
+| ADM-11 | White-label engine: the same app relaunched in another small market | L4 | Earns |
 
 ### Tools for businesses
 
@@ -136,9 +150,13 @@ Rule for income: **private users list free; professionals pay.**
 | BIZ-01 | Full company page: hours, services, prices, photos | L2 | Brings listings |
 | BIZ-02 | Catalogue on the company page | L2 | Brings listings |
 | BIZ-03 | Featured spot, paid in cash or by transfer and switched on by an admin | L2 | Earns |
+| BIZ-15 | Embed widget: a business shows its ads on its own website | L2 | Brings listings |
+| BIZ-19 | Verified business badge after a trade licence is checked | L2 | Builds trust |
 | BIZ-04 | List of enquiries with status | L3 | Earns |
 | BIZ-05 | Numbers for the business: views and WhatsApp taps | L3 | Earns |
 | BIZ-06 | Demand map: "120 people searched 1+1 in Karakol, 9 listings exist" | L3 | Earns |
+| BIZ-16 | WhatsApp Business catalogue kept in sync with the shop | L3 | Brings listings |
+| BIZ-18 | Monthly business report: views, taps, searches, compared with similar businesses | L3 | Earns |
 | BIZ-07 | Dealer tools: stock age and price suggestion | L4 | Earns |
 | BIZ-08 | Agency tools: owners, viewings, contract generator | L4 | Earns |
 | BIZ-09 | Dorm tools: rooms, applications, term payments | L4 | Earns |
@@ -147,6 +165,7 @@ Rule for income: **private users list free; professionals pay.**
 | BIZ-12 | Quotes and invoices | L4 | Earns |
 | BIZ-13 | Self-serve promotions with a budget | L4 | Earns |
 | BIZ-14 | Business subscriptions paid online | L4 | Earns |
+| BIZ-17 | Lead credits: a business pays per customer contact | L4 | Earns |
 
 ### Enhancements
 
@@ -158,6 +177,8 @@ Rule for income: **private users list free; professionals pay.**
 | ENH-04 | Leaving-sale week: a campaign each May–June on every campus | No code | Brings listings |
 | ENH-05 | Arrival guide and checklist pages: admission → pickup → first bed → SIM → permit → flat | L1 | Brings users |
 | ENH-06 | Address helper for online orders (the "Mersin 10" problem) | L1 | Brings users |
+| ENH-27 | Emergency page: police, ambulance, fire, duty pharmacy, embassies, in three languages | L1 | Builds trust |
+| ENH-30 | Accessibility: large text, screen readers, contrast | L1 | Builds trust |
 | ENH-07 | Trusted-tenant profile: a student with a checked ID and university | L2 | Builds trust |
 | ENH-08 | Post-once tool: a ready post and link for Facebook groups and Instagram | L2 | Brings users |
 | ENH-09 | Telegram alert channels per city and category, filled by new listings | L2 | Brings people back |
@@ -165,15 +186,35 @@ Rule for income: **private users list free; professionals pay.**
 | ENH-11 | Daily hub: exchange rates, duty pharmacy, power and water cuts, bus times, entered by an admin | L2 | Brings people back |
 | ENH-12 | Auctions board: car auctions, bank and court sales, as listings | L2 | Brings users |
 | ENH-13 | Insurance, loan and cargo request forms | L2 | Earns |
+| ENH-24 | University housing pages run with each international office | L2 | Brings users |
+| ENH-25 | Summer storage through a partner instead of selling cheap | L2 | Earns |
+| ENH-26 | "Buy from Turkey for me": ordering and Mersin 10 delivery handled for you | L2 | Earns |
+| ENH-28 | Official steps guides: residence permit, work permit, car registration | L2 | Builds trust |
+| ENH-29 | Low-data mode for weak connections | L2 | Brings users |
 | ENH-14 | Contract explainer: photograph a tenancy contract, get it explained in your language | L3 | Builds trust |
 | ENH-15 | Move-in / move-out kit: photo inventory, deposit record, handover checklist | L3 | Builds trust |
 | ENH-16 | Portal for education agents abroad | L3 | Brings users |
+| ENH-23 | Group-admin bot: group posts become ads with the seller's OK; weekly best-of post | L3 | Brings listings |
+| ENH-31 | Open price data: average rents and car prices by area, free to read | L3 | Brings users |
 | ENH-17 | North Cyprus price index: a quarterly rent and car-price report | L4 | Brings users |
 | ENH-18 | Points earned by reviews and referrals, spent on boosts | L4 | Brings people back |
 | ENH-19 | Permit assistant with health-test booking and insurance purchase | L4 | Earns |
 | ENH-20 | Daily hub fed automatically | L4 | Brings people back |
 | ENH-21 | AI concierge: "I land on 10 September, EMU, £400 a month" → a plan from real listings | L5 | Brings users |
 | ENH-22 | Paying bills in the app | L5 | Brings people back |
+
+### Community
+
+| ID | Feature | Level | Job |
+|---|---|---|---|
+| COM-01 | Neighbourhood boards: notices, recommendations, lost and found per area | L2 | Brings people back |
+| COM-02 | "Ask the island": public questions answered by locals and businesses | L2 | Brings users |
+| COM-03 | Newcomer buddy: a senior student who speaks your language | L2 | Brings users |
+| COM-04 | Community hubs: one page per community with its shops, groups and events | L2 | Brings users |
+| COM-05 | Language exchange partners | L2 | Brings people back |
+| COM-07 | Weekly digest per city on a WhatsApp or Telegram channel | L2 | Brings people back |
+| COM-08 | What's on this week: free events, concerts, festivals | L2 | Brings people back |
+| COM-06 | Helper badges: fast responder, trusted seller, top answer | L3 | Builds trust |
 
 ## Verticals, in the order they open
 
@@ -189,7 +230,12 @@ Modes: Contact → Transact
 |---|---|---|---|---|
 | BUY-01 | Second-hand categories: electronics, furniture, appliances, books, clothes | L1 | Brings listings | · |
 | BUY-02 | Free items and swap | L1 | Brings listings | · |
+| BUY-06 | Books and notes by course code | L2 | Brings users | · |
+| BUY-07 | Safe handover points at partner shops | L2 | Builds trust | ACC-04 |
+| BUY-08 | Furniture rental packages for a year | L2 | Earns | · |
 | BUY-03 | Alerts when a wanted item appears | L3 | Brings people back | LST-06: wanted posts |
+| BUY-09 | Group buying: students pool an order for a better price | L3 | Earns | · |
+| BUY-10 | Borrow, don't buy: lend and borrow between people | L3 | Brings people back | BUY-02 |
 | BUY-04 | Delivery between cities with a courier partner | L4 | Brings users | A list of couriers to call |
 | BUY-05 | Protected payment for goods | L5 | Earns | Meet at a safe meeting point |
 
@@ -205,7 +251,12 @@ Modes: Contact
 | ROOM-02 | Roommate-wanted and lease-take-over posts | L1 | Brings listings | · |
 | ROOM-03 | Student fields: accepts students, furnished, bills included, deposit, months upfront | L2 | Brings users | · |
 | ROOM-04 | Two-week "landing" stays for new arrivals | L2 | Brings users | · |
+| ROOM-07 | Women-only filter for flats, roommates and dorm floors | L2 | Builds trust | · |
 | ROOM-05 | Roommate matching by budget, gender, language and habits | L3 | Brings users | ROOM-02 |
+| ROOM-08 | Flat bill splitter: who paid electricity, water, internet | L3 | Brings people back | · |
+| ROOM-09 | Deposit-back helper: move-in photos, move-out checklist, letter, mediator | L3 | Builds trust | ENH-03 |
+| ROOM-11 | Book and pay for a "Seen by us" video viewing; the ad gets a badge | L3 | Earns | ENH-03 |
+| ROOM-10 | Rent paid by transfer with dated receipts in two languages | L4 | Builds trust | RE-05 |
 | ROOM-06 | Rent deposit held by the platform | L5 | Earns | ENH-15: a deposit record |
 
 ### ● Dorms
@@ -251,7 +302,10 @@ Modes: Quote → Book
 | ARR-01 | Request form for airport pickup | L2 | Earns | · |
 | ARR-02 | Arrival bundle sold by hand: pickup, SIM, first nights, permit help | L2 | Earns | · |
 | ARR-03 | Guides: SIM card, bank account, receiving money from home | L2 | Brings users | · |
+| ARR-07 | Utilities setup helper: electricity, water, internet | L2 | Brings users | · |
+| ARR-08 | SIM and home internet plans compared | L2 | Brings users | · |
 | ARR-04 | Guided arrival checklist that tracks your progress | L3 | Brings people back | ENH-05 |
+| ARR-06 | New-arrival plan built from real ads: room, pickup, SIM, permit | L3 | Brings users | ENH-05 |
 | ARR-05 | Buying the arrival bundle in the app | L4 | Earns | ARR-02 |
 
 ### ● Car rental
@@ -306,7 +360,9 @@ Modes: Contact → Quote → Book · Covers from the brief: "cleaning services",
 | HOME-02 | Fixed-price packages shown on the page | L2 | Builds trust | · |
 | HOME-03 | One-tap re-order of water tanker, bottled water and gas by WhatsApp | L2 | Brings people back | · |
 | HOME-04 | Before/after photos on pro pages | L2 | Builds trust | · |
+| HOME-09 | Phone and laptop repair with prices for common jobs | L2 | Brings users | · |
 | HOME-05 | Quote requests to several pros | L3 | Brings users | HOME-01 |
+| HOME-08 | Moving-day bundle: van, helpers and cleaner in one request | L3 | Earns | HOME-01 |
 | HOME-06 | Booking calendar for cleaners and pros | L4 | Earns | A request by WhatsApp |
 | HOME-07 | Redo guarantee backed by held payment | L5 | Builds trust | HOME-04 and reviews |
 
@@ -318,13 +374,16 @@ Modes: Contact → Book · Covers from the brief: "real estate agencies"
 
 | ID | Feature | Level | Job | Easy first version |
 |---|---|---|---|---|
+| RE-12 | Lawyer-checked tenancy contract for a fixed fee | No code | Builds trust | · |
 | RE-01 | Agency pages | L2 | Brings listings | · |
 | RE-02 | Rental listings with title-deed type, furnished, bills and deposit | L2 | Brings users | · |
 | RE-03 | Daily and holiday rentals, land, commercial and new projects as listing types | L2 | Brings listings | · |
 | RE-04 | Move-in cost calculator | L2 | Builds trust | · |
 | RE-05 | Two-language tenancy contract template | L2 | Builds trust | · |
 | RE-06 | Owner-direct badge | L2 | Builds trust | · |
+| RE-13 | Coworking desks, offices and meeting rooms | L2 | Brings listings | · |
 | RE-07 | Viewing appointments | L3 | Brings users | WhatsApp |
+| RE-14 | Staff housing: employers find many rooms at once | L3 | Earns | RE-01 |
 | RE-08 | Draw-an-area search on the map | L4 | Brings users | SRCH-04: map with pins |
 | RE-09 | Management for owners living abroad: keys, rent collection, repairs | L4 | Earns | A directory of property managers |
 | RE-10 | Property for sale, opened only after a lawyer advises | L4 | Earns | · |
@@ -342,6 +401,7 @@ Modes: Contact → Quote · Covers from the brief: "construction companies"
 | CON-02 | Project portfolios | L2 | Builds trust | · |
 | CON-03 | Tenders board | L2 | Brings users | · |
 | CON-04 | Request-for-quote board | L3 | Earns | CON-01 |
+| CON-07 | Business supplies: wholesale and hotel/restaurant suppliers | L3 | Earns | CON-01 |
 | CON-05 | Bid management | L4 | Earns | · |
 | CON-06 | Materials price data | L4 | Brings users | · |
 
@@ -355,6 +415,7 @@ Modes: Contact → Book
 |---|---|---|---|---|
 | PRO-01 | Directory: doctors, dentists, vets, lawyers, accountants, sworn translators, insurers | L2 | Brings users | · |
 | PRO-02 | Filter by language spoken | L2 | Brings users | · |
+| PRO-05 | Childcare and tutors, by language | L2 | Brings users | · |
 | PRO-03 | Request a call back | L3 | Brings users | A call |
 | PRO-04 | Appointment booking | L4 | Earns | A call |
 
@@ -371,6 +432,8 @@ Modes: Contact → Transact · Covers from the brief: "cars"
 | CAR-03 | Motorbikes, vans, machinery, boats and parts as categories | L2 | Brings listings | · |
 | CAR-04 | Transfer-cost and import-duty calculators | L2 | Builds trust | · |
 | CAR-05 | Wanted cars, swap, instalment listings and "arriving stock" pre-orders | L2 | Brings listings | · |
+| CAR-10 | Parking spaces to rent by the month | L2 | Brings listings | · |
+| CAR-11 | Driving schools and foreign licence conversion guide | L2 | Brings users | · |
 | CAR-06 | Compare a car with similar listings | L3 | Builds trust | · |
 | CAR-07 | Valuation from your own data | L4 | Builds trust | CAR-06 |
 | CAR-08 | Inspection booking with partner garages | L4 | Earns | A list of garages that inspect |
@@ -400,8 +463,10 @@ Modes: Contact
 | JOB-01 | Job posts, part-time student jobs first | L2 | Brings users | · |
 | JOB-02 | Employer pages | L2 | Brings listings | · |
 | JOB-03 | Student work-permit guide for employers | L2 | Builds trust | · |
+| JOB-07 | Internships filtered by degree | L2 | Brings users | · |
 | JOB-04 | CV builder | L3 | Brings users | · |
 | JOB-05 | Quick apply | L3 | Brings users | Apply by WhatsApp |
+| JOB-06 | Seasonal shift work for hotels, casinos and cafés | L3 | Brings users | JOB-01 |
 
 ### ○ Rides and travel
 
@@ -414,6 +479,7 @@ Modes: Contact → Book
 | RIDE-01 | Shared-ride board: Famagusta–Nicosia–airport | L2 | Brings people back | · |
 | RIDE-02 | Transfer directory for Ercan and Larnaca | L2 | Brings users | · |
 | RIDE-03 | Border-crossing information | L2 | Brings users | · |
+| RIDE-06 | Airport day board: who flies in or out today, share a ride or carry a parcel | L3 | Brings people back | RIDE-01 |
 | RIDE-04 | Holiday-let booking | L4 | Earns | A request by WhatsApp |
 | RIDE-05 | Events and tickets | L5 | Earns | · |
 
@@ -427,6 +493,30 @@ Modes: Contact
 |---|---|---|---|---|
 | MORE-01 | Animals and farm, boats, wedding services, businesses for sale, shops to let | L2 | Brings listings | · |
 | MORE-02 | Lost and found; charity | L2 | Brings people back | · |
+| MORE-03 | Pet services: vets, sitting, grooming, adoption | L2 | Brings listings | · |
+| MORE-04 | Shop deals and flyers of the week | L2 | Brings people back | · |
+| MORE-05 | Restaurant and café guide with student deals (no delivery) | L2 | Brings users | · |
+
+### ○ Tourism and experiences
+
+Modes: Contact → Book
+
+**How it earns.** L2: a referral fee per booking from tour and boat operators, agreed offline. L4: booking commission.
+
+| ID | Feature | Level | Job | Easy first version |
+|---|---|---|---|---|
+| TOUR-01 | Tourist experiences: boat trips, tours, diving, transfers, in five languages | L2 | Earns | · |
+| TOUR-02 | Experience booking with dates and group size | L4 | Earns | TOUR-01 |
+
+### ● Medical and dental visitors
+
+Modes: Contact
+
+**How it earns.** L2: a fee per enquiry from clinics, once the rules on health advertising are checked.
+
+| ID | Feature | Level | Job | Easy first version |
+|---|---|---|---|---|
+| MED-01 | Clinic pages with price ranges and enquiries in the visitor's language | L2 | Earns | · |
 
 ## Coverage of the brief
 
@@ -434,13 +524,13 @@ Modes: Contact
 |---|---|---|---|---|
 | dorm registration | Dorms | 4 | 2 | 2 |
 | education agency | Education agency | 4 | 1 | 1 |
-| cars | Cars and vehicles | 5 | 1 | 3 |
+| cars | Cars and vehicles | 7 | 1 | 3 |
 | car renting | Car rental | 3 | 1 | 1 |
 | car services | Car services and tyres | 1 | 2 | 1 |
 | towing services | Towing and roadside | 2 | 1 | 1 |
 | tyre services | Car services and tyres | 1 | 2 | 1 |
-| real estate agencies | Real estate agencies | 6 | 1 | 4 |
-| construction companies | Construction and B2B | 3 | 1 | 2 |
-| cleaning services | Cleaning and home services | 4 | 1 | 2 |
-| any kind of services | Cleaning and home services | 4 | 1 | 2 |
+| real estate agencies | Real estate agencies | 8 | 2 | 4 |
+| construction companies | Construction and B2B | 3 | 2 | 2 |
+| cleaning services | Cleaning and home services | 5 | 2 | 2 |
+| any kind of services | Cleaning and home services | 5 | 2 | 2 |
 | freelancing like Fiverr | Freelancing | 2 | 1 | 1 |

@@ -6,13 +6,13 @@ Build order = level order. Each level is a working product by itself.
 
 | Level | Name | After this level, a user can… | Why it is this hard | Running cost | Features |
 |---|---|---|---|---|---|
-| **L1** | Marketplace core | Post anything with photos and a price, get a shop link, browse, search, and contact the seller on WhatsApp. | Forms, lists and photos. Nothing live, no money, little that can go badly wrong. | A domain name; free hosting tiers to start | 28 |
-| **L2** | Categories, directories, translation | Find dorms, car rentals, tow trucks, cleaners, construction firms, freelancers, cars and flats, each with proper filters and a company page, in their own language. | The same building blocks as L1, many more of them, plus small outside services. | Small: a little per SMS and per translated listing | 79 |
-| **L3** | Live and smart | Chat inside the app in their own language, ask several providers for quotes, get reminders and AI help. | Live messaging and outside AI services: more moving parts, a cost per use, harder to test. | Per use: chat translation, AI; app-store fees | 43 |
-| **L4** | Time and money | Reserve a dorm room or a cleaner for a date and pay online. | A mistake double-books a room or loses real money. Needs a payment provider, refunds, records. | Payment commissions; an accountant | 41 |
+| **L1** | Marketplace core | Post anything with photos and a price, get a shop link, browse, search, and contact the seller on WhatsApp. | Forms, lists and photos. Nothing live, no money, little that can go badly wrong. | A domain name; free hosting tiers to start | 31 |
+| **L2** | Categories, directories, translation | Find dorms, car rentals, tow trucks, cleaners, construction firms, freelancers, cars and flats, each with proper filters and a company page, in their own language. | The same building blocks as L1, many more of them, plus small outside services. | Small: a little per SMS and per translated listing | 112 |
+| **L3** | Live and smart | Chat inside the app in their own language, ask several providers for quotes, get reminders and AI help. | Live messaging and outside AI services: more moving parts, a cost per use, harder to test. | Per use: chat translation, AI; app-store fees | 67 |
+| **L4** | Time and money | Reserve a dorm room or a cleaner for a date and pay online. | A mistake double-books a room or loses real money. Needs a payment provider, refunds, records. | Payment commissions; an accountant | 47 |
 | **L5** | Live money and movement | Call the nearest tow truck and watch it come; pay a freelancer safely; bid in a live auction. | Live location, money held for other people, many providers online at once, legal duties. | Staff | 15 |
 
-Plus **5** things that need no code at all. Total: **211** features.
+Plus **6** things that need no code at all. Total: **278** features.
 
 ## Do it by hand first
 
@@ -39,7 +39,7 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | Several steps and states to keep right | L3–L4 |
 | Live, real-time | L3 |
 | Uses an outside AI service | L3–L4 |
-| Needs a lot of your own data first | L4 |
+| Needs a lot of your own data first | L3–L4 |
 | Calendar logic: no double bookings | L4 |
 | Real money: a mistake costs someone | L4 |
 | Sensitive documents | L4 |
@@ -48,13 +48,13 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | Map calculations | L4 |
 | Heavy media and special viewers | L4 |
 | Needs a phone-network service | L5 |
-| Waits for legal advice, not for code | L4 |
+| Waits for legal advice, not for code | L2–L4 |
 | Live location, many providers online | L5 |
 | Money held or moved for other people | L5 |
 | Live bidding | L5 |
-| Works across every category at once | L5 |
+| Works across every category at once | L1–L5 |
 
-## No code (5)
+## No code (6)
 
 | ID | Feature | Area | Why here | Easy first version |
 |---|---|---|---|---|
@@ -63,8 +63,9 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | ENH-02 | Group admins as partners: paid checkers and ambassadors | Enhancements | Done by a person, no code | · |
 | ENH-03 | Viewing on your behalf: a team member films a flat for a student abroad | Enhancements | Done by a person, no code | · |
 | ENH-04 | Leaving-sale week: a campaign each May–June on every campus | Enhancements | Done by a person, no code | · |
+| RE-12 | Lawyer-checked tenancy contract for a fixed fee | Real estate agencies | Done by a person, no code | · |
 
-## L1: Easy (28)
+## L1: Easy (31)
 
 *Marketplace core.* Forms, lists and photos. Nothing live, no money, little that can go badly wrong.
 
@@ -98,8 +99,11 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | BUY-02 | Free items and swap | Buy and sell | A form and a list | · |
 | ROOM-01 | Flat and room listings | Student flats, rooms, roommates | A form and a list | · |
 | ROOM-02 | Roommate-wanted and lease-take-over posts | Student flats, rooms, roommates | A form and a list | · |
+| LST-21 | Paste a group post and the form fills itself in | Listings | A form and a list | · |
+| ENH-27 | Emergency page: police, ambulance, fire, duty pharmacy, embassies, in three languages | Enhancements | A page of text | · |
+| ENH-30 | Accessibility: large text, screen readers, contrast | Enhancements | Works across every category at once | · |
 
-## L2: Easy-to-medium (79)
+## L2: Easy-to-medium (112)
 
 *Categories, directories, translation.* The same building blocks as L1, many more of them, plus small outside services.
 
@@ -184,8 +188,41 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | RIDE-03 | Border-crossing information | Rides and travel | A page of text | · |
 | MORE-01 | Animals and farm, boats, wedding services, businesses for sale, shops to let | More local categories | Same blocks as L1, more of them | · |
 | MORE-02 | Lost and found; charity | More local categories | Same blocks as L1, more of them | · |
+| LST-22 | Holiday mode: pause all my ads with one tap | Listings | Same blocks as L1, more of them | · |
+| ADM-09 | Ambassador dashboard: ads brought in, taps, leaderboard, earnings | Admin and operations | Same blocks as L1, more of them | ADM-08 |
+| BIZ-15 | Embed widget: a business shows its ads on its own website | Tools for businesses | Same blocks as L1, more of them | · |
+| BIZ-19 | Verified business badge after a trade licence is checked | Tools for businesses | Done by a person, no code | · |
+| ENH-24 | University housing pages run with each international office | Enhancements | Same blocks as L1, more of them | · |
+| ENH-25 | Summer storage through a partner instead of selling cheap | Enhancements | Done by a person, no code | ENH-04 |
+| ENH-26 | "Buy from Turkey for me": ordering and Mersin 10 delivery handled for you | Enhancements | Done by a person, no code | ENH-06 |
+| ENH-28 | Official steps guides: residence permit, work permit, car registration | Enhancements | A page of text | · |
+| ENH-29 | Low-data mode for weak connections | Enhancements | Works across every category at once | · |
+| COM-01 | Neighbourhood boards: notices, recommendations, lost and found per area | Community | Same blocks as L1, more of them | · |
+| COM-02 | "Ask the island": public questions answered by locals and businesses | Community | Same blocks as L1, more of them | · |
+| COM-03 | Newcomer buddy: a senior student who speaks your language | Community | Done by a person, no code | · |
+| COM-04 | Community hubs: one page per community with its shops, groups and events | Community | Same blocks as L1, more of them | · |
+| COM-05 | Language exchange partners | Community | Same blocks as L1, more of them | · |
+| COM-07 | Weekly digest per city on a WhatsApp or Telegram channel | Community | Needs a small outside service | · |
+| COM-08 | What's on this week: free events, concerts, festivals | Community | Same blocks as L1, more of them | · |
+| BUY-06 | Books and notes by course code | Buy and sell | Same blocks as L1, more of them | · |
+| BUY-07 | Safe handover points at partner shops | Buy and sell | Done by a person, no code | ACC-04 |
+| BUY-08 | Furniture rental packages for a year | Buy and sell | Same blocks as L1, more of them | · |
+| ROOM-07 | Women-only filter for flats, roommates and dorm floors | Student flats, rooms, roommates | Same blocks as L1, more of them | · |
+| ARR-07 | Utilities setup helper: electricity, water, internet | Arrival services | A page of text | · |
+| ARR-08 | SIM and home internet plans compared | Arrival services | A page of text | · |
+| HOME-09 | Phone and laptop repair with prices for common jobs | Cleaning and home services | Same blocks as L1, more of them | · |
+| RE-13 | Coworking desks, offices and meeting rooms | Real estate agencies | Same blocks as L1, more of them | · |
+| CAR-10 | Parking spaces to rent by the month | Cars and vehicles | Same blocks as L1, more of them | · |
+| CAR-11 | Driving schools and foreign licence conversion guide | Cars and vehicles | Same blocks as L1, more of them | · |
+| JOB-07 | Internships filtered by degree | Jobs | Same blocks as L1, more of them | · |
+| MORE-03 | Pet services: vets, sitting, grooming, adoption | More local categories | Same blocks as L1, more of them | · |
+| MORE-04 | Shop deals and flyers of the week | More local categories | Same blocks as L1, more of them | · |
+| MORE-05 | Restaurant and café guide with student deals (no delivery) | More local categories | Same blocks as L1, more of them | · |
+| PRO-05 | Childcare and tutors, by language | Professionals | Same blocks as L1, more of them | · |
+| TOUR-01 | Tourist experiences: boat trips, tours, diving, transfers, in five languages | Tourism and experiences | Same blocks as L1, more of them | · |
+| MED-01 | Clinic pages with price ranges and enquiries in the visitor's language | Medical and dental visitors | Waits for legal advice, not for code | · |
 
-## L3: Medium (43)
+## L3: Medium (67)
 
 *Live and smart.* Live messaging and outside AI services: more moving parts, a cost per use, harder to test.
 
@@ -234,8 +271,32 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | FREE-03 | Order tracking and reviews after each job | Freelancing | Several steps and states to keep right | · |
 | JOB-04 | CV builder | Jobs | Several steps and states to keep right | · |
 | JOB-05 | Quick apply | Jobs | Several steps and states to keep right | Apply by WhatsApp |
+| LST-20 | Voice posting: say the ad, it is written, priced and put in a category | Listings | Uses an outside AI service | LST-21 |
+| SRCH-12 | Smart alerts in plain words, sent on WhatsApp | Search and discovery | Uses an outside AI service | SRCH-05 |
+| TALK-10 | The app inside WhatsApp: post, search and alerts by chat | Talking to each other | Live, real-time | ENH-01 |
+| LANG-05 | Best exchange rate nearby, compared across exchange offices | Language and prices | Needs a lot of your own data first | ENH-11 |
+| ACC-20 | "Price looks wrong" warning when a rent is far below the area's usual price | Accounts and trust | Needs a lot of your own data first | ACC-04 |
+| ACC-21 | Team accounts: several staff post under one business | Accounts and trust | Several steps and states to keep right | · |
+| ACC-22 | Scam map: reported scams by area and kind | Accounts and trust | Needs a lot of your own data first | ACC-04 |
+| ACC-23 | Trust score from checked ID, reply rate, reviews and account age | Accounts and trust | Needs a lot of your own data first | ACC-09 |
+| BIZ-16 | WhatsApp Business catalogue kept in sync with the shop | Tools for businesses | Depends on an outside party that can change or refuse | LST-04 |
+| BIZ-18 | Monthly business report: views, taps, searches, compared with similar businesses | Tools for businesses | Several steps and states to keep right | ADM-02 |
+| ENH-23 | Group-admin bot: group posts become ads with the seller's OK; weekly best-of post | Enhancements | Live, real-time | ENH-02 |
+| ENH-31 | Open price data: average rents and car prices by area, free to read | Enhancements | Needs a lot of your own data first | · |
+| COM-06 | Helper badges: fast responder, trusted seller, top answer | Community | Needs a lot of your own data first | · |
+| BUY-09 | Group buying: students pool an order for a better price | Buy and sell | Several steps and states to keep right | · |
+| BUY-10 | Borrow, don't buy: lend and borrow between people | Buy and sell | Several steps and states to keep right | BUY-02 |
+| ROOM-08 | Flat bill splitter: who paid electricity, water, internet | Student flats, rooms, roommates | Several steps and states to keep right | · |
+| ROOM-09 | Deposit-back helper: move-in photos, move-out checklist, letter, mediator | Student flats, rooms, roommates | Several steps and states to keep right | ENH-03 |
+| ROOM-11 | Book and pay for a "Seen by us" video viewing; the ad gets a badge | Student flats, rooms, roommates | Several steps and states to keep right | ENH-03 |
+| ARR-06 | New-arrival plan built from real ads: room, pickup, SIM, permit | Arrival services | Several steps and states to keep right | ENH-05 |
+| HOME-08 | Moving-day bundle: van, helpers and cleaner in one request | Cleaning and home services | Several steps and states to keep right | HOME-01 |
+| RE-14 | Staff housing: employers find many rooms at once | Real estate agencies | Several steps and states to keep right | RE-01 |
+| CON-07 | Business supplies: wholesale and hotel/restaurant suppliers | Construction and B2B | Several steps and states to keep right | CON-01 |
+| JOB-06 | Seasonal shift work for hotels, casinos and cafés | Jobs | Several steps and states to keep right | JOB-01 |
+| RIDE-06 | Airport day board: who flies in or out today, share a ride or carry a parcel | Rides and travel | Several steps and states to keep right | RIDE-01 |
 
-## L4: Hard (41)
+## L4: Hard (47)
 
 *Time and money.* A mistake double-books a room or loses real money. Needs a payment provider, refunds, records.
 
@@ -282,6 +343,12 @@ Every hard feature has an easy first version, so everything in the brief can exi
 | CAR-07 | Valuation from your own data | Cars and vehicles | Needs a lot of your own data first | CAR-06 |
 | CAR-08 | Inspection booking with partner garages | Cars and vehicles | Calendar logic: no double bookings | A list of garages that inspect |
 | RIDE-04 | Holiday-let booking | Rides and travel | Calendar logic: no double bookings | A request by WhatsApp |
+| ACC-24 | Scam-ring detection across accounts: same number, photos or wording | Accounts and trust | Needs a lot of your own data first | ACC-14 |
+| ADM-10 | Partner data access under contract for universities, banks and agencies | Admin and operations | Needs a lot of your own data first | · |
+| ADM-11 | White-label engine: the same app relaunched in another small market | Admin and operations | A small product of its own | · |
+| BIZ-17 | Lead credits: a business pays per customer contact | Tools for businesses | Real money: a mistake costs someone | BIZ-03 |
+| ROOM-10 | Rent paid by transfer with dated receipts in two languages | Student flats, rooms, roommates | Real money: a mistake costs someone | RE-05 |
+| TOUR-02 | Experience booking with dates and group size | Tourism and experiences | Calendar logic: no double bookings | TOUR-01 |
 
 ## L5: Very hard (15)
 
