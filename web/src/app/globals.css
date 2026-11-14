@@ -257,3 +257,19 @@
     background: #fbeceb;
   }
 }
+
+/* Larger text: scales the whole page, including sizes written in pixels. */
+html[data-text="large"] body {
+  zoom: 1.125;
+}
+
+/* Save data: photos are not shown (and lazy ones never load); their boxes stay as quiet shapes. */
+html[data-lowdata] .photo-img {
+  display: none;
+}
+
+/* Printing a receipt prints only the receipt. */
+@media print {
+  body > header, body > footer, body > nav, body > p, .print\:hidden { display: none !important; }
+  body { background: #fff; }
+}

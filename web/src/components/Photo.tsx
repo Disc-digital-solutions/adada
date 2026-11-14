@@ -25,7 +25,7 @@ export function Photo({
       height={400}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
-      className={`h-full w-full object-cover ${className}`}
+      className={`photo-img h-full w-full object-cover ${className}`}
     />
   );
 }

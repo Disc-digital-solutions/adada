@@ -6,6 +6,7 @@ import type { Listing } from "@/lib/types";
 import { CITIES } from "@/site.config";
 import { Photo } from "./Photo";
 import { priceText } from "./PriceTag";
+import { WomenOnlyBadge } from "./Badges";
 import { ServiceArt } from "./ServiceTile";
 
 export function cityName(slug: string, lang: Lang): string {
@@ -49,6 +50,11 @@ export function ListingCard({
             <ServiceArt category={listing.category} lang={lang} />
           )}
           {sold ? <span className="sold-stamp">{t.listing.sold}</span> : null}
+          {listing.womenOnly ? (
+            <span className="absolute bottom-2 start-2">
+              <WomenOnlyBadge t={t} small />
+            </span>
+          ) : null}
           {wanted ? (
             <span className="absolute start-2 top-2 rounded-md bg-ink px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
               {t.listing.wanted}

@@ -99,6 +99,15 @@ describe("parsePost: category", () => {
   });
 });
 
+describe("parsePost: women only", () => {
+  it("spots women-only places in every language", () => {
+    expect(parsePost("Room for female students only, Sakarya").womenOnly).toBe(true);
+    expect(parsePost("Kız öğrenciye kiralık oda").womenOnly).toBe(true);
+    expect(parsePost("غرفة للطالبات قرب الجامعة").womenOnly).toBe(true);
+    expect(parsePost("Room near campus").womenOnly).toBe(false);
+  });
+});
+
 describe("parsePost: title and description", () => {
   it("takes the first line as the title, without emoji and hashtags", () => {
     const parsed = parsePost("🔥🔥 SATILIK #masa Çalışma masası 🔥\nÇok temiz, 1.500 TL\n#magosa");
@@ -136,6 +145,7 @@ describe("parsePost: title and description", () => {
       currency: null,
       city: null,
       category: null,
+      womenOnly: false,
     });
   });
 });

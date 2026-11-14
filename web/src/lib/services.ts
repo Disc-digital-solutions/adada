@@ -11,7 +11,7 @@ import type { Localized } from "./types";
  * Nothing here is a booking, a payment or live dispatch: those are later levels.
  */
 
-export type GroupSlug = "buy" | "housing" | "vehicles" | "home" | "students" | "work";
+export type GroupSlug = "buy" | "housing" | "vehicles" | "home" | "students" | "work" | "outing" | "community";
 
 export interface ServiceGroup {
   slug: GroupSlug;
@@ -29,6 +29,11 @@ export interface Service {
   blurb: Localized;
   /** The listing categories whose ads appear on this service's screen. */
   categories: string[];
+  /**
+   * "request": not a list of ads but a service a person arranges, asked for on WhatsApp
+   * (the plan's "by hand before by code"). Its screen explains how it works instead of listing ads.
+   */
+  mode?: "request";
 }
 
 export const GROUPS: ServiceGroup[] = [
@@ -38,6 +43,8 @@ export const GROUPS: ServiceGroup[] = [
   { slug: "home", name: { tr: "Ev ve iş hizmetleri", en: "Home and business services", ar: "خدمات المنزل والأعمال" }, tone: { bg: "#e2f4e9", fg: "#1d6a3d" } },
   { slug: "students", name: { tr: "Öğrenciler", en: "Students", ar: "الطلاب" }, tone: { bg: "#f1e8fb", fg: "#682ca0" } },
   { slug: "work", name: { tr: "İş ve seyahat", en: "Work and travel", ar: "العمل والتنقل" }, tone: { bg: "#fde8e2", fg: "#9e3b24" } },
+  { slug: "outing", name: { tr: "Gezme ve ziyaretçiler", en: "Going out and visitors", ar: "الخروج والزوار" }, tone: { bg: "#fff0e0", fg: "#9a4d00" } },
+  { slug: "community", name: { tr: "Topluluk", en: "Community", ar: "المجتمع" }, tone: { bg: "#e6f3f1", fg: "#0f6157" } },
 ];
 
 export const SERVICES: Service[] = [
@@ -126,6 +133,151 @@ export const SERVICES: Service[] = [
     slug: "rides", group: "work", icon: "route", categories: ["rides"],
     name: { tr: "Yolculuk ve seyahat", en: "Rides and travel", ar: "الرحلات والتنقل" },
     blurb: { tr: "Ortak yolculuk, havalimanı, şehirler arası", en: "Shared rides, airport, between cities", ar: "رحلات مشتركة، المطار، بين المدن" },
+  },
+
+  // ---- Added with the 14 Nov feature lists
+  // Housing
+  {
+    slug: "viewing", group: "housing", icon: "video", categories: [], mode: "request",
+    name: { tr: "Görüntülü ev gezisi", en: "Video viewing", ar: "معاينة بالفيديو" },
+    blurb: { tr: "Para ödemeden önce evi senin için gezip görüntülüyoruz", en: "We visit and film a flat for you before you pay anything", ar: "نزور الشقة ونصوّرها لك قبل أن تدفع أي شيء" },
+  },
+  {
+    slug: "contract-check", group: "housing", icon: "doc", categories: [], mode: "request",
+    name: { tr: "Sözleşme kontrolü", en: "Contract check", ar: "مراجعة العقد" },
+    blurb: { tr: "Kira sözleşmeni anlaşmalı bir avukat sabit ücretle kontrol eder", en: "A partner lawyer checks your tenancy contract for a fixed fee", ar: "محامٍ شريك يراجع عقد الإيجار بسعر ثابت" },
+  },
+  {
+    slug: "staff-housing", group: "housing", icon: "users", categories: [], mode: "request",
+    name: { tr: "Personel konutu", en: "Staff housing", ar: "سكن الموظفين" },
+    blurb: { tr: "İşverenler için: çalışanlara tek seferde çok oda", en: "For employers: many rooms at once for your staff", ar: "لأصحاب العمل: غرف كثيرة دفعة واحدة لموظفيك" },
+  },
+  // Buy and sell
+  {
+    slug: "furniture-rental", group: "buy", icon: "sofa", categories: ["furniture-rental"],
+    name: { tr: "Mobilya kiralama", en: "Furniture rental", ar: "تأجير الأثاث" },
+    blurb: { tr: "Satın almak yerine bir yıllık eşya seti kirala", en: "Rent a furnished set for the year instead of buying", ar: "استأجر طقم أثاث للسنة بدل الشراء" },
+  },
+  {
+    slug: "lend", group: "buy", icon: "swap", categories: ["lend"],
+    name: { tr: "Ödünç al, ödünç ver", en: "Borrow and lend", ar: "استعارة وإعارة" },
+    blurb: { tr: "Matkap, merdiven, kamp malzemesi ve daha fazlası", en: "Drills, ladders, camping gear and more", ar: "مثقاب، سلّم، معدات تخييم والمزيد" },
+  },
+  {
+    slug: "group-buy", group: "buy", icon: "cart", categories: [], mode: "request",
+    name: { tr: "Toplu alım", en: "Group buying", ar: "الشراء الجماعي" },
+    blurb: { tr: "Diğer öğrencilerle ortak sipariş ver, daha ucuza al", en: "Pool an order with other students for a better price", ar: "اطلبوا معاً مع طلاب آخرين بسعر أفضل" },
+  },
+  // Vehicles
+  {
+    slug: "parking", group: "vehicles", icon: "parking", categories: ["parking"],
+    name: { tr: "Kiralık otopark", en: "Parking to rent", ar: "مواقف للإيجار" },
+    blurb: { tr: "Kampüs ve şehir merkezine yakın aylık park yerleri", en: "Monthly spaces near campus and city centres", ar: "مواقف شهرية قرب الجامعة ومراكز المدن" },
+  },
+  {
+    slug: "driving", group: "vehicles", icon: "wheel", categories: ["driving"],
+    name: { tr: "Sürücü kursları", en: "Driving schools", ar: "مدارس القيادة" },
+    blurb: { tr: "Ehliyet kursları ve yabancı ehliyet çevirme", en: "Lessons and converting a foreign licence", ar: "دروس القيادة وتحويل الرخصة الأجنبية" },
+  },
+  // Home and business
+  {
+    slug: "tech-repair", group: "home", icon: "phone", categories: ["tech-repair"],
+    name: { tr: "Telefon ve bilgisayar tamiri", en: "Phone and laptop repair", ar: "صيانة الهواتف والحواسيب" },
+    blurb: { tr: "Ekran, batarya ve yaygın tamirler, fiyatlarıyla", en: "Screens, batteries and common jobs, with prices", ar: "الشاشات والبطاريات والأعطال الشائعة، مع الأسعار" },
+  },
+  {
+    slug: "childcare", group: "home", icon: "child", categories: ["childcare"],
+    name: { tr: "Çocuk bakımı ve özel ders", en: "Childcare and tutors", ar: "رعاية الأطفال والدروس الخصوصية" },
+    blurb: { tr: "Bakıcılar ve özel öğretmenler, dile göre", en: "Babysitters, nannies and tutors, by language", ar: "جليسات أطفال ومعلمون خصوصيون، حسب اللغة" },
+  },
+  {
+    slug: "pets", group: "home", icon: "paw", categories: ["pets"],
+    name: { tr: "Evcil hayvan hizmetleri", en: "Pet services", ar: "خدمات الحيوانات الأليفة" },
+    blurb: { tr: "Veteriner, bakım, tıraş, sahiplendirme", en: "Vets, sitting, grooming, adoption", ar: "أطباء بيطريون، رعاية، تجميل، تبنٍّ" },
+  },
+  {
+    slug: "moving", group: "home", icon: "box", categories: [], mode: "request",
+    name: { tr: "Taşınma günü", en: "Moving day", ar: "يوم الانتقال" },
+    blurb: { tr: "Kamyonet, yardımcılar ve temizlik tek talepte", en: "A van, helpers and a cleaner in one request", ar: "شاحنة ومساعدون وتنظيف في طلب واحد" },
+  },
+  {
+    slug: "supplies", group: "home", icon: "store", categories: ["supplies"],
+    name: { tr: "İşletme malzemeleri", en: "Business supplies", ar: "مستلزمات الأعمال" },
+    blurb: { tr: "Toptan, otel ve restoran tedarikçileri", en: "Wholesale, hotel and restaurant suppliers", ar: "موردو الجملة والفنادق والمطاعم" },
+  },
+  // Students
+  {
+    slug: "storage", group: "students", icon: "archive", categories: [], mode: "request",
+    name: { tr: "Yaz depolama", en: "Summer storage", ar: "تخزين صيفي" },
+    blurb: { tr: "Eşyanı ucuza satma, yaz boyunca sakla", en: "Store your things over the summer instead of selling cheap", ar: "خزّن أغراضك في الصيف بدل بيعها رخيصة" },
+  },
+  {
+    slug: "shop-turkey", group: "students", icon: "bag", categories: [], mode: "request",
+    name: { tr: "Türkiye'den alışveriş", en: "Buy from Turkey for me", ar: "تسوّق من تركيا" },
+    blurb: { tr: "Sipariş ve Mersin 10 teslimatını biz hallederiz", en: "We order and handle the Mersin 10 delivery", ar: "نطلب لك ونتولى التوصيل عبر مرسين 10" },
+  },
+  {
+    slug: "buddy", group: "students", icon: "hands", categories: [], mode: "request",
+    name: { tr: "Yeni gelen arkadaşı", en: "Newcomer buddy", ar: "رفيق الوافد الجديد" },
+    blurb: { tr: "Senin dilini konuşan bir üst sınıf öğrencisi", en: "A senior student who speaks your language", ar: "طالب أقدم يتحدث لغتك" },
+  },
+  // Work and travel
+  {
+    slug: "internships", group: "work", icon: "badge", categories: ["internships"],
+    name: { tr: "Stajlar", en: "Internships", ar: "التدريب العملي" },
+    blurb: { tr: "Bölümüne göre staj ilanları", en: "Internships filtered by your degree", ar: "فرص تدريب حسب تخصصك" },
+  },
+  {
+    slug: "shifts", group: "work", icon: "clock", categories: ["shifts"],
+    name: { tr: "Vardiyalı ve sezonluk iş", en: "Shift and seasonal work", ar: "عمل بنظام المناوبات والموسمي" },
+    blurb: { tr: "Otel, kafe ve kumarhane vardiyaları", en: "Shifts at hotels, cafés and casinos", ar: "مناوبات في الفنادق والمقاهي والكازينوهات" },
+  },
+  {
+    slug: "airport-board", group: "work", icon: "plane", categories: ["airport"],
+    name: { tr: "Havalimanı panosu", en: "Airport day board", ar: "لوحة المطار" },
+    blurb: { tr: "Bugün kim uçuyor: taksi paylaş, paket taşı", en: "Who flies today: share a taxi, carry a parcel", ar: "من يسافر اليوم: شارك سيارة أجرة أو احمل طرداً" },
+  },
+  {
+    slug: "coworking", group: "work", icon: "desk", categories: ["coworking"],
+    name: { tr: "Ortak çalışma ve ofis", en: "Coworking and offices", ar: "مساحات عمل ومكاتب" },
+    blurb: { tr: "Günlük veya aylık masa, ofis, toplantı odası", en: "Desks, offices and meeting rooms by day or month", ar: "مكاتب وغرف اجتماعات باليوم أو الشهر" },
+  },
+  // Going out and visitors
+  {
+    slug: "experiences", group: "outing", icon: "compass", categories: ["experiences"],
+    name: { tr: "Turlar ve aktiviteler", en: "Tours and experiences", ar: "جولات وتجارب" },
+    blurb: { tr: "Tekne turları, dalış, geziler, transferler", en: "Boat trips, diving, tours, transfers", ar: "رحلات بحرية، غوص، جولات، تنقلات" },
+  },
+  {
+    slug: "restaurants", group: "outing", icon: "fork", categories: ["restaurants"],
+    name: { tr: "Restoran ve kafeler", en: "Restaurants and cafés", ar: "مطاعم ومقاهٍ" },
+    blurb: { tr: "Öğrenci fırsatları ve üç dilde menüler", en: "Student deals and menus in three languages", ar: "عروض للطلاب وقوائم بثلاث لغات" },
+  },
+  {
+    slug: "events", group: "outing", icon: "calendar", categories: ["events"],
+    name: { tr: "Bu hafta neler var", en: "What's on this week", ar: "ماذا يحدث هذا الأسبوع" },
+    blurb: { tr: "Ücretsiz etkinlikler, konserler, festivaller", en: "Free events, concerts, festivals", ar: "فعاليات مجانية، حفلات، مهرجانات" },
+  },
+  {
+    slug: "deals", group: "outing", icon: "percent", categories: ["deals"],
+    name: { tr: "Haftanın fırsatları", en: "Deals of the week", ar: "عروض الأسبوع" },
+    blurb: { tr: "Market ve mağaza indirimleri, şehre göre", en: "Supermarket and shop offers, by city", ar: "عروض المتاجر والسوبرماركت، حسب المدينة" },
+  },
+  {
+    slug: "clinics", group: "outing", icon: "cross", categories: ["clinics"],
+    name: { tr: "Klinikler ve diş hekimleri", en: "Clinics and dentists", ar: "عيادات وأطباء أسنان" },
+    blurb: { tr: "Ziyaretçiler için kendi dilinde bilgi", en: "Information for visitors in their own language", ar: "معلومات للزوار بلغتهم" },
+  },
+  // Community
+  {
+    slug: "notices", group: "community", icon: "megaphone", categories: ["notices"],
+    name: { tr: "Mahalle panosu", en: "Neighbourhood notices", ar: "لوحة الحي" },
+    blurb: { tr: "Duyurular, öneriler, kayıp ve bulunan", en: "Notices, recommendations, lost and found", ar: "إعلانات، توصيات، مفقودات" },
+  },
+  {
+    slug: "language-exchange", group: "community", icon: "chat2", categories: ["language-exchange"],
+    name: { tr: "Dil değişimi", en: "Language exchange", ar: "تبادل اللغات" },
+    blurb: { tr: "Türkçe, Arapça, İngilizce, Rusça pratik arkadaşı", en: "Practise Turkish, Arabic, English, Russian together", ar: "تدرّب على التركية والعربية والإنجليزية والروسية" },
   },
 ];
 

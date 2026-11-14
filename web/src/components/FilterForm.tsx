@@ -96,6 +96,11 @@ export function FilterForm({
         </select>
       </label>
 
+      <label className="flex items-center gap-2 text-[15px] md:col-span-6">
+        <input type="checkbox" name="women" value="1" defaultChecked={filter.women === true} className="h-5 w-5 accent-sea" />
+        {t.trust.womenFilter}
+      </label>
+
       <div className="flex flex-wrap items-center gap-2 md:col-span-6">
         <button type="submit" className="btn btn-primary">
           {s.apply}

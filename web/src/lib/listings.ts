@@ -1,3 +1,4 @@
+import { courseCodesIn, normalizeCourse } from "./course";
 import { CURRENCIES } from "./types";
 import type { Category, Currency, Kind, Listing, ListingFilter, Sort } from "./types";
 
@@ -27,9 +28,16 @@ export function isListed(listing: Listing, nowMs: number): boolean {
 function matches(listing: Listing, filter: ListingFilter): boolean {
   if (filter.q) {
     const needle = fold(filter.q);
-    const found = fold(listing.title).includes(needle) || fold(listing.description).includes(needle);
+    // "MATH 101" also finds "math101": course codes are compared in one spelling.
+    const course = normalizeCourse(filter.q);
+    const found =
+      fold(listing.title).includes(needle) ||
+      fold(listing.description).includes(needle) ||
+      (course !== "" && courseCodesIn(`${listing.title} ${listing.description}`).includes(course));
     if (!found) return false;
   }
+  if (filter.course && !courseCodesIn(`${listing.title} ${listing.description}`).includes(filter.course)) return false;
+  if (filter.women && !listing.womenOnly) return false;
   if (filter.category && listing.category !== filter.category) return false;
   if (filter.categories && !filter.categories.includes(listing.category)) return false;
   if (filter.city && listing.city !== filter.city) return false;
@@ -96,6 +104,10 @@ export function parseFilter(params: Record<string, string | string[] | undefined
   if (min !== undefined) filter.min = min;
   const max = wholeNumber(first(params.max));
   if (max !== undefined) filter.max = max;
+
+  if (first(params.women) === "1") filter.women = true;
+  const course = normalizeCourse(first(params.course));
+  if (course) filter.course = course;
 
   const sort = first(params.sort);
   if ((SORTS as readonly string[]).includes(sort)) filter.sort = sort as Sort;

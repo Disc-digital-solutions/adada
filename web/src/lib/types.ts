@@ -25,6 +25,8 @@ export interface Seller {
   name: string;
   shopSlug: string;
   city: string;
+  /** A person on the team checked this business's trade licence (BIZ-19). */
+  verified?: boolean;
 }
 
 export interface Listing {
@@ -44,6 +46,8 @@ export interface Listing {
   views: number;
   createdAt: string;
   seller: Seller;
+  /** For flats, roommates and dorms: open to women only (ROOM-07). */
+  womenOnly?: boolean;
 }
 
 export type Sort = "newest" | "cheapest" | "dearest";
@@ -58,5 +62,9 @@ export interface ListingFilter {
   currency?: Currency;
   min?: number;
   max?: number;
+  /** Only ads open to women only. */
+  women?: boolean;
+  /** A course code such as MATH101: only ads that mention it. */
+  course?: string;
   sort: Sort;
 }

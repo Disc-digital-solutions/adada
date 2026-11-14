@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { cityName } from "@/components/ListingCard";
 import { Photo } from "@/components/Photo";
 import { priceText } from "@/components/PriceTag";
+import { VerifiedBadge, WomenOnlyBadge } from "@/components/Badges";
 import { CopyTextButton } from "@/components/CopyTextButton";
 import { ServiceArt } from "@/components/ServiceTile";
 import { ShareButton } from "@/components/ShareButton";
@@ -14,7 +15,8 @@ import { LANGS, isLang } from "@/i18n/config";
 import { plural } from "@/i18n/plural";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
-import { timeAgo } from "@/lib/format";
+import { formatMoney, timeAgo } from "@/lib/format";
+import { tooLowComparedWith } from "@/lib/prices";
 import { groupPost } from "@/lib/share-text";
 import { whatsappLink } from "@/lib/whatsapp";
 import { site } from "@/site.config";
@@ -71,6 +73,8 @@ async function ListingView({ params, searchParams }: Props) {
 
   const sold = listing.status === "sold";
   const wanted = listing.kind === "wanted";
+  // The commonest rental scam starts with a price far below the usual one (ACC-20).
+  const usual = sold ? null : tooLowComparedWith(listing, await getRepo().search({ sort: "newest" }, now));
 
   // The text for the seller's groups: the reader's language first, then the others, and one link
   // with no language in it, so every reader opens the ad in their own language.
@@ -138,6 +142,14 @@ async function ListingView({ params, searchParams }: Props) {
           <span>{plural(lang, listing.views, t.listing.seenBy)}</span>
         </p>
 
+        {listing.womenOnly ? (
+          <p className="mt-3">
+            <WomenOnlyBadge t={t} />
+          </p>
+        ) : null}
+        {usual ? (
+          <p className="notice notice-alert mt-4">{t.trust.priceWarn.replace("{price}", formatMoney(usual, listing.currency, lang))}</p>
+        ) : null}
         {notice === "sample" ? <p className="notice mt-4">{t.demo.noSeller}</p> : null}
         {sold ? <p className="notice notice-alert mt-4">{t.listing.soldNotice}</p> : null}
 
@@ -160,8 +172,9 @@ async function ListingView({ params, searchParams }: Props) {
 
         <section className="panel mt-6 p-4">
           <h2 className="text-[13px] font-semibold text-ink-soft">{t.listing.seller}</h2>
-          <p className="mt-0.5 text-[17px] font-semibold" dir="auto">
+          <p className="mt-0.5 flex flex-wrap items-center gap-2 text-[17px] font-semibold" dir="auto">
             {listing.seller.name}
+            {listing.seller.verified ? <VerifiedBadge t={t} /> : null}
           </p>
           <Link href={`/${lang}/s/${listing.seller.shopSlug}`} className="mt-1 inline-block font-medium text-sea underline underline-offset-4 hover:text-sea-deep">
             {t.listing.viewShop}

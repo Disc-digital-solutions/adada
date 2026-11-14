@@ -188,6 +188,197 @@ const SERVICE_PATHS: Record<string, ReactNode> = {
       <path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" />
     </>
   ),
+  video: (
+    <>
+      <rect x="3" y="6" width="13" height="12" rx="2" />
+      <path d="M16 10l5-3v10l-5-3" />
+    </>
+  ),
+  doc: (
+    <>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4M9 12h6M9 16h6" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 20c.6-3.4 3-5 6-5s5.4 1.6 6 5" />
+      <circle cx="17" cy="9" r="2.5" />
+      <path d="M17 14c2.2 0 3.7 1.3 4 4" />
+    </>
+  ),
+  sofa: (
+    <>
+      <path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3" />
+      <path d="M3 13a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5H3zM6 18v2M18 18v2" />
+    </>
+  ),
+  swap: <path d="M4 8h13l-3-3M20 16H7l3 3" />,
+  cart: (
+    <>
+      <path d="M3 4h2l2.5 11h10L20 8H6.3" />
+      <circle cx="9" cy="19" r="1.5" />
+      <circle cx="17" cy="19" r="1.5" />
+    </>
+  ),
+  parking: (
+    <>
+      <rect x="4" y="4" width="16" height="16" rx="3" />
+      <path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3" />
+    </>
+  ),
+  wheel: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="12" cy="12" r="2" />
+      <path d="M4 11c3-1 5 0 6 1M20 11c-3-1-5 0-6 1M12 14v6" />
+    </>
+  ),
+  phone: (
+    <>
+      <rect x="7" y="3" width="10" height="18" rx="2" />
+      <path d="M11 18h2" />
+    </>
+  ),
+  child: (
+    <>
+      <circle cx="12" cy="6" r="2.5" />
+      <path d="M8 21v-6l-2-3 4-2h4l4 2-2 3v6M12 13v8" />
+    </>
+  ),
+  paw: (
+    <>
+      <circle cx="7" cy="10" r="1.6" />
+      <circle cx="10" cy="6.5" r="1.6" />
+      <circle cx="14" cy="6.5" r="1.6" />
+      <circle cx="17" cy="10" r="1.6" />
+      <path d="M8.5 17c0-2.5 1.6-4.5 3.5-4.5s3.5 2 3.5 4.5c0 1.5-1.2 2.5-2.5 2.2-.6-.1-.7-.2-1-.2s-.4.1-1 .2c-1.3.3-2.5-.7-2.5-2.2z" />
+    </>
+  ),
+  box: (
+    <>
+      <path d="M3 8l9-4 9 4v9l-9 4-9-4z" />
+      <path d="M3 8l9 4 9-4M12 12v9" />
+    </>
+  ),
+  store: (
+    <>
+      <path d="M4 9l1.5-5h13L20 9M4 9h16v2a2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0 2.5 2.5 0 0 1-4 0z" />
+      <path d="M5 12v8h14v-8M10 20v-5h4v5" />
+    </>
+  ),
+  archive: (
+    <>
+      <rect x="3" y="4" width="18" height="5" rx="1" />
+      <path d="M5 9v11h14V9M10 13h4" />
+    </>
+  ),
+  bag: (
+    <>
+      <path d="M5 8h14l-1 13H6z" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+    </>
+  ),
+  hands: (
+    <>
+      <path d="M3 12l4-4 4 2 3-2 4 1 3 3" />
+      <path d="M7 14l3 3c.8.8 2 .8 2.8 0l4.2-4.2M10 11l3 3" />
+    </>
+  ),
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  desk: (
+    <>
+      <path d="M3 10h18M5 10v10M19 10v10M14 10v6h5" />
+      <rect x="7" y="4" width="7" height="4" rx="1" />
+    </>
+  ),
+  compass: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M15.5 8.5l-2 5-5 2 2-5z" />
+    </>
+  ),
+  fork: <path d="M7 3v7a2 2 0 0 0 4 0V3M9 10v11M16 21V3c-2 1.5-3 4-3 7h3" />,
+  calendar: (
+    <>
+      <rect x="4" y="5" width="16" height="15" rx="2" />
+      <path d="M4 10h16M9 3v4M15 3v4" />
+    </>
+  ),
+  percent: (
+    <>
+      <path d="M18 6L6 18" />
+      <circle cx="7.5" cy="7.5" r="2" />
+      <circle cx="16.5" cy="16.5" r="2" />
+    </>
+  ),
+  cross: (
+    <>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+      <path d="M12 8v8M8 12h8" />
+    </>
+  ),
+  megaphone: (
+    <>
+      <path d="M4 10v4h3l7 4V6L7 10z" />
+      <path d="M17 9a4 4 0 0 1 0 6M7 14l1 5h2" />
+    </>
+  ),
+  chat2: (
+    <>
+      <path d="M3 15V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7z" />
+      <path d="M18 9h1a2 2 0 0 1 2 2v9l-3-2.5h-6a2 2 0 0 1-2-2V15" />
+    </>
+  ),
+  mic: (
+    <>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+    </>
+  ),
+  calculator: (
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M8 7h8M8 12h1M12 12h1M16 12h0M8 16h1M12 16h1M16 15v2" />
+    </>
+  ),
+  receipt: (
+    <>
+      <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+      <path d="M9 8h6M9 12h6M9 16h3" />
+    </>
+  ),
+  chart: <path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6" />,
+  map: (
+    <>
+      <path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z" />
+      <path d="M9 4v14M15 6v14" />
+    </>
+  ),
+  siren: (
+    <>
+      <path d="M6 18v-6a6 6 0 0 1 12 0v6" />
+      <path d="M4 18h16v3H4zM12 3V1M4.5 6L3 4.5M19.5 6L21 4.5" />
+    </>
+  ),
+  book: (
+    <>
+      <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z" />
+      <path d="M4 21V5M8 7h7" />
+    </>
+  ),
+  check: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M8 12l3 3 5-6" />
+    </>
+  ),
 };
 
 export function ServiceIcon({ name, ...props }: { name: string } & SVGProps<SVGSVGElement>) {

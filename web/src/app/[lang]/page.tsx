@@ -3,12 +3,14 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Rail } from "@/components/Rail";
 import { ServiceTile } from "@/components/ServiceTile";
+import { ToolTile } from "@/components/ToolTile";
 import { ArrowIcon, ChatIcon, GridIcon, PlusIcon, SearchIcon, ShieldIcon } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { isLang, type Lang } from "@/i18n/config";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
 import { GROUPS, SERVICES, serviceBySlug, servicesIn, type GroupSlug } from "@/lib/services";
+import { TOOLS } from "@/lib/tools";
 import type { Listing } from "@/lib/types";
 import { CITIES } from "@/site.config";
 
@@ -103,6 +105,21 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <Suspense fallback={<div className="mt-10 h-72 rounded-xl bg-line/50" aria-hidden />}>
           <Rails lang={lang} />
         </Suspense>
+
+        <section className="mt-14">
+          <div className="mb-4 flex items-end justify-between gap-3">
+            <h2 className="section-title">{t.tools.title}</h2>
+            <Link href={`/${lang}/tools`} className="inline-flex items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
+              {t.home.seeAllShort}
+              <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
+            </Link>
+          </div>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {TOOLS.slice(0, 4).map((tool) => (
+              <ToolTile key={tool.href} tool={tool} lang={lang} />
+            ))}
+          </ul>
+        </section>
 
         <section className="mt-14 grid gap-4 md:grid-cols-[1.4fr_1fr]">
           <div className="relative overflow-hidden rounded-2xl bg-sea-deep p-6 text-white md:p-8">

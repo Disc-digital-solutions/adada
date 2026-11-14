@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ServiceRow } from "@/components/ServiceTile";
+import { ToolTile } from "@/components/ToolTile";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LANG, isLang, type Lang } from "@/i18n/config";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
 import { GROUPS, countByService, servicesIn } from "@/lib/services";
+import { TOOLS } from "@/lib/tools";
 
 type Props = PageProps<"/[lang]/services">;
 
@@ -28,6 +30,15 @@ export default async function ServicesPage({ params }: Props) {
       <Suspense fallback={<Groups lang={lang} counts={{}} />}>
         <GroupsWithCounts lang={lang} />
       </Suspense>
+
+      <section id="tools" className="mt-10 scroll-mt-20">
+        <h2 className="section-title mb-3">{t.tools.title}</h2>
+        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {TOOLS.map((tool) => (
+            <ToolTile key={tool.href} tool={tool} lang={lang} />
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

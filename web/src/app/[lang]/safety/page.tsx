@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n";
@@ -14,13 +15,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SafetyPage({ params }: Props) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
-  const s = getDictionary(lang).safety;
+  const t = getDictionary(lang);
+  const s = t.safety;
 
   return (
     <div className="page">
       <div className="mx-auto max-w-2xl">
         <h1 className="text-[28px] font-bold tracking-tight">{s.title}</h1>
         <p className="mt-2 text-ink-soft">{s.intro}</p>
+        <Link href={`/${lang}/emergency`} className="btn btn-quiet mt-4 !border-alert/40 !text-alert">
+          {t.emergency.title} · 155 · 112 · 199
+        </Link>
 
         <ul className="mt-5 grid gap-2">
           {s.tips.map((tip) => (

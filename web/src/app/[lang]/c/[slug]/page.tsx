@@ -16,6 +16,8 @@ import { CITIES, site } from "@/site.config";
 
 type Props = PageProps<"/[lang]/c/[slug]">;
 
+const HOUSING_CATEGORIES = ["rooms", "roommates", "dorms"];
+
 /** The services are a fixed list, so every service screen is prepared ahead of time. */
 export function generateStaticParams() {
   return SERVICES.map((service) => ({ slug: service.slug }));
@@ -38,7 +40,10 @@ export default async function ServicePage({ params, searchParams }: Props) {
   if (!isLang(lang) || !service) notFound();
   const t = getDictionary(lang);
   const tone = groupOf(service).tone;
-  const postHref = `/${lang}/post?category=${service.categories[0]}`;
+  const postHref = `/${lang}/post?category=${service.categories[0] ?? ""}`;
+  const requestLink = site.teamWhatsapp
+    ? whatsappLink(site.teamWhatsapp, t.request.message.replace("{service}", service.name[lang]))
+    : null;
 
   return (
     <>
@@ -58,17 +63,49 @@ export default async function ServicePage({ params, searchParams }: Props) {
             <h1 className="mt-0.5 text-2xl font-bold tracking-tight md:text-[34px]">{service.name[lang]}</h1>
             <p className="mt-1 text-ink-soft">{service.blurb[lang]}</p>
           </div>
-          <Link href={postHref} className="btn btn-primary w-full sm:w-auto">
-            <PlusIcon width={18} height={18} />
-            {t.services.postHere}
-          </Link>
+          {service.mode === "request" ? (
+            requestLink ? (
+              <a href={requestLink} target="_blank" rel="noopener" className="btn btn-wa w-full sm:w-auto">
+                <ChatIcon width={18} height={18} />
+                {t.request.button}
+              </a>
+            ) : null
+          ) : (
+            <Link href={postHref} className="btn btn-primary w-full sm:w-auto">
+              <PlusIcon width={18} height={18} />
+              {t.services.postHere}
+            </Link>
+          )}
         </div>
       </section>
 
       <div className="page">
-        <Suspense fallback={<GridSkeleton />}>
-          <ServiceListings lang={lang} service={service} searchParams={searchParams} postHref={postHref} />
-        </Suspense>
+        {service.mode === "request" ? (
+          // Not a list of ads: a service a person arranges, asked for on WhatsApp.
+          <section className="panel p-6 md:p-8">
+            <h2 className="section-title">{t.request.howTitle}</h2>
+            <ol className="mt-4 grid gap-3 md:grid-cols-3">
+              {t.request.how.map((step, i) => (
+                <li key={step} className="flex gap-3 rounded-xl bg-paper p-4">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sea text-sm font-bold text-white">{i + 1}</span>
+                  <span className="text-[15px]">{step}</span>
+                </li>
+              ))}
+            </ol>
+            {requestLink ? (
+              <a href={requestLink} target="_blank" rel="noopener" className="btn btn-wa mt-6">
+                <ChatIcon width={18} height={18} />
+                {t.request.button}
+              </a>
+            ) : (
+              <p className="notice mt-6">{t.request.noTeam}</p>
+            )}
+          </section>
+        ) : (
+          <Suspense fallback={<GridSkeleton />}>
+            <ServiceListings lang={lang} service={service} searchParams={searchParams} postHref={postHref} />
+          </Suspense>
+        )}
 
         <section className="mt-10">
           <h2 className="section-title mb-4">{t.services.related}</h2>
@@ -94,11 +131,21 @@ async function ServiceListings({
   searchParams: Props["searchParams"];
   postHref: string;
 }) {
-  const { city: rawCity } = await searchParams;
+  const { city: rawCity, women: rawWomen } = await searchParams;
   const city = typeof rawCity === "string" && CITIES.some((c) => c.slug === rawCity) ? rawCity : undefined;
+  // Flats, roommates and dorms can be filtered to places open to women only (ROOM-07).
+  const housing = service.categories.some((c) => HOUSING_CATEGORIES.includes(c));
+  const women = housing && rawWomen === "1";
+  const href = (next: { city?: string; women?: boolean }) => {
+    const params = new URLSearchParams();
+    if (next.city) params.set("city", next.city);
+    if (next.women) params.set("women", "1");
+    const query = params.toString();
+    return `/${lang}/c/${service.slug}${query ? `?${query}` : ""}`;
+  };
   const now = await requestTime();
   const t = getDictionary(lang);
-  const listings = await getRepo().search({ categories: service.categories, city, sort: "newest" }, now);
+  const listings = await getRepo().search({ categories: service.categories, city, women: women || undefined, sort: "newest" }, now);
   const askLink = site.teamWhatsapp
     ? whatsappLink(site.teamWhatsapp, t.services.askMessage.replace("{service}", service.name[lang]))
     : null;
@@ -107,11 +154,16 @@ async function ServiceListings({
   return (
     <>
       <nav aria-label={t.search.city} className="swipe-row -mx-4 mb-4 flex gap-2 px-4 pb-1 md:mx-0 md:flex-wrap md:px-0">
-        <Link href={`/${lang}/c/${service.slug}`} className={chip(!city)}>
+        {housing ? (
+          <Link href={href({ city, women: !women })} className={`${chip(women)} !border-[#e7b8cf]`}>
+            {t.trust.womenFilter}
+          </Link>
+        ) : null}
+        <Link href={href({ women })} className={chip(!city)}>
           {t.services.allCities}
         </Link>
         {CITIES.map((c) => (
-          <Link key={c.slug} href={`/${lang}/c/${service.slug}?city=${c.slug}`} className={chip(city === c.slug)}>
+          <Link key={c.slug} href={href({ city: c.slug, women })} className={chip(city === c.slug)}>
             {c.name[lang]}
           </Link>
         ))}

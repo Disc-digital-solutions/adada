@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import QRCode from "qrcode";
 import { Suspense } from "react";
 import { GridSkeleton, ListingGrid, cityName } from "@/components/ListingCard";
+import { VerifiedBadge } from "@/components/Badges";
 import { CopyTextButton } from "@/components/CopyTextButton";
 import { ShareButton } from "@/components/ShareButton";
 import { getDictionary } from "@/i18n";
@@ -53,6 +54,7 @@ async function ShopView({ params }: Props) {
     lines: [lang, ...LANGS.filter((l) => l !== lang)].map((l) => getDictionary(l).shop.groupLine),
     url: shopUrl,
   });
+  const embedCode = `<iframe src="${site.url}/${lang}/embed/${shop.seller.shopSlug}" width="100%" height="560" style="border:0" loading="lazy" title="${shop.seller.name}"></iframe>`;
   const qrSvg = await QRCode.toString(shopUrl, {
     type: "svg",
     margin: 1,
@@ -71,8 +73,9 @@ async function ShopView({ params }: Props) {
           className="rounded-md border border-line"
         />
         <div className="min-w-0 flex-1">
-          <h1 dir="auto" className="text-2xl font-bold tracking-tight">
+          <h1 dir="auto" className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
             {shop.seller.name}
+            {shop.seller.verified ? <VerifiedBadge t={t} /> : null}
           </h1>
           <p className="mt-0.5 text-sm text-ink-soft">
             {cityName(shop.seller.city, lang)}, {plural(lang, shop.listings.length, t.shop.ads)}
@@ -90,6 +93,16 @@ async function ShopView({ params }: Props) {
       ) : (
         <p className="text-ink-soft">{t.shop.empty}</p>
       )}
+
+      {/* The embed widget (BIZ-15): the same ads on the seller's own website. */}
+      <section className="panel mt-10 p-5">
+        <h2 className="font-semibold">{t.embed.title}</h2>
+        <p className="mt-1 text-sm text-ink-soft">{t.embed.body}</p>
+        <pre dir="ltr" className="mt-3 overflow-x-auto rounded-lg bg-paper p-3 text-[12px]">{embedCode}</pre>
+        <div className="mt-3">
+          <CopyTextButton text={embedCode} label={t.embed.copy} copiedLabel={t.embed.copied} />
+        </div>
+      </section>
     </>
   );
 }

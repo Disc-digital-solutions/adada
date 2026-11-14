@@ -96,6 +96,17 @@ describe("filterListings", () => {
     );
   });
 
+  test("finds a course code in any spelling", () => {
+    const notes = make({ title: "Notes for math-101", description: "" });
+    expect(ids(filterListings([make(), notes], { ...all, q: "MATH 101" }, NOW))).toEqual([notes.id]);
+    expect(ids(filterListings([make(), notes], { ...all, course: "MATH101" }, NOW))).toEqual([notes.id]);
+  });
+
+  test("filters to women-only ads", () => {
+    const room = make({ womenOnly: true });
+    expect(ids(filterListings([make(), room], { ...all, women: true }, NOW))).toEqual([room.id]);
+  });
+
   test("filters by city", () => {
     const inNicosia = make({ city: "nicosia" });
     expect(ids(filterListings([make(), inNicosia], { ...all, city: "nicosia" }, NOW))).toEqual([inNicosia.id]);
@@ -187,6 +198,8 @@ describe("parseFilter", () => {
 
   test("defaults to newest with nothing else set", () => {
     expect(parseFilter({})).toEqual({ sort: "newest" });
+    expect(parseFilter({ women: "1", course: "phys 102" })).toEqual({ women: true, course: "PHYS102", sort: "newest" });
+    expect(parseFilter({ women: "yes", course: "nonsense" })).toEqual({ sort: "newest" });
   });
 
   test("drops values it does not recognise", () => {

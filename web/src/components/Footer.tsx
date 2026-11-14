@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Dictionary } from "@/i18n";
 import type { Lang } from "@/i18n/config";
 import { GROUPS, servicesIn } from "@/lib/services";
+import { TOOLS } from "@/lib/tools";
+import { DisplaySettings } from "./DisplaySettings";
 import { site } from "@/site.config";
 
 /** Every service, one click away from any page. Also what search engines follow to find them all. */
@@ -22,14 +24,24 @@ export function Footer({ lang, t }: { lang: Lang; t: Dictionary }) {
                 {t.nav.safety}
               </Link>
             </li>
+            {TOOLS.map((tool) => (
+              <li key={tool.href}>
+                <Link href={`/${lang}/${tool.href}`} className="text-ink-soft hover:text-sea-deep">
+                  {tool.name[lang]}
+                </Link>
+              </li>
+            ))}
             <li>
               <Link href={`/${lang}/post`} className="text-ink-soft hover:text-sea-deep">
                 {t.nav.post}
               </Link>
             </li>
           </ul>
+          <div className="mt-6">
+            <DisplaySettings t={t} />
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {GROUPS.map((group) => (
             <div key={group.slug}>
               <p className="text-sm font-semibold">{group.name[lang]}</p>

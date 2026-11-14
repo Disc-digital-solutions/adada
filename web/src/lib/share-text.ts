@@ -32,6 +32,8 @@ export interface TeamAdLabels {
   city: string;
   description: string;
   photos: string;
+  /** Shown only when the ad is for women only. */
+  womenOnly?: string;
 }
 
 /**
@@ -40,7 +42,7 @@ export interface TeamAdLabels {
  * what they are about to send; the team reads all three.
  */
 export function teamAdMessage(
-  ad: { title: string; price: string | null; category: string; city: string; description: string; hasPhotos: boolean },
+  ad: { title: string; price: string | null; category: string; city: string; description: string; hasPhotos: boolean; womenOnly?: boolean },
   labels: TeamAdLabels,
 ): string {
   const rows = [
@@ -51,6 +53,7 @@ export function teamAdMessage(
     ad.price ? `${labels.price}: ${ad.price}` : null,
     ad.category ? `${labels.category}: ${ad.category}` : null,
     `${labels.city}: ${ad.city}`,
+    ad.womenOnly && labels.womenOnly ? `✓ ${labels.womenOnly}` : null,
   ];
   const description = ad.description.trim();
   if (description) rows.push("", `${labels.description}:`, description);

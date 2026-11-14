@@ -68,6 +68,14 @@ describe("teamAdMessage", () => {
     );
   });
 
+  it("marks a women-only place", () => {
+    const text = teamAdMessage(
+      { title: "Room", price: null, category: "", city: "Famagusta", description: "", hasPhotos: false, womenOnly: true },
+      { ...labels, womenOnly: "Women only" },
+    );
+    expect(text.split("\n").at(-1)).toBe("✓ Women only");
+  });
+
   it("leaves out what was not filled in", () => {
     expect(
       teamAdMessage({ title: "Desk", price: null, category: "", city: "Nicosia", description: "  ", hasPhotos: false }, labels),

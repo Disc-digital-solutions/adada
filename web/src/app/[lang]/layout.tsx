@@ -41,11 +41,20 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang} dir={dirOf(lang)} className={readex.variable}>
       <body>
+        {/* Apply the saved display settings before anything is drawn (see DisplaySettings). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var d=document.documentElement;if(localStorage.getItem("im-text")==="1")d.dataset.text="large";if(localStorage.getItem("im-lowdata")==="1")d.dataset.lowdata="1"}catch(e){}`,
+          }}
+        />
+        <a href="#main" className="sr-only z-50 rounded-md bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:start-3 focus:top-3">
+          {t.skip}
+        </a>
         {getRepo().isDemo ? (
           <p className="border-b border-line bg-[#fff8e1] px-4 py-1 text-center text-[12px] font-medium text-[#6b5300]">{t.demo.banner}</p>
         ) : null}
         <Header lang={lang} t={t} />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer lang={lang} t={t} />
         <BottomNav lang={lang} t={t} />
       </body>

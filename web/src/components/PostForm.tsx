@@ -6,6 +6,7 @@ import type { Lang } from "@/i18n/config";
 import { formatMoney } from "@/lib/format";
 import { parsePost } from "@/lib/parse-post";
 import { teamAdMessage } from "@/lib/share-text";
+import { VoiceButton } from "./VoiceButton";
 import { CURRENCIES, type Currency, type Kind } from "@/lib/types";
 import { whatsappLink } from "@/lib/whatsapp";
 
@@ -54,12 +55,14 @@ export function PostForm({
   const [category, setCategory] = useState(initialCategory);
   const [city, setCity] = useState("famagusta");
   const [description, setDescription] = useState("");
+  const [womenOnly, setWomenOnly] = useState(false);
+  const housing = ["rooms", "roommates", "dorms"].includes(category);
   const [pasted, setPasted] = useState("");
   const [pasteStatus, setPasteStatus] = useState<"" | "done" | "nothing">("");
 
-  function fillFromPaste() {
+  function fillFromPaste(text = pasted) {
     const found = parsePost(
-      pasted,
+      text,
       categories.map((c) => c.slug),
     );
     if (!found.title) {
@@ -79,6 +82,7 @@ export function PostForm({
     }
     if (found.city) setCity(found.city);
     if (found.category) setCategory(found.category);
+    if (found.womenOnly) setWomenOnly(true);
     setPasteStatus("done");
   }
 
@@ -99,6 +103,7 @@ export function PostForm({
         city: cities.find((c) => c.slug === city)?.name ?? city,
         description,
         hasPhotos: kind === "offer",
+        womenOnly: housing && womenOnly,
       },
       {
         intro: p.teamIntro.replace("{site}", siteName),
@@ -110,6 +115,7 @@ export function PostForm({
         city: p.city,
         description: p.description,
         photos: p.teamPhotos,
+        womenOnly: t.trust.womenOnly,
       },
     );
     window.location.assign(whatsappLink(teamPhone, message));
@@ -138,9 +144,19 @@ export function PostForm({
           className="field"
         />
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <button type="button" onClick={fillFromPaste} disabled={!pasted.trim()} className="btn btn-quiet">
+          <button type="button" onClick={() => fillFromPaste()} disabled={!pasted.trim()} className="btn btn-quiet">
             {p.pasteButton}
           </button>
+          {/* Say the ad instead of typing it (LST-20): the words land in the box and fill the form. */}
+          <VoiceButton
+            lang={lang}
+            t={t}
+            onText={(said) => {
+              const text = [pasted.trim(), said].filter(Boolean).join("\n");
+              setPasted(text);
+              fillFromPaste(text);
+            }}
+          />
           <span aria-live="polite" className="text-sm text-ink-soft">
             {pasteStatus === "done" ? p.pasteDone : pasteStatus === "nothing" ? p.pasteNothing : ""}
           </span>
@@ -240,6 +256,13 @@ export function PostForm({
             </select>
           </div>
         </div>
+
+        {housing ? (
+          <label className="flex items-center gap-2 text-[15px]">
+            <input type="checkbox" name="womenOnly" checked={womenOnly} onChange={(e) => setWomenOnly(e.target.checked)} className="h-5 w-5 accent-sea" />
+            {t.trust.womenFilter}
+          </label>
+        ) : null}
 
         <div>
           <label className="label" htmlFor="description">

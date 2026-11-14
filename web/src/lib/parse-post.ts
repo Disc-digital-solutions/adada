@@ -20,6 +20,8 @@ export interface ParsedPost {
   city: string | null;
   /** A category slug, or null. */
   category: string | null;
+  /** The post says the place is for women only. */
+  womenOnly: boolean;
 }
 
 const TITLE_MAX = 80;
@@ -79,6 +81,12 @@ const WANTED_WORDS: Keywords = [
   "ariyorum", "ariyoruz", "araniyor", "aranir", "alinir", "almak istiyorum",
   "looking for", "wanted", "wtb", "iso", "in search of", "need a", "need an", "anyone selling",
   "مطلوب", "أبحث", "ابحث", "ادور", "أدور", "محتاج",
+];
+
+const WOMEN_WORDS: Keywords = [
+  "women only", "female only", "females only", "girls only", "ladies only", "female student*", "girl student*",
+  "sadece kiz*", "sadece bayan*", "kiz ogrenci*", "bayan ogrenci*", "kizlara", "bayanlara",
+  "للبنات", "للطالبات", "للنساء", "بنات فقط",
 ];
 
 const FREE_WORDS: Keywords = ["bedava", "ucretsiz", "free", "giveaway", "مجانا", "مجاناً", "مجاني", "ببلاش"];
@@ -227,5 +235,6 @@ export function parsePost(text: string, categories?: readonly string[]): ParsedP
     currency: found ? found.currency : null,
     city: firstMatch(words, CITY_WORDS),
     category: firstMatch(words, CATEGORY_WORDS, categories),
+    womenOnly: WOMEN_WORDS.some((word) => hasWord(words, word)),
   };
 }
