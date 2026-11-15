@@ -16,6 +16,7 @@ THE REST
 6. COMPETITORS.md         Who already exists in North Cyprus, and a sheet for testing each app by hand.
 7. VALIDATION-KIT.md      The seven-day Facebook count, and the questions for sellers, dorms and landlords.
 8. web/                   The website's code.
+9. app/                   NEW. The mobile app (Flutter, Android and iPhone). Start with app/README.md.
 
 TO RUN THE WEBSITE ON YOUR COMPUTER (optional)
 

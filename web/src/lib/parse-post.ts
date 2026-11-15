@@ -91,6 +91,15 @@ const WOMEN_WORDS: Keywords = [
 
 const FREE_WORDS: Keywords = ["bedava", "ucretsiz", "free", "giveaway", "مجانا", "مجاناً", "مجاني", "ببلاش"];
 
+/** The word lists, exported for the mobile app so both read posts with the same words. */
+export const PARSE_WORDS = {
+  categories: CATEGORY_WORDS,
+  cities: CITY_WORDS,
+  wanted: WANTED_WORDS,
+  women: WOMEN_WORDS,
+  free: FREE_WORDS,
+};
+
 /**
  * Lower case, no Turkish accents, words separated by single spaces, padded with a space at each
  * end so that " word" means "a word starting here". Arabic-Indic digits become 0–9.
