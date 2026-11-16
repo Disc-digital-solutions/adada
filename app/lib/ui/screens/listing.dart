@@ -12,13 +12,16 @@ import '../../core/models.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/listing_widgets.dart';
+import '../widgets/motion.dart';
 
 /// One ad: photos to swipe, price, where and when, the price warning, WhatsApp, share, copy for
 /// groups, the seller, and report.
 class ListingScreen extends StatelessWidget {
-  const ListingScreen({super.key, required this.id});
+  const ListingScreen({super.key, required this.id, this.heroTag});
 
   final String id;
+  /// The tag of the card that was tapped, so its picture flies into this page.
+  final String? heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +35,19 @@ class ListingScreen extends StatelessWidget {
         if (listing == null || listing.status == 'removed') {
           return AppPage(children: [Notice(context.s.t(listing == null ? 'notFound.title' : 'listing.removedNotice'), alert: true)]);
         }
-        return _ListingView(listing: listing, all: all, now: now);
+        return _ListingView(listing: listing, all: all, now: now, heroTag: heroTag ?? 'ad-grid-$id');
       },
     );
   }
 }
 
 class _ListingView extends StatelessWidget {
-  const _ListingView({required this.listing, required this.all, required this.now});
+  const _ListingView({required this.listing, required this.all, required this.now, required this.heroTag});
 
   final Listing listing;
   final List<Listing> all;
   final DateTime now;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +72,17 @@ class _ListingView extends StatelessWidget {
 
     return AppPage(
       padding: const EdgeInsets.only(bottom: 32),
+      // The contact bar stays in reach while reading; sold ads have nothing to contact.
+      bottomBar: listing.isSold ? null : _ContactBar(listing: listing, price: price),
       children: [
         AspectRatio(
           aspectRatio: listing.photos.isEmpty ? 16 / 10 : 1,
           child: listing.photos.isEmpty
-              ? (listing.isWanted ? const ColoredBox(color: C.seaWash) : ServiceArt(category: listing.category, label: true))
+              ? Hero(tag: heroTag, child: listing.isWanted ? const ColoredBox(color: C.seaWash) : ServiceArt(category: listing.category, label: true))
               : PageView(children: [
                   for (final (i, photo) in listing.photos.indexed)
                     Stack(fit: StackFit.expand, children: [
-                      Photo(photo, dim: listing.isSold),
+                      i == 0 ? Hero(tag: heroTag, child: Photo(photo, dim: listing.isSold)) : Photo(photo, dim: listing.isSold),
                       if (listing.photos.length > 1)
                         PositionedDirectional(
                           bottom: 12,
@@ -122,12 +128,6 @@ class _ListingView extends StatelessWidget {
               if (listing.isSold) Padding(padding: const EdgeInsets.only(top: 14), child: Notice(s.t('listing.soldNotice'), alert: true)),
               if (!listing.isSold) ...[
                 const SizedBox(height: 16),
-                WaButton(
-                  label: s.t('listing.whatsapp'),
-                  // Sample ads have no seller; once the database is connected this opens the seller's chat.
-                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(s.t('demo.noSeller')))),
-                ),
-                const SizedBox(height: 8),
                 Row(children: [
                   Expanded(child: OutlinedButton.icon(onPressed: () => shareText('${listing.title}\n$link'), icon: const Icon(Icons.share_outlined, size: 18), label: Text(s.t('listing.share')))),
                   const SizedBox(width: 8),
@@ -167,6 +167,46 @@ class _ListingView extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Fixed at the bottom of an ad: the price, the heart, and WhatsApp, always in reach.
+class _ContactBar extends StatelessWidget {
+  const _ContactBar({required this.listing, required this.price});
+
+  final Listing listing;
+  final String? price;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = context.s;
+    return Material(
+      color: C.card,
+      elevation: 8,
+      shadowColor: Colors.black26,
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 10, 8, 10),
+          child: Row(children: [
+            if (price != null)
+              Padding(
+                padding: const EdgeInsetsDirectional.only(end: 10),
+                child: Text(price!, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700)),
+              ),
+            Expanded(
+              child: WaButton(
+                label: s.t('listing.whatsapp'),
+                // Sample ads have no seller; once the database is connected this opens the seller's chat.
+                onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior: SnackBarBehavior.floating, content: Text(s.t('demo.noSeller')))),
+              ),
+            ),
+            const SizedBox(width: 4),
+            SaveHeart(id: listing.id, size: 26),
+          ]),
+        ),
+      ),
     );
   }
 }

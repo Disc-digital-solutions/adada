@@ -21,6 +21,15 @@ Every screen of the website, built natively:
 Plus the ad page (photos to swipe, the "price looks wrong" warning, WhatsApp, share, copy for groups, report),
 shops, and settings (language, larger text, save data) behind the translate button at the top.
 
+**Feel and motion (added 16 Nov):** a first-run welcome (language, then "what brings you here?", which
+reorders the home screen for students, residents, businesses or visitors); a heart on every ad with a
+Saved list and Undo; the photo flies from the card into the ad; the ad's price, heart and WhatsApp stay
+fixed at the bottom; filters slide up as chips with a live "Show N results"; posting in six steps with a
+progress bar, photos from the gallery or camera (drag to reorder) and a preview; shimmering placeholders
+while loading; native page transitions; small vibrations on save and copy. Animations stop when the phone
+asks for reduced motion. The Readex Pro font (Turkish, English and Arabic), an app icon and a launch screen
+are built in; the icon is a placeholder until the real logo exists (`dart run flutter_launcher_icons`).
+
 The app follows the phone's language the first time (Turkish, English or Arabic; Turkish otherwise), and
 Arabic runs right to left.
 
@@ -63,7 +72,7 @@ flutter analyze
 flutter test
 ```
 
-`flutter test` runs 125 tests: the logic, every screen in all three languages at phone size (any error or text
+`flutter test` runs 135 tests: the logic, every screen in all three languages at phone size (any error or text
 overflowing its box fails the test), filling the form from a pasted post, switching to Arabic, and a check that
 every text the app uses exists in all three languages.
 
@@ -90,6 +99,7 @@ legal agreement, so accept it yourself.
 
 - **The database.** Like the website, the app runs on the sample ads. `lib/core/data/repo.dart` is the one
   place a Supabase version plugs in; no screen changes.
+- **Sending photos straight to the team.** With photos, the ad goes through the phone's share menu (WhatsApp, then the team's chat), because a WhatsApp link can carry text only.
 - **Voice posting.** The website uses the browser's speech-to-text; the app needs a speech plugin, tested on
   real phones.
 - **Printing the receipt.** The app shares the receipt as text; printing to PDF needs a printing plugin.

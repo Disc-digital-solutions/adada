@@ -12,7 +12,7 @@ const routes = [
   '/search?kind=wanted', '/l/d01', '/l/d05', '/l/d07', '/l/d13', '/l/d25', '/l/d63', '/l/d14', '/s/ahmad',
   '/s/sakarya-yurdu', '/post', '/post?category=rooms', '/safety', '/emergency', '/help', '/guides',
   '/guides/address', '/guides/bank', '/prices', '/books?course=MATH101', '/plan', '/tools', '/tools/split',
-  '/tools/deposit', '/tools/receipt', '/tools/permit', '/no-such-page',
+  '/tools/deposit', '/tools/receipt', '/tools/permit', '/saved', '/no-such-page',
 ];
 
 void main() {
@@ -42,10 +42,14 @@ void main() {
     await tester.pump();
     await tester.tap(find.text('Fill in the form'));
     await tester.pumpAndSettle();
+    // Filling jumps to the next step, with everything already in place.
+    expect(find.text('Step 2 of 6'), findsOneWidget);
     expect(find.text('Çalışma masası'), findsOneWidget);
-    expect(find.text('1500'), findsOneWidget);
     expect(find.text('Furniture'), findsOneWidget);
     expect(find.text('Filled in. Check each field.'), findsOneWidget);
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    expect(find.text('1500'), findsOneWidget);
   });
 
   testWidgets('changing the language turns the layout right to left', (tester) async {

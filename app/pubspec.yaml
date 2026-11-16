@@ -41,6 +41,7 @@ dependencies:
   share_plus: ^13.3.1
   shared_preferences: ^2.5.6
   flutter_svg: ^2.4.0
+  image_picker: ^1.2.4
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.0
+  flutter_native_splash: ^2.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +67,19 @@ flutter:
   assets:
     - assets/data/
     - assets/demo/
+
+  # Readex Pro, the website's typeface: one font for Turkish, English and Arabic (SIL OFL, see assets/fonts/OFL.txt).
+  fonts:
+    - family: ReadexPro
+      fonts:
+        - asset: assets/fonts/ReadexPro-400.ttf
+          weight: 400
+        - asset: assets/fonts/ReadexPro-500.ttf
+          weight: 500
+        - asset: assets/fonts/ReadexPro-600.ttf
+          weight: 600
+        - asset: assets/fonts/ReadexPro-700.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -95,3 +111,25 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# App icon: `dart run flutter_launcher_icons`. A placeholder until the real name and logo exist.
+flutter_launcher_icons:
+  image_path: assets/brand/icon.png
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#0A6C88"
+  adaptive_icon_foreground: assets/brand/icon-foreground.png
+  web:
+    generate: true
+    background_color: "#0F1F29"
+    theme_color: "#0A6C88"
+
+# Launch screen: `dart run flutter_native_splash:create`.
+flutter_native_splash:
+  color: "#0F1F29"
+  image: assets/brand/splash.png
+  android_12:
+    color: "#0F1F29"
+    image: assets/brand/splash.png
+  web: true

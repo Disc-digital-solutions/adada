@@ -18,7 +18,7 @@ class IslandMarketApp extends StatefulWidget {
 }
 
 class _IslandMarketAppState extends State<IslandMarketApp> {
-  late final GoRouter _router = buildRouter(initialLocation: widget.initialLocation);
+  late final GoRouter _router = buildRouter(widget.state, initialLocation: widget.initialLocation);
 
   @override
   void dispose() {

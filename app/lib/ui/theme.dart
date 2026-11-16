@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 
 /// The website's design tokens, so the app and the site look like one product.
@@ -20,6 +21,9 @@ class C {
   static const okWash = Color(0xFFE2F4E9);
 }
 
+/// Styles set on their own (buttons, the top bar) do not inherit the theme's font, so they name it.
+const _font = 'ReadexPro';
+
 ThemeData buildTheme() {
   final scheme = ColorScheme.fromSeed(seedColor: C.sea, primary: C.sea, surface: C.card, onSurface: C.ink, error: C.alert);
   final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
@@ -27,6 +31,14 @@ ThemeData buildTheme() {
       OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: color, width: 1.5));
   return ThemeData(
     useMaterial3: true,
+    // The website's typeface: one font for Turkish, English and Arabic.
+    fontFamily: _font,
+    // Screens fade and slide forward the native way on each platform.
+    pageTransitionsTheme: const PageTransitionsTheme(builders: {
+      TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+    }),
     colorScheme: scheme,
     scaffoldBackgroundColor: C.paper,
     appBarTheme: const AppBarTheme(
@@ -35,7 +47,7 @@ ThemeData buildTheme() {
       elevation: 0,
       scrolledUnderElevation: 0.5,
       surfaceTintColor: Colors.transparent,
-      titleTextStyle: TextStyle(color: C.ink, fontSize: 18, fontWeight: FontWeight.w700),
+      titleTextStyle: TextStyle(fontFamily: _font, color: C.ink, fontSize: 18, fontWeight: FontWeight.w700),
     ),
     textTheme: const TextTheme(
       headlineMedium: TextStyle(fontSize: 26, fontWeight: FontWeight.w700, color: C.ink, height: 1.15, letterSpacing: -0.3),
@@ -51,7 +63,7 @@ ThemeData buildTheme() {
         foregroundColor: Colors.white,
         minimumSize: const Size(44, 48),
         shape: shape,
-        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(fontFamily: _font, fontSize: 15, fontWeight: FontWeight.w600),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -61,7 +73,7 @@ ThemeData buildTheme() {
         minimumSize: const Size(44, 48),
         side: const BorderSide(color: C.line, width: 1.5),
         shape: shape,
-        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(fontFamily: _font, fontSize: 15, fontWeight: FontWeight.w600),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -79,15 +91,15 @@ ThemeData buildTheme() {
       selectedColor: C.ink,
       side: const BorderSide(color: C.line),
       shape: const StadiumBorder(),
-      labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: C.ink),
-      secondaryLabelStyle: const TextStyle(color: Colors.white),
+      labelStyle: const TextStyle(fontFamily: _font, fontSize: 14, fontWeight: FontWeight.w500, color: C.ink),
+      secondaryLabelStyle: const TextStyle(fontFamily: _font, color: Colors.white),
       checkmarkColor: Colors.white,
     ),
     dividerTheme: const DividerThemeData(color: C.line, space: 1),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: C.card,
       indicatorColor: C.seaWash,
-      labelTextStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+      labelTextStyle: WidgetStateProperty.all(const TextStyle(fontFamily: _font, fontSize: 12, fontWeight: FontWeight.w500)),
     ),
   );
 }

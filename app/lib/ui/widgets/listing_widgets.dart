@@ -8,6 +8,7 @@ import '../../core/i18n.dart';
 import '../../core/models.dart';
 import '../theme.dart';
 import 'common.dart';
+import 'motion.dart';
 
 /// "£45", the word for free, or nothing when no price was given.
 String? priceText(Listing listing, Strings s) {
@@ -97,11 +98,15 @@ class VerifiedBadge extends StatelessWidget {
 
 /// One ad: picture, price in bold, title, place and time. Buyers scan prices first.
 class ListingCard extends StatelessWidget {
-  const ListingCard({super.key, required this.listing, required this.now, this.width});
+  const ListingCard({super.key, required this.listing, required this.now, this.width, this.scope = 'grid'});
 
   final Listing listing;
   final DateTime now;
   final double? width;
+  /// Where the card is shown; keeps the flying-photo tag unique when one ad appears twice.
+  final String scope;
+
+  String get heroTag => 'ad-$scope-${listing.id}';
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +117,7 @@ class ListingCard extends StatelessWidget {
       width: width,
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () => context.push('/l/${listing.id}'),
+        onTap: () => context.push('/l/${listing.id}', extra: heroTag),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -123,17 +128,20 @@ class ListingCard extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    if (cover != null)
-                      Photo(cover, dim: listing.isSold)
-                    else if (listing.isWanted)
-                      Container(
-                        color: C.seaWash,
-                        padding: const EdgeInsets.all(12),
-                        alignment: AlignmentDirectional.centerStart,
-                        child: Text('“${listing.title}”', maxLines: 3, overflow: TextOverflow.ellipsis, style: const TextStyle(color: C.seaDeep, fontWeight: FontWeight.w600, fontSize: 15)),
-                      )
-                    else
-                      ServiceArt(category: listing.category),
+                    // The picture flies into the ad page when the card is tapped.
+                    Hero(
+                      tag: heroTag,
+                      child: cover != null
+                          ? Photo(cover, dim: listing.isSold)
+                          : listing.isWanted
+                              ? Container(
+                                  color: C.seaWash,
+                                  padding: const EdgeInsets.all(12),
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: Text('“${listing.title}”', maxLines: 3, overflow: TextOverflow.ellipsis, style: const TextStyle(color: C.seaDeep, fontWeight: FontWeight.w600, fontSize: 15)),
+                                )
+                              : ServiceArt(category: listing.category),
+                    ),
                     DecoratedBox(decoration: BoxDecoration(border: Border.all(color: C.line), borderRadius: BorderRadius.circular(12))),
                     if (listing.isWanted)
                       PositionedDirectional(
@@ -141,7 +149,8 @@ class ListingCard extends StatelessWidget {
                         start: 8,
                         child: _Label(s.t('listing.wanted').toUpperCase(), C.ink, Colors.white),
                       ),
-                    if (listing.isSold) PositionedDirectional(top: 8, end: 8, child: _Label(s.t('listing.sold'), Colors.white, C.alert)),
+                    if (listing.isSold) PositionedDirectional(bottom: 8, end: 8, child: _Label(s.t('listing.sold'), Colors.white, C.alert)),
+                    PositionedDirectional(top: 6, end: 6, child: SaveHeart(id: listing.id, size: 18, onPhoto: true)),
                     if (listing.womenOnly) const PositionedDirectional(bottom: 8, start: 8, child: WomenOnlyBadge(small: true)),
                   ],
                 ),
@@ -222,12 +231,12 @@ class ListingRail extends StatelessWidget {
       children: [
         SectionHeader(title, hint: hint, action: context.s.t('home.seeAllShort'), onAction: onSeeAll),
         SizedBox(
-          height: 236,
+          height: 244,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: listings.length,
             separatorBuilder: (_, _) => const SizedBox(width: 12),
-            itemBuilder: (_, i) => ListingCard(listing: listings[i], now: now, width: 168),
+            itemBuilder: (_, i) => ListingCard(listing: listings[i], now: now, width: 168, scope: title),
           ),
         ),
       ],
@@ -235,19 +244,24 @@ class ListingRail extends StatelessWidget {
   }
 }
 
-/// Shows a spinner while ads load, then builds with them.
+/// Shows shimmering placeholders while ads load, then fades in the real content.
 class Loaded<T> extends StatelessWidget {
-  const Loaded({super.key, required this.future, required this.builder});
+  const Loaded({super.key, required this.future, required this.builder, this.skeleton});
 
   final Future<T> future;
   final Widget Function(BuildContext context, T value) builder;
+  /// What shows while loading; by default the shape of ad cards, shimmering.
+  final Widget? skeleton;
 
   @override
   Widget build(BuildContext context) => FutureBuilder<T>(
         future: future,
-        builder: (context, snap) => snap.hasData
-            ? builder(context, snap.data as T)
-            : const Padding(padding: EdgeInsets.all(40), child: Center(child: CircularProgressIndicator())),
+        builder: (context, snap) => AnimatedSwitcher(
+          duration: Duration(milliseconds: reduceMotion(context) ? 0 : 250),
+          child: snap.connectionState == ConnectionState.done
+              ? KeyedSubtree(key: const ValueKey('done'), child: builder(context, snap.data as T))
+              : KeyedSubtree(key: const ValueKey('loading'), child: skeleton ?? const GridSkeleton()),
+        ),
       );
 }
 

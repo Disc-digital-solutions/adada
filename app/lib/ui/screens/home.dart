@@ -9,9 +9,24 @@ import '../widgets/common.dart';
 import '../widgets/listing_widgets.dart';
 import '../widgets/service_widgets.dart';
 
-/// The services on the home grid; the rest are one tap away under "All services".
-const featured = ['flats', 'dorms', 'buy-sell', 'cars', 'car-rental', 'towing', 'cleaning', 'construction', 'arrival', 'education', 'jobs'];
-const _railOrder = ['housing', 'buy', 'vehicles', 'students', 'home', 'work'];
+/// The services on the home grid, and the order of the rows of ads, for each kind of person.
+/// The rest are one tap away under "All services".
+const featuredFor = {
+  null: ['flats', 'dorms', 'buy-sell', 'cars', 'car-rental', 'towing', 'cleaning', 'construction', 'arrival', 'education', 'jobs'],
+  'student': ['flats', 'dorms', 'buy-sell', 'arrival', 'education', 'jobs', 'shifts', 'furniture-rental', 'viewing', 'storage', 'language-exchange'],
+  'resident': ['buy-sell', 'cars', 'cleaning', 'construction', 'towing', 'car-services', 'tech-repair', 'childcare', 'pets', 'deals', 'notices'],
+  'business': ['jobs', 'shifts', 'internships', 'supplies', 'coworking', 'agencies', 'professionals', 'construction', 'cleaning', 'staff-housing', 'cars'],
+  'visitor': ['experiences', 'car-rental', 'restaurants', 'events', 'rides', 'airport-board', 'clinics', 'flats', 'deals', 'towing', 'shop-turkey'],
+};
+const railsFor = {
+  null: ['housing', 'buy', 'vehicles', 'students', 'home', 'work', 'outing'],
+  'student': ['housing', 'students', 'buy', 'work', 'outing', 'vehicles', 'home'],
+  'resident': ['buy', 'home', 'vehicles', 'housing', 'outing', 'work', 'community'],
+  'business': ['work', 'home', 'housing', 'vehicles', 'buy', 'outing'],
+  'visitor': ['outing', 'vehicles', 'housing', 'buy', 'work'],
+};
+/// The home grid for no particular person.
+final featured = featuredFor[null]!;
 
 /// Home is the hub: one search for everything, every service as a tile, then the newest ads
 /// from each part of the island's life, the tools, and how to post.
@@ -23,7 +38,9 @@ class HomeScreen extends StatelessWidget {
     final s = context.s;
     final bundle = context.bundle;
     final now = DateTime.now();
-    final services = [for (final slug in featured) bundle.service(slug)].whereType<Service>();
+    final persona = context.app.persona;
+    final services = [for (final slug in featuredFor[persona] ?? featured) bundle.service(slug)].whereType<Service>();
+    final rails = railsFor[persona] ?? railsFor[null]!;
     return AppPage(
       padding: EdgeInsets.zero,
       children: [
@@ -39,7 +56,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SectionHeader(s.t('home.whatNeed'), action: s.t('home.allServices'), onAction: () => context.go('/services')),
+              SectionHeader(
+                s.t('home.whatNeed'),
+                hint: persona == null ? null : '${s.t('app.forYou')}: ${s.t('app.$persona')}',
+                action: s.t('home.allServices'),
+                onAction: () => context.go('/services'),
+              ),
               TileGrid(children: [
                 for (final service in services) ServiceTile(service: service),
                 Panel(
@@ -63,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      for (final group in _railOrder)
+                      for (final group in rails)
                         ListingRail(
                           title: bundle.groups.firstWhere((g) => g.slug == group).name.of(s.lang),
                           listings: inGroup(group),

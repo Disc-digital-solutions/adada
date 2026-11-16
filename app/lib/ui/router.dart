@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../core/app_state.dart';
 import 'screens/home.dart';
 import 'screens/listing.dart';
+import 'screens/saved.dart';
+import 'screens/welcome.dart';
 import 'screens/post.dart';
 import 'screens/search.dart';
 import 'screens/services.dart';
@@ -14,9 +16,18 @@ import 'theme.dart';
 
 /// The same addresses as the website (without the language, which is a setting in the app),
 /// so a website link can later open the same screen in the app.
-GoRouter buildRouter({String initialLocation = '/'}) => GoRouter(
+GoRouter buildRouter(AppState state, {String initialLocation = '/'}) => GoRouter(
       initialLocation: initialLocation,
+      refreshListenable: state,
+      // The first time, the welcome comes first: language, then what brings you here.
+      redirect: (context, route) {
+        final atWelcome = route.uri.path == '/welcome';
+        if (!state.onboarded && !atWelcome) return '/welcome';
+        if (state.onboarded && atWelcome) return '/';
+        return null;
+      },
       routes: [
+        GoRoute(path: '/welcome', builder: (_, _) => const WelcomeScreen()),
         ShellRoute(
           builder: (context, state, child) => _Shell(location: state.uri.path, child: child),
           routes: [
@@ -33,7 +44,8 @@ GoRouter buildRouter({String initialLocation = '/'}) => GoRouter(
                 initialWomen: s.uri.queryParameters['women'] == '1',
               ),
             ),
-            GoRoute(path: '/l/:id', builder: (_, s) => ListingScreen(id: s.pathParameters['id']!)),
+            GoRoute(path: '/l/:id', builder: (_, s) => ListingScreen(id: s.pathParameters['id']!, heroTag: s.extra as String?)),
+            GoRoute(path: '/saved', builder: (_, _) => const SavedScreen()),
             GoRoute(path: '/s/:slug', builder: (_, s) => ShopScreen(slug: s.pathParameters['slug']!)),
             GoRoute(
               path: '/post',
