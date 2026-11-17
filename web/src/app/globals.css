@@ -273,3 +273,232 @@ html[data-lowdata] .photo-img {
   body > header, body > footer, body > nav, body > p, .print\:hidden { display: none !important; }
   body { background: #fff; }
 }
+
+/* =============================================================================================
+ * Motion. One small set of animations used everywhere, so the site moves as one thing.
+ * Rules: short (150–600 ms), eased out, only opacity and transform (cheap to draw), and
+ * everything stops when the device asks for reduced motion (bottom of this file).
+ * ========================================================================================== */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-6%, 8%) scale(1.12);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--tilt, 0deg));
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-9deg) scale(1.08);
+  }
+  60% {
+    transform: rotate(6deg) scale(1.08);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(10 108 136 / 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgb(10 108 136 / 0);
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@layer components {
+  /* Arrives as the page opens. --i staggers siblings: style="--i:2". */
+  .enter {
+    animation: rise 0.7s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  .enter-fade {
+    animation: fade 0.9s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  /* Rises into view while scrolling, where the browser can tie animation to scroll (no script). */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+
+  /* Soft lights drifting behind the hero. */
+  .glow {
+    animation: drift 18s ease-in-out infinite;
+  }
+  .glow-slow {
+    animation: drift 26s ease-in-out infinite reverse;
+  }
+
+  /* Cards in the hero collage bob gently, each out of step with the others. */
+  .floaty {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * -1.7s);
+  }
+
+  /* The band of services that slides past; it holds still under the pointer. */
+  .marquee-track {
+    animation: marquee 60s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Grey placeholders with a light sweeping across them. */
+  .shimmer {
+    background: linear-gradient(90deg, var(--color-line) 0%, #eef2f4 40%, var(--color-line) 80%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+  }
+
+  /* Lifts under the pointer; presses in when tapped. */
+  .lift {
+    transition:
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      border-color 0.2s;
+  }
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -14px rgb(15 31 41 / 0.28);
+  }
+  .lift:active {
+    transform: translateY(0) scale(0.98);
+  }
+  .group:hover .wiggle {
+    animation: wiggle 0.55s var(--ease-out);
+  }
+  .group:hover .nudge {
+    transform: translateX(3px);
+  }
+  html[dir="rtl"] .group:hover .nudge {
+    transform: translateX(-3px) scaleX(-1);
+  }
+  .nudge {
+    transition: transform 0.2s var(--ease-out);
+  }
+
+  .btn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+  .btn {
+    transition:
+      background-color 0.15s,
+      border-color 0.15s,
+      color 0.15s,
+      transform 0.12s var(--ease-out),
+      box-shadow 0.2s;
+  }
+
+  /* The big "Post" button on phones calls attention once, softly. */
+  .pulse-once {
+    animation: pulse-ring 1.6s var(--ease-out) 1.2s 2;
+  }
+
+  .pop {
+    animation: pop 0.4s var(--ease-spring) both;
+  }
+}
+
+/* The photo of an ad morphs from its card into the ad page (React <ViewTransition share="morph">). */
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+/* Content that replaces a loading placeholder slides up into place. */
+::view-transition-old(.slide-down) {
+  animation: 150ms ease-out both fade reverse;
+}
+::view-transition-new(.slide-up) {
+  animation: 380ms var(--ease-out) 120ms both rise;
+}
+
+/* Respect the device's "reduce motion" setting: no movement at all, content simply appears. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track,
+  .glow,
+  .glow-slow,
+  .floaty {
+    animation: none !important;
+  }
+}

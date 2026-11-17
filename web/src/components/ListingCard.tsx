@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ViewTransition } from "react";
 import type { Dictionary } from "@/i18n";
 import type { Lang } from "@/i18n/config";
 import { timeAgo } from "@/lib/format";
@@ -34,9 +35,11 @@ export function ListingCard({
   const price = priceText(listing, lang, t);
 
   return (
-    <li>
+    <li className="reveal">
       <Link href={`/${lang}/l/${listing.id}`} className="group block">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line bg-card">
+        {/* The picture morphs into the ad page's photo (same name there). */}
+        <ViewTransition name={`photo-${listing.id}`} share="morph" default="none">
+        <div className="lift relative aspect-[4/3] overflow-hidden rounded-xl border border-line bg-card">
           {cover ? (
             <Photo src={cover} alt="" className={`transition duration-300 group-hover:scale-[1.03] ${sold ? "opacity-60 grayscale" : ""}`} />
           ) : wanted ? (
@@ -61,6 +64,7 @@ export function ListingCard({
             </span>
           ) : null}
         </div>
+        </ViewTransition>
 
         <div className="mt-2 px-0.5">
           {price ? (
@@ -108,9 +112,9 @@ export function GridSkeleton() {
     <ul aria-hidden className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {Array.from({ length: 10 }, (_, i) => (
         <li key={i}>
-          <div className="aspect-[4/3] rounded-xl bg-line/60" />
-          <div className="mt-2 h-4 w-2/5 rounded bg-line/60" />
-          <div className="mt-1.5 h-3 w-4/5 rounded bg-line/60" />
+          <div className="shimmer aspect-[4/3] rounded-xl" />
+          <div className="shimmer mt-2 h-4 w-2/5 rounded" />
+          <div className="shimmer mt-1.5 h-3 w-4/5 rounded" />
         </li>
       ))}
     </ul>

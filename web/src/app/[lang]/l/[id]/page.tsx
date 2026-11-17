@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import type React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, ViewTransition } from "react";
 import { cityName } from "@/components/ListingCard";
 import { Photo } from "@/components/Photo";
 import { priceText } from "@/components/PriceTag";
@@ -96,6 +97,8 @@ async function ListingView({ params, searchParams }: Props) {
     <article className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[minmax(0,1fr)_22rem] md:items-start">
       {listing.photos.length > 0 ? (
         // Swipe sideways through the pictures. No script needed: the browser snaps to each one.
+        // The same name as the card's picture: the photo morphs from the card into this page.
+        <ViewTransition name={`photo-${listing.id}`} share="morph" default="none">
         <div className="swipe-row -mx-4 flex snap-x snap-mandatory md:mx-0 md:rounded-xl">
           {listing.photos.map((src, index) => (
             <div key={src + index} className="relative aspect-square w-full shrink-0 snap-center bg-card">
@@ -113,14 +116,17 @@ async function ListingView({ params, searchParams }: Props) {
             </div>
           ))}
         </div>
+        </ViewTransition>
       ) : wanted ? null : (
         // A service or a job without photos: its service's picture, so the page does not look empty.
-        <div className="-mx-4 aspect-[4/3] overflow-hidden md:mx-0 md:aspect-square md:rounded-xl">
-          <ServiceArt category={listing.category} lang={lang} label />
-        </div>
+        <ViewTransition name={`photo-${listing.id}`} share="morph" default="none">
+          <div className="-mx-4 aspect-[4/3] overflow-hidden md:mx-0 md:aspect-square md:rounded-xl">
+            <ServiceArt category={listing.category} lang={lang} label />
+          </div>
+        </ViewTransition>
       )}
 
-      <div className={listing.photos.length === 0 && wanted ? "md:col-span-2 md:max-w-2xl" : ""}>
+      <div className={`enter ${listing.photos.length === 0 && wanted ? "md:col-span-2 md:max-w-2xl" : ""}`} style={{ "--i": 1 } as React.CSSProperties}>
         {wanted ? <p className="mb-1 text-sm font-semibold text-sea-deep">{t.listing.wanted}</p> : null}
         <h1 dir="auto" className="text-[24px] font-bold leading-tight tracking-tight md:text-[28px]">
           {listing.title}
@@ -189,6 +195,22 @@ async function ListingView({ params, searchParams }: Props) {
           </a>
         ) : null}
       </div>
+
+      {/* On phones the price and WhatsApp stay in reach while reading, above the bottom bar. */}
+      {sold ? null : (
+        <>
+          <div aria-hidden className="h-16 md:hidden" />
+          <div className="enter fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-10 border-t border-line bg-card/95 px-4 py-2.5 backdrop-blur md:hidden" style={{ "--i": 4 } as React.CSSProperties}>
+            <div className="mx-auto flex max-w-md items-center gap-3">
+              {priceText(listing, lang, t) ? <bdi className="text-[19px] font-bold tabular-nums">{priceText(listing, lang, t)}</bdi> : null}
+              <a href={`/${lang}/l/${listing.id}/wa`} rel="nofollow" className="btn btn-wa flex-1">
+                <ChatIcon width={18} height={18} />
+                {t.listing.whatsapp}
+              </a>
+            </div>
+          </div>
+        </>
+      )}
     </article>
   );
 }

@@ -59,7 +59,7 @@ export function BottomNav({ lang, t }: { lang: Lang; t: Dictionary }) {
           {t.nav.services}
         </Link>
         <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-sea-deep">
-          <span className="-mt-4 grid h-12 w-12 place-items-center rounded-full bg-sea text-white shadow-[0_2px_0_var(--color-sea-deep)]">
+          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-sea text-white shadow-[0_2px_0_var(--color-sea-deep)] transition active:scale-90">
             <PlusIcon />
           </span>
           {t.nav.post}

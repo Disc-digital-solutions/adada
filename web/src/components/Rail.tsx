@@ -31,16 +31,16 @@ export function Rail({
 }) {
   if (listings.length === 0) return null;
   return (
-    <section className="mt-11">
+    <section className="reveal mt-11">
       <div className="mb-4 flex items-end gap-3">
         {icon}
         <div className="min-w-0 flex-1">
           <h2 className="section-title">{title}</h2>
           {hint ? <p className="text-[13px] text-ink-soft">{hint}</p> : null}
         </div>
-        <Link href={href} className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
+        <Link href={href} className="group inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
           {t.home.seeAllShort}
-          <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
+          <ArrowIcon width={16} height={16} className="nudge rtl:-scale-x-100" />
         </Link>
       </div>
       <ul className="swipe-row -mx-4 flex snap-x scroll-px-4 gap-3 px-4 pb-1 md:mx-0 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-6 md:px-0 lg:grid-cols-5 [&>li]:w-[44%] [&>li]:shrink-0 [&>li]:snap-start md:[&>li]:w-auto">

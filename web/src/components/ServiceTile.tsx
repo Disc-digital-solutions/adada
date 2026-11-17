@@ -1,3 +1,4 @@
+import type React from "react";
 import Link from "next/link";
 import type { Lang } from "@/i18n/config";
 import { groupOf, serviceOfCategory, type Service } from "@/lib/services";
@@ -25,14 +26,16 @@ export function ServiceBadge({
 }
 
 /** One service in the home grid: badge on top, name under it. */
-export function ServiceTile({ service, lang }: { service: Service; lang: Lang }) {
+export function ServiceTile({ service, lang, index = 0 }: { service: Service; lang: Lang; index?: number }) {
   return (
-    <li>
+    <li className="enter" style={{ "--i": index } as React.CSSProperties}>
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="panel flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center transition hover:border-sea/60"
+        className="panel lift group flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center hover:border-sea/60"
       >
-        <ServiceBadge service={service} />
+        <span className="wiggle">
+          <ServiceBadge service={service} />
+        </span>
         <span className="line-clamp-2 text-[12.5px] font-medium leading-tight md:text-[13.5px]">{service.name[lang]}</span>
       </Link>
     </li>
@@ -46,7 +49,7 @@ export function ServiceRow({ service, lang, count }: { service: Service; lang: L
     <li className="min-w-0">
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="panel flex items-center gap-3 p-3 transition hover:border-sea/60"
+        className="panel lift group flex items-center gap-3 p-3 hover:border-sea/60"
       >
         <ServiceBadge service={service} />
         <span className="min-w-0 flex-1">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -49,8 +50,10 @@ export default async function ServicePage({ params, searchParams }: Props) {
     <>
       <section className="border-b border-line bg-card">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-6 md:px-6 md:py-8">
-          <ServiceBadge service={service} size="lg" />
-          <div className="min-w-0 flex-1">
+          <span className="enter pop">
+            <ServiceBadge service={service} size="lg" />
+          </span>
+          <div className="enter min-w-0 flex-1" style={{ "--i": 1 } as React.CSSProperties}>
             <nav className="eyebrow" aria-label="breadcrumb">
               <Link href={`/${lang}/services`} className="hover:text-ink">
                 {t.services.title}
