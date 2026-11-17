@@ -34,7 +34,7 @@ export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
             <span className="hidden lg:inline">{t.nav.safety}</span>
           </Link>
           <LangSwitch current={lang} label={t.nav.language} />
-          <Link href={`/${lang}/post`} className="btn btn-primary hidden !min-h-9 md:inline-flex">
+          <Link href={`/${lang}/post`} className="btn btn-accent hidden !min-h-9 md:inline-flex">
             <PlusIcon width={18} height={18} />
             {t.nav.post}
           </Link>
@@ -58,8 +58,8 @@ export function BottomNav({ lang, t }: { lang: Lang; t: Dictionary }) {
           <GridIcon />
           {t.nav.services}
         </Link>
-        <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-sea-deep">
-          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-sea text-white shadow-[0_2px_0_var(--color-sea-deep)] transition active:scale-90">
+        <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-coral-deep">
+          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-coral text-ink shadow-[0_2px_0_var(--color-coral-deep)] transition active:scale-90">
             <PlusIcon />
           </span>
           {t.nav.post}

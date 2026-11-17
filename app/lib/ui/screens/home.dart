@@ -208,7 +208,7 @@ class _PostBand extends StatelessWidget {
           const SizedBox(height: 16),
           FilledButton.icon(
             onPressed: () => context.go('/post'),
-            style: FilledButton.styleFrom(backgroundColor: C.card, foregroundColor: C.ink),
+            style: FilledButton.styleFrom(backgroundColor: C.coral, foregroundColor: C.ink),
             icon: const Icon(Icons.add, size: 18),
             label: Text(s.t('home.ctaButton')),
           ),

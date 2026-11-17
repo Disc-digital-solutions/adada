@@ -58,7 +58,7 @@ async function ShopView({ params }: Props) {
   const qrSvg = await QRCode.toString(shopUrl, {
     type: "svg",
     margin: 1,
-    color: { dark: "#10242e", light: "#ffffff" },
+    color: { dark: "#13232b", light: "#ffffff" },
   });
 
   return (

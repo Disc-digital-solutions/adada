@@ -45,7 +45,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
           shaderCallback: (bounds) => LinearGradient(
             begin: Alignment(-1.6 + 3.2 * _controller.value, -0.3),
             end: Alignment(-0.6 + 3.2 * _controller.value, 0.3),
-            colors: const [Color(0xFFE6ECEF), Color(0xFFF5F8F9), Color(0xFFE6ECEF)],
+            colors: const [Color(0xFFE9E5DE), Color(0xFFF6F4EF), Color(0xFFE9E5DE)],
           ).createShader(bounds),
           child: child,
         ),
@@ -121,7 +121,7 @@ class SaveHeart extends StatelessWidget {
       duration: const Duration(milliseconds: 380),
       curve: Curves.elasticOut,
       builder: (context, scale, child) => Transform.scale(scale: scale, child: child),
-      child: Icon(saved ? Icons.favorite : Icons.favorite_border, size: size, color: saved ? C.alert : (onPhoto ? C.ink : C.inkSoft)),
+      child: Icon(saved ? Icons.favorite : Icons.favorite_border, size: size, color: saved ? C.coral : (onPhoto ? C.ink : C.inkSoft)),
     );
     void toggle() {
       HapticFeedback.lightImpact();

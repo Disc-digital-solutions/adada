@@ -118,18 +118,18 @@ flutter_launcher_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  adaptive_icon_background: "#0A6C88"
+  adaptive_icon_background: "#0E7C74"
   adaptive_icon_foreground: assets/brand/icon-foreground.png
   web:
     generate: true
-    background_color: "#0F1F29"
-    theme_color: "#0A6C88"
+    background_color: "#13232B"
+    theme_color: "#0E7C74"
 
 # Launch screen: `dart run flutter_native_splash:create`.
 flutter_native_splash:
-  color: "#0F1F29"
+  color: "#13232B"
   image: assets/brand/splash.png
   android_12:
-    color: "#0F1F29"
+    color: "#13232B"
     image: assets/brand/splash.png
   web: true

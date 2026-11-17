@@ -30,8 +30,8 @@ class SavedScreen extends StatelessWidget {
                   Container(
                     width: 96,
                     height: 96,
-                    decoration: const BoxDecoration(color: C.alertWash, shape: BoxShape.circle),
-                    child: const Icon(Icons.favorite_border, size: 46, color: C.alert),
+                    decoration: const BoxDecoration(color: C.coralWash, shape: BoxShape.circle),
+                    child: const Icon(Icons.favorite_border, size: 46, color: C.coral),
                   ),
                   const SizedBox(height: 18),
                   Text(s.t('app.savedEmpty'), textAlign: TextAlign.center, style: const TextStyle(fontSize: 16, color: C.inkSoft, height: 1.45)),

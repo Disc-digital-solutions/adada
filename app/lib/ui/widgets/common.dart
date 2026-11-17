@@ -62,7 +62,8 @@ class _SavedButton extends StatelessWidget {
       icon: Badge(
         isLabelVisible: count > 0,
         label: Text('$count'),
-        backgroundColor: C.alert,
+        backgroundColor: C.coral,
+        textColor: C.ink,
         child: Icon(count > 0 ? Icons.favorite : Icons.favorite_border),
       ),
     );

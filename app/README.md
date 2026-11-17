@@ -47,6 +47,12 @@ It rewrites `app/assets/data/*.json` and copies the sample pictures. Never edit 
 The logic (reading a pasted post, search filters, price warning, bill splitting, permit dates, the texts that
 leave the app) is written again in Dart in `lib/core/logic/`, with the same test cases as the website.
 
+## Live demo
+
+A web build of the app, with the sample ads, is published privately at
+https://claude.ai/artifact/4LRDwaH9kVEPmY5ijytedJ (share it from that page's Share menu). It is built with
+`flutter build web --release --no-web-resources-cdn` and published without Flutter's service worker.
+
 ## Run it
 
 Install Flutter (stable) from flutter.dev, then in this folder:

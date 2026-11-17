@@ -43,8 +43,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     <>
       <section className="relative overflow-hidden bg-ink text-white">
         {/* Two soft lights drifting slowly behind the words: the sea and the sun. */}
-        <span aria-hidden className="glow pointer-events-none absolute -top-40 end-[-10%] h-[30rem] w-[30rem] rounded-full bg-sea/50 blur-3xl" />
-        <span aria-hidden className="glow-slow pointer-events-none absolute -bottom-48 start-[-12%] h-[26rem] w-[26rem] rounded-full bg-tag/15 blur-3xl" />
+        <span aria-hidden className="glow pointer-events-none absolute -top-40 end-[-10%] h-[30rem] w-[30rem] rounded-full bg-sea/55 blur-3xl" />
+        <span aria-hidden className="glow-slow pointer-events-none absolute -bottom-48 start-[-12%] h-[26rem] w-[26rem] rounded-full bg-coral/25 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-10 pt-8 md:px-6 md:pb-16 md:pt-14 lg:grid-cols-[1fr_24rem]">
           <div>
@@ -152,7 +152,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             <span aria-hidden className="pointer-events-none absolute -bottom-24 -end-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
             <h2 className="relative max-w-[18ch] text-2xl font-bold leading-tight tracking-tight md:text-[28px]">{t.home.ctaTitle}</h2>
             <p className="relative mt-2 max-w-md text-[15px] leading-relaxed text-white/80">{t.home.ctaBody}</p>
-            <Link href={`/${lang}/post`} className="btn relative mt-6 bg-card !text-ink hover:bg-paper">
+            <Link href={`/${lang}/post`} className="btn btn-accent relative mt-6">
               <PlusIcon width={18} height={18} />
               {t.home.ctaButton}
             </Link>

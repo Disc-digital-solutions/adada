@@ -2,19 +2,24 @@ import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 
 /// The website's design tokens, so the app and the site look like one product.
+/// Mediterranean teal for actions, warm coral for posting and saving, sun yellow for the brand
+/// mark, deep ink on warm off-white. The same values as the website's globals.css.
 class C {
-  static const paper = Color(0xFFF6F8F9);
+  static const paper = Color(0xFFF7F6F2);
   static const card = Color(0xFFFFFFFF);
-  static const ink = Color(0xFF0F1F29);
-  static const inkSoft = Color(0xFF5A6B75);
-  static const line = Color(0xFFE2E8EC);
-  static const sea = Color(0xFF0A6C88);
-  static const seaDeep = Color(0xFF07506A);
-  static const seaWash = Color(0xFFE3F1F5);
-  static const tag = Color(0xFFFFD23F);
+  static const ink = Color(0xFF13232B);
+  static const inkSoft = Color(0xFF5B6770);
+  static const line = Color(0xFFE6E2DA);
+  static const sea = Color(0xFF0E7C74);
+  static const seaDeep = Color(0xFF0A5E58);
+  static const seaWash = Color(0xFFE1F2EE);
+  static const coral = Color(0xFFE8603C);
+  static const coralDeep = Color(0xFFCF4D2B);
+  static const coralWash = Color(0xFFFDEBE5);
+  static const tag = Color(0xFFFFC83D);
   static const wa = Color(0xFF25D366);
-  static const alert = Color(0xFFC8352B);
-  static const alertWash = Color(0xFFFBECEB);
+  static const alert = Color(0xFFB42318);
+  static const alertWash = Color(0xFFFBE9E7);
   static const women = Color(0xFF8A1F55);
   static const womenWash = Color(0xFFFBE8F1);
   static const ok = Color(0xFF1D6A3D);

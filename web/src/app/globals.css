@@ -6,17 +6,22 @@
  * which is used for prices and nothing else.
  */
 @theme {
-  --color-paper: #f6f8f9;
+  /* Mediterranean teal for actions and trust, warm coral for the key action (posting) and saving,
+     sun yellow for the brand mark, deep ink for text on a warm off-white. Change colours here only. */
+  --color-paper: #f7f6f2;
   --color-card: #ffffff;
-  --color-ink: #0f1f29;
-  --color-ink-soft: #5a6b75;
-  --color-line: #e2e8ec;
-  --color-sea: #0a6c88;
-  --color-sea-deep: #07506a;
-  --color-sea-wash: #e3f1f5;
-  --color-tag: #ffd23f;
+  --color-ink: #13232b;
+  --color-ink-soft: #5b6770;
+  --color-line: #e6e2da;
+  --color-sea: #0e7c74;
+  --color-sea-deep: #0a5e58;
+  --color-sea-wash: #e1f2ee;
+  --color-coral: #e8603c;
+  --color-coral-deep: #cf4d2b;
+  --color-coral-wash: #fdebe5;
+  --color-tag: #ffc83d;
   --color-wa: #25d366;
-  --color-alert: #c8352b;
+  --color-alert: #b42318;
   --font-sans: var(--font-readex), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -92,6 +97,15 @@
     color: var(--color-sea-deep);
   }
   /* WhatsApp's own green, with dark text: white on this green is too faint to read. */
+  /* The key action: posting. Coral with dark text (4.7:1). */
+  .btn-accent {
+    background: var(--color-coral);
+    color: var(--color-ink);
+  }
+  .btn-accent:hover {
+    background: var(--color-coral-deep);
+    color: #fff;
+  }
   .btn-wa {
     background: var(--color-wa);
     color: var(--color-ink);
@@ -178,7 +192,7 @@
     width: 0.3rem;
     height: 0.3rem;
     border-radius: 50%;
-    background: rgb(16 36 46 / 0.55);
+    background: rgb(19 35 43 / 0.55);
     transform: translateY(-50%);
   }
   html[dir="rtl"] .price-tag {
@@ -214,7 +228,7 @@
     border: 1px solid var(--color-line);
     border-radius: 0.875rem;
     background: var(--color-card);
-    box-shadow: 0 1px 2px rgb(15 31 41 / 0.04), 0 4px 16px -8px rgb(15 31 41 / 0.08);
+    box-shadow: 0 1px 2px rgb(19 35 43 / 0.04), 0 4px 16px -8px rgb(19 35 43 / 0.08);
   }
 
   .eyebrow {
@@ -254,7 +268,7 @@
   }
   .notice-alert {
     border-color: var(--color-alert);
-    background: #fbeceb;
+    background: #fbe9e7;
   }
 }
 
@@ -341,10 +355,10 @@ html[data-lowdata] .photo-img {
 }
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgb(10 108 136 / 0.45);
+    box-shadow: 0 0 0 0 rgb(232 96 60 / 0.45);
   }
   100% {
-    box-shadow: 0 0 0 14px rgb(10 108 136 / 0);
+    box-shadow: 0 0 0 14px rgb(232 96 60 / 0);
   }
 }
 @keyframes pop {
@@ -406,7 +420,7 @@ html[data-lowdata] .photo-img {
 
   /* Grey placeholders with a light sweeping across them. */
   .shimmer {
-    background: linear-gradient(90deg, var(--color-line) 0%, #eef2f4 40%, var(--color-line) 80%);
+    background: linear-gradient(90deg, var(--color-line) 0%, #efece6 40%, var(--color-line) 80%);
     background-size: 200% 100%;
     animation: shimmer 1.4s linear infinite;
   }
@@ -420,7 +434,7 @@ html[data-lowdata] .photo-img {
   }
   .lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px -14px rgb(15 31 41 / 0.28);
+    box-shadow: 0 12px 28px -14px rgb(19 35 43 / 0.28);
   }
   .lift:active {
     transform: translateY(0) scale(0.98);
