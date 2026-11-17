@@ -8,7 +8,7 @@ export const site = {
   name: "Island Market",
   /** The public address, used in shared links and QR codes. Set NEXT_PUBLIC_SITE_URL when deployed. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3240").replace(/\/$/, ""),
-  themeColor: "#0e7c74",
+  themeColor: "#0b5d6b",
   /**
    * The team's WhatsApp line, country code first, e.g. +905331234567. Set NEXT_PUBLIC_TEAM_WHATSAPP.
    * While the database is not connected, posting and reporting go to this line and a person

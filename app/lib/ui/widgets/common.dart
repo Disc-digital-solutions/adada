@@ -63,7 +63,7 @@ class _SavedButton extends StatelessWidget {
         isLabelVisible: count > 0,
         label: Text('$count'),
         backgroundColor: C.coral,
-        textColor: C.ink,
+        textColor: Colors.white,
         child: Icon(count > 0 ? Icons.favorite : Icons.favorite_border),
       ),
     );
@@ -280,7 +280,7 @@ class WaButton extends StatelessWidget {
     onPressed: onPressed,
     style: FilledButton.styleFrom(
       backgroundColor: C.wa,
-      foregroundColor: C.ink,
+      foregroundColor: Colors.white,
     ),
     icon: const Icon(Icons.chat_bubble_outline, size: 20),
     label: Text(label),

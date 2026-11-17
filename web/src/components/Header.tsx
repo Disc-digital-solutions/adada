@@ -12,7 +12,7 @@ export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5 md:px-6">
         <Link href={`/${lang}`} className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-ink">
           {/* The mark is the price tag itself. */}
-          <span aria-hidden className="price-tag !px-0 h-5 w-7" />
+          <span aria-hidden className="price-tag brand-mark !px-0 h-5 w-7" />
           <span>{site.name}</span>
         </Link>
 
@@ -59,7 +59,7 @@ export function BottomNav({ lang, t }: { lang: Lang; t: Dictionary }) {
           {t.nav.services}
         </Link>
         <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-coral-deep">
-          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-coral text-ink shadow-[0_2px_0_var(--color-coral-deep)] transition active:scale-90">
+          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-coral text-white shadow-[0_2px_0_var(--color-coral-deep)] transition active:scale-90">
             <PlusIcon />
           </span>
           {t.nav.post}

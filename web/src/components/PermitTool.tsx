@@ -71,7 +71,7 @@ export function PermitTool({ t, lang }: { t: Dictionary; lang: Lang }) {
     URL.revokeObjectURL(url);
   }
 
-  const tone = left === null ? "" : left < 0 ? "bg-alert text-white" : left <= saved.lead ? "bg-tag text-ink" : "bg-ink text-white";
+  const tone = left === null ? "" : left < 0 ? "bg-alert text-white" : left <= saved.lead ? "bg-notice text-notice-ink" : "bg-ink text-white";
 
   return (
     <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start">

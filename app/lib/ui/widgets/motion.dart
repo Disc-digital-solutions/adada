@@ -45,7 +45,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
           shaderCallback: (bounds) => LinearGradient(
             begin: Alignment(-1.6 + 3.2 * _controller.value, -0.3),
             end: Alignment(-0.6 + 3.2 * _controller.value, 0.3),
-            colors: const [Color(0xFFE9E5DE), Color(0xFFF6F4EF), Color(0xFFE9E5DE)],
+            colors: const [C.sunken, Color(0xFFF7F9FA), C.sunken],
           ).createShader(bounds),
           child: child,
         ),

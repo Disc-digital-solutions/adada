@@ -43,8 +43,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     <>
       <section className="relative overflow-hidden bg-ink text-white">
         {/* Two soft lights drifting slowly behind the words: the sea and the sun. */}
-        <span aria-hidden className="glow pointer-events-none absolute -top-40 end-[-10%] h-[30rem] w-[30rem] rounded-full bg-sea/55 blur-3xl" />
-        <span aria-hidden className="glow-slow pointer-events-none absolute -bottom-48 start-[-12%] h-[26rem] w-[26rem] rounded-full bg-coral/25 blur-3xl" />
+        <span aria-hidden className="glow pointer-events-none absolute -top-40 end-[-10%] h-[30rem] w-[30rem] rounded-full bg-sea/40 blur-3xl" />
+        <span aria-hidden className="glow-slow pointer-events-none absolute -bottom-48 start-[-12%] h-[26rem] w-[26rem] rounded-full bg-sea-wash/10 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-10 pt-8 md:px-6 md:pb-16 md:pt-14 lg:grid-cols-[1fr_24rem]">
           <div>
@@ -253,9 +253,9 @@ function ServiceMarquee({ lang }: { lang: Lang }) {
     <Link
       key={service.slug}
       href={`/${lang}/c/${service.slug}`}
-      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[13px] text-white/85 transition hover:border-tag hover:text-white"
+      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[13px] text-white/85 transition hover:border-white/50 hover:text-white"
     >
-      <ServiceIcon name={service.icon} width={15} height={15} className="text-tag" />
+      <ServiceIcon name={service.icon} width={15} height={15} className="text-white/60" />
       {service.name[lang]}
     </Link>
   ));
@@ -266,7 +266,7 @@ function ServiceMarquee({ lang }: { lang: Lang }) {
         <span aria-hidden className="contents">
           {SERVICES.map((service) => (
             <span key={service.slug} className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[13px] text-white/85">
-              <ServiceIcon name={service.icon} width={15} height={15} className="text-tag" />
+              <ServiceIcon name={service.icon} width={15} height={15} className="text-white/60" />
               {service.name[lang]}
             </span>
           ))}

@@ -51,7 +51,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           {t.skip}
         </a>
         {getRepo().isDemo ? (
-          <p className="border-b border-line bg-[#fff8e1] px-4 py-1 text-center text-[12px] font-medium text-[#6b5300]">{t.demo.banner}</p>
+          <p className="border-b border-line bg-notice px-4 py-1 text-center text-[12px] font-medium text-notice-ink">{t.demo.banner}</p>
         ) : null}
         <Header lang={lang} t={t} />
         <main id="main">{children}</main>

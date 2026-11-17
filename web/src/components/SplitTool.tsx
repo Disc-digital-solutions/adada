@@ -103,7 +103,7 @@ export function SplitTool({ t }: { t: Dictionary }) {
           {names.map((n, i) => (
             <li key={i} className="flex justify-between">
               <span>{n}</span>
-              <span className={`tabular-nums ${owed[i] < 0 ? "text-alert" : owed[i] > 0 ? "text-[#1d6a3d]" : ""}`} dir="ltr">
+              <span className={`tabular-nums ${owed[i] < 0 ? "text-alert" : owed[i] > 0 ? "text-ok" : ""}`} dir="ltr">
                 {owed[i] > 0 ? "+" : ""}
                 {money(owed[i])}
               </span>

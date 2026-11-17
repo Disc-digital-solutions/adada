@@ -158,7 +158,7 @@ async function ServiceListings({
     <>
       <nav aria-label={t.search.city} className="swipe-row -mx-4 mb-4 flex gap-2 px-4 pb-1 md:mx-0 md:flex-wrap md:px-0">
         {housing ? (
-          <Link href={href({ city, women: !women })} className={`${chip(women)} !border-[#e7b8cf]`}>
+          <Link href={href({ city, women: !women })} className={`${chip(women)} !border-women/30`}>
             {t.trust.womenFilter}
           </Link>
         ) : null}

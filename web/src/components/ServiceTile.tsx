@@ -85,7 +85,7 @@ export function ServiceArt({
   return (
     <div
       className={`relative flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden ${className}`}
-      style={{ background: `linear-gradient(160deg, #ffffff 0%, ${tone.bg} 100%)`, color: tone.fg }}
+      style={{ background: tone.bg, color: tone.fg }}
     >
       <ServiceIcon name={service.icon} width="30%" height="30%" strokeWidth={1.25} />
       {label ? (

@@ -377,7 +377,7 @@ class _PermitScreenState extends State<PermitScreen> {
     final start = valid ? minusDays(_expiry, _lead) : null;
     final startLeft = start == null ? null : daysUntil(start, today);
     final items = s.list('permit.items');
-    final (bg, fg) = left == null ? (C.ink, Colors.white) : left < 0 ? (C.alert, Colors.white) : left <= _lead ? (C.tag, C.ink) : (C.ink, Colors.white);
+    final (bg, fg) = left == null ? (C.ink, Colors.white) : left < 0 ? (C.alert, Colors.white) : left <= _lead ? (C.notice, C.noticeInk) : (C.ink, Colors.white);
 
     return AppPage(title: s.t('permit.title'), children: [
       Text(s.t('permit.intro'), style: const TextStyle(color: C.inkSoft)),

@@ -6,22 +6,34 @@
  * which is used for prices and nothing else.
  */
 @theme {
-  /* Mediterranean teal for actions and trust, warm coral for the key action (posting) and saving,
-     sun yellow for the brand mark, deep ink for text on a warm off-white. Change colours here only. */
-  --color-paper: #f7f6f2;
+  /* Island Market design system ("Harbour"). Calm neutrals; harbour teal for actions; burnt orange
+     only for posting and saving; gold only in the price-tag mark. Change colours here only; the app's
+     lib/ui/theme.dart holds the same values. Every text pair here meets WCAG AA. */
+  --color-paper: #f5f7f8;
   --color-card: #ffffff;
-  --color-ink: #13232b;
-  --color-ink-soft: #5b6770;
-  --color-line: #e6e2da;
-  --color-sea: #0e7c74;
-  --color-sea-deep: #0a5e58;
-  --color-sea-wash: #e1f2ee;
-  --color-coral: #e8603c;
-  --color-coral-deep: #cf4d2b;
-  --color-coral-wash: #fdebe5;
-  --color-tag: #ffc83d;
-  --color-wa: #25d366;
+  --color-sunken: #edf1f3;
+  --color-ink: #0f1e26;
+  --color-ink-soft: #4a5963;
+  --color-ink-faint: #66737d;
+  --color-line: #dde3e7;
+  --color-line-strong: #838f98;
+  --color-sea: #0b5d6b;
+  --color-sea-deep: #084652;
+  --color-sea-wash: #e5f0f2;
+  --color-coral: #c2410c;
+  --color-coral-deep: #9a3412;
+  --color-coral-wash: #fdeee6;
+  --color-tag: #e9a23b;
+  --color-wa: #1b7f4a;
+  --color-wa-deep: #146239;
   --color-alert: #b42318;
+  --color-alert-wash: #fdecea;
+  --color-ok: #15703f;
+  --color-ok-wash: #e3f3ea;
+  --color-women: #8a1f55;
+  --color-women-wash: #fbeaf2;
+  --color-notice: #fbf1de;
+  --color-notice-ink: #83560a;
   --font-sans: var(--font-readex), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -40,13 +52,13 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-sea);
+    outline: 2px solid var(--color-sea);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: var(--color-tag);
+    background: var(--color-sea-wash);
     color: var(--color-ink);
   }
 }
@@ -89,32 +101,33 @@
   }
   .btn-quiet {
     background: var(--color-card);
-    border-color: var(--color-line);
+    border-color: var(--color-line-strong);
     color: var(--color-ink);
   }
   .btn-quiet:hover {
     border-color: var(--color-sea);
     color: var(--color-sea-deep);
   }
-  /* WhatsApp's own green, with dark text: white on this green is too faint to read. */
-  /* The key action: posting. Coral with dark text (4.7:1). */
+  /* The key action: posting. Burnt orange with white text (5.2:1). */
   .btn-accent {
     background: var(--color-coral);
-    color: var(--color-ink);
+    color: #fff;
   }
   .btn-accent:hover {
     background: var(--color-coral-deep);
-    color: #fff;
   }
+  /* WhatsApp: a deeper green than WhatsApp's own, so white text reads (5.0:1). */
   .btn-wa {
     background: var(--color-wa);
-    color: var(--color-ink);
+    color: #fff;
   }
   .btn-wa:hover {
-    filter: brightness(0.95);
+    background: var(--color-wa-deep);
   }
   .btn:disabled {
-    opacity: 0.5;
+    background: var(--color-sunken);
+    border-color: transparent;
+    color: var(--color-ink-faint);
     cursor: not-allowed;
   }
 
@@ -122,7 +135,7 @@
     width: 100%;
     min-height: 2.75rem;
     padding: 0.55rem 0.8rem;
-    border: 1.5px solid var(--color-line);
+    border: 1.5px solid var(--color-line-strong);
     border-radius: 0.6rem;
     background: var(--color-card);
     color: var(--color-ink);
@@ -175,8 +188,8 @@
     position: relative;
     display: inline-block;
     padding: 0.42rem 0.7rem 0.42rem calc(var(--notch) + 0.6rem);
-    background: var(--color-tag);
-    color: var(--color-ink);
+    background: var(--color-ink);
+    color: #fff;
     font-size: 0.95rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
@@ -192,7 +205,7 @@
     width: 0.3rem;
     height: 0.3rem;
     border-radius: 50%;
-    background: rgb(19 35 43 / 0.55);
+    background: rgb(255 255 255 / 0.55);
     transform: translateY(-50%);
   }
   html[dir="rtl"] .price-tag {
@@ -202,6 +215,13 @@
   html[dir="rtl"] .price-tag::before {
     right: calc(var(--notch) + 0.05rem);
     left: auto;
+  }
+  /* The logo: the same tag in gold with an ink hole. Gold is used nowhere else. */
+  .price-tag.brand-mark {
+    background: var(--color-tag);
+  }
+  .price-tag.brand-mark::before {
+    background: var(--color-ink);
   }
   .price-tag-lg {
     --notch: 1rem;
@@ -228,7 +248,7 @@
     border: 1px solid var(--color-line);
     border-radius: 0.875rem;
     background: var(--color-card);
-    box-shadow: 0 1px 2px rgb(19 35 43 / 0.04), 0 4px 16px -8px rgb(19 35 43 / 0.08);
+    box-shadow: 0 1px 2px rgb(15 30 38 / 0.04), 0 4px 16px -8px rgb(15 30 38 / 0.08);
   }
 
   .eyebrow {
@@ -268,7 +288,7 @@
   }
   .notice-alert {
     border-color: var(--color-alert);
-    background: #fbe9e7;
+    background: var(--color-alert-wash);
   }
 }
 
@@ -355,10 +375,10 @@ html[data-lowdata] .photo-img {
 }
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgb(232 96 60 / 0.45);
+    box-shadow: 0 0 0 0 rgb(194 65 12 / 0.4);
   }
   100% {
-    box-shadow: 0 0 0 14px rgb(232 96 60 / 0);
+    box-shadow: 0 0 0 14px rgb(194 65 12 / 0);
   }
 }
 @keyframes pop {
@@ -420,7 +440,7 @@ html[data-lowdata] .photo-img {
 
   /* Grey placeholders with a light sweeping across them. */
   .shimmer {
-    background: linear-gradient(90deg, var(--color-line) 0%, #efece6 40%, var(--color-line) 80%);
+    background: linear-gradient(90deg, var(--color-line) 0%, var(--color-sunken) 40%, var(--color-line) 80%);
     background-size: 200% 100%;
     animation: shimmer 1.4s linear infinite;
   }
@@ -434,7 +454,7 @@ html[data-lowdata] .photo-img {
   }
   .lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px -14px rgb(19 35 43 / 0.28);
+    box-shadow: 0 12px 28px -14px rgb(15 30 38 / 0.28);
   }
   .lift:active {
     transform: translateY(0) scale(0.98);

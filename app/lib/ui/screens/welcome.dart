@@ -62,7 +62,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   margin: const EdgeInsets.all(4),
                   width: i == _page ? 22 : 8,
                   height: 8,
-                  decoration: BoxDecoration(color: i == _page ? C.tag : Colors.white24, borderRadius: BorderRadius.circular(4)),
+                  decoration: BoxDecoration(color: i == _page ? Colors.white : Colors.white24, borderRadius: BorderRadius.circular(4)),
                 ),
             ]),
             Padding(
@@ -72,7 +72,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   TextButton(onPressed: () => _go(0), child: Text(s.t('app.back'), style: const TextStyle(color: Colors.white70))),
                 const Spacer(),
                 FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: C.tag, foregroundColor: C.ink, minimumSize: const Size(140, 52)),
+                  style: FilledButton.styleFrom(backgroundColor: Colors.white, foregroundColor: C.ink, minimumSize: const Size(140, 52)),
                   onPressed: _page == 0
                       ? () => _go(1)
                       : () {
@@ -146,7 +146,7 @@ class _Choice extends StatelessWidget {
         decoration: BoxDecoration(
           color: selected ? Colors.white : Colors.white.withValues(alpha: 0.07),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: selected ? C.tag : Colors.white24, width: 1.5),
+          border: Border.all(color: selected ? Colors.white : Colors.white24, width: 1.5),
         ),
         child: Material(
           type: MaterialType.transparency,

@@ -13,7 +13,7 @@ export function Footer({ lang, t }: { lang: Lang; t: Dictionary }) {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 md:grid-cols-[16rem_1fr] md:px-6">
         <div>
           <p className="flex items-center gap-2 text-[17px] font-bold tracking-tight">
-            <span aria-hidden className="price-tag !px-0 h-5 w-7" />
+            <span aria-hidden className="price-tag brand-mark !px-0 h-5 w-7" />
             {site.name}
           </p>
           <p className="mt-2 text-sm text-ink-soft">{t.footer.about}</p>

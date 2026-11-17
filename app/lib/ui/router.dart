@@ -111,7 +111,7 @@ class _Shell extends StatelessWidget {
             NavigationDestination(icon: const Icon(Icons.home_outlined), selectedIcon: const Icon(Icons.home), label: s.t('nav.home')),
             NavigationDestination(icon: const Icon(Icons.grid_view_outlined), selectedIcon: const Icon(Icons.grid_view), label: s.t('nav.services')),
             NavigationDestination(
-              icon: const CircleAvatar(radius: 16, backgroundColor: C.coral, child: Icon(Icons.add, color: C.ink, size: 22)),
+              icon: const CircleAvatar(radius: 16, backgroundColor: C.coral, child: Icon(Icons.add, color: Colors.white, size: 22)),
               label: s.t('nav.post'),
             ),
             NavigationDestination(icon: const Icon(Icons.search), label: s.t('nav.search')),

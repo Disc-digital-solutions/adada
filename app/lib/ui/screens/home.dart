@@ -46,9 +46,9 @@ class HomeScreen extends StatelessWidget {
       children: [
         if (bundle.repo.isDemo)
           Container(
-            color: const Color(0xFFFFF8E1),
+            color: C.notice,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-            child: Text(s.t('demo.banner'), textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: Color(0xFF6B5300), fontWeight: FontWeight.w500)),
+            child: Text(s.t('demo.banner'), textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: C.noticeInk, fontWeight: FontWeight.w500)),
           ),
         _Hero(),
         Padding(
@@ -208,7 +208,7 @@ class _PostBand extends StatelessWidget {
           const SizedBox(height: 16),
           FilledButton.icon(
             onPressed: () => context.go('/post'),
-            style: FilledButton.styleFrom(backgroundColor: C.coral, foregroundColor: C.ink),
+            style: FilledButton.styleFrom(backgroundColor: C.coral, foregroundColor: Colors.white),
             icon: const Icon(Icons.add, size: 18),
             label: Text(s.t('home.ctaButton')),
           ),
