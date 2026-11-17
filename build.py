@@ -779,7 +779,7 @@ footer{margin-top:44px;color:var(--tx3);font-size:12.5px}
 <p class="lead">Four endings, all acceptable. Checkpoints: June 2027, December 2027, June 2028.</p>
 <div class="ends" id="ends"></div>
 
-<footer>Working name: trnc-app · generated __DATE__ from build.py · planning document, nothing here is built yet</footer>
+<footer>Adada · generated __DATE__ from build.py · planning document, nothing here is built yet</footer>
 
 <script>
 const D = __DATA__;

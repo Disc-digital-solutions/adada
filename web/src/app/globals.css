@@ -6,7 +6,7 @@
  * which is used for prices and nothing else.
  */
 @theme {
-  /* Island Market design system ("Harbour"). Calm neutrals; harbour teal for actions; burnt orange
+  /* Adada design system ("Harbour"). Calm neutrals; harbour teal for actions; burnt orange
      only for posting and saving; gold only in the price-tag mark. Change colours here only; the app's
      lib/ui/theme.dart holds the same values. Every text pair here meets WCAG AA. */
   --color-paper: #f5f7f8;

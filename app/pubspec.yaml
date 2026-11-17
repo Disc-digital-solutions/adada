@@ -1,5 +1,5 @@
 name: island_market
-description: "Island Market: buy, sell, rent and find services in North Cyprus, in Turkish, English and Arabic."
+description: "Adada: buy, sell, rent and find services in North Cyprus, in Turkish, English and Arabic."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

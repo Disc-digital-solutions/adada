@@ -1,4 +1,4 @@
-# Island Market — all features
+# Adada — all features
 
 ## Languages and display
 - Turkish

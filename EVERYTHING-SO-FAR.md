@@ -100,7 +100,7 @@ and Mzad Qatar.
 | **Rentals and dorms only. No property for sale until a lawyer advises.** | The court cases in the south. |
 | **Its own brand and company,** separate from any business either of us already has. Ads are never ranked by who posted them. | So that agencies, dorms and dealers can trust it. |
 | **No food delivery, no taxi app.** | Others already do them. |
-| **"Island Market" is a working name.** | The real name is still to choose. |
+| **The name is "Adada".** | Chosen. Check the .com domain and the Instagram and TikTok names are free. |
 
 ## 4. The plan that was written
 
@@ -179,7 +179,7 @@ Numbers marked *proposed* are a first guess, for the two of us to set together.
 | # | Who | What | Done when |
 |---|---|---|---|
 | 1 | Both | **One page, written and signed:** who does what, the split, what happens if one of us stops. The points to cover are in section 10. | Both have signed |
-| 2 | Both | **The name.** It must work in Turkish, English and Arabic, with a free .com and free Instagram and TikTok names. "Island Market" is only a working name. | Domain bought |
+| 2 | Both | **The name.** It must work in Turkish, English and Arabic, with a free .com and free Instagram and TikTok names. The name "Adada" is chosen. | Domain bought |
 | 3 | Partner and campus team | **The Facebook count.** For seven days, in the ten biggest buy-sell and housing groups, count what is posted, in which language, in which city, and how fast it sells. Note the twenty most active sellers. The sheet is in `VALIDATION-KIT.md`. | The sheet is filled for 7 days |
 | 4 | Partner | **Ask for supply.** Ask those twenty sellers: "may we put your items on our site for free?" Ask 10 dorm operators and 20 landlords the same. | Answers written down, yes or no |
 | 5 | Partner | **Read the Turkish.** Open the site in Turkish and mark every word that sounds wrong. | List sent to Mustafa |

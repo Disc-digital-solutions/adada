@@ -1,6 +1,6 @@
 # The mobile app (Flutter)
 
-The Island Market app for Android and iPhone. It sits next to the website (`../web`); it does not replace it.
+The Adada app for Android and iPhone. It sits next to the website (`../web`); it does not replace it.
 
 **Why both.** The whole growth plan runs on links that open without installing anything: ads pasted in
 Facebook and WhatsApp groups, shop QR codes, Google search. The website answers those links; the app is for
@@ -108,7 +108,7 @@ legal agreement, so accept it yourself.
 - **Store accounts.** Google Play's list of developer countries does not include Northern Cyprus, and Apple's
   position is unclear (see `../EVERYTHING-SO-FAR.md`). The developer account may need to be held by a company
   registered elsewhere, for example in Turkey. Settle this before planning a store launch date.
-- **App name and icon.** "Island Market" is a working name; the icon is Flutter's default.
+- **App name and icon.** The app is called "Adada"; the icon is a placeholder until the real logo exists.
 - **Package name.** `com.islandmarket.island_market`; change it to the real company domain before the first
   upload, because it cannot be changed afterwards.
 - **Links into the app.** The routes match the website's addresses (`/l/<id>`, `/s/<shop>`, `/c/<service>`),

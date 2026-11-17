@@ -33,7 +33,7 @@ String permitCalendar({
     ('start', atLeastToday(minusDays(expiry, leadDays)), startTitle),
     ('week', atLeastToday(minusDays(expiry, 7)), lastWeekTitle),
   ];
-  final lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Island Market//Permit reminder//EN', 'CALSCALE:GREGORIAN'];
+  final lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Adada//Permit reminder//EN', 'CALSCALE:GREGORIAN'];
   for (final (id, date, title) in events) {
     lines.addAll([
       'BEGIN:VEVENT',

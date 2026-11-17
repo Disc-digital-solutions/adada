@@ -26,5 +26,5 @@ TO RUN THE WEBSITE ON YOUR COMPUTER (optional)
 4. npm run dev            (in Windows PowerShell: npm.cmd run dev)
 5. Open http://localhost:3240
 
-"Island Market" is a working name. The Turkish wording still needs a native read: please mark anything
+The product is called "Adada". The Turkish wording still needs a native read: please mark anything
 that sounds wrong.

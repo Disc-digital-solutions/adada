@@ -31897,7 +31897,7 @@ return s!=null&&B.c.c8(s.nl(),a)},
 aYZ(a,b){return B.c.a0(A.kD(a+"T00:00:00Z").lp(0-A.dW(b,0,0,0,0,0).a).nl(),0,10)},
 aYm(a){var s=A.adT(A.cQ(a,"\\","\\\\"),A.bv("[,;]",!0,!1),new A.aSl(),null)
 return A.cQ(s,"\n","\\n")},
-bq2(a,b,c,d,e,f,g){var s,r,q,p,o,n,m,l,k=new A.aUb(g),j=[new A.eK("start",k.$1(A.aYZ(a,c)),f),new A.eK("week",k.$1(A.aYZ(a,7)),b)],i=t.s,h=A.b(["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Island Market//Permit reminder//EN","CALSCALE:GREGORIAN"],i)
+bq2(a,b,c,d,e,f,g){var s,r,q,p,o,n,m,l,k=new A.aUb(g),j=[new A.eK("start",k.$1(A.aYZ(a,c)),f),new A.eK("week",k.$1(A.aYZ(a,7)),b)],i=t.s,h=A.b(["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Adada//Permit reminder//EN","CALSCALE:GREGORIAN"],i)
 for(s="DTSTAMP:"+e,r=0;r<2;++r){q=j[r]
 p=q.b
 o=q.c

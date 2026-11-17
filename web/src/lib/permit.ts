@@ -47,7 +47,7 @@ export function permitCalendar(input: {
     { id: "start", date: atLeastToday(minusDays(input.expiry, input.leadDays)), title: input.startTitle },
     { id: "week", date: atLeastToday(minusDays(input.expiry, 7)), title: input.lastWeekTitle },
   ];
-  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Island Market//Permit reminder//EN", "CALSCALE:GREGORIAN"];
+  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Adada//Permit reminder//EN", "CALSCALE:GREGORIAN"];
   for (const e of events) {
     lines.push(
       "BEGIN:VEVENT",

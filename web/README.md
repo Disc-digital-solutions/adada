@@ -2,7 +2,7 @@
 
 This is the code for Level 1 of the plan. The exact scope is in `../LEVEL-1-SPEC.md`.
 
-"Island Market" is a **working name**. It lives in one place, `src/site.config.ts`.
+The product is called **Adada**. The name lives in one place, `src/site.config.ts`.
 
 ## Run it
 

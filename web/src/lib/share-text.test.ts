@@ -33,7 +33,7 @@ describe("groupPost", () => {
 
 describe("teamAdMessage", () => {
   const labels: TeamAdLabels = {
-    intro: "New ad for Island Market",
+    intro: "New ad for Adada",
     kind: "Type",
     kindValue: "I am selling",
     title: "Title",
@@ -52,7 +52,7 @@ describe("teamAdMessage", () => {
       ),
     ).toBe(
       [
-        "New ad for Island Market",
+        "New ad for Adada",
         "",
         "Type: I am selling",
         "Title: Desk",
@@ -79,6 +79,6 @@ describe("teamAdMessage", () => {
   it("leaves out what was not filled in", () => {
     expect(
       teamAdMessage({ title: "Desk", price: null, category: "", city: "Nicosia", description: "  ", hasPhotos: false }, labels),
-    ).toBe(["New ad for Island Market", "", "Type: I am selling", "Title: Desk", "City: Nicosia"].join("\n"));
+    ).toBe(["New ad for Adada", "", "Type: I am selling", "Title: Desk", "City: Nicosia"].join("\n"));
   });
 });

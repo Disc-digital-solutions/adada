@@ -31,10 +31,10 @@ describe("contactMessage", () => {
     expect(
       contactMessage('Hi, I saw "{title}" on {site}: {url}', {
         title: "Study desk",
-        site: "Island Market",
+        site: "Adada",
         url: "https://example.com/en/l/abc",
       }),
-    ).toBe('Hi, I saw "Study desk" on Island Market: https://example.com/en/l/abc');
+    ).toBe('Hi, I saw "Study desk" on Adada: https://example.com/en/l/abc');
   });
 
   test("does not treat braces inside the title as placeholders", () => {

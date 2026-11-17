@@ -24,9 +24,9 @@ sed -i 's#<base href="/">#<base href="./">#' "$OUT/index.html"
 grep -q '<base href="./">' "$OUT/index.html" || { echo "base not set" >&2; exit 1; }
 # If Pages serves the repository root, send visitors on to the demo.
 cat > ../index.html <<'HTML'
-<!doctype html><meta charset="utf-8"><title>Island Market</title>
+<!doctype html><meta charset="utf-8"><title>Adada</title>
 <meta http-equiv="refresh" content="0; url=docs/">
-<a href="docs/">Open the Island Market demo</a>
+<a href="docs/">Open the Adada demo</a>
 HTML
 touch ../.nojekyll
 echo "Built into docs/"

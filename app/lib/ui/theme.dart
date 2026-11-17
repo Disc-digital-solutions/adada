@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 
-/// The Island Market design system ("Harbour"), the same values as the website's globals.css.
+/// The Adada design system ("Harbour"), the same values as the website's globals.css.
 /// Calm cool neutrals; harbour teal for actions; burnt orange only for posting and saving; gold only in
 /// the price-tag mark. Every text pair here meets WCAG AA.
 class C {

@@ -5,7 +5,7 @@ import type { City } from "./lib/types";
  * The name is a WORKING NAME (decision 7 in ../README.md). Change it here only.
  */
 export const site = {
-  name: "Island Market",
+  name: "Adada",
   /** The public address, used in shared links and QR codes. Set NEXT_PUBLIC_SITE_URL when deployed. */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3240").replace(/\/$/, ""),
   themeColor: "#0b5d6b",
