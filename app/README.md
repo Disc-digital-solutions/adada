@@ -54,14 +54,14 @@ the sample ads. To put it online:
 
 1. The repository must be public, or the organisation must be on a paid GitHub plan (Pages on private
    repositories is a paid feature).
-2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, pick the branch
-   that holds `docs/` and the folder **/docs**, then **Save**.
-3. After a minute or two it is live at `https://<owner>.github.io/adada/`
-   (here: https://disc-digital-solutions.github.io/adada/).
+2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, pick `main` and
+   either folder, then **Save**.
+3. After a minute or two it is live at https://disc-digital-solutions.github.io/adada/ (with the root
+   folder, that address forwards to `/adada/docs/`).
 
-To rebuild it after changing the app, run in this folder `tool/build_pages.sh` and commit `docs/`. If the
-repository is renamed or a custom domain is used, pass the new path: `tool/build_pages.sh /new-name/` or
-`tool/build_pages.sh /`.
+To rebuild it after changing the app, run in this folder `tool/build_pages.sh` and commit `docs/`, `index.html`
+and `.nojekyll`. The build uses a relative base, so it keeps working if the repository is renamed or moved to a
+custom domain.
 
 A private copy is also published at https://claude.ai/artifact/4LRDwaH9kVEPmY5ijytedJ (share it from that
 page's Share menu).

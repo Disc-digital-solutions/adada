@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # Builds the web demo of the app into ../docs for GitHub Pages.
-# Usage (from app/):  tool/build_pages.sh [base-href]
-# base-href is the repository name between slashes (default /adada/).
-# For a custom domain, pass "/".
+# Usage (from app/):  tool/build_pages.sh
+# The build uses a relative base, so it works whether Pages serves the
+# repository root (site at /<repo>/docs/) or the /docs folder (site at /<repo>/).
 set -euo pipefail
 cd "$(dirname "$0")/.."
-BASE="${1:-/adada/}"
-flutter build web --release --no-web-resources-cdn --no-source-maps --base-href "$BASE" \
+flutter build web --release --no-web-resources-cdn --no-source-maps --base-href / \
   ${TEAM_WHATSAPP:+--dart-define=TEAM_WHATSAPP=$TEAM_WHATSAPP} \
   ${SITE_URL:+--dart-define=SITE_URL=$SITE_URL}
 OUT=../docs
@@ -20,5 +19,14 @@ grep -q '_flutter.loader.load();' "$OUT/flutter_bootstrap.js" || { echo "service
 rm -f "$OUT"/canvaskit/skwasm* "$OUT"/canvaskit/wimp* "$OUT"/canvaskit/*.symbols "$OUT"/canvaskit/*/*.symbols
 # GitHub Pages: serve files as they are; send unknown addresses to the app.
 touch "$OUT/.nojekyll"
-cp "$OUT/index.html" "$OUT/404.html"
-echo "Built into docs/ with base $BASE"
+# The app uses #/ addresses, so a relative base works from any folder.
+sed -i 's#<base href="/">#<base href="./">#' "$OUT/index.html"
+grep -q '<base href="./">' "$OUT/index.html" || { echo "base not set" >&2; exit 1; }
+# If Pages serves the repository root, send visitors on to the demo.
+cat > ../index.html <<'HTML'
+<!doctype html><meta charset="utf-8"><title>Island Market</title>
+<meta http-equiv="refresh" content="0; url=docs/">
+<a href="docs/">Open the Island Market demo</a>
+HTML
+touch ../.nojekyll
+echo "Built into docs/"
