@@ -3,6 +3,7 @@ import type { Lang } from "@/i18n/config";
 import { CURRENCIES, type Category, type ListingFilter } from "@/lib/types";
 import { CITIES } from "@/site.config";
 import { SearchIcon } from "./icons";
+import { withBase } from "@/lib/static-site";
 
 const SYMBOLS = { TRY: "₺ TRY", GBP: "£ GBP", EUR: "€ EUR", USD: "$ USD" } as const;
 
@@ -23,7 +24,7 @@ export function FilterForm({
 }) {
   const s = t.search;
   return (
-    <form action={`/${lang}/search`} className="panel grid gap-3 p-3 md:grid-cols-6 md:p-4">
+    <form action={withBase(`/${lang}/search`)} className="panel grid gap-3 p-3 md:grid-cols-6 md:p-4">
       <label className="relative md:col-span-6">
         <span className="sr-only">{s.placeholder}</span>
         <SearchIcon className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-ink-soft" />
@@ -105,7 +106,7 @@ export function FilterForm({
         <button type="submit" className="btn btn-primary">
           {s.apply}
         </button>
-        <a href={`/${lang}/search`} className="btn btn-quiet">
+        <a href={withBase(`/${lang}/search`)} className="btn btn-quiet">
           {s.clear}
         </a>
       </div>

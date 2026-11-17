@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import { STATIC_SITE } from "./static-site";
 
 /**
  * The time of this visit, in milliseconds.
@@ -7,6 +8,7 @@ import { connection } from "next/server";
  * free of anything that changes from one moment to the next.
  */
 export async function requestTime(): Promise<number> {
-  await connection();
+  // The static site is prepared once, when it is built; its sample ads are dated from that moment.
+  if (!STATIC_SITE) await connection();
   return Date.now();
 }

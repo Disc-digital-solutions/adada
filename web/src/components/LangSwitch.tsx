@@ -1,6 +1,7 @@
 "use client";
 
 import { LANGS, LANG_NAMES, switchLangPath, type Lang } from "@/i18n/config";
+import { BASE_PATH, withBase } from "@/lib/static-site";
 
 const SHORT: Record<Lang, string> = { tr: "TR", en: "EN", ar: "ع" };
 
@@ -19,14 +20,14 @@ export function LangSwitch({ current, label }: { current: Lang; label: string })
         return (
           <a
             key={lang}
-            href={`/${lang}`}
+            href={withBase(`/${lang}`)}
             hrefLang={lang}
             lang={lang}
             title={LANG_NAMES[lang]}
             aria-label={LANG_NAMES[lang]}
             aria-current={active ? "true" : undefined}
             onClick={(event) => {
-              event.currentTarget.href = switchLangPath(window.location.pathname, lang) + window.location.search;
+              event.currentTarget.href = withBase(switchLangPath(window.location.pathname.slice(BASE_PATH.length) || "/", lang)) + window.location.search;
             }}
             className={`grid h-8 min-w-9 place-items-center rounded-full px-2 text-[13px] font-semibold ${
               active ? "bg-ink text-white" : "text-ink-soft hover:text-ink"

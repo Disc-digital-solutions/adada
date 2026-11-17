@@ -16,13 +16,20 @@ import { LANGS, isLang } from "@/i18n/config";
 import { plural } from "@/i18n/plural";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
+import { STATIC_SITE } from "@/lib/static-site";
 import { formatMoney, timeAgo } from "@/lib/format";
 import { tooLowComparedWith } from "@/lib/prices";
 import { groupPost } from "@/lib/share-text";
 import { whatsappLink } from "@/lib/whatsapp";
 import { site } from "@/site.config";
+import { DEMO_LISTINGS } from "@/lib/data/demo-data";
 
 type Props = PageProps<"/[lang]/l/[id]">;
+
+/** Every sample ad, so the static site can prepare a page for each. */
+export function generateStaticParams() {
+  return DEMO_LISTINGS.map((listing) => ({ id: listing.id }));
+}
 
 /** The title and picture that WhatsApp and others show when the link is shared. */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,12 +61,15 @@ export default function ListingPage(props: Props) {
 async function ListingView({ params, searchParams }: Props) {
   const { lang, id } = await params;
   if (!isLang(lang)) notFound();
-  const { notice } = await searchParams;
+  // The static site has no WhatsApp counter page to come back from, so no ?notice= either.
+  const { notice } = STATIC_SITE ? { notice: undefined } : await searchParams;
   const now = await requestTime();
   const listing = await getRepo().listing(id, now);
   if (!listing) notFound();
 
   const t = getDictionary(lang);
+  // The WhatsApp button goes through the click counter (./wa), which the static site cannot run.
+  const waHref = STATIC_SITE ? "#no-seller" : `/${lang}/l/${listing.id}/wa`;
 
   if (listing.status === "removed") {
     return (
@@ -157,12 +167,14 @@ async function ListingView({ params, searchParams }: Props) {
           <p className="notice notice-alert mt-4">{t.trust.priceWarn.replace("{price}", formatMoney(usual, listing.currency, lang))}</p>
         ) : null}
         {notice === "sample" ? <p className="notice mt-4">{t.demo.noSeller}</p> : null}
+        {/* Static site: the WhatsApp button jumps here, since sample ads have no seller to message. */}
+        {STATIC_SITE ? <p id="no-seller" className="notice mt-4 hidden scroll-mt-24 target:block">{t.demo.noSeller}</p> : null}
         {sold ? <p className="notice notice-alert mt-4">{t.listing.soldNotice}</p> : null}
 
         {sold ? null : (
           <div className="mt-4 flex flex-wrap gap-2">
             {/* A plain link, never prefetched: opening it counts as one contact. */}
-            <a href={`/${lang}/l/${listing.id}/wa`} rel="nofollow" className="btn btn-wa min-w-[14rem] flex-1">
+            <a href={waHref} rel="nofollow" className="btn btn-wa min-w-[14rem] flex-1">
               <ChatIcon />
               {t.listing.whatsapp}
             </a>
@@ -203,7 +215,7 @@ async function ListingView({ params, searchParams }: Props) {
           <div className="enter fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-10 border-t border-line bg-card/95 px-4 py-2.5 backdrop-blur md:hidden" style={{ "--i": 4 } as React.CSSProperties}>
             <div className="mx-auto flex max-w-md items-center gap-3">
               {priceText(listing, lang, t) ? <bdi className="text-[19px] font-bold tabular-nums">{priceText(listing, lang, t)}</bdi> : null}
-              <a href={`/${lang}/l/${listing.id}/wa`} rel="nofollow" className="btn btn-wa flex-1">
+              <a href={waHref} rel="nofollow" className="btn btn-wa flex-1">
                 <ChatIcon width={18} height={18} />
                 {t.listing.whatsapp}
               </a>

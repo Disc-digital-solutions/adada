@@ -3,21 +3,21 @@ import type React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { GridSkeleton, ListingGrid } from "@/components/ListingCard";
+import { GridSkeleton } from "@/components/ListingCard";
+import { ServiceListings } from "@/components/ServiceListings";
+import { ServiceListingsClient } from "@/components/ServiceListingsClient";
 import { ServiceBadge, ServiceRow } from "@/components/ServiceTile";
 import { ChatIcon, PlusIcon } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { isLang, type Lang } from "@/i18n/config";
-import { plural } from "@/i18n/plural";
 import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
+import { STATIC_SITE } from "@/lib/static-site";
 import { SERVICES, groupOf, serviceBySlug, type Service } from "@/lib/services";
 import { whatsappLink } from "@/lib/whatsapp";
-import { CITIES, site } from "@/site.config";
+import { site } from "@/site.config";
 
 type Props = PageProps<"/[lang]/c/[slug]">;
-
-const HOUSING_CATEGORIES = ["rooms", "roommates", "dorms"];
 
 /** The services are a fixed list, so every service screen is prepared ahead of time. */
 export function generateStaticParams() {
@@ -106,7 +106,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
           </section>
         ) : (
           <Suspense fallback={<GridSkeleton />}>
-            <ServiceListings lang={lang} service={service} searchParams={searchParams} postHref={postHref} />
+            <ServiceAds lang={lang} service={service} searchParams={searchParams} postHref={postHref} />
           </Suspense>
         )}
 
@@ -123,7 +123,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
   );
 }
 
-async function ServiceListings({
+async function ServiceAds({
   lang,
   service,
   searchParams,
@@ -134,74 +134,18 @@ async function ServiceListings({
   searchParams: Props["searchParams"];
   postHref: string;
 }) {
-  const { city: rawCity, women: rawWomen } = await searchParams;
-  const city = typeof rawCity === "string" && CITIES.some((c) => c.slug === rawCity) ? rawCity : undefined;
-  // Flats, roommates and dorms can be filtered to places open to women only (ROOM-07).
-  const housing = service.categories.some((c) => HOUSING_CATEGORIES.includes(c));
-  const women = housing && rawWomen === "1";
-  const href = (next: { city?: string; women?: boolean }) => {
-    const params = new URLSearchParams();
-    if (next.city) params.set("city", next.city);
-    if (next.women) params.set("women", "1");
-    const query = params.toString();
-    return `/${lang}/c/${service.slug}${query ? `?${query}` : ""}`;
-  };
   const now = await requestTime();
   const t = getDictionary(lang);
-  const listings = await getRepo().search({ categories: service.categories, city, women: women || undefined, sort: "newest" }, now);
   const askLink = site.teamWhatsapp
     ? whatsappLink(site.teamWhatsapp, t.services.askMessage.replace("{service}", service.name[lang]))
     : null;
-  const chip = (active: boolean) => `chip ${active ? "!border-ink !bg-ink !text-white" : ""}`;
-
-  return (
-    <>
-      <nav aria-label={t.search.city} className="swipe-row -mx-4 mb-4 flex gap-2 px-4 pb-1 md:mx-0 md:flex-wrap md:px-0">
-        {housing ? (
-          <Link href={href({ city, women: !women })} className={`${chip(women)} !border-women/30`}>
-            {t.trust.womenFilter}
-          </Link>
-        ) : null}
-        <Link href={href({ women })} className={chip(!city)}>
-          {t.services.allCities}
-        </Link>
-        {CITIES.map((c) => (
-          <Link key={c.slug} href={href({ city: c.slug, women })} className={chip(city === c.slug)}>
-            {c.name[lang]}
-          </Link>
-        ))}
-      </nav>
-
-      {listings.length > 0 ? (
-        <>
-          <p className="mb-3 text-[15px] text-ink-soft" aria-live="polite">
-            {plural(lang, listings.length, t.search.results)}
-          </p>
-          <ListingGrid listings={listings} lang={lang} t={t} nowMs={now} />
-        </>
-      ) : (
-        // No ads yet: the plan's "by hand first". A person finds it for you on WhatsApp.
-        <div className="panel p-6 text-center md:p-10">
-          <h2 className="text-lg font-semibold">{t.services.emptyTitle}</h2>
-          <p className="mx-auto mt-1 max-w-md text-ink-soft">{t.services.emptyBody}</p>
-          {askLink ? (
-            <a href={askLink} target="_blank" rel="noopener" className="btn btn-wa mt-4">
-              <ChatIcon width={18} height={18} />
-              {t.services.askUs}
-            </a>
-          ) : null}
-        </div>
-      )}
-
-      <aside className="panel mt-8 flex flex-wrap items-center gap-4 p-5">
-        <div className="min-w-0 flex-1">
-          <h2 className="font-semibold">{t.services.providerTitle}</h2>
-          <p className="text-sm text-ink-soft">{t.services.providerBody}</p>
-        </div>
-        <Link href={postHref} className="btn btn-quiet">
-          {t.services.listFree}
-        </Link>
-      </aside>
-    </>
-  );
+  const props = { lang, service, nowMs: now, askLink, postHref };
+  // No server: all the service's ads go to the browser, which applies ?city= and ?women= itself.
+  if (STATIC_SITE) {
+    const listings = await getRepo().search({ categories: service.categories, sort: "newest" }, now);
+    return <ServiceListingsClient {...props} listings={listings} />;
+  }
+  const query = await searchParams;
+  const listings = await getRepo().search({ categories: service.categories, sort: "newest" }, now);
+  return <ServiceListings {...props} t={t} listings={listings} query={query} />;
 }

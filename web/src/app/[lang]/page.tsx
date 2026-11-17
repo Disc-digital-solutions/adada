@@ -19,6 +19,7 @@ import { GROUPS, SERVICES, serviceBySlug, servicesIn, type GroupSlug } from "@/l
 import { TOOLS } from "@/lib/tools";
 import type { Listing } from "@/lib/types";
 import { CITIES } from "@/site.config";
+import { withBase } from "@/lib/static-site";
 
 /** The services on the home grid; the rest are one tap away under "All services". */
 const FEATURED = ["flats", "dorms", "buy-sell", "cars", "car-rental", "towing", "cleaning", "construction", "arrival", "education", "jobs"];
@@ -56,7 +57,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               {t.home.heroIntro}
             </p>
 
-          <form action={`/${lang}/search`} role="search"
+          <form action={withBase(`/${lang}/search`)} role="search"
             style={{ "--i": 3 } as React.CSSProperties} className="enter mt-6 grid gap-2 rounded-xl bg-card p-2 text-ink shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)] md:max-w-3xl md:grid-cols-[1fr_13rem_auto]">
             <label className="relative">
               <span className="sr-only">{t.search.placeholder}</span>

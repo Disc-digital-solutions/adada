@@ -4,7 +4,9 @@ import { Suspense } from "react";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LANG, isLang, type Lang } from "@/i18n/config";
 import { PostForm, type PostMode } from "@/components/PostForm";
+import { PostFormClient } from "@/components/PostFormClient";
 import { getRepo } from "@/lib/data";
+import { STATIC_SITE } from "@/lib/static-site";
 import { CITIES, site } from "@/site.config";
 
 type Props = PageProps<"/[lang]/post">;
@@ -34,22 +36,27 @@ export default async function PostPage({ params, searchParams }: Props) {
 
 /** Decides how the form sends an ad, and hands it the lists it needs. The form itself is in components/PostForm. */
 async function PostFormLoader({ lang, searchParams }: { lang: Lang; searchParams: Props["searchParams"] }) {
-  const { kind, category } = await searchParams;
   const repo = getRepo();
   const categories = await repo.allCategories();
   const mode: PostMode = !repo.isDemo ? "direct" : site.teamWhatsapp ? "whatsapp" : "off";
+  const props = {
+    lang,
+    categories: categories.map((c) => ({ slug: c.slug, name: c.name[lang] })),
+    cities: CITIES.map((c) => ({ slug: c.slug, name: c.name[lang] })),
+    mode,
+    teamPhone: site.teamWhatsapp,
+    siteName: site.name,
+  };
+  // No server: the browser reads ?kind= and ?category= itself.
+  if (STATIC_SITE) return <PostFormClient {...props} />;
 
+  const { kind, category } = await searchParams;
   return (
     <PostForm
-      lang={lang}
+      {...props}
       t={getDictionary(lang)}
-      categories={categories.map((c) => ({ slug: c.slug, name: c.name[lang] }))}
-      cities={CITIES.map((c) => ({ slug: c.slug, name: c.name[lang] }))}
       initialKind={kind === "wanted" ? "wanted" : "offer"}
       initialCategory={categories.some((c) => c.slug === category) ? (category as string) : ""}
-      mode={mode}
-      teamPhone={site.teamWhatsapp}
-      siteName={site.name}
     />
   );
 }

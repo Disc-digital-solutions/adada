@@ -1,0 +1,9 @@
+:HL["/adada/site/_next/static/chunks/2-vai_xeralo4.css","style"]
+:HL["/adada/site/_next/static/media/06716fb78f125b1f-s.p.1ybfybs3k8tn2.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/adada/site/_next/static/media/3972092ebe867b96-s.p.3pc31ksexexjr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/adada/site/_next/static/media/d0dde97e35c3b596-s.p.0r85y2mk2089i.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":{"n":"slug","t":"d","k":"liman-kafe","s":[]},"h":96,"c":"$Q4"}]]
+2:[["children",{"s":"s","h":64,"c":"$Q3"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"en","s":[]},"h":48,"c":"$Q2"}]]
+0:{"b":"CHbJAu65yKKnzody7-VJN","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

@@ -1,0 +1,32 @@
+3:"$Sreact.fragment"
+4:"/adada/site/_next/static/chunks/3qfy96eoyh-ek.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+d:"/adada/site/_next/static/chunks/31vsatwo85byq.js"
+e:I[22016,["$d"],""]
+12:"ViewportBoundary"
+13:I[97367,["$4"],"$12"]
+14:"MetadataBoundary"
+15:I[97367,["$4"],"$14"]
+16:"$Sreact.suspense"
+17:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","article",null,{"className":"mx-auto max-w-2xl","children":[["$","$Le",null,{"href":"/ar/guides","className":"eyebrow hover:text-ink","children":"أدلة"}],["$","h1",null,{"className":"mt-1 flex items-center gap-3 text-2xl font-bold tracking-tight md:text-3xl","children":[["$","span",null,{"aria-hidden":true,"className":"grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sea-wash text-sea-deep","children":["$","svg",null,{"viewBox":"0 0 24 24","width":24,"height":24,"fill":"none","stroke":"currentColor","strokeWidth":"2","strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"children":[["$","rect",null,{"x":"4","y":"5","width":"16","height":"15","rx":"2"}],["$","path",null,{"d":"M9 5V3h6v2"}],["$","circle",null,{"cx":"12","cy":"11","r":"2.5"}],["$","path",null,{"d":"M8 17c.8-2 2.2-3 4-3s3.2 1 4 3"}]]}]}],"تصريح العمل"]}],["$","p",null,{"className":"mt-3 text-[17px] leading-relaxed text-ink-soft","children":"تحتاج إلى تصريح قبل العمل. صاحب العمل يبدأ الإجراءات."}],["$","ol",null,{"className":"mt-6 grid gap-2","children":[["$","li","0",{"className":"panel flex gap-3 p-4","children":[["$","span",null,{"className":"grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-sm font-bold text-white","children":1}],["$","span",null,{"className":"min-w-0 flex-1 text-[15px] leading-relaxed","children":["يقدّم صاحب العمل الطلب، عادة لدى دائرة العمل (Çalışma Dairesi).",null]}]]}],["$","li","1",{"className":"panel flex gap-3 p-4","children":[["$","span",null,{"className":"grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-sm font-bold text-white","children":2}],["$","span",null,{"className":"min-w-0 flex-1 text-[15px] leading-relaxed","children":["قد تكون هناك قيود على عمل الطلاب؛ اسأل جامعتك وصاحب العمل قبل البدء.",null]}]]}],["$","li","2",{"className":"panel flex gap-3 p-4","children":[["$","span",null,{"className":"grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-sm font-bold text-white","children":3}],["$","span",null,{"className":"min-w-0 flex-1 text-[15px] leading-relaxed","children":["العمل دون تصريح قد يعرّض إقامتك للخطر.",null]}]]}],["$","li","3",{"className":"panel flex gap-3 p-4","children":[["$","span",null,{"className":"grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-sm font-bold text-white","children":4}],["$","span",null,{"className":"min-w-0 flex-1 text-[15px] leading-relaxed","children":["الوظائف: بدوام جزئي وكامل.",["$","$Le",null,{"href":"/ar/c/jobs","className":"ms-2 inline-flex items-center text-sea hover:text-sea-deep","aria-label":"افتح","children":["$","svg",null,{"viewBox":"0 0 24 24","width":16,"height":16,"fill":"none","stroke":"currentColor","strokeWidth":"2","strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"className":"rtl:-scale-x-100","children":["$","path",null,{"d":"M5 12h14M13 6l6 6-6 6"}]}]}]]}]]}]]}],null,["$","p",null,{"className":"notice mt-6","children":"مساعدة عامة وليست استشارة قانونية. القواعد تتغير: تأكد من كل خطوة لدى الجهة المذكورة."}],["$","h2",null,{"className":"section-title mt-10","children":"أدلة أخرى"}],["$","ul",null,{"className":"mt-3 flex flex-wrap gap-2","children":[["$","li","arrival",{"children":["$","$Le",null,{"href":"/ar/guides/arrival","className":"chip","children":"قائمة الوصول"}]}],["$","li","address",{"children":["$","$Le",null,{"href":"/ar/guides/address","className":"chip","children":"كيف تكتب عنوانك (مرسين 10)"}]}],["$","li","utilities",{"children":["$","$Le",null,{"href":"/ar/guides/utilities","className":"chip","children":"الكهرباء والماء والإنترنت"}]}],["$","li","sim",{"children":["$","$Le",null,{"href":"/ar/guides/sim","className":"chip","children":"الشرائح وبيانات الهاتف"}]}],["$","li","residence",{"children":["$","$Le",null,{"href":"/ar/guides/residence","className":"chip","children":"تصريح إقامة الطالب"}]}],["$","li","car",{"children":["$","$Le",null,{"href":"/ar/guides/car","className":"chip","children":"شراء سيارة مستعملة وتسجيلها"}]}],["$","li","bank",{"children":["$","$Le",null,{"href":"/ar/guides/bank","className":"chip","children":"فتح حساب بنكي"}]}],"$Lf"]}]]}]}],null,"$L10"]}],"p":"$@11","v":null,"s":"$9"}}]]
+a:[["children",{"s":{"n":"slug","t":"d","k":"work-permit","s":[]},"h":96,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@b","v":"$8","s":"$9"},"c":"$Qc"}]]
+2:[["children",{"s":"guides","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"ar","s":[]},"h":48,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b5d6b"}]]}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"تصريح العمل | Adada"}],["$","meta","1",{"name":"description","content":"تحتاج إلى تصريح قبل العمل. صاحب العمل يبدأ الإجراءات."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L17","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":null,"s":"$9"}},"a":"$@19","u":"$@1a","b":"CHbJAu65yKKnzody7-VJN"}
+1b:I[97367,["$4"],"OutletBoundary"]
+f:["$","li","leaving",{"children":["$","$Le",null,{"href":"/ar/guides/leaving","className":"chip","children":"عند مغادرة الجزيرة"}]}]
+10:["$","$L1b",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1a:true
+9:300
+1c:null
+9:C
+19:0
+b:"$undefined"
+7:"$undefined"
+18:"$undefined"
+11:"$undefined"

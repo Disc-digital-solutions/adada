@@ -4,6 +4,7 @@ import type { Lang } from "@/i18n/config";
 import { site } from "@/site.config";
 import { GridIcon, HomeIcon, PlusIcon, SearchIcon, ShieldIcon } from "./icons";
 import { LangSwitch } from "./LangSwitch";
+import { withBase } from "@/lib/static-site";
 
 /** The bar at the top of every page: name, search (on wide screens), language, post. */
 export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
@@ -16,7 +17,7 @@ export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
           <span>{site.name}</span>
         </Link>
 
-        <form action={`/${lang}/search`} role="search" className="ms-4 hidden max-w-md flex-1 md:block">
+        <form action={withBase(`/${lang}/search`)} role="search" className="ms-4 hidden max-w-md flex-1 md:block">
           <label className="relative block">
             <span className="sr-only">{t.search.placeholder}</span>
             <SearchIcon className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-ink-soft" />

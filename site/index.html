@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>Adada</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+var l = (navigator.languages || [navigator.language || ""]).map(function (x) { return x.slice(0, 2).toLowerCase(); });
+var lang = l.find(function (x) { return x === "tr" || x === "en" || x === "ar"; }) || "tr";
+location.replace("/adada/site/" + lang + "/" + location.hash);
+</script>
+<a href="/adada/site/tr/">Türkçe</a> · <a href="/adada/site/en/">English</a> · <a href="/adada/site/ar/">العربية</a>

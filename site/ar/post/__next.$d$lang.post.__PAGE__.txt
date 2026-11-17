@@ -1,0 +1,30 @@
+3:"$Sreact.fragment"
+4:"/adada/site/_next/static/chunks/3qfy96eoyh-ek.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"$Sreact.suspense"
+c:"/adada/site/_next/static/chunks/31vsatwo85byq.js"
+d:"/adada/site/_next/static/chunks/3hlpw2-nzh950.js"
+e:"/adada/site/_next/static/chunks/03u4_3r_o2as4.js"
+f:I[29781,["$c","$d","$e"],"PostFormClient"]
+10:I[97367,["$4"],"OutletBoundary"]
+13:"ViewportBoundary"
+14:I[97367,["$4"],"$13"]
+15:"MetadataBoundary"
+16:I[97367,["$4"],"$15"]
+17:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","div",null,{"className":"mx-auto max-w-xl","children":[["$","h1",null,{"className":"mb-4 text-2xl font-bold tracking-tight","children":"أضف إعلاناً"}],["$","$b",null,{"fallback":null,"children":["$","$Lf",null,{"lang":"ar","categories":[{"slug":"rooms","name":"غرف وشقق"},{"slug":"roommates","name":"شريك سكن وتنازل"},{"slug":"furniture","name":"أثاث"},{"slug":"appliances","name":"أجهزة منزلية"},{"slug":"electronics","name":"إلكترونيات"},{"slug":"books","name":"كتب ودراسة"},{"slug":"clothes","name":"ملابس"},{"slug":"other","name":"أخرى"},{"slug":"dorms","name":"سكن طلابي"},{"slug":"agencies","name":"مكاتب عقارية (إيجار)"},{"slug":"cars","name":"سيارات"},{"slug":"car-rental","name":"تأجير سيارات"},{"slug":"towing","name":"سحب السيارات"},{"slug":"car-service","name":"صيانة وإطارات"},{"slug":"cleaning","name":"تنظيف وخدمات منزلية"},{"slug":"construction","name":"بناء وترميم"},{"slug":"professionals","name":"مهنيون"},{"slug":"education","name":"وكالات تعليمية"},{"slug":"arrival","name":"خدمات الوصول"},{"slug":"jobs","name":"وظائف"},{"slug":"freelance","name":"عمل حر"},{"slug":"rides","name":"رحلات وتنقل"},{"slug":"furniture-rental","name":"تأجير الأثاث"},{"slug":"lend","name":"استعارة وإعارة"},{"slug":"parking","name":"مواقف"},{"slug":"driving","name":"مدارس القيادة"},{"slug":"tech-repair","name":"صيانة الهواتف والحواسيب"},{"slug":"childcare","name":"رعاية الأطفال والدروس"},{"slug":"pets","name":"حيوانات أليفة"},{"slug":"supplies","name":"مستلزمات الأعمال"},{"slug":"internships","name":"تدريب عملي"},{"slug":"shifts","name":"عمل بالمناوبات"},{"slug":"airport","name":"لوحة المطار"},{"slug":"coworking","name":"مساحات عمل"},{"slug":"experiences","name":"جولات وتجارب"},{"slug":"restaurants","name":"مطاعم ومقاهٍ"},{"slug":"events","name":"فعاليات"},{"slug":"deals","name":"عروض"},{"slug":"clinics","name":"عيادات"},{"slug":"notices","name":"لوحة الحي"},{"slug":"language-exchange","name":"تبادل اللغات"}],"cities":[{"slug":"famagusta","name":"فاماغوستا"},{"slug":"nicosia","name":"نيقوسيا"},{"slug":"kyrenia","name":"كيرينيا"},{"slug":"iskele","name":"إسكيله"},{"slug":"guzelyurt","name":"غوزليورت"},{"slug":"lefke","name":"ليفكه"}],"mode":"off","teamPhone":"","siteName":"Adada"}]}]]}]}],[["$","script","script-0",{"src":"/adada/site/_next/static/chunks/3hlpw2-nzh950.js","async":true}],["$","script","script-1",{"src":"/adada/site/_next/static/chunks/03u4_3r_o2as4.js","async":true}]],["$","$L10",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]]}],"p":"$@12","v":null,"s":"$9"}}]]
+2:[["children",{"s":"post","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"ar","s":[]},"h":48,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b5d6b"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"أضف إعلاناً | Adada"}],["$","meta","1",{"name":"description","content":"أضف إعلانك في دقيقة. راسل البائع على واتساب."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L17","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":null,"s":"$9"}},"a":"$@19","u":"$@1a","b":"CHbJAu65yKKnzody7-VJN"}
+11:null
+1a:true
+9:300
+9:C
+19:0
+7:"$undefined"
+18:"$undefined"
+12:"$undefined"

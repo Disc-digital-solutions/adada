@@ -1,0 +1,28 @@
+3:"$Sreact.fragment"
+4:"/adada/site/_next/static/chunks/3qfy96eoyh-ek.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"/adada/site/_next/static/chunks/31vsatwo85byq.js"
+c:I[22016,["$b"],""]
+d:I[97367,["$4"],"OutletBoundary"]
+e:"$Sreact.suspense"
+11:"ViewportBoundary"
+12:I[97367,["$4"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$4"],"$13"]
+15:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","div",null,{"className":"mx-auto max-w-2xl","children":[["$","h1",null,{"className":"text-[28px] font-bold tracking-tight","children":"Stay safe"}],["$","p",null,{"className":"mt-2 text-ink-soft","children":"Most deals go well. These rules protect you from the few that do not."}],["$","$Lc",null,{"href":"/en/emergency","className":"btn btn-quiet mt-4 !border-alert/40 !text-alert","children":["Emergency"," · 155 · 112 · 199"]}],["$","ul",null,{"className":"mt-5 grid gap-2","children":[["$","li","Never send money before you see the item.",{"className":"panel px-4 py-3 font-medium","children":"Never send money before you see the item."}],["$","li","Never pay a deposit for a flat you have not visited.",{"className":"panel px-4 py-3 font-medium","children":"Never pay a deposit for a flat you have not visited."}],["$","li","Meet in a public place, in daylight.",{"className":"panel px-4 py-3 font-medium","children":"Meet in a public place, in daylight."}],["$","li","Be careful when a price is too good to be true.",{"className":"panel px-4 py-3 font-medium","children":"Be careful when a price is too good to be true."}],["$","li","Never send a photo of your ID, passport or bank card.",{"className":"panel px-4 py-3 font-medium","children":"Never send a photo of your ID, passport or bank card."}],["$","li","Tell us when an ad looks wrong.",{"className":"panel px-4 py-3 font-medium","children":"Tell us when an ad looks wrong."}]]}],["$","h2",null,{"className":"mt-8 text-lg font-semibold","children":"Safe places to meet"}],["$","ul",null,{"className":"mt-2 list-disc ps-5 text-[16px] leading-relaxed","children":[["$","li","The main gate of your campus",{"children":"The main gate of your campus"}],["$","li","In front of a busy café or supermarket",{"children":"In front of a busy café or supermarket"}],["$","li","In front of a police station",{"children":"In front of a police station"}]]}],["$","h2",null,{"className":"mt-8 text-lg font-semibold","children":"This week's scam"}],["$","p",null,{"className":"notice notice-alert mt-2","children":"The “landlord” says he is abroad and asks for a deposit to post you the key. Never send money for a flat you have not visited."}]]}]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":"$@10","v":null,"s":"$9"}}]]
+2:[["children",{"s":"safety","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"en","s":[]},"h":48,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b5d6b"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Stay safe | Adada"}],["$","meta","1",{"name":"description","content":"Post an ad in a minute. Message the seller on WhatsApp."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":null,"s":"$9"}},"a":"$@17","u":"$@18","b":"CHbJAu65yKKnzody7-VJN"}
+f:null
+18:true
+9:300
+9:C
+17:0
+7:"$undefined"
+16:"$undefined"
+10:"$undefined"

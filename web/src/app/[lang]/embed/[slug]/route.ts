@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getDictionary } from "@/i18n";
-import { dirOf, isLang } from "@/i18n/config";
+import { LANGS, dirOf, isLang } from "@/i18n/config";
 import { priceText } from "@/components/PriceTag";
 import { getRepo } from "@/lib/data";
 import { site } from "@/site.config";
+import { DEMO_SELLERS } from "@/lib/data/demo-data";
 
 /**
  * The embed widget (BIZ-15): a business puts its ads on its own website with one <iframe>.
@@ -12,6 +13,11 @@ import { site } from "@/site.config";
  * Each ad opens on our site in a new tab, where the WhatsApp tap is counted.
  */
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+/** Every sample shop, so the static site can prepare a widget for each. */
+export function generateStaticParams() {
+  return LANGS.flatMap((lang) => Object.values(DEMO_SELLERS).map((seller) => ({ lang, slug: seller.shopSlug })));
+}
 
 export async function GET(_request: NextRequest, context: RouteContext<"/[lang]/embed/[slug]">) {
   const { lang, slug } = await context.params;

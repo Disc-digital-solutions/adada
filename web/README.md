@@ -31,6 +31,26 @@ npm.cmd run build
 `test` runs the 106 checks of the logic. `check` runs lint, types and tests together. `build` makes the
 version that would go online, and fails if a page breaks the framework's rules.
 
+## The static copy on GitHub Pages
+
+https://disc-digital-solutions.github.io/adada/ opens this website on a computer and the phone app on
+phones. The website there is a static copy in `../site`, built with:
+
+```bash
+node scripts/build-pages.mjs
+```
+
+Then commit `site/`. GitHub Pages cannot run a server, so the copy differs from the real site in a few ways:
+
+- Search, the service filters, the arrival plan and books by course read the address in the browser
+  (`src/components/*Client.tsx`), over every sample ad sent with the page. With a real database these
+  need the server again.
+- The WhatsApp button skips the click counter (`l/[id]/wa`). On sample ads it shows "no seller".
+- A small page at `site/index.html` picks the visitor's language; there is no "page not found" screen.
+- The sample ads are dated from the moment the copy was built.
+
+The normal server build (`npm run build`) is unchanged. `src/lib/static-site.ts` holds the switch.
+
 ## What works today (13 Nov 2026)
 
 Everything below runs on **sample ads**. The dark bar at the top of the site says so.

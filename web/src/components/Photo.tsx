@@ -1,3 +1,5 @@
+import { withBase } from "@/lib/static-site";
+
 /* eslint-disable @next/next/no-img-element */
 
 /**
@@ -19,7 +21,7 @@ export function Photo({
 }) {
   return (
     <img
-      src={src}
+      src={withBase(src)}
       alt={alt}
       width={400}
       height={400}

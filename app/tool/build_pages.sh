@@ -22,11 +22,17 @@ touch "$OUT/.nojekyll"
 # The app uses #/ addresses, so a relative base works from any folder.
 sed -i 's#<base href="/">#<base href="./">#' "$OUT/index.html"
 grep -q '<base href="./">' "$OUT/index.html" || { echo "base not set" >&2; exit 1; }
-# If Pages serves the repository root, send visitors on to the demo.
+# The repository root's page: computers open the website (../site, built by web/scripts/build-pages.mjs),
+# phones and tablets open this app.
 cat > ../index.html <<'HTML'
 <!doctype html><meta charset="utf-8"><title>Adada</title>
-<meta http-equiv="refresh" content="0; url=docs/">
-<a href="docs/">Open the Adada demo</a>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+  // A wide screen with a mouse is a computer: open the website. Anything else: the app.
+  var computer = matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches;
+  location.replace((computer ? "site/" : "docs/") + location.hash);
+</script>
+<p><a href="site/">Open the website</a> · <a href="docs/">Open the app</a></p>
 HTML
 touch ../.nojekyll
 echo "Built into docs/"

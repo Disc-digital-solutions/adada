@@ -13,8 +13,14 @@ import { getRepo } from "@/lib/data";
 import { requestTime } from "@/lib/now";
 import { groupPost } from "@/lib/share-text";
 import { site } from "@/site.config";
+import { DEMO_SELLERS } from "@/lib/data/demo-data";
 
 type Props = PageProps<"/[lang]/s/[slug]">;
+
+/** Every sample shop, so the static site can prepare a page for each. */
+export function generateStaticParams() {
+  return Object.values(DEMO_SELLERS).map((seller) => ({ slug: seller.shopSlug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;

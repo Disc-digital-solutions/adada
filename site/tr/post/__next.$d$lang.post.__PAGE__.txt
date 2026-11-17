@@ -1,0 +1,30 @@
+3:"$Sreact.fragment"
+4:"/adada/site/_next/static/chunks/3qfy96eoyh-ek.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"$Sreact.suspense"
+c:"/adada/site/_next/static/chunks/31vsatwo85byq.js"
+d:"/adada/site/_next/static/chunks/3hlpw2-nzh950.js"
+e:"/adada/site/_next/static/chunks/03u4_3r_o2as4.js"
+f:I[29781,["$c","$d","$e"],"PostFormClient"]
+10:I[97367,["$4"],"OutletBoundary"]
+13:"ViewportBoundary"
+14:I[97367,["$4"],"$13"]
+15:"MetadataBoundary"
+16:I[97367,["$4"],"$15"]
+17:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","div",null,{"className":"mx-auto max-w-xl","children":[["$","h1",null,{"className":"mb-4 text-2xl font-bold tracking-tight","children":"İlan ver"}],["$","$b",null,{"fallback":null,"children":["$","$Lf",null,{"lang":"tr","categories":[{"slug":"rooms","name":"Oda ve daire"},{"slug":"roommates","name":"Ev arkadaşı ve devir"},{"slug":"furniture","name":"Mobilya"},{"slug":"appliances","name":"Beyaz eşya"},{"slug":"electronics","name":"Elektronik"},{"slug":"books","name":"Kitap ve ders"},{"slug":"clothes","name":"Giyim"},{"slug":"other","name":"Diğer"},{"slug":"dorms","name":"Yurt"},{"slug":"agencies","name":"Emlak ofisi (kiralık)"},{"slug":"cars","name":"Otomobil"},{"slug":"car-rental","name":"Araç kiralama"},{"slug":"towing","name":"Çekici"},{"slug":"car-service","name":"Oto servis ve lastik"},{"slug":"cleaning","name":"Temizlik ve ev hizmetleri"},{"slug":"construction","name":"İnşaat ve tadilat"},{"slug":"professionals","name":"Profesyoneller"},{"slug":"education","name":"Eğitim danışmanlığı"},{"slug":"arrival","name":"Varış hizmetleri"},{"slug":"jobs","name":"İş ilanları"},{"slug":"freelance","name":"Serbest çalışma"},{"slug":"rides","name":"Yolculuk ve seyahat"},{"slug":"furniture-rental","name":"Mobilya kiralama"},{"slug":"lend","name":"Ödünç"},{"slug":"parking","name":"Otopark"},{"slug":"driving","name":"Sürücü kursu"},{"slug":"tech-repair","name":"Telefon ve bilgisayar tamiri"},{"slug":"childcare","name":"Çocuk bakımı ve özel ders"},{"slug":"pets","name":"Evcil hayvan"},{"slug":"supplies","name":"İşletme malzemeleri"},{"slug":"internships","name":"Staj"},{"slug":"shifts","name":"Vardiyalı iş"},{"slug":"airport","name":"Havalimanı panosu"},{"slug":"coworking","name":"Ortak çalışma"},{"slug":"experiences","name":"Turlar ve aktiviteler"},{"slug":"restaurants","name":"Restoran ve kafe"},{"slug":"events","name":"Etkinlikler"},{"slug":"deals","name":"Fırsatlar"},{"slug":"clinics","name":"Klinikler"},{"slug":"notices","name":"Mahalle panosu"},{"slug":"language-exchange","name":"Dil değişimi"}],"cities":[{"slug":"famagusta","name":"Gazimağusa"},{"slug":"nicosia","name":"Lefkoşa"},{"slug":"kyrenia","name":"Girne"},{"slug":"iskele","name":"İskele"},{"slug":"guzelyurt","name":"Güzelyurt"},{"slug":"lefke","name":"Lefke"}],"mode":"off","teamPhone":"","siteName":"Adada"}]}]]}]}],[["$","script","script-0",{"src":"/adada/site/_next/static/chunks/3hlpw2-nzh950.js","async":true}],["$","script","script-1",{"src":"/adada/site/_next/static/chunks/03u4_3r_o2as4.js","async":true}]],["$","$L10",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]]}],"p":"$@12","v":null,"s":"$9"}}]]
+2:[["children",{"s":"post","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"tr","s":[]},"h":48,"c":"$Q2"}]]
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b5d6b"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"İlan ver | Adada"}],["$","meta","1",{"name":"description","content":"Bir dakikada ilan ver. Satıcıya WhatsApp'tan yaz."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L17","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":null,"s":"$9"}},"a":"$@19","u":"$@1a","b":"CHbJAu65yKKnzody7-VJN"}
+11:null
+1a:true
+9:300
+9:C
+19:0
+7:"$undefined"
+18:"$undefined"
+12:"$undefined"
