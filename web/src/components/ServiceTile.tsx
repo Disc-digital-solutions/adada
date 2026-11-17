@@ -31,7 +31,7 @@ export function ServiceTile({ service, lang, index = 0 }: { service: Service; la
     <li className="enter" style={{ "--i": index } as React.CSSProperties}>
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="panel lift group flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center hover:border-sea/60"
+        className="panel lift group flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center hover:border-brand/60"
       >
         <span className="wiggle">
           <ServiceBadge service={service} />
@@ -49,7 +49,7 @@ export function ServiceRow({ service, lang, count }: { service: Service; lang: L
     <li className="min-w-0">
       <Link
         href={`/${lang}/c/${service.slug}`}
-        className="panel lift group flex items-center gap-3 p-3 hover:border-sea/60"
+        className="panel lift group flex items-center gap-3 p-3 hover:border-brand/60"
       >
         <ServiceBadge service={service} />
         <span className="min-w-0 flex-1">
@@ -80,7 +80,7 @@ export function ServiceArt({
   className?: string;
 }) {
   const service = serviceOfCategory(category);
-  if (!service) return <div className={`h-full w-full bg-sea-wash ${className}`} />;
+  if (!service) return <div className={`h-full w-full bg-brand-wash ${className}`} />;
   const tone = groupOf(service).tone;
   return (
     <div

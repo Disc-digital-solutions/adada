@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { balances, settle } from "./split";
+import { describe, expect, it, test } from "vitest";
+import { balances, extraCents, parseAmount, settle } from "./split";
 
 describe("balances", () => {
   it("shares each bill equally among everyone", () => {
@@ -37,5 +37,33 @@ describe("settle", () => {
     const net = [0, 0, 0, 0];
     for (const x of t) { net[x.from] += x.amount; net[x.to] -= x.amount; }
     expect(net.map((v) => Math.round(v * 100) / 100)).toEqual([-725, 275, 275, 175]);
+  });
+});
+
+describe("parseAmount", () => {
+  test("reads points, commas and Arabic digits", () => {
+    expect(parseAmount("450")).toEqual({ ok: true, amount: 450 });
+    expect(parseAmount("12,50")).toEqual({ ok: true, amount: 12.5 });
+    expect(parseAmount(" 12.05 ")).toEqual({ ok: true, amount: 12.05 });
+    expect(parseAmount("٤٥٠")).toEqual({ ok: true, amount: 450 });
+  });
+  test("refuses blank, zero, negative and non-numbers", () => {
+    expect(parseAmount("")).toEqual({ ok: false, error: "blank" });
+    expect(parseAmount("   ")).toEqual({ ok: false, error: "blank" });
+    expect(parseAmount("0")).toEqual({ ok: false, error: "number" });
+    expect(parseAmount("-5")).toEqual({ ok: false, error: "number" });
+    expect(parseAmount("12.345")).toEqual({ ok: false, error: "number" });
+    expect(parseAmount("abc")).toEqual({ ok: false, error: "number" });
+    expect(parseAmount("Infinity")).toEqual({ ok: false, error: "number" });
+  });
+});
+
+describe("rounding", () => {
+  test("shares add up to the total exactly", () => {
+    const owed = balances(3, [{ label: "Internet", paidBy: 0, amount: 100 }]);
+    // 100.00 / 3 = 33.33 × 3 + 0.01: one person carries the extra cent.
+    expect(extraCents(3, 100)).toBe(1);
+    expect(Math.round(owed.reduce((a, b) => a + b, 0) * 100)).toBe(0);
+    expect(owed[0]).toBeCloseTo(66.66, 2);
   });
 });

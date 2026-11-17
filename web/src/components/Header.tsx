@@ -2,76 +2,79 @@ import Link from "next/link";
 import type { Dictionary } from "@/i18n";
 import type { Lang } from "@/i18n/config";
 import { site } from "@/site.config";
-import { GridIcon, HomeIcon, PlusIcon, SearchIcon, ShieldIcon } from "./icons";
+import { GridIcon, HeartIcon, HomeIcon, PlusIcon, SearchIcon } from "./icons";
 import { LangSwitch } from "./LangSwitch";
-import { withBase } from "@/lib/static-site";
+import { NavLinks } from "./NavLinks";
+import { SavedLink } from "./SaveButton";
 
-/** The bar at the top of every page: name, search (on wide screens), language, post. */
-export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
+/** The brand: the tag mark (a placeholder until the real logo exists) and the name. */
+export function Brand({ lang, className = "" }: { lang: Lang; className?: string }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-card/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5 md:px-6">
-        <Link href={`/${lang}`} className="flex items-center gap-2 text-[17px] font-bold tracking-tight text-ink">
-          {/* The mark is the price tag itself. */}
-          <span aria-hidden className="price-tag brand-mark !px-0 h-5 w-7" />
-          <span>{site.name}</span>
-        </Link>
+    <Link href={`/${lang}`} className={`flex shrink-0 items-center gap-2 font-heading text-[19px] font-extrabold tracking-tight text-ink ${className}`}>
+      <span aria-hidden className="price-tag brand-mark !px-0 h-5 w-7" />
+      <span>{site.name}</span>
+    </Link>
+  );
+}
 
-        <form action={withBase(`/${lang}/search`)} role="search" className="ms-4 hidden max-w-md flex-1 md:block">
-          <label className="relative block">
-            <span className="sr-only">{t.search.placeholder}</span>
-            <SearchIcon className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-ink-soft" />
-            <input name="q" type="search" placeholder={t.search.placeholder} className="field ps-10" />
-          </label>
-        </form>
+/**
+ * The bar at the top of every page. One row on wide screens; below that, the three main links
+ * move to a second row that scrolls with the page, so long Turkish and Arabic labels always fit.
+ * It sticks to the top only on wide screens, where it is short enough not to cover anything.
+ */
+export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const nav = [
+    { href: `/${lang}/search`, label: t.pop.navExplore },
+    { href: `/${lang}/services`, label: t.pop.navService },
+    { href: `/${lang}/tools`, label: t.pop.navGuide },
+  ];
+  return (
+    <header className="z-20 border-b border-line bg-card/95 backdrop-blur md:sticky md:top-0">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 md:gap-3 md:px-6">
+        <Brand lang={lang} />
+        <NavLinks items={nav} label={t.pop.mainNav} className="ms-4 hidden lg:block" />
 
-        <div className="ms-auto flex items-center gap-2">
-          <Link href={`/${lang}/services`} className="btn btn-quiet hidden !min-h-9 !px-3 !py-1 md:inline-flex">
-            <GridIcon width={18} height={18} />
-            {t.nav.services}
-          </Link>
-          <Link href={`/${lang}/safety`} className="btn btn-quiet hidden !min-h-9 !px-3 !py-1 md:inline-flex">
-            <ShieldIcon width={18} height={18} />
-            <span className="hidden lg:inline">{t.nav.safety}</span>
-          </Link>
+        <div className="ms-auto flex items-center gap-1.5 md:gap-2">
+          <SavedLink href={`/${lang}/saved`} label={t.pop.saved} countLabel={t.pop.savedCount} />
           <LangSwitch current={lang} label={t.nav.language} />
-          <Link href={`/${lang}/post`} className="btn btn-accent hidden !min-h-9 md:inline-flex">
+          <Link href={`/${lang}/post`} className="btn btn-accent hidden !min-h-11 md:inline-flex">
             <PlusIcon width={18} height={18} />
-            {t.nav.post}
+            {t.pop.postFree}
           </Link>
         </div>
       </div>
+      <NavLinks items={nav} label={t.pop.mainNav} className="swipe-row mx-auto max-w-6xl overflow-x-auto border-t border-line px-2 py-1 md:px-5 lg:hidden" />
     </header>
   );
 }
 
 /** On phones the main actions sit under the thumb. "Post" is the one that stands out. */
 export function BottomNav({ lang, t }: { lang: Lang; t: Dictionary }) {
-  const item = "flex flex-1 flex-col items-center gap-0.5 py-2 text-[12px] font-medium text-ink-soft";
+  const item = "flex min-h-12 flex-1 flex-col items-center justify-center gap-0.5 py-1.5 text-[11.5px] font-medium text-ink-soft";
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-card pb-[env(safe-area-inset-bottom)] md:hidden">
+    <nav aria-label={t.pop.mainNav} className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-card pb-[env(safe-area-inset-bottom)] md:hidden">
       <div className="mx-auto flex max-w-md items-end">
         <Link href={`/${lang}`} className={item}>
           <HomeIcon />
           {t.nav.home}
         </Link>
-        <Link href={`/${lang}/services`} className={item}>
-          <GridIcon />
-          {t.nav.services}
-        </Link>
-        <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-2 text-[12px] font-semibold text-coral-deep">
-          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full bg-coral text-white shadow-[0_2px_0_var(--color-coral-deep)] transition active:scale-90">
-            <PlusIcon />
-          </span>
-          {t.nav.post}
-        </Link>
         <Link href={`/${lang}/search`} className={item}>
           <SearchIcon />
           {t.nav.search}
         </Link>
-        <Link href={`/${lang}/safety`} className={item}>
-          <ShieldIcon />
-          {t.nav.safety}
+        <Link href={`/${lang}/post`} className="flex flex-1 flex-col items-center gap-0.5 pb-1.5 text-[11.5px] font-semibold text-ink">
+          <span className="pulse-once -mt-4 grid h-12 w-12 place-items-center rounded-full border-[1.5px] border-on-lime bg-lime text-on-lime transition active:scale-90">
+            <PlusIcon />
+          </span>
+          {t.nav.post}
+        </Link>
+        <Link href={`/${lang}/services`} className={item}>
+          <GridIcon />
+          {t.nav.services}
+        </Link>
+        <Link href={`/${lang}/saved`} className={item}>
+          <HeartIcon />
+          {t.pop.saved}
         </Link>
       </div>
     </nav>

@@ -90,7 +90,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
             <ol className="mt-4 grid gap-3 md:grid-cols-3">
               {t.request.how.map((step, i) => (
                 <li key={step} className="flex gap-3 rounded-xl bg-paper p-4">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sea text-sm font-bold text-white">{i + 1}</span>
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
                   <span className="text-[15px]">{step}</span>
                 </li>
               ))}

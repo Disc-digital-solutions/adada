@@ -6,35 +6,59 @@
  * which is used for prices and nothing else.
  */
 @theme {
-  /* Adada design system ("Harbour"). Calm neutrals; harbour teal for actions; burnt orange
-     only for posting and saving; gold only in the price-tag mark. Change colours here only; the app's
-     lib/ui/theme.dart holds the same values. Every text pair here meets WCAG AA. */
-  --color-paper: #f5f7f8;
-  --color-card: #ffffff;
-  --color-sunken: #edf1f3;
-  --color-ink: #0f1e26;
-  --color-ink-soft: #4a5963;
-  --color-ink-faint: #66737d;
-  --color-line: #dde3e7;
-  --color-line-strong: #838f98;
-  --color-sea: #0b5d6b;
-  --color-sea-deep: #084652;
-  --color-sea-wash: #e5f0f2;
-  --color-coral: #c2410c;
-  --color-coral-deep: #9a3412;
-  --color-coral-wash: #fdeee6;
-  --color-tag: #e9a23b;
-  --color-wa: #1b7f4a;
-  --color-wa-deep: #146239;
+  /*
+   * Campus Pop, the approved Adada look. A quiet lavender canvas; deep violet for the brand and
+   * every interactive element; acid lime only for priority actions and small brand moments, always
+   * with dark text on it; lavender for services, peach for newcomer help, mint for contact.
+   * Every text pair below meets WCAG AA (checked: ink 14.5:1, ink-soft 6.3:1, brand 6.5:1 on the
+   * canvas; on-lime 12.2:1 on lime; on-hero-soft 10.2:1 on the hero). Change colours here only.
+   */
+  --color-paper: #f6f2fb; /* canvas */
+  --color-card: #fffdfb; /* primary surface */
+  --color-sunken: #eee7f5; /* subtle surface */
+  --color-ink: #2b193e;
+  --color-ink-soft: #64536e;
+  --color-ink-faint: #6e5d79; /* meta lines only, 5.4:1 */
+  --color-line: #e1d7e9; /* decorative hairlines */
+  --color-line-strong: #8e7e9a; /* control borders, 3.7:1 */
+  --color-brand: #6b3fab; /* interactive purple */
+  --color-brand-deep: #54308a; /* hover and pressed */
+  --color-brand-wash: #e9dcff;
+  --color-lavender: #e9dcff; /* services section */
+  --color-peach: #ffe2cb; /* newcomer section */
+  --color-mint: #e6f1de; /* contact surface */
+  --color-mint-ink: #245a36; /* contact text, 6.9:1 on mint */
+  --color-hero: #2b1645;
+  --color-hero-2: #40265b;
+  --color-on-hero: #fbf8ff;
+  --color-on-hero-soft: #d6c8e5;
+  --color-hero-lavender: #ddc8ff;
+  --color-hero-peach: #ffd4b9;
+  --color-lime: #dcff72;
+  --color-on-lime: #25310f;
   --color-alert: #b42318;
   --color-alert-wash: #fdecea;
   --color-ok: #15703f;
   --color-ok-wash: #e3f3ea;
   --color-women: #8a1f55;
   --color-women-wash: #fbeaf2;
-  --color-notice: #fbf1de;
-  --color-notice-ink: #83560a;
-  --font-sans: var(--font-readex), ui-sans-serif, system-ui, sans-serif;
+  --color-notice: #fff1e4;
+  --color-notice-ink: #7a3d12;
+
+  /* Manrope for Latin headings, DM Sans for Latin text, Noto Sans Arabic for Arabic. */
+  --font-heading: var(--font-manrope), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 14px;
+  --radius-control: 11px;
+  --radius-panel: 22px;
+
+  /* Motion: one place for durations and easing. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
 }
 
 @layer base {
@@ -48,18 +72,39 @@
     min-height: 100dvh;
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  /* Arabic: its own typeface first, generous line height, and never Latin's tight tracking. */
+  html[lang="ar"] body {
+    font-family: var(--font-arabic), var(--font-dm-sans), sans-serif;
+    line-height: 1.75;
+  }
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] .font-heading {
+    font-family: var(--font-arabic), var(--font-manrope), sans-serif;
+    letter-spacing: normal !important;
+    line-height: 1.45;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-sea);
+    outline: 2px solid var(--color-brand);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: var(--color-sea-wash);
-    color: var(--color-ink);
+    background: var(--color-lime);
+    color: var(--color-on-lime);
   }
 }
 
@@ -84,20 +129,20 @@
     min-height: 2.75rem;
     padding: 0.55rem 1.1rem;
     border: 1.5px solid transparent;
-    border-radius: 0.55rem;
-    font-size: 0.925rem;
+    border-radius: var(--radius-control);
+    font-size: 0.9375rem;
     font-weight: 600;
-    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+    transition: background-color var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast);
     line-height: 1.2;
     text-decoration: none;
     cursor: pointer;
   }
   .btn-primary {
-    background: var(--color-sea);
+    background: var(--color-brand);
     color: #fff;
   }
   .btn-primary:hover {
-    background: var(--color-sea-deep);
+    background: var(--color-brand-deep);
   }
   .btn-quiet {
     background: var(--color-card);
@@ -105,24 +150,33 @@
     color: var(--color-ink);
   }
   .btn-quiet:hover {
-    border-color: var(--color-sea);
-    color: var(--color-sea-deep);
+    border-color: var(--color-brand);
+    color: var(--color-brand-deep);
   }
-  /* The key action: posting. Burnt orange with white text (5.2:1). */
+  /* Priority actions (posting, the hero search): lime with dark text (12.2:1). A dark edge keeps
+     the button visible on the pale canvas, where lime alone has almost no contrast. */
   .btn-accent {
-    background: var(--color-coral);
-    color: #fff;
+    background: var(--color-lime);
+    border-color: var(--color-on-lime);
+    color: var(--color-on-lime);
   }
   .btn-accent:hover {
-    background: var(--color-coral-deep);
+    background: #cdf55a;
+    box-shadow: 0 6px 18px -8px rgb(37 49 15 / 0.45);
   }
-  /* WhatsApp: a deeper green than WhatsApp's own, so white text reads (5.0:1). */
+  /* On the violet hero and panels the edge is not needed. */
+  .on-dark .btn-accent {
+    border-color: transparent;
+  }
+  /* Contact on WhatsApp: the mint contact surface with green text (6.9:1). */
   .btn-wa {
-    background: var(--color-wa);
-    color: #fff;
+    background: var(--color-mint);
+    border-color: color-mix(in srgb, var(--color-mint-ink) 35%, transparent);
+    color: var(--color-mint-ink);
   }
   .btn-wa:hover {
-    background: var(--color-wa-deep);
+    background: #d9eacd;
+    border-color: var(--color-mint-ink);
   }
   .btn:disabled {
     background: var(--color-sunken);
@@ -136,7 +190,7 @@
     min-height: 2.75rem;
     padding: 0.55rem 0.8rem;
     border: 1.5px solid var(--color-line-strong);
-    border-radius: 0.6rem;
+    border-radius: var(--radius-control);
     background: var(--color-card);
     color: var(--color-ink);
     font: inherit;
@@ -146,7 +200,7 @@
   }
   .field:focus-visible {
     outline-offset: 0;
-    border-color: var(--color-sea);
+    border-color: var(--color-brand);
   }
   .label {
     display: block;
@@ -174,8 +228,8 @@
     text-decoration: none;
   }
   .chip:hover {
-    border-color: var(--color-sea);
-    color: var(--color-sea-deep);
+    border-color: var(--color-brand);
+    color: var(--color-brand-deep);
   }
 
   /*
@@ -216,9 +270,10 @@
     right: calc(var(--notch) + 0.05rem);
     left: auto;
   }
-  /* The logo: the same tag in gold with an ink hole. Gold is used nowhere else. */
+  /* The mark: the same tag in lime with a violet hole (the placeholder until a real logo exists). */
   .price-tag.brand-mark {
-    background: var(--color-tag);
+    background: var(--color-lime);
+    box-shadow: inset 0 0 0 1.5px var(--color-on-lime);
   }
   .price-tag.brand-mark::before {
     background: var(--color-ink);
@@ -246,9 +301,9 @@
   /* A white panel with a hairline border and a soft shadow: the one surface used everywhere. */
   .panel {
     border: 1px solid var(--color-line);
-    border-radius: 0.875rem;
+    border-radius: var(--radius-card);
     background: var(--color-card);
-    box-shadow: 0 1px 2px rgb(15 30 38 / 0.04), 0 4px 16px -8px rgb(15 30 38 / 0.08);
+    box-shadow: 0 1px 2px rgb(43 25 62 / 0.04), 0 4px 16px -10px rgb(43 25 62 / 0.1);
   }
 
   .eyebrow {
@@ -260,14 +315,12 @@
   }
 
   .section-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  @media (min-width: 48rem) {
-    .section-title {
-      font-size: 1.375rem;
-    }
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
   }
 
   /* A row that scrolls sideways under the thumb, without a scrollbar drawn across it. */
@@ -281,9 +334,9 @@
 
   .notice {
     padding: 0.7rem 0.9rem;
-    border-inline-start: 4px solid var(--color-sea);
+    border-inline-start: 4px solid var(--color-brand);
     border-radius: 0.4rem;
-    background: var(--color-sea-wash);
+    background: var(--color-brand-wash);
     font-size: 0.925rem;
   }
   .notice-alert {
@@ -333,29 +386,6 @@ html[data-lowdata] .photo-img {
     opacity: 0;
   }
 }
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-6%, 8%) scale(1.12);
-  }
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--tilt, 0deg));
-  }
-  50% {
-    transform: translateY(-12px) rotate(var(--tilt, 0deg));
-  }
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
 @keyframes shimmer {
   to {
     background-position: -200% 0;
@@ -375,10 +405,21 @@ html[data-lowdata] .photo-img {
 }
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgb(194 65 12 / 0.4);
+    box-shadow: 0 0 0 0 rgb(107 63 171 / 0.35);
   }
   100% {
-    box-shadow: 0 0 0 14px rgb(194 65 12 / 0);
+    box-shadow: 0 0 0 14px rgb(107 63 171 / 0);
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(14px);
+  }
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }
 @keyframes pop {
@@ -406,36 +447,68 @@ html[data-lowdata] .photo-img {
     animation-delay: calc(var(--i, 0) * 90ms);
   }
 
-  /* Rises into view while scrolling, where the browser can tie animation to scroll (no script). */
+  /* Slides up a little into view while scrolling, where the browser can tie animation to scroll
+     (no script). Only position moves: the content is never hidden, even if the animation never runs. */
   @supports (animation-timeline: view()) {
     .reveal {
-      animation: rise linear both;
+      animation: slide-up linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 55%;
+      animation-range: entry 0% entry 60%;
     }
   }
 
-  /* Soft lights drifting behind the hero. */
-  .glow {
-    animation: drift 18s ease-in-out infinite;
+  /* The hero composition: each layer keeps its tilt and leans up to --depth towards the pointer
+     (HeroArt sets --px/--py between -1 and 1; they stay 0 without a mouse). */
+  .hero-layer {
+    --depth: 8px;
+    transform: translate(calc(var(--px, 0) * var(--depth)), calc(var(--py, 0) * var(--depth))) rotate(calc(var(--tilt, 0deg) + var(--px, 0) * 1deg));
+    transition: transform 320ms var(--ease-out);
+    will-change: transform;
   }
-  .glow-slow {
-    animation: drift 26s ease-in-out infinite reverse;
+  .hero-title {
+    font-size: clamp(2.375rem, 7.4vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
 
-  /* Cards in the hero collage bob gently, each out of step with the others. */
-  .floaty {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: calc(var(--i, 0) * -1.7s);
+  /* Listing cards lift 4px and their photo zooms slightly; the image never moves the layout. */
+  .listing-card {
+    transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-fast);
+    animation: card-in var(--dur-base) var(--ease-out) both;
+  }
+  .listing-card:hover,
+  .listing-card:focus-within {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-brand) 35%, var(--color-line));
+    box-shadow: 0 18px 36px -22px rgb(43 25 62 / 0.4);
+  }
+  .listing-photo {
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+  .listing-card:hover .listing-photo {
+    transform: scale(1.04);
   }
 
-  /* The band of services that slides past; it holds still under the pointer. */
-  .marquee-track {
-    animation: marquee 60s linear infinite;
+  .category-tile {
+    transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast), box-shadow var(--dur-fast);
   }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
+  .category-tile:hover,
+  .category-tile:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--color-brand);
+    box-shadow: 0 14px 28px -20px rgb(43 25 62 / 0.45);
+  }
+  .service-card {
+    transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast);
+  }
+  .service-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* The pasted post becomes fields, one after another, as the panel scrolls into view. */
+  .paste-field {
+    animation: card-in var(--dur-base) var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 120ms);
   }
 
   /* Grey placeholders with a light sweeping across them. */
@@ -454,7 +527,7 @@ html[data-lowdata] .photo-img {
   }
   .lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px -14px rgb(15 30 38 / 0.28);
+    box-shadow: 0 12px 28px -14px rgb(43 25 62 / 0.28);
   }
   .lift:active {
     transform: translateY(0) scale(0.98);
@@ -477,11 +550,11 @@ html[data-lowdata] .photo-img {
   }
   .btn {
     transition:
-      background-color 0.15s,
-      border-color 0.15s,
-      color 0.15s,
-      transform 0.12s var(--ease-out),
-      box-shadow 0.2s;
+      background-color var(--dur-fast),
+      border-color var(--dur-fast),
+      color var(--dur-fast),
+      transform 120ms var(--ease-out),
+      box-shadow var(--dur-fast);
   }
 
   /* The big "Post" button on phones calls attention once, softly. */
@@ -489,8 +562,9 @@ html[data-lowdata] .photo-img {
     animation: pulse-ring 1.6s var(--ease-out) 1.2s 2;
   }
 
+  /* The heart: one spring when saved; it stays filled afterwards. */
   .pop {
-    animation: pop 0.4s var(--ease-spring) both;
+    animation: pop 340ms var(--ease-spring) both;
   }
 }
 
@@ -529,10 +603,15 @@ html[data-lowdata] .photo-img {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .marquee-track,
-  .glow,
-  .glow-slow,
-  .floaty {
-    animation: none !important;
+  /* Keep the composition's tilt, drop every movement; states (filled heart, borders) still change. */
+  .hero-layer {
+    transform: rotate(var(--tilt, 0deg)) !important;
+  }
+  .listing-card:hover,
+  .listing-card:focus-within,
+  .category-tile:hover,
+  .service-card:hover,
+  .listing-card:hover .listing-photo {
+    transform: none !important;
   }
 }

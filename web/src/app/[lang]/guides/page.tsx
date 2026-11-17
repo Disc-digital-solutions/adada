@@ -24,8 +24,8 @@ export default async function GuidesPage({ params }: Props) {
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {GUIDES.map((guide) => (
           <li key={guide.slug} className="min-w-0">
-            <Link href={`/${lang}/guides/${guide.slug}`} className="panel flex h-full items-start gap-3 p-4 transition hover:border-sea/60">
-              <span aria-hidden className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sea-wash text-sea-deep">
+            <Link href={`/${lang}/guides/${guide.slug}`} className="panel flex h-full items-start gap-3 p-4 transition hover:border-brand/60">
+              <span aria-hidden className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-wash text-brand-deep">
                 <ServiceIcon name={guide.icon} width={21} height={21} />
               </span>
               <span className="min-w-0">

@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
       <PermitTool t={t} lang={lang} />
       <p className="notice mt-6">
         {t.help.disclaimer}{" "}
-        <Link href={`/${lang}/help#immigration`} className="font-semibold text-sea underline underline-offset-2">
+        <Link href={`/${lang}/help#immigration`} className="font-semibold text-brand underline underline-offset-2">
           {t.help.title}
         </Link>
       </p>

@@ -98,7 +98,7 @@ export function FilterForm({
       </label>
 
       <label className="flex items-center gap-2 text-[15px] md:col-span-6">
-        <input type="checkbox" name="women" value="1" defaultChecked={filter.women === true} className="h-5 w-5 accent-sea" />
+        <input type="checkbox" name="women" value="1" defaultChecked={filter.women === true} className="h-5 w-5 accent-brand" />
         {t.trust.womenFilter}
       </label>
 

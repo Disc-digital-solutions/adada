@@ -46,6 +46,13 @@ export const ShieldIcon = (props: SVGProps<SVGSVGElement>) => (
   </Icon>
 );
 
+/** Pass fill="currentColor" for the saved (filled) state. */
+export const HeartIcon = (props: SVGProps<SVGSVGElement>) => (
+  <Icon {...props}>
+    <path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z" />
+  </Icon>
+);
+
 export const ShareIcon = (props: SVGProps<SVGSVGElement>) => (
   <Icon {...props}>
     <circle cx="6" cy="12" r="2.5" />

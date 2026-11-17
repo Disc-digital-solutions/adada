@@ -91,10 +91,10 @@ export function PlanView({ lang, t, listings, nowMs: now, query: sp }: PlanViewP
           <ol className="grid gap-2">
             {checklist.steps.map((step, i) => (
               <li key={i} className="panel flex items-center gap-3 p-3.5">
-                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border-2 border-sea text-[12px] font-bold text-sea">{i + 1}</span>
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border-2 border-brand text-[12px] font-bold text-brand">{i + 1}</span>
                 <span className="flex-1 text-[15px]">{step.text[lang]}</span>
                 {step.link ? (
-                  <Link href={`/${lang}/${step.link}`} className="text-sea hover:text-sea-deep" aria-label={t.tools.open}>
+                  <Link href={`/${lang}/${step.link}`} className="text-brand hover:text-brand-deep" aria-label={t.tools.open}>
                     <ArrowIcon width={18} height={18} className="rtl:-scale-x-100" />
                   </Link>
                 ) : null}

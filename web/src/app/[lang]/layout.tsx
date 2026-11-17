@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Readex_Pro } from "next/font/google";
+import { DM_Sans, Manrope, Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { BottomNav, Header } from "@/components/Header";
@@ -9,12 +9,10 @@ import { getRepo } from "@/lib/data";
 import { site } from "@/site.config";
 import "../globals.css";
 
-// One typeface for Turkish, English and Arabic, so the three languages look like one site.
-const readex = Readex_Pro({
-  subsets: ["latin", "latin-ext", "arabic"],
-  variable: "--font-readex",
-  display: "swap",
-});
+// Manrope for Latin headings, DM Sans for Latin text (both cover Turkish), Noto Sans Arabic for Arabic.
+const manrope = Manrope({ subsets: ["latin", "latin-ext"], variable: "--font-manrope", display: "swap" });
+const dmSans = DM_Sans({ subsets: ["latin", "latin-ext"], variable: "--font-dm-sans", display: "swap" });
+const notoArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", display: "swap", weight: ["400", "500", "600", "700"] });
 
 /** The three languages are known in advance, so their pages can be prepared ahead of time. */
 export function generateStaticParams() {
@@ -39,7 +37,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const t = getDictionary(lang);
 
   return (
-    <html lang={lang} dir={dirOf(lang)} className={readex.variable}>
+    <html lang={lang} dir={dirOf(lang)} className={`${manrope.variable} ${dmSans.variable} ${notoArabic.variable}`}>
       <body>
         {/* Apply the saved display settings before anything is drawn (see DisplaySettings). */}
         <script

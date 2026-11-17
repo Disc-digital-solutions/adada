@@ -54,7 +54,7 @@ export function DepositTool({ t, cleanHref }: { t: Dictionary; cleanHref: string
               {steps.map((step) => (
                 <li key={step}>
                   <label className="flex cursor-pointer gap-2.5 text-[15px]">
-                    <input type="checkbox" className="mt-1 h-4 w-4 shrink-0 accent-sea" />
+                    <input type="checkbox" className="mt-1 h-4 w-4 shrink-0 accent-brand" />
                     {step}
                   </label>
                 </li>

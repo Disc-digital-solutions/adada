@@ -137,7 +137,7 @@ async function ListingView({ params, searchParams }: Props) {
       )}
 
       <div className={`enter ${listing.photos.length === 0 && wanted ? "md:col-span-2 md:max-w-2xl" : ""}`} style={{ "--i": 1 } as React.CSSProperties}>
-        {wanted ? <p className="mb-1 text-sm font-semibold text-sea-deep">{t.listing.wanted}</p> : null}
+        {wanted ? <p className="mb-1 text-sm font-semibold text-brand-deep">{t.listing.wanted}</p> : null}
         <h1 dir="auto" className="text-[24px] font-bold leading-tight tracking-tight md:text-[28px]">
           {listing.title}
         </h1>
@@ -172,7 +172,7 @@ async function ListingView({ params, searchParams }: Props) {
         {sold ? <p className="notice notice-alert mt-4">{t.listing.soldNotice}</p> : null}
 
         {sold ? null : (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div id="contact" className="mt-4 flex scroll-mt-28 flex-wrap gap-2">
             {/* A plain link, never prefetched: opening it counts as one contact. */}
             <a href={waHref} rel="nofollow" className="btn btn-wa min-w-[14rem] flex-1">
               <ChatIcon />
@@ -194,7 +194,7 @@ async function ListingView({ params, searchParams }: Props) {
             {listing.seller.name}
             {listing.seller.verified ? <VerifiedBadge t={t} /> : null}
           </p>
-          <Link href={`/${lang}/s/${listing.seller.shopSlug}`} className="mt-1 inline-block font-medium text-sea underline underline-offset-4 hover:text-sea-deep">
+          <Link href={`/${lang}/s/${listing.seller.shopSlug}`} className="mt-1 inline-block font-medium text-brand underline underline-offset-4 hover:text-brand-deep">
             {t.listing.viewShop}
           </Link>
         </section>

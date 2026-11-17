@@ -110,7 +110,7 @@ export function PermitTool({ t, lang }: { t: Dictionary; lang: Lang }) {
       <section className="panel p-5">
         <div className="flex items-baseline justify-between gap-3">
           <h2 className="font-semibold">{p.papers}</h2>
-          <span className="text-sm font-semibold text-sea-deep">
+          <span className="text-sm font-semibold text-brand-deep">
             {p.ready.replace("{done}", String(ready)).replace("{total}", String(p.items.length))}
           </span>
         </div>
@@ -122,7 +122,7 @@ export function PermitTool({ t, lang }: { t: Dictionary; lang: Lang }) {
                   type="checkbox"
                   checked={saved.done[i] ?? false}
                   onChange={(e) => update({ done: saved.done.map((d, j) => (j === i ? e.target.checked : d)) })}
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-sea"
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-brand"
                 />
                 {item}
               </label>

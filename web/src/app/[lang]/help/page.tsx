@@ -45,7 +45,7 @@ export default async function HelpPage({ params }: Props) {
         {HELP.map((topic) => (
           <section key={topic.slug} id={topic.slug} className="mt-10 scroll-mt-20">
             <h2 className="section-title mb-3 flex items-center gap-2">
-              <span aria-hidden className="grid h-9 w-9 place-items-center rounded-lg bg-sea-wash text-sea-deep">
+              <span aria-hidden className="grid h-9 w-9 place-items-center rounded-lg bg-brand-wash text-brand-deep">
                 <ServiceIcon name={topic.icon} width={19} height={19} />
               </span>
               {topic.title[lang]}
@@ -62,7 +62,7 @@ export default async function HelpPage({ params }: Props) {
                   <div className="border-t border-line px-4 py-3.5 text-[15px] leading-relaxed">
                     <p>{answer.a[lang]}</p>
                     {answer.link ? (
-                      <Link href={`/${lang}/${answer.link}`} className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
+                      <Link href={`/${lang}/${answer.link}`} className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-brand-deep">
                         {h.more}
                         <ArrowIcon width={15} height={15} className="rtl:-scale-x-100" />
                       </Link>

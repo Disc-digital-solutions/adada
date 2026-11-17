@@ -1,36 +1,60 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { Dictionary } from "@/i18n";
-import { balances, settle, type Bill } from "@/lib/split";
+import { balances, extraCents, parseAmount, settle, type Bill } from "@/lib/split";
+import { CURRENCIES, type Currency } from "@/lib/types";
 import { CopyTextButton } from "./CopyTextButton";
 
-/** The bill splitter (ROOM-08). Everything stays in the browser: no account, nothing stored. */
-export function SplitTool({ t }: { t: Dictionary }) {
+const SYMBOL: Record<Currency, string> = { TRY: "₺", GBP: "£", EUR: "€", USD: "$" };
+
+/** A bill as typed: the amount stays exactly as written until it is valid. */
+type Draft = { label: string; paidBy: number; raw: string };
+
+/**
+ * The bill splitter (ROOM-08). Everything stays in the browser: no account, nothing stored.
+ * Amounts are checked as they are typed; a bill with a blank or invalid amount is marked and left
+ * out of the result (never counted as 0). Shares are worked in whole cents, and any leftover cent
+ * is said out loud, so the payments always add up to the total.
+ */
+export function SplitTool({ t, lang }: { t: Dictionary; lang: string }) {
   const s = t.split;
   const [people, setPeople] = useState<string[]>(["A", "B", "C"]);
-  const [bills, setBills] = useState<Bill[]>([
-    { label: s.examples[0], paidBy: 0, amount: 900 },
-    { label: s.examples[1], paidBy: 1, amount: 240 },
-    { label: s.examples[2], paidBy: 0, amount: 450 },
+  const [currency, setCurrency] = useState<Currency>("TRY");
+  const [bills, setBills] = useState<Draft[]>([
+    { label: s.examples[0], paidBy: 0, raw: "900" },
+    { label: s.examples[1], paidBy: 1, raw: "240" },
+    { label: s.examples[2], paidBy: 0, raw: "450" },
   ]);
 
   const names = people.map((p, i) => p.trim() || `#${i + 1}`);
-  const transfers = useMemo(() => settle(people.length, bills), [people.length, bills]);
-  const total = bills.reduce((sum, b) => sum + (b.amount > 0 ? b.amount : 0), 0);
-  const share = people.length ? total / people.length : 0;
-  const owed = balances(people.length, bills);
-  const money = (n: number) => n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const parsed = bills.map((b) => parseAmount(b.raw));
+  const valid: Bill[] = bills.flatMap((b, i) => {
+    const r = parsed[i];
+    return r.ok ? [{ label: b.label, paidBy: b.paidBy, amount: r.amount }] : [];
+  });
+  const invalid = parsed.some((r) => !r.ok);
+  const transfers = settle(people.length, valid);
+  const owed = balances(people.length, valid);
+  const totalCents = valid.reduce((sum, b) => sum + Math.round(b.amount * 100), 0);
+  const total = totalCents / 100;
+  const share = Math.floor(totalCents / people.length) / 100;
+  const extra = extraCents(people.length, total);
+
+  const grouping = lang === "tr" ? "tr" : "en";
+  const money = (n: number) =>
+    SYMBOL[currency] + new Intl.NumberFormat(grouping, { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 }).format(n);
 
   const text = [
     `${s.title}`,
-    ...bills.filter((b) => b.amount > 0).map((b) => `• ${b.label}: ${money(b.amount)} (${names[b.paidBy] ?? "?"})`),
+    ...valid.map((b) => `• ${b.label}: ${money(b.amount)} (${names[b.paidBy] ?? "?"})`),
+    `${s.total}: ${money(total)}`,
     `${s.share}: ${money(share)}`,
     "",
     ...(transfers.length ? transfers.map((x) => `→ ${s.pays.replace("{from}", names[x.from]).replace("{to}", names[x.to])}: ${money(x.amount)}`) : [s.even]),
   ].join("\n");
 
-  const updateBill = (i: number, change: Partial<Bill>) => setBills(bills.map((b, j) => (j === i ? { ...b, ...change } : b)));
+  const updateBill = (i: number, change: Partial<Draft>) => setBills(bills.map((b, j) => (j === i ? { ...b, ...change } : b)));
   const removePerson = (i: number) => {
     setPeople(people.filter((_, j) => j !== i));
     // Bills paid by the removed person move to the first flatmate; later indexes shift down.
@@ -41,13 +65,25 @@ export function SplitTool({ t }: { t: Dictionary }) {
     <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_22rem] lg:items-start">
       <div className="grid gap-5">
         <section className="panel p-4">
-          <h2 className="font-semibold">{s.people}</h2>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 className="font-heading text-lg font-bold">{s.people}</h2>
+            <label className="w-40">
+              <span className="label">{s.currency}</span>
+              <select value={currency} onChange={(e) => setCurrency(e.target.value as Currency)} className="field">
+                {CURRENCIES.map((c) => (
+                  <option key={c} value={c}>
+                    {SYMBOL[c]} {c}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {people.map((name, i) => (
               <li key={i} className="flex gap-2">
-                <input aria-label={s.name} value={name} onChange={(e) => setPeople(people.map((p, j) => (j === i ? e.target.value : p)))} className="field" dir="auto" />
+                <input aria-label={`${s.name} ${i + 1}`} value={name} onChange={(e) => setPeople(people.map((p, j) => (j === i ? e.target.value : p)))} className="field" dir="auto" />
                 {people.length > 2 ? (
-                  <button type="button" onClick={() => removePerson(i)} className="btn btn-quiet !px-3" aria-label={s.remove}>
+                  <button type="button" onClick={() => removePerson(i)} className="btn btn-quiet !min-w-11 !px-3" aria-label={`${s.remove}: ${names[i]}`}>
                     ×
                   </button>
                 ) : null}
@@ -60,42 +96,71 @@ export function SplitTool({ t }: { t: Dictionary }) {
         </section>
 
         <section className="panel p-4">
-          <h2 className="font-semibold">{s.bills}</h2>
+          <h2 className="font-heading text-lg font-bold">{s.bills}</h2>
           <ul className="mt-3 grid gap-3">
-            {bills.map((bill, i) => (
-              <li key={i} className="grid grid-cols-[1fr_7rem] gap-2 sm:grid-cols-[1fr_7rem_10rem_auto]">
-                <input aria-label={s.what} value={bill.label} onChange={(e) => updateBill(i, { label: e.target.value })} className="field" dir="auto" />
-                <input aria-label={s.amount} inputMode="decimal" value={Number.isFinite(bill.amount) ? String(bill.amount) : ""} onChange={(e) => updateBill(i, { amount: Number(e.target.value.replace(",", ".")) || 0 })} className="field" dir="ltr" />
-                <select aria-label={s.paidBy} value={bill.paidBy} onChange={(e) => updateBill(i, { paidBy: Number(e.target.value) })} className="field">
-                  {names.map((n, j) => (
-                    <option key={j} value={j}>
-                      {s.paidBy}: {n}
-                    </option>
-                  ))}
-                </select>
-                <button type="button" onClick={() => setBills(bills.filter((_, j) => j !== i))} className="btn btn-quiet !px-3" aria-label={s.remove}>
-                  ×
-                </button>
-              </li>
-            ))}
+            {bills.map((bill, i) => {
+              const r = parsed[i];
+              const errorId = `bill-error-${i}`;
+              return (
+                <li key={i} className="grid grid-cols-[1fr_7.5rem] gap-2 sm:grid-cols-[1fr_7.5rem_10rem_auto]">
+                  <input aria-label={`${s.what} ${i + 1}`} value={bill.label} onChange={(e) => updateBill(i, { label: e.target.value })} className="field" dir="auto" />
+                  <input
+                    aria-label={`${s.amount} (${currency})`}
+                    aria-invalid={!r.ok}
+                    aria-describedby={!r.ok ? errorId : undefined}
+                    inputMode="decimal"
+                    value={bill.raw}
+                    onChange={(e) => updateBill(i, { raw: e.target.value })}
+                    className={`field tabular-nums ${!r.ok ? "!border-alert" : ""}`}
+                    dir="ltr"
+                  />
+                  <select aria-label={s.paidBy} value={bill.paidBy} onChange={(e) => updateBill(i, { paidBy: Number(e.target.value) })} className="field">
+                    {names.map((n, j) => (
+                      <option key={j} value={j}>
+                        {s.paidBy}: {n}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" onClick={() => setBills(bills.filter((_, j) => j !== i))} className="btn btn-quiet !min-w-11 !px-3" aria-label={`${s.remove}: ${bill.label || i + 1}`}>
+                    ×
+                  </button>
+                  {!r.ok ? (
+                    <p id={errorId} className="col-span-full -mt-1 text-[13.5px] font-medium text-alert">
+                      {r.error === "blank" ? s.errBlank : s.errNumber}
+                    </p>
+                  ) : null}
+                </li>
+              );
+            })}
           </ul>
-          <button type="button" onClick={() => setBills([...bills, { label: "", paidBy: 0, amount: 0 }])} className="btn btn-quiet mt-3">
+          <button type="button" onClick={() => setBills([...bills, { label: "", paidBy: 0, raw: "" }])} className="btn btn-quiet mt-3">
             + {s.addBill}
           </button>
         </section>
       </div>
 
-      <section className="panel p-5 lg:sticky lg:top-20" aria-live="polite">
+      <section className="panel p-5 lg:sticky lg:top-24" aria-live="polite">
         <h2 className="section-title">{s.result}</h2>
-        <p className="mt-1 text-sm text-ink-soft">
-          {s.share}: <b className="tabular-nums text-ink">{money(share)}</b>
-        </p>
+        {invalid ? <p className="notice notice-alert mt-3">{s.fixFirst}</p> : null}
+        <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[14.5px]">
+          <dt className="text-ink-soft">{s.total}</dt>
+          <dd className="text-end font-bold tabular-nums">
+            <bdi>{money(total)}</bdi>
+          </dd>
+          <dt className="text-ink-soft">{s.share}</dt>
+          <dd className="text-end font-bold tabular-nums">
+            <bdi>{money(share)}</bdi>
+          </dd>
+        </dl>
+        {extra > 0 ? <p className="mt-2 text-[13px] text-ink-soft">{s.rounding.replace("{n}", String(extra))}</p> : null}
         <ul className="mt-4 grid gap-2">
           {transfers.length === 0 ? <li className="notice">{s.even}</li> : null}
           {transfers.map((x, i) => (
             <li key={i} className="flex items-center justify-between gap-3 rounded-lg bg-paper px-3 py-2.5">
               <span className="text-[15px]">{s.pays.replace("{from}", names[x.from]).replace("{to}", names[x.to])}</span>
-              <b className="tabular-nums">{money(x.amount)}</b>
+              <b className="tabular-nums">
+                <bdi>{money(x.amount)}</bdi>
+              </b>
             </li>
           ))}
         </ul>
@@ -104,8 +169,8 @@ export function SplitTool({ t }: { t: Dictionary }) {
             <li key={i} className="flex justify-between">
               <span>{n}</span>
               <span className={`tabular-nums ${owed[i] < 0 ? "text-alert" : owed[i] > 0 ? "text-ok" : ""}`} dir="ltr">
-                {owed[i] > 0 ? "+" : ""}
-                {money(owed[i])}
+                {owed[i] > 0 ? "+" : owed[i] < 0 ? "−" : ""}
+                {money(Math.abs(owed[i]))}
               </span>
             </li>
           ))}

@@ -2,302 +2,346 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type React from "react";
-import { CountUp } from "@/components/CountUp";
-import { Photo } from "@/components/Photo";
-import { priceText } from "@/components/PriceTag";
-import { Rail } from "@/components/Rail";
-import { ServiceArt } from "@/components/ServiceTile";
-import { ServiceTile } from "@/components/ServiceTile";
+import { FreshFinds } from "@/components/FreshFinds";
+import { HeroArt } from "@/components/HeroArt";
+import { GridSkeleton } from "@/components/ListingCard";
 import { ToolTile } from "@/components/ToolTile";
-import { ArrowIcon, ChatIcon, GridIcon, PlusIcon, SearchIcon, ServiceIcon, ShieldIcon } from "@/components/icons";
-import { getDictionary } from "@/i18n";
+import { ArrowIcon, ChatIcon, PlusIcon, SearchIcon, ServiceIcon } from "@/components/icons";
+import { getDictionary, type Dictionary } from "@/i18n";
 import { isLang, type Lang } from "@/i18n/config";
+import { BROWSE, type BrowseId } from "@/lib/browse";
 import { getRepo } from "@/lib/data";
+import { formatMoney } from "@/lib/format";
 import { requestTime } from "@/lib/now";
-import { tooLowComparedWith } from "@/lib/prices";
-import { GROUPS, SERVICES, serviceBySlug, servicesIn, type GroupSlug } from "@/lib/services";
-import { TOOLS } from "@/lib/tools";
-import type { Listing } from "@/lib/types";
-import { CITIES } from "@/site.config";
+import { parsePost } from "@/lib/parse-post";
+import { EXAMPLE_ROOM_PHOTO, HARBOUR_PHOTO, type SitePhoto } from "@/lib/photos";
+import { GROUPS, SERVICES, serviceBySlug, serviceOfCategory } from "@/lib/services";
 import { withBase } from "@/lib/static-site";
+import { TOOLS } from "@/lib/tools";
+import { CITIES } from "@/site.config";
 
-/** The services on the home grid; the rest are one tap away under "All services". */
-const FEATURED = ["flats", "dorms", "buy-sell", "cars", "car-rental", "towing", "cleaning", "construction", "arrival", "education", "jobs"];
+/** Services the home page shows first; every group and all the others are one tap away. */
+const FEATURED_SERVICES = ["cleaning", "construction", "towing", "arrival", "viewing", "contract-check"];
+/** The area list, in the order people on the island ask for them; the model's other areas follow. */
+const AREA_ORDER = ["famagusta", "kyrenia", "nicosia", "iskele"];
+
+const delay = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 /**
- * Home is the hub of the whole app: one search for everything, every service as a tile,
- * then a row of the newest ads from each part of the island's life.
+ * Home: the violet hero with the island in photos, one search, six ways into the ads, the newest
+ * ads with their filters, then services (lavender), newcomer help (peach) and posting (violet).
  */
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   const t = getDictionary(lang);
-  const facts: [typeof PlusIcon, string][] = [
-    [PlusIcon, t.home.statFree],
-    [GridIcon, `${SERVICES.length} · ${t.nav.services}`],
-    [ChatIcon, "WhatsApp"],
-    [ShieldIcon, `${t.home.statCities} · ${t.home.statLangs}`],
-  ];
-  const featured = FEATURED.map((slug) => serviceBySlug(slug)).filter((s) => s !== undefined);
+  const p = t.pop;
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink text-white">
-        {/* Two soft lights drifting slowly behind the words: the sea and the sun. */}
-        <span aria-hidden className="glow pointer-events-none absolute -top-40 end-[-10%] h-[30rem] w-[30rem] rounded-full bg-sea/40 blur-3xl" />
-        <span aria-hidden className="glow-slow pointer-events-none absolute -bottom-48 start-[-12%] h-[26rem] w-[26rem] rounded-full bg-sea-wash/10 blur-3xl" />
+      <Hero lang={lang} t={t} />
+      <SearchPanel lang={lang} t={t} />
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-10 pt-8 md:px-6 md:pb-16 md:pt-14 lg:grid-cols-[1fr_24rem]">
-          <div>
-            <p className="eyebrow enter !text-white/60">North Cyprus · KKTC · شمال قبرص</p>
-            <h1 className="enter mt-2 max-w-[22ch] text-[30px] font-bold leading-[1.12] tracking-tight md:text-[48px]" style={{ "--i": 1 } as React.CSSProperties}>
-              {t.home.heroTitle}
-            </h1>
-            <p className="enter mt-3 max-w-xl text-[15px] leading-relaxed text-white/75 md:text-[17px]" style={{ "--i": 2 } as React.CSSProperties}>
-              {t.home.heroIntro}
-            </p>
-
-          <form action={withBase(`/${lang}/search`)} role="search"
-            style={{ "--i": 3 } as React.CSSProperties} className="enter mt-6 grid gap-2 rounded-xl bg-card p-2 text-ink shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)] md:max-w-3xl md:grid-cols-[1fr_13rem_auto]">
-            <label className="relative">
-              <span className="sr-only">{t.search.placeholder}</span>
-              <SearchIcon className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-ink-soft" />
-              <input name="q" type="search" placeholder={t.search.placeholder} className="field !border-transparent !bg-paper ps-10" />
-            </label>
-            <label>
-              <span className="sr-only">{t.search.city}</span>
-              <select name="city" defaultValue="" className="field !border-transparent !bg-paper">
-                <option value="">{t.home.anyCity}</option>
-                {CITIES.map((city) => (
-                  <option key={city.slug} value={city.slug}>
-                    {city.name[lang]}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button type="submit" className="btn btn-primary !min-h-11 !px-7">
-              {t.search.submit}
-            </button>
-          </form>
-
-            <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-white/70">
-              {facts.map(([Icon, fact], i) => (
-                <li key={fact} className="enter flex items-center gap-1.5" style={{ "--i": 4 + i } as React.CSSProperties}>
-                  <Icon width={15} height={15} className="text-white/50" />
-                  {fact}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Three real ads floating beside the words, on wide screens. */}
-          <Suspense fallback={null}>
-            <HeroCollage lang={lang} />
-          </Suspense>
-        </div>
-
-        {/* Every service, sliding past; it holds still under the pointer. */}
-        <ServiceMarquee lang={lang} />
-      </section>
-
-      <div className="page">
-        <section className="mt-2">
-          <div className="mb-4 flex items-end justify-between gap-3">
-            <h2 className="section-title">{t.home.whatNeed}</h2>
-            <Link href={`/${lang}/services`} className="inline-flex items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
-              {t.home.allServices}
-              <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
-            </Link>
-          </div>
-          <ul className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:gap-3">
-            {featured.map((service, i) => (
-              <ServiceTile key={service.slug} service={service} lang={lang} index={i} />
-            ))}
-            <li>
-              <Link href={`/${lang}/services`} className="panel flex h-full flex-col items-center gap-2 px-2 py-3.5 text-center text-sea-deep transition hover:border-sea/60">
-                <span aria-hidden className="grid h-11 w-11 place-items-center rounded-xl bg-paper">
-                  <GridIcon width={23} height={23} />
-                </span>
-                <span className="text-[12.5px] font-semibold leading-tight md:text-[13.5px]">{t.home.allServices}</span>
-              </Link>
-            </li>
-          </ul>
-        </section>
-
-        {/* The ads are fetched for each visit; the frame above is sent at once. */}
-        <Suspense fallback={<div className="shimmer mt-10 h-72 rounded-xl" aria-hidden />}>
-          <Rails lang={lang} />
-        </Suspense>
-
-        <Suspense fallback={null}>
-          <Stats lang={lang} />
-        </Suspense>
-
-        <section className="reveal mt-14">
-          <div className="mb-4 flex items-end justify-between gap-3">
-            <h2 className="section-title">{t.tools.title}</h2>
-            <Link href={`/${lang}/tools`} className="inline-flex items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
-              {t.home.seeAllShort}
-              <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
-            </Link>
-          </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {TOOLS.slice(0, 4).map((tool) => (
-              <ToolTile key={tool.href} tool={tool} lang={lang} />
+      <div className="page !pt-0">
+        <section aria-labelledby="browse-title" className="mt-10">
+          <h2 id="browse-title" className="sr-only">
+            {p.browse}
+          </h2>
+          <ul className="grid grid-cols-2 gap-3 min-[480px]:grid-cols-3 lg:grid-cols-6">
+            {BROWSE.map((b, i) => (
+              <li key={b.id} className="enter" style={delay(i)}>
+                <Link
+                  href={`/${lang}?browse=${b.id}#finds`}
+                  scroll={false}
+                  className="category-tile group flex h-full min-h-[6.5rem] flex-col items-start justify-between gap-3 rounded-[var(--radius-card)] border border-line bg-card p-4 font-heading text-[15.5px] font-bold text-ink"
+                >
+                  <span aria-hidden className="wiggle grid h-11 w-11 place-items-center rounded-xl bg-brand-wash text-brand">
+                    <ServiceIcon name={b.icon} width={22} height={22} />
+                  </span>
+                  {p[b.id as BrowseId]}
+                </Link>
+              </li>
             ))}
           </ul>
         </section>
 
-        <section className="reveal mt-14 grid gap-4 md:grid-cols-[1.4fr_1fr]">
-          <div className="relative overflow-hidden rounded-2xl bg-sea-deep p-6 text-white md:p-8">
-            <span aria-hidden className="pointer-events-none absolute -bottom-24 -end-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-            <h2 className="relative max-w-[18ch] text-2xl font-bold leading-tight tracking-tight md:text-[28px]">{t.home.ctaTitle}</h2>
-            <p className="relative mt-2 max-w-md text-[15px] leading-relaxed text-white/80">{t.home.ctaBody}</p>
-            <Link href={`/${lang}/post`} className="btn btn-accent relative mt-6">
-              <PlusIcon width={18} height={18} />
-              {t.home.ctaButton}
-            </Link>
-          </div>
-          <div className="panel p-6 md:p-8">
-            <h2 className="flex items-center gap-2 text-lg font-bold">
-              <ShieldIcon className="text-sea" />
-              {t.home.trustTitle}
+        <section id="finds" aria-labelledby="finds-title" className="mt-14 scroll-mt-24">
+          <div className="mb-5 max-w-2xl">
+            <h2 id="finds-title" className="section-title">
+              {p.findsTitle}
             </h2>
-            <ul className="mt-4 grid gap-3 text-[14.5px]">
-              {t.safety.tips.slice(0, 3).map((tip) => (
-                <li key={tip} className="flex gap-2.5">
-                  <span aria-hidden className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-sea" />
-                  {tip}
-                </li>
-              ))}
-            </ul>
-            <Link href={`/${lang}/safety`} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-sea hover:text-sea-deep">
-              {t.nav.safety}
-              <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
-            </Link>
+            <p className="mt-1 text-ink-soft">{p.findsBody}</p>
           </div>
+          <Suspense fallback={<GridSkeleton label={p.loading} />}>
+            <Finds lang={lang} />
+          </Suspense>
         </section>
       </div>
+
+      <Services lang={lang} t={t} />
+      <Newcomers lang={lang} t={t} />
+      <PostPanel lang={lang} t={t} />
     </>
   );
 }
 
-/** The newest ads of a group of services. */
-function inGroup(listings: Listing[], group: GroupSlug) {
-  const categories = new Set(servicesIn(group).flatMap((s) => s.categories));
-  return listings.filter((l) => categories.has(l.category) && l.kind === "offer").slice(0, 10);
-}
-
-async function Rails({ lang }: { lang: Lang }) {
+async function Finds({ lang }: { lang: Lang }) {
   const now = await requestTime();
-  const t = getDictionary(lang);
   const listings = await getRepo().search({ sort: "newest" }, now);
-  const order: GroupSlug[] = ["housing", "buy", "vehicles", "students", "home", "work"];
-  const wanted = listings.filter((l) => l.kind === "wanted").slice(0, 10);
-
-  return (
-    <>
-      {order.map((slug) => (
-        <Rail
-          key={slug}
-          title={GROUPS.find((g) => g.slug === slug)!.name[lang]}
-          href={`/${lang}/services#${slug}`}
-          listings={inGroup(listings, slug)}
-          lang={lang}
-          t={t}
-          nowMs={now}
-        />
-      ))}
-      <Rail title={t.home.wantedNow} hint={t.home.wantedNowHint} href={`/${lang}/search?kind=wanted`} listings={wanted} lang={lang} t={t} nowMs={now} />
-    </>
-  );
+  return <FreshFinds lang={lang} listings={listings} nowMs={now} />;
 }
 
-/** Three ads with pictures, tilted and floating, so the first screen already shows what is inside. */
-async function HeroCollage({ lang }: { lang: Lang }) {
-  const now = await requestTime();
-  const t = getDictionary(lang);
-  const all = await getRepo().search({ sort: "newest" }, now);
-  // Never showcase an ad whose price looks too good to be true (the scam warning, ACC-20).
-  const picks = all.filter((l) => l.kind === "offer" && l.status === "live" && l.photos.length > 0 && !tooLowComparedWith(l, all)).slice(0, 3);
-  const spots = [
-    { tilt: "-6deg", place: "start-0 top-10 w-44" },
-    { tilt: "5deg", place: "end-0 top-0 w-48" },
-    { tilt: "-2deg", place: "start-28 bottom-0 w-48" },
+function Hero({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const p = t.pop;
+  // The photo really shows Girne (Kyrenia); its caption uses that place's name in the reader's language.
+  const harbourPlace = CITIES.find((c) => c.slug === HARBOUR_PHOTO.place)?.name[lang] ?? HARBOUR_PHOTO.place;
+  const cues = [
+    { icon: "tag", text: p.cueFree },
+    { icon: "chat2", text: p.cueLangs },
+    { icon: "phone", text: p.cueWhatsApp },
   ];
   return (
-    <div aria-hidden className="relative hidden h-[26rem] lg:block">
-      {picks.map((l, i) => (
-        <Link
-          key={l.id}
-          href={`/${lang}/l/${l.id}`}
-          tabIndex={-1}
-          className={`floaty enter-fade absolute ${spots[i].place} rounded-2xl bg-card p-2 text-ink shadow-[0_24px_48px_-20px_rgb(0_0_0/0.6)]`}
-          style={{ "--tilt": spots[i].tilt, "--i": i + 2 } as React.CSSProperties}
-        >
-          <div className="aspect-[4/3] overflow-hidden rounded-xl bg-paper">
-            {l.photos[0] ? <Photo src={l.photos[0]} alt="" /> : <ServiceArt category={l.category} lang={lang} />}
-          </div>
-          <p className="mt-1.5 px-1 text-[14px] font-bold">{priceText(l, lang, t)}</p>
-          <p className="truncate px-1 pb-1 text-[12px] text-ink-soft" dir="auto">
-            {l.title}
+    <section className="on-dark relative overflow-hidden bg-hero text-on-hero">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-24 pt-10 md:px-6 md:pb-32 md:pt-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <p className="enter text-[13px] font-bold uppercase tracking-[0.14em] text-lime">{p.eyebrow}</p>
+          <h1 className="hero-title enter mt-3 font-heading font-extrabold text-on-hero" style={delay(1)}>
+            {p.heroTitle}
+            <span className="block text-lime">{p.heroAccent}</span>
+          </h1>
+          <p className="enter mt-5 max-w-[34rem] text-[16.5px] leading-relaxed text-on-hero-soft md:text-[18px]" style={delay(2)}>
+            {p.heroBody}
           </p>
-        </Link>
-      ))}
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {cues.map((cue, i) => (
+              <li key={cue.text} className="enter inline-flex min-h-9 items-center gap-2 rounded-full bg-hero-2 px-3.5 text-[13.5px] font-medium text-on-hero" style={delay(3 + i)}>
+                <ServiceIcon name={cue.icon} width={16} height={16} className="text-lime" />
+                <bdi>{cue.text}</bdi>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <HeroArt className="enter-fade relative mx-auto aspect-square w-full max-w-[28rem] sm:aspect-[10/9] sm:max-w-[30rem] lg:max-w-none">
+          {/* The housing card: a generic photo, labelled as an example until real listings have photos. */}
+          <figure className="hero-layer absolute start-0 top-[9%] w-[64%] rounded-[18px] sm:top-[7%] sm:w-[62%] bg-hero-lavender p-2.5 text-ink shadow-[0_30px_60px_-30px_rgb(0_0_0/0.7)]" style={{ "--tilt": "-4deg", "--depth": "10px" } as React.CSSProperties}>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[12px]">
+              <SitePhotoImg photo={EXAMPLE_ROOM_PHOTO} eager />
+              <span className="absolute start-2 top-2 rounded-md bg-card/95 px-2 py-0.5 text-[11.5px] font-bold text-ink">{p.examplePhoto}</span>
+            </div>
+            <figcaption className="flex items-center gap-2 px-1.5 pb-1 pt-2.5 font-heading text-[13.5px] font-bold leading-tight sm:text-[15px]">
+              <ServiceIcon name="key" width={17} height={17} className="text-brand" />
+              {p.heroHomes}
+            </figcaption>
+          </figure>
+
+          {/* The postcard: a real photo of Girne harbour. */}
+          <figure className="hero-layer absolute end-0 top-0 w-[44%] rounded-[16px] bg-hero-peach p-2 pb-1 text-ink shadow-[0_24px_50px_-28px_rgb(0_0_0/0.7)]" style={{ "--tilt": "5deg", "--depth": "6px" } as React.CSSProperties}>
+            <div className="aspect-[3/2] overflow-hidden rounded-[10px]">
+              <SitePhotoImg photo={HARBOUR_PHOTO} eager />
+            </div>
+            <figcaption className="px-1 py-1.5 font-heading text-[14px] font-extrabold tracking-tight">{harbourPlace}</figcaption>
+          </figure>
+
+          {/* The message tile: the ready-made WhatsApp message every ad offers. */}
+          <div className="hero-layer absolute bottom-0 end-0 w-[60%] rounded-[16px] bg-card p-3 sm:bottom-[3%] sm:end-[2%] sm:w-[56%] sm:p-3.5 text-ink shadow-[0_24px_50px_-26px_rgb(0_0_0/0.75)]" style={{ "--tilt": "-2deg", "--depth": "8px" } as React.CSSProperties}>
+            <p className="flex items-center gap-2 text-[12.5px] font-bold text-mint-ink">
+              <span aria-hidden className="grid h-7 w-7 place-items-center rounded-full bg-mint">
+                <ChatIcon width={15} height={15} />
+              </span>
+              {p.messageTile}
+            </p>
+            <p dir="auto" className="mt-2 rounded-xl rounded-ss-sm bg-mint px-3 py-2 text-[12.5px] leading-snug text-ink sm:text-[13.5px]">
+              {p.messageText}
+            </p>
+          </div>
+        </HeroArt>
+      </div>
+    </section>
+  );
+}
+
+/** A site photo with reserved dimensions, so nothing jumps while it loads. */
+function SitePhotoImg({ photo, eager = false }: { photo: SitePhoto; eager?: boolean }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={withBase(photo.src)}
+      width={photo.width}
+      height={photo.height}
+      alt=""
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className="h-full w-full object-cover"
+    />
+  );
+}
+
+/** The one search, overlapping the bottom of the hero. The pasted-post shortcut sits right under it. */
+function SearchPanel({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const p = t.pop;
+  const areas = [...AREA_ORDER.map((slug) => CITIES.find((c) => c.slug === slug)!), ...CITIES.filter((c) => !AREA_ORDER.includes(c.slug))];
+  return (
+    <div className="relative z-10 mx-auto -mt-16 max-w-6xl px-4 md:-mt-20 md:px-6">
+      <div className="rounded-[var(--radius-panel)] border border-line bg-card p-3 shadow-[0_30px_60px_-34px_rgb(43_25_62/0.55)] md:p-4">
+        <form action={withBase(`/${lang}/search`)} role="search" className="grid gap-2 md:grid-cols-[1fr_14rem_auto]">
+          <label className="relative">
+            <span className="sr-only">{t.search.placeholder}</span>
+            <SearchIcon className="pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-ink-soft" />
+            <input name="q" type="search" placeholder={t.search.placeholder} className="field !min-h-13 !bg-paper ps-11 text-[16px]" />
+          </label>
+          <label>
+            <span className="sr-only">{p.area}</span>
+            <select name="city" defaultValue="" className="field !min-h-13 !bg-paper text-[16px]">
+              <option value="">{p.allArea}</option>
+              {areas.map((city) => (
+                <option key={city.slug} value={city.slug}>
+                  {city.name[lang]}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit" className="btn btn-accent !min-h-13 !px-8 text-[16px]">
+            <SearchIcon width={19} height={19} />
+            {t.search.submit}
+          </button>
+        </form>
+        <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[14.5px] text-ink-soft">
+          <span>{p.pasteAsk}</span>
+          <Link href={`/${lang}/post#paste`} className="group inline-flex min-h-9 items-center gap-1 font-semibold text-brand hover:text-brand-deep">
+            {p.pasteAction}
+            <ArrowIcon width={16} height={16} className="nudge rtl:-scale-x-100" />
+          </Link>
+        </p>
+      </div>
+      <PhotoCredits t={t} />
     </div>
   );
 }
 
-/** All the services as chips sliding past in a loop (the list twice, so the loop has no seam). */
-function ServiceMarquee({ lang }: { lang: Lang }) {
-  const chips = SERVICES.map((service) => (
-    <Link
-      key={service.slug}
-      href={`/${lang}/c/${service.slug}`}
-      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[13px] text-white/85 transition hover:border-white/50 hover:text-white"
-    >
-      <ServiceIcon name={service.icon} width={15} height={15} className="text-white/60" />
-      {service.name[lang]}
-    </Link>
-  ));
+/** The photo licences ask for credit: shown small, right under the search. */
+function PhotoCredits({ t }: { t: Dictionary }) {
+  const [before, rest] = t.pop.photoCredit.split("{harbour}");
+  const [middle, after] = rest.split("{room}");
+  const link = (photo: SitePhoto) => (
+    <a href={photo.source} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
+      {photo.author}, {photo.license}
+    </a>
+  );
   return (
-    <nav aria-label={getDictionary(lang).nav.services} className="marquee relative border-t border-white/10 py-3 [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
-      <div className="marquee-track flex w-max gap-2" dir="ltr">
-        {chips}
-        <span aria-hidden className="contents">
-          {SERVICES.map((service) => (
-            <span key={service.slug} className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[13px] text-white/85">
-              <ServiceIcon name={service.icon} width={15} height={15} className="text-white/60" />
-              {service.name[lang]}
-            </span>
-          ))}
-        </span>
-      </div>
-    </nav>
+    <p className="mt-2 px-2 text-[12px] text-ink-faint">
+      {before}
+      {link(HARBOUR_PHOTO)}
+      {middle}
+      {link(EXAMPLE_ROOM_PHOTO)}
+      {after}
+    </p>
   );
 }
 
-/** A row of numbers that count up as they scroll into view. */
-async function Stats({ lang }: { lang: Lang }) {
-  const now = await requestTime();
-  const t = getDictionary(lang);
-  const ads = (await getRepo().search({ sort: "newest" }, now)).length;
-  const items: [number, string][] = [
-    [SERVICES.length, t.nav.services],
-    [ads, t.search.results.other.replace("{n}", "").trim()],
-    [CITIES.length, t.home.statCities.replace(/\d+\s*/, "")],
-    [3, t.home.statLangs.replace(/\d+\s*/, "")],
+function Services({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const p = t.pop;
+  const featured = FEATURED_SERVICES.map((slug) => serviceBySlug(slug)).filter((s) => s !== undefined);
+  return (
+    <section aria-labelledby="services-title" className="mt-16 bg-lavender py-14 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="max-w-2xl">
+          <h2 id="services-title" className="section-title">
+            {p.servicesTitle}
+          </h2>
+          <p className="mt-2 text-[16px] text-ink-soft">{p.servicesBody}</p>
+        </div>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((service, i) => (
+            <li key={service.slug} className="reveal" style={delay(i)}>
+              <Link href={`/${lang}/c/${service.slug}`} className="service-card group flex h-full items-start gap-3.5 rounded-[var(--radius-card)] border border-transparent bg-card p-4 transition-colors hover:border-brand/40">
+                <span aria-hidden className="wiggle grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-hero text-lime">
+                  <ServiceIcon name={service.icon} width={22} height={22} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-heading text-[16px] font-bold leading-tight">{service.name[lang]}</span>
+                  <span className="mt-1 block text-[14px] leading-snug text-ink-soft">{service.blurb[lang]}</span>
+                </span>
+                <ArrowIcon width={18} height={18} className="nudge mt-1 shrink-0 text-brand rtl:-scale-x-100" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          {GROUPS.map((group) => (
+            <Link key={group.slug} href={`/${lang}/services#${group.slug}`} className="inline-flex min-h-10 items-center rounded-full border border-brand/25 bg-card/70 px-3.5 text-[14px] font-semibold text-brand-deep transition-colors hover:bg-card">
+              {group.name[lang]}
+            </Link>
+          ))}
+          <Link href={`/${lang}/services`} className="btn btn-primary ms-auto">
+            {p.servicesAll.replace("{n}", String(SERVICES.length))}
+            <ArrowIcon width={17} height={17} className="rtl:-scale-x-100" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Newcomers({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const p = t.pop;
+  return (
+    <section aria-labelledby="new-title" className="bg-peach py-14 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="max-w-2xl">
+          <h2 id="new-title" className="section-title">
+            {p.newTitle}
+          </h2>
+          <p className="mt-2 text-[16px] text-ink-soft">{p.newBody}</p>
+        </div>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {TOOLS.map((tool) => (
+            <ToolTile key={tool.href} tool={tool} lang={lang} />
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/** From group text to form fields, using the real paste reader on a sample post. */
+function PostPanel({ lang, t }: { lang: Lang; t: Dictionary }) {
+  const p = t.pop;
+  const parsed = parsePost(p.postSample);
+  const fields = [
+    { label: t.search.category, value: parsed.category ? (serviceOfCategory(parsed.category)?.name[lang] ?? parsed.title) : parsed.title },
+    { label: p.fieldPrice, value: parsed.price !== null && parsed.currency ? formatMoney(parsed.price, parsed.currency, lang) : "—" },
+    { label: p.fieldArea, value: CITIES.find((c) => c.slug === parsed.city)?.name[lang] ?? "—" },
   ];
   return (
-    <ul className="reveal mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
-      {items.map(([n, label]) => (
-        <li key={label} className="panel px-4 py-5 text-center">
-          <p className="text-[34px] font-bold leading-none tracking-tight text-sea-deep">
-            <CountUp to={n} />
+    <section aria-labelledby="post-title" className="px-4 py-14 md:px-6 md:py-20">
+      <div className="on-dark relative mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-[28px] bg-hero p-6 text-on-hero md:p-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div>
+          <h2 id="post-title" className="font-heading text-[28px] font-extrabold leading-[1.1] tracking-tight md:text-[38px]">
+            {p.postTitle}
+          </h2>
+          <p className="mt-3 max-w-md text-[16px] leading-relaxed text-on-hero-soft">{p.postBody}</p>
+          <Link href={`/${lang}/post#paste`} className="btn btn-accent mt-7 !min-h-12 !px-6 text-[16px]">
+            <PlusIcon width={19} height={19} />
+            {p.postButton}
+          </Link>
+        </div>
+        <div aria-hidden className="grid gap-3">
+          <p dir="auto" className="reveal max-w-[24rem] rounded-2xl rounded-es-sm bg-hero-2 px-4 py-3 text-[14.5px] leading-snug text-on-hero">
+            {p.postSample}
           </p>
-          <p className="mt-2 text-[13px] font-medium text-ink-soft">{label}</p>
-        </li>
-      ))}
-    </ul>
+          <div className="reveal grid gap-2 rounded-2xl bg-card p-4 text-ink" style={delay(1)}>
+            {fields.map((field, i) => (
+              <div key={field.label} className="paste-field grid grid-cols-[6.5rem_1fr] items-center gap-3 rounded-lg bg-paper px-3 py-2" style={delay(i + 2)}>
+                <span className="text-[12.5px] font-semibold text-ink-soft">{field.label}</span>
+                <span className="truncate text-[15px] font-bold">
+                  <bdi>{field.value}</bdi>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

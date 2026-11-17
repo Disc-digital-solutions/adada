@@ -3,8 +3,8 @@
 5:I[39756,["$4"],"default"]
 6:I[37457,["$4"],"default"]
 d:"$Sreact.suspense"
-e:"/adada/site/_next/static/chunks/31vsatwo85byq.js"
-f:"/adada/site/_next/static/chunks/3g6qfc7ht_x9r.js"
+e:"/adada/site/_next/static/chunks/04edkrv7ebd_7.js"
+f:"/adada/site/_next/static/chunks/3vy95q3anhv6j.js"
 10:I[22016,["$e","$f"],""]
 11:I[97367,["$4"],"OutletBoundary"]
 14:"ViewportBoundary"
@@ -15,11 +15,11 @@ f:"/adada/site/_next/static/chunks/3g6qfc7ht_x9r.js"
 8:X
 8:C
 9:X
-c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","$d",null,{"fallback":["$","div",null,{"className":"mx-auto aspect-square max-w-xl rounded-xl bg-line/60","aria-hidden":true}],"children":["$","div",null,{"className":"mx-auto max-w-xl","children":[["$","p",null,{"className":"notice notice-alert","children":"تمت إزالة هذا الإعلان."}],["$","$L10",null,{"href":"/ar","className":"btn btn-primary mt-4","children":"العودة إلى الرئيسية"}]]}]}]}],[["$","script","script-0",{"src":"/adada/site/_next/static/chunks/3g6qfc7ht_x9r.js","async":true}]],["$","$L11",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]]}],"p":"$@13","v":null,"s":"$9"}}]]
+c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"page","children":["$","$d",null,{"fallback":["$","div",null,{"className":"mx-auto aspect-square max-w-xl rounded-xl bg-line/60","aria-hidden":true}],"children":["$","div",null,{"className":"mx-auto max-w-xl","children":[["$","p",null,{"className":"notice notice-alert","children":"تمت إزالة هذا الإعلان."}],["$","$L10",null,{"href":"/ar","className":"btn btn-primary mt-4","children":"العودة إلى الرئيسية"}]]}]}]}],[["$","script","script-0",{"src":"/adada/site/_next/static/chunks/3vy95q3anhv6j.js","async":true}]],["$","$L11",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]]}],"p":"$@13","v":null,"s":"$9"}}]]
 a:[["children",{"s":{"n":"id","t":"d","k":"d14","s":[]},"h":96,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@b","v":"$8","s":"$9"},"c":"$Qc"}]]
 2:[["children",{"s":"l","h":64,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"ar","s":[]},"h":48,"c":"$Q2"}]]
-0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L15",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b5d6b"}]]}],["$","$L17",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Adada | اشترِ وبِع واستأجر في شمال قبرص"}],["$","meta","1",{"name":"description","content":"أضف إعلانك في دقيقة. راسل البائع على واتساب."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L18","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@19","v":null,"s":"$9"}},"a":"$@1a","u":"$@1b","b":"CHbJAu65yKKnzody7-VJN"}
+0:{"t":{"t":{"s":"","h":80,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L15",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#2b1645"}]]}],["$","$L17",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Adada | اشترِ وبِع واستأجر في شمال قبرص"}],["$","meta","1",{"name":"description","content":"أضف إعلانك في دقيقة. راسل البائع على واتساب."}],["$","link","2",{"rel":"manifest","href":"/adada/site/manifest.webmanifest"}],["$","link","3",{"rel":"icon","href":"/adada/site/icon.svg?icon.2bjthagdylpsd.svg","sizes":"any","type":"image/svg+xml"}],["$","$L18","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@19","v":null,"s":"$9"}},"a":"$@1a","u":"$@1b","b":"JD3jSZP0Dh3-sREMtwJk8"}
 12:null
 1b:true
 9:300

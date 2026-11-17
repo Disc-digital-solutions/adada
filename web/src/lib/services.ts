@@ -37,14 +37,14 @@ export interface Service {
 }
 
 export const GROUPS: ServiceGroup[] = [
-  { slug: "housing", name: { tr: "Konut", en: "Housing", ar: "السكن" }, tone: { bg: "#e5f0f2", fg: "#0b5d6b" } },
-  { slug: "buy", name: { tr: "Al ve sat", en: "Buy and sell", ar: "بيع وشراء" }, tone: { bg: "#fbf1de", fg: "#83560a" } },
-  { slug: "vehicles", name: { tr: "Araçlar", en: "Vehicles", ar: "المركبات" }, tone: { bg: "#e8edf7", fg: "#2f4b8a" } },
-  { slug: "home", name: { tr: "Ev ve iş hizmetleri", en: "Home and business services", ar: "خدمات المنزل والأعمال" }, tone: { bg: "#e4f2ea", fg: "#1f6b45" } },
-  { slug: "students", name: { tr: "Öğrenciler", en: "Students", ar: "الطلاب" }, tone: { bg: "#f0eaf6", fg: "#6a3f8f" } },
-  { slug: "work", name: { tr: "İş ve seyahat", en: "Work and travel", ar: "العمل والتنقل" }, tone: { bg: "#f9eae3", fg: "#9a3f22" } },
-  { slug: "outing", name: { tr: "Gezme ve ziyaretçiler", en: "Going out and visitors", ar: "الخروج والزوار" }, tone: { bg: "#eff2df", fg: "#5a6614" } },
-  { slug: "community", name: { tr: "Topluluk", en: "Community", ar: "المجتمع" }, tone: { bg: "#e7eeef", fg: "#3c5c63" } },
+  { slug: "housing", name: { tr: "Konut", en: "Housing", ar: "السكن" }, tone: { bg: "#ede4ff", fg: "#54308a" } },
+  { slug: "buy", name: { tr: "Al ve sat", en: "Buy and sell", ar: "بيع وشراء" }, tone: { bg: "#ffe7d4", fg: "#7a3d12" } },
+  { slug: "vehicles", name: { tr: "Araçlar", en: "Vehicles", ar: "المركبات" }, tone: { bg: "#e4e9ff", fg: "#2f3f8f" } },
+  { slug: "home", name: { tr: "Ev ve iş hizmetleri", en: "Home and business services", ar: "خدمات المنزل والأعمال" }, tone: { bg: "#e6f1de", fg: "#245a36" } },
+  { slug: "students", name: { tr: "Öğrenciler", en: "Students", ar: "الطلاب" }, tone: { bg: "#f6e3ff", fg: "#6a2a86" } },
+  { slug: "work", name: { tr: "İş ve seyahat", en: "Work and travel", ar: "العمل والتنقل" }, tone: { bg: "#ffe4e1", fg: "#8a2e25" } },
+  { slug: "outing", name: { tr: "Gezme ve ziyaretçiler", en: "Going out and visitors", ar: "الخروج والزوار" }, tone: { bg: "#eefcc8", fg: "#3d5a0a" } },
+  { slug: "community", name: { tr: "Topluluk", en: "Community", ar: "المجتمع" }, tone: { bg: "#eee7f5", fg: "#4f3e66" } },
 ];
 
 export const SERVICES: Service[] = [

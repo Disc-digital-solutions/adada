@@ -19,7 +19,7 @@ export default async function Page({ params }: Props) {
     <div className="page">
       <h1 className="text-2xl font-bold tracking-tight md:text-3xl print:hidden">{t.split.title}</h1>
       <p className="mt-1 text-ink-soft print:hidden">{t.split.intro}</p>
-      <SplitTool t={t} />
+      <SplitTool t={t} lang={lang} />
     </div>
   );
 }

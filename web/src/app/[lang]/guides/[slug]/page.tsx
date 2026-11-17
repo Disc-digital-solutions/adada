@@ -33,7 +33,7 @@ export default async function GuidePage({ params }: Props) {
           {t.guides.title}
         </Link>
         <h1 className="mt-1 flex items-center gap-3 text-2xl font-bold tracking-tight md:text-3xl">
-          <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sea-wash text-sea-deep">
+          <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-wash text-brand-deep">
             <ServiceIcon name={guide.icon} width={24} height={24} />
           </span>
           {guide.title[lang]}
@@ -47,7 +47,7 @@ export default async function GuidePage({ params }: Props) {
               <span className="min-w-0 flex-1 text-[15px] leading-relaxed">
                 {step.text[lang]}
                 {step.link ? (
-                  <Link href={`/${lang}/${step.link}`} className="ms-2 inline-flex items-center text-sea hover:text-sea-deep" aria-label={t.tools.open}>
+                  <Link href={`/${lang}/${step.link}`} className="ms-2 inline-flex items-center text-brand hover:text-brand-deep" aria-label={t.tools.open}>
                     <ArrowIcon width={16} height={16} className="rtl:-scale-x-100" />
                   </Link>
                 ) : null}

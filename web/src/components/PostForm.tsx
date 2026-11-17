@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { Dictionary } from "@/i18n";
 import type { Lang } from "@/i18n/config";
 import { formatMoney } from "@/lib/format";
@@ -9,6 +9,7 @@ import { teamAdMessage } from "@/lib/share-text";
 import { VoiceButton } from "./VoiceButton";
 import { CURRENCIES, type Currency, type Kind } from "@/lib/types";
 import { whatsappLink } from "@/lib/whatsapp";
+import { useHydrated } from "./useHydrated";
 
 /**
  * How a finished form is sent:
@@ -24,17 +25,32 @@ interface Option {
   name: string;
 }
 
-export function PostForm({
-  lang,
-  t,
-  categories,
-  cities,
-  initialKind,
-  initialCategory,
-  mode,
-  teamPhone,
-  siteName,
-}: {
+/** What the person has typed so far. Kept for this browser tab only, so a language switch keeps it. */
+interface Draft {
+  kind: Kind;
+  title: string;
+  price: string;
+  currency: Currency;
+  free: boolean;
+  category: string;
+  city: string;
+  description: string;
+  womenOnly: boolean;
+  pasted: string;
+}
+
+const DRAFT_KEY = "adada-post-draft";
+
+function readDraft(): Draft | null {
+  try {
+    const raw = sessionStorage.getItem(DRAFT_KEY);
+    return raw ? (JSON.parse(raw) as Draft) : null;
+  } catch {
+    return null;
+  }
+}
+
+type PostFormProps = {
   lang: Lang;
   t: Dictionary;
   categories: Option[];
@@ -45,19 +61,58 @@ export function PostForm({
   mode: PostMode;
   teamPhone: string;
   siteName: string;
-}) {
+};
+
+/**
+ * The post form. Once the page runs in the browser, an unfinished draft from this tab is brought
+ * back (for example after switching language), so nothing typed is lost. A link that asks for a
+ * kind or category (?kind=wanted) wins over the draft for that field.
+ */
+export function PostForm(props: PostFormProps) {
+  const hydrated = useHydrated();
+  const draft = hydrated ? readDraft() : null;
+  return <PostFormFields key={hydrated ? "restored" : "initial"} {...props} draft={draft} keepDraft={hydrated} />;
+}
+
+function PostFormFields({
+  lang,
+  t,
+  categories,
+  cities,
+  initialKind,
+  initialCategory,
+  mode,
+  teamPhone,
+  siteName,
+  draft,
+  keepDraft,
+}: PostFormProps & { draft: Draft | null; keepDraft: boolean }) {
   const p = t.post;
-  const [kind, setKind] = useState<Kind>(initialKind);
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [currency, setCurrency] = useState<Currency>("TRY");
-  const [free, setFree] = useState(false);
-  const [category, setCategory] = useState(initialCategory);
-  const [city, setCity] = useState("famagusta");
-  const [description, setDescription] = useState("");
-  const [womenOnly, setWomenOnly] = useState(false);
+  const [kind, setKind] = useState<Kind>(initialKind === "wanted" ? "wanted" : (draft?.kind ?? initialKind));
+  const [title, setTitle] = useState(draft?.title ?? "");
+  const [price, setPrice] = useState(draft?.price ?? "");
+  const [currency, setCurrency] = useState<Currency>(draft?.currency ?? "TRY");
+  const [free, setFree] = useState(draft?.free ?? false);
+  const [category, setCategory] = useState(initialCategory || draft?.category || "");
+  // No area is chosen for the seller: a post that does not say where stays for them to pick.
+  const [city, setCity] = useState(draft?.city ?? "");
+  const [description, setDescription] = useState(draft?.description ?? "");
+  const [womenOnly, setWomenOnly] = useState(draft?.womenOnly ?? false);
   const housing = ["rooms", "roommates", "dorms"].includes(category);
-  const [pasted, setPasted] = useState("");
+  const [pasted, setPasted] = useState(draft?.pasted ?? "");
+
+  // Keep the draft for this tab as it changes (storing only; nothing is sent anywhere).
+  useEffect(() => {
+    // The first, server-drawn instance must not touch storage: it would wipe the draft before it is read.
+    if (!keepDraft) return;
+    const next: Draft = { kind, title, price, currency, free, category, city, description, womenOnly, pasted };
+    try {
+      if (title || price || description || pasted) sessionStorage.setItem(DRAFT_KEY, JSON.stringify(next));
+      else sessionStorage.removeItem(DRAFT_KEY);
+    } catch {
+      // Storage switched off: the form still works, the draft just is not kept.
+    }
+  }, [keepDraft, kind, title, price, currency, free, category, city, description, womenOnly, pasted]);
   const [pasteStatus, setPasteStatus] = useState<"" | "done" | "nothing">("");
 
   function fillFromPaste(text = pasted) {
@@ -127,7 +182,7 @@ export function PostForm({
   return (
     <div className="grid gap-5">
       {/* Sellers already wrote this ad once, in a group. Let them paste it instead of typing it again. */}
-      <section className="panel border-sea/30 bg-sea-wash/40 p-4">
+      <section className="panel border-brand/30 bg-brand-wash/40 p-4">
         <label htmlFor="paste" className="label !mb-1">
           {p.pasteTitle}
         </label>
@@ -185,7 +240,7 @@ export function PostForm({
             <label className="label" htmlFor="photos">
               {p.photos}
             </label>
-            <input id="photos" name="photos" type="file" accept="image/*" multiple className="field file:me-3 file:rounded-md file:border-0 file:bg-sea-wash file:px-3 file:py-1 file:font-semibold file:text-sea-deep" />
+            <input id="photos" name="photos" type="file" accept="image/*" multiple className="field file:me-3 file:rounded-md file:border-0 file:bg-brand-wash file:px-3 file:py-1 file:font-semibold file:text-brand-deep" />
             <p className="hint">{p.photosHint}</p>
           </div>
         )}
@@ -210,7 +265,7 @@ export function PostForm({
               dir="ltr"
               disabled={free}
               value={free ? "" : price}
-              onChange={(e) => setPrice(e.target.value.replace(/\D/g, ""))}
+              onChange={(e) => setPrice(toWesternDigits(e.target.value).replace(/\D/g, ""))}
               className="field flex-1 disabled:opacity-50"
             />
             <select name="currency" aria-label={t.search.currency} value={currency} onChange={(e) => setCurrency(e.target.value as Currency)} disabled={free} className="field !w-28 disabled:opacity-50">
@@ -221,7 +276,7 @@ export function PostForm({
           </div>
           {kind === "offer" ? (
             <label className="mt-2 flex items-center gap-2 text-[15px]">
-              <input type="checkbox" name="free" checked={free} onChange={(e) => setFree(e.target.checked)} className="h-5 w-5 accent-sea" />
+              <input type="checkbox" name="free" checked={free} onChange={(e) => setFree(e.target.checked)} className="h-5 w-5 accent-brand" />
               {p.freeToggle}
             </label>
           ) : null}
@@ -247,7 +302,10 @@ export function PostForm({
             <label className="label" htmlFor="city">
               {p.city}
             </label>
-            <select id="city" name="city" value={city} onChange={(e) => setCity(e.target.value)} className="field">
+            <select id="city" name="city" required value={city} onChange={(e) => setCity(e.target.value)} className="field">
+              <option value="" disabled>
+                {t.search.city}
+              </option>
               {cities.map((c) => (
                 <option key={c.slug} value={c.slug}>
                   {c.name}
@@ -259,7 +317,7 @@ export function PostForm({
 
         {housing ? (
           <label className="flex items-center gap-2 text-[15px]">
-            <input type="checkbox" name="womenOnly" checked={womenOnly} onChange={(e) => setWomenOnly(e.target.checked)} className="h-5 w-5 accent-sea" />
+            <input type="checkbox" name="womenOnly" checked={womenOnly} onChange={(e) => setWomenOnly(e.target.checked)} className="h-5 w-5 accent-brand" />
             {t.trust.womenFilter}
           </label>
         ) : null}
@@ -279,4 +337,9 @@ export function PostForm({
       </form>
     </div>
   );
+}
+
+/** "٤٥٠" → "450": Arabic-Indic and Persian digits typed into the price are kept, not dropped. */
+function toWesternDigits(text: string): string {
+  return text.replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660)).replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0));
 }
