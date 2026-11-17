@@ -49,9 +49,22 @@ leave the app) is written again in Dart in `lib/core/logic/`, with the same test
 
 ## Live demo
 
-A web build of the app, with the sample ads, is published privately at
-https://claude.ai/artifact/4LRDwaH9kVEPmY5ijytedJ (share it from that page's Share menu). It is built with
-`flutter build web --release --no-web-resources-cdn` and published without Flutter's service worker.
+**GitHub Pages:** the folder `docs/` at the top of the repository holds a ready web build of the app, with
+the sample ads. To put it online:
+
+1. The repository must be public, or the organisation must be on a paid GitHub plan (Pages on private
+   repositories is a paid feature).
+2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, pick the branch
+   that holds `docs/` and the folder **/docs**, then **Save**.
+3. After a minute or two it is live at `https://<owner>.github.io/adada/`
+   (here: https://disc-digital-solutions.github.io/adada/).
+
+To rebuild it after changing the app, run in this folder `tool/build_pages.sh` and commit `docs/`. If the
+repository is renamed or a custom domain is used, pass the new path: `tool/build_pages.sh /new-name/` or
+`tool/build_pages.sh /`.
+
+A private copy is also published at https://claude.ai/artifact/4LRDwaH9kVEPmY5ijytedJ (share it from that
+page's Share menu).
 
 ## Run it
 

@@ -1,0 +1,2169 @@
+{
+ "site": {
+  "name": "Island Market",
+  "url": "https://example.com"
+ },
+ "cities": [
+  {
+   "slug": "famagusta",
+   "name": {
+    "tr": "Gazimağusa",
+    "en": "Famagusta",
+    "ar": "فاماغوستا"
+   }
+  },
+  {
+   "slug": "nicosia",
+   "name": {
+    "tr": "Lefkoşa",
+    "en": "Nicosia",
+    "ar": "نيقوسيا"
+   }
+  },
+  {
+   "slug": "kyrenia",
+   "name": {
+    "tr": "Girne",
+    "en": "Kyrenia",
+    "ar": "كيرينيا"
+   }
+  },
+  {
+   "slug": "iskele",
+   "name": {
+    "tr": "İskele",
+    "en": "Iskele",
+    "ar": "إسكيله"
+   }
+  },
+  {
+   "slug": "guzelyurt",
+   "name": {
+    "tr": "Güzelyurt",
+    "en": "Guzelyurt",
+    "ar": "غوزليورت"
+   }
+  },
+  {
+   "slug": "lefke",
+   "name": {
+    "tr": "Lefke",
+    "en": "Lefke",
+    "ar": "ليفكه"
+   }
+  }
+ ],
+ "groups": [
+  {
+   "slug": "housing",
+   "name": {
+    "tr": "Konut",
+    "en": "Housing",
+    "ar": "السكن"
+   },
+   "tone": {
+    "bg": "#e3f1f5",
+    "fg": "#07506a"
+   }
+  },
+  {
+   "slug": "buy",
+   "name": {
+    "tr": "Al ve sat",
+    "en": "Buy and sell",
+    "ar": "بيع وشراء"
+   },
+   "tone": {
+    "bg": "#fff3d1",
+    "fg": "#7a5200"
+   }
+  },
+  {
+   "slug": "vehicles",
+   "name": {
+    "tr": "Araçlar",
+    "en": "Vehicles",
+    "ar": "المركبات"
+   },
+   "tone": {
+    "bg": "#e9ecfc",
+    "fg": "#3340a3"
+   }
+  },
+  {
+   "slug": "home",
+   "name": {
+    "tr": "Ev ve iş hizmetleri",
+    "en": "Home and business services",
+    "ar": "خدمات المنزل والأعمال"
+   },
+   "tone": {
+    "bg": "#e2f4e9",
+    "fg": "#1d6a3d"
+   }
+  },
+  {
+   "slug": "students",
+   "name": {
+    "tr": "Öğrenciler",
+    "en": "Students",
+    "ar": "الطلاب"
+   },
+   "tone": {
+    "bg": "#f1e8fb",
+    "fg": "#682ca0"
+   }
+  },
+  {
+   "slug": "work",
+   "name": {
+    "tr": "İş ve seyahat",
+    "en": "Work and travel",
+    "ar": "العمل والتنقل"
+   },
+   "tone": {
+    "bg": "#fde8e2",
+    "fg": "#9e3b24"
+   }
+  },
+  {
+   "slug": "outing",
+   "name": {
+    "tr": "Gezme ve ziyaretçiler",
+    "en": "Going out and visitors",
+    "ar": "الخروج والزوار"
+   },
+   "tone": {
+    "bg": "#fff0e0",
+    "fg": "#9a4d00"
+   }
+  },
+  {
+   "slug": "community",
+   "name": {
+    "tr": "Topluluk",
+    "en": "Community",
+    "ar": "المجتمع"
+   },
+   "tone": {
+    "bg": "#e6f3f1",
+    "fg": "#0f6157"
+   }
+  }
+ ],
+ "services": [
+  {
+   "slug": "flats",
+   "group": "housing",
+   "icon": "key",
+   "categories": [
+    "rooms",
+    "roommates"
+   ],
+   "name": {
+    "tr": "Kiralık ev ve oda",
+    "en": "Flats and rooms",
+    "ar": "شقق وغرف"
+   },
+   "blurb": {
+    "tr": "Kiralık daire, oda, ev arkadaşı ve devir",
+    "en": "Flats, rooms, roommates and lease take-overs",
+    "ar": "شقق وغرف وشركاء سكن وتنازل عن عقود"
+   }
+  },
+  {
+   "slug": "dorms",
+   "group": "housing",
+   "icon": "building",
+   "categories": [
+    "dorms"
+   ],
+   "name": {
+    "tr": "Yurtlar",
+    "en": "Dorms",
+    "ar": "السكن الطلابي"
+   },
+   "blurb": {
+    "tr": "Kampüse yakın yurtlar, fiyatlar ve boş yatak",
+    "en": "Halls near campus, prices and free beds",
+    "ar": "سكن قرب الجامعة، الأسعار والأسرّة المتاحة"
+   }
+  },
+  {
+   "slug": "agencies",
+   "group": "housing",
+   "icon": "office",
+   "categories": [
+    "agencies"
+   ],
+   "name": {
+    "tr": "Emlak ofisleri",
+    "en": "Real estate agencies",
+    "ar": "المكاتب العقارية"
+   },
+   "blurb": {
+    "tr": "Kiralık evler için emlak ofisleri",
+    "en": "Agencies with homes for rent",
+    "ar": "مكاتب لديها بيوت للإيجار"
+   }
+  },
+  {
+   "slug": "buy-sell",
+   "group": "buy",
+   "icon": "tag",
+   "categories": [
+    "furniture",
+    "appliances",
+    "electronics",
+    "books",
+    "clothes",
+    "other"
+   ],
+   "name": {
+    "tr": "İkinci el",
+    "en": "Second-hand",
+    "ar": "مستعمل"
+   },
+   "blurb": {
+    "tr": "Mobilya, beyaz eşya, elektronik, kitap ve daha fazlası",
+    "en": "Furniture, appliances, electronics, books and more",
+    "ar": "أثاث وأجهزة وإلكترونيات وكتب والمزيد"
+   }
+  },
+  {
+   "slug": "cars",
+   "group": "vehicles",
+   "icon": "car",
+   "categories": [
+    "cars"
+   ],
+   "name": {
+    "tr": "Otomobil",
+    "en": "Cars",
+    "ar": "سيارات"
+   },
+   "blurb": {
+    "tr": "Sahibinden ve galeriden araçlar",
+    "en": "Cars from owners and dealers",
+    "ar": "سيارات من المالكين والمعارض"
+   }
+  },
+  {
+   "slug": "car-rental",
+   "group": "vehicles",
+   "icon": "carKey",
+   "categories": [
+    "car-rental"
+   ],
+   "name": {
+    "tr": "Araç kiralama",
+    "en": "Car rental",
+    "ar": "تأجير السيارات"
+   },
+   "blurb": {
+    "tr": "Günlük, haftalık, aylık; havalimanına teslim",
+    "en": "Daily, weekly, monthly; airport delivery",
+    "ar": "يومي وأسبوعي وشهري؛ تسليم في المطار"
+   }
+  },
+  {
+   "slug": "towing",
+   "group": "vehicles",
+   "icon": "tow",
+   "categories": [
+    "towing"
+   ],
+   "name": {
+    "tr": "Çekici",
+    "en": "Towing",
+    "ar": "سحب السيارات"
+   },
+   "blurb": {
+    "tr": "Bölgene göre 7/24 çekiciler",
+    "en": "24/7 tow trucks by district",
+    "ar": "سيارات سحب على مدار الساعة حسب المنطقة"
+   }
+  },
+  {
+   "slug": "car-services",
+   "group": "vehicles",
+   "icon": "wrench",
+   "categories": [
+    "car-service"
+   ],
+   "name": {
+    "tr": "Oto servis ve lastik",
+    "en": "Car service and tyres",
+    "ar": "صيانة وإطارات"
+   },
+   "blurb": {
+    "tr": "Lastikçi, tamirci, yıkama",
+    "en": "Tyre shops, mechanics, car wash",
+    "ar": "إطارات وميكانيكي وغسيل سيارات"
+   }
+  },
+  {
+   "slug": "cleaning",
+   "group": "home",
+   "icon": "sparkle",
+   "categories": [
+    "cleaning"
+   ],
+   "name": {
+    "tr": "Temizlik ve ev hizmetleri",
+    "en": "Cleaning and home help",
+    "ar": "التنظيف والخدمات المنزلية"
+   },
+   "blurb": {
+    "tr": "Temizlik, taşıma, montaj",
+    "en": "Cleaning, moving, assembly",
+    "ar": "تنظيف ونقل وتركيب"
+   }
+  },
+  {
+   "slug": "construction",
+   "group": "home",
+   "icon": "hammer",
+   "categories": [
+    "construction"
+   ],
+   "name": {
+    "tr": "İnşaat ve tadilat",
+    "en": "Building and repairs",
+    "ar": "البناء والترميم"
+   },
+   "blurb": {
+    "tr": "Usta, boya, elektrik, tesisat",
+    "en": "Builders, painters, electricians, plumbers",
+    "ar": "بنّاؤون ودهّانون وكهربائيون وسبّاكون"
+   }
+  },
+  {
+   "slug": "professionals",
+   "group": "home",
+   "icon": "briefcase",
+   "categories": [
+    "professionals"
+   ],
+   "name": {
+    "tr": "Profesyoneller",
+    "en": "Professionals",
+    "ar": "المهنيون"
+   },
+   "blurb": {
+    "tr": "Muhasebeci, avukat, tercüman",
+    "en": "Accountants, lawyers, translators",
+    "ar": "محاسبون ومحامون ومترجمون"
+   }
+  },
+  {
+   "slug": "education",
+   "group": "students",
+   "icon": "cap",
+   "categories": [
+    "education"
+   ],
+   "name": {
+    "tr": "Eğitim danışmanlığı",
+    "en": "Education agents",
+    "ar": "الوكالات التعليمية"
+   },
+   "blurb": {
+    "tr": "Üniversite başvurusu, kabul, burs",
+    "en": "University applications, admission, scholarships",
+    "ar": "التقديم للجامعات والقبول والمنح"
+   }
+  },
+  {
+   "slug": "arrival",
+   "group": "students",
+   "icon": "plane",
+   "categories": [
+    "arrival"
+   ],
+   "name": {
+    "tr": "Varış hizmetleri",
+    "en": "Arrival help",
+    "ar": "خدمات الوصول"
+   },
+   "blurb": {
+    "tr": "Havalimanı transferi, SIM kart, ilk gece, izin",
+    "en": "Airport pickup, SIM card, first night, permit",
+    "ar": "استقبال من المطار، شريحة، أول ليلة، تصريح"
+   }
+  },
+  {
+   "slug": "jobs",
+   "group": "work",
+   "icon": "badge",
+   "categories": [
+    "jobs"
+   ],
+   "name": {
+    "tr": "İş ilanları",
+    "en": "Jobs",
+    "ar": "الوظائف"
+   },
+   "blurb": {
+    "tr": "Yarı zamanlı ve tam zamanlı işler",
+    "en": "Part-time and full-time work",
+    "ar": "عمل بدوام جزئي وكامل"
+   }
+  },
+  {
+   "slug": "freelance",
+   "group": "work",
+   "icon": "laptop",
+   "categories": [
+    "freelance"
+   ],
+   "name": {
+    "tr": "Serbest çalışma",
+    "en": "Freelance",
+    "ar": "العمل الحر"
+   },
+   "blurb": {
+    "tr": "Çeviri, tasarım, ders, yazılım",
+    "en": "Translation, design, tutoring, coding",
+    "ar": "ترجمة وتصميم ودروس وبرمجة"
+   }
+  },
+  {
+   "slug": "rides",
+   "group": "work",
+   "icon": "route",
+   "categories": [
+    "rides"
+   ],
+   "name": {
+    "tr": "Yolculuk ve seyahat",
+    "en": "Rides and travel",
+    "ar": "الرحلات والتنقل"
+   },
+   "blurb": {
+    "tr": "Ortak yolculuk, havalimanı, şehirler arası",
+    "en": "Shared rides, airport, between cities",
+    "ar": "رحلات مشتركة، المطار، بين المدن"
+   }
+  },
+  {
+   "slug": "viewing",
+   "group": "housing",
+   "icon": "video",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Görüntülü ev gezisi",
+    "en": "Video viewing",
+    "ar": "معاينة بالفيديو"
+   },
+   "blurb": {
+    "tr": "Para ödemeden önce evi senin için gezip görüntülüyoruz",
+    "en": "We visit and film a flat for you before you pay anything",
+    "ar": "نزور الشقة ونصوّرها لك قبل أن تدفع أي شيء"
+   }
+  },
+  {
+   "slug": "contract-check",
+   "group": "housing",
+   "icon": "doc",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Sözleşme kontrolü",
+    "en": "Contract check",
+    "ar": "مراجعة العقد"
+   },
+   "blurb": {
+    "tr": "Kira sözleşmeni anlaşmalı bir avukat sabit ücretle kontrol eder",
+    "en": "A partner lawyer checks your tenancy contract for a fixed fee",
+    "ar": "محامٍ شريك يراجع عقد الإيجار بسعر ثابت"
+   }
+  },
+  {
+   "slug": "staff-housing",
+   "group": "housing",
+   "icon": "users",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Personel konutu",
+    "en": "Staff housing",
+    "ar": "سكن الموظفين"
+   },
+   "blurb": {
+    "tr": "İşverenler için: çalışanlara tek seferde çok oda",
+    "en": "For employers: many rooms at once for your staff",
+    "ar": "لأصحاب العمل: غرف كثيرة دفعة واحدة لموظفيك"
+   }
+  },
+  {
+   "slug": "furniture-rental",
+   "group": "buy",
+   "icon": "sofa",
+   "categories": [
+    "furniture-rental"
+   ],
+   "name": {
+    "tr": "Mobilya kiralama",
+    "en": "Furniture rental",
+    "ar": "تأجير الأثاث"
+   },
+   "blurb": {
+    "tr": "Satın almak yerine bir yıllık eşya seti kirala",
+    "en": "Rent a furnished set for the year instead of buying",
+    "ar": "استأجر طقم أثاث للسنة بدل الشراء"
+   }
+  },
+  {
+   "slug": "lend",
+   "group": "buy",
+   "icon": "swap",
+   "categories": [
+    "lend"
+   ],
+   "name": {
+    "tr": "Ödünç al, ödünç ver",
+    "en": "Borrow and lend",
+    "ar": "استعارة وإعارة"
+   },
+   "blurb": {
+    "tr": "Matkap, merdiven, kamp malzemesi ve daha fazlası",
+    "en": "Drills, ladders, camping gear and more",
+    "ar": "مثقاب، سلّم، معدات تخييم والمزيد"
+   }
+  },
+  {
+   "slug": "group-buy",
+   "group": "buy",
+   "icon": "cart",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Toplu alım",
+    "en": "Group buying",
+    "ar": "الشراء الجماعي"
+   },
+   "blurb": {
+    "tr": "Diğer öğrencilerle ortak sipariş ver, daha ucuza al",
+    "en": "Pool an order with other students for a better price",
+    "ar": "اطلبوا معاً مع طلاب آخرين بسعر أفضل"
+   }
+  },
+  {
+   "slug": "parking",
+   "group": "vehicles",
+   "icon": "parking",
+   "categories": [
+    "parking"
+   ],
+   "name": {
+    "tr": "Kiralık otopark",
+    "en": "Parking to rent",
+    "ar": "مواقف للإيجار"
+   },
+   "blurb": {
+    "tr": "Kampüs ve şehir merkezine yakın aylık park yerleri",
+    "en": "Monthly spaces near campus and city centres",
+    "ar": "مواقف شهرية قرب الجامعة ومراكز المدن"
+   }
+  },
+  {
+   "slug": "driving",
+   "group": "vehicles",
+   "icon": "wheel",
+   "categories": [
+    "driving"
+   ],
+   "name": {
+    "tr": "Sürücü kursları",
+    "en": "Driving schools",
+    "ar": "مدارس القيادة"
+   },
+   "blurb": {
+    "tr": "Ehliyet kursları ve yabancı ehliyet çevirme",
+    "en": "Lessons and converting a foreign licence",
+    "ar": "دروس القيادة وتحويل الرخصة الأجنبية"
+   }
+  },
+  {
+   "slug": "tech-repair",
+   "group": "home",
+   "icon": "phone",
+   "categories": [
+    "tech-repair"
+   ],
+   "name": {
+    "tr": "Telefon ve bilgisayar tamiri",
+    "en": "Phone and laptop repair",
+    "ar": "صيانة الهواتف والحواسيب"
+   },
+   "blurb": {
+    "tr": "Ekran, batarya ve yaygın tamirler, fiyatlarıyla",
+    "en": "Screens, batteries and common jobs, with prices",
+    "ar": "الشاشات والبطاريات والأعطال الشائعة، مع الأسعار"
+   }
+  },
+  {
+   "slug": "childcare",
+   "group": "home",
+   "icon": "child",
+   "categories": [
+    "childcare"
+   ],
+   "name": {
+    "tr": "Çocuk bakımı ve özel ders",
+    "en": "Childcare and tutors",
+    "ar": "رعاية الأطفال والدروس الخصوصية"
+   },
+   "blurb": {
+    "tr": "Bakıcılar ve özel öğretmenler, dile göre",
+    "en": "Babysitters, nannies and tutors, by language",
+    "ar": "جليسات أطفال ومعلمون خصوصيون، حسب اللغة"
+   }
+  },
+  {
+   "slug": "pets",
+   "group": "home",
+   "icon": "paw",
+   "categories": [
+    "pets"
+   ],
+   "name": {
+    "tr": "Evcil hayvan hizmetleri",
+    "en": "Pet services",
+    "ar": "خدمات الحيوانات الأليفة"
+   },
+   "blurb": {
+    "tr": "Veteriner, bakım, tıraş, sahiplendirme",
+    "en": "Vets, sitting, grooming, adoption",
+    "ar": "أطباء بيطريون، رعاية، تجميل، تبنٍّ"
+   }
+  },
+  {
+   "slug": "moving",
+   "group": "home",
+   "icon": "box",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Taşınma günü",
+    "en": "Moving day",
+    "ar": "يوم الانتقال"
+   },
+   "blurb": {
+    "tr": "Kamyonet, yardımcılar ve temizlik tek talepte",
+    "en": "A van, helpers and a cleaner in one request",
+    "ar": "شاحنة ومساعدون وتنظيف في طلب واحد"
+   }
+  },
+  {
+   "slug": "supplies",
+   "group": "home",
+   "icon": "store",
+   "categories": [
+    "supplies"
+   ],
+   "name": {
+    "tr": "İşletme malzemeleri",
+    "en": "Business supplies",
+    "ar": "مستلزمات الأعمال"
+   },
+   "blurb": {
+    "tr": "Toptan, otel ve restoran tedarikçileri",
+    "en": "Wholesale, hotel and restaurant suppliers",
+    "ar": "موردو الجملة والفنادق والمطاعم"
+   }
+  },
+  {
+   "slug": "storage",
+   "group": "students",
+   "icon": "archive",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Yaz depolama",
+    "en": "Summer storage",
+    "ar": "تخزين صيفي"
+   },
+   "blurb": {
+    "tr": "Eşyanı ucuza satma, yaz boyunca sakla",
+    "en": "Store your things over the summer instead of selling cheap",
+    "ar": "خزّن أغراضك في الصيف بدل بيعها رخيصة"
+   }
+  },
+  {
+   "slug": "shop-turkey",
+   "group": "students",
+   "icon": "bag",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Türkiye'den alışveriş",
+    "en": "Buy from Turkey for me",
+    "ar": "تسوّق من تركيا"
+   },
+   "blurb": {
+    "tr": "Sipariş ve Mersin 10 teslimatını biz hallederiz",
+    "en": "We order and handle the Mersin 10 delivery",
+    "ar": "نطلب لك ونتولى التوصيل عبر مرسين 10"
+   }
+  },
+  {
+   "slug": "buddy",
+   "group": "students",
+   "icon": "hands",
+   "categories": [],
+   "mode": "request",
+   "name": {
+    "tr": "Yeni gelen arkadaşı",
+    "en": "Newcomer buddy",
+    "ar": "رفيق الوافد الجديد"
+   },
+   "blurb": {
+    "tr": "Senin dilini konuşan bir üst sınıf öğrencisi",
+    "en": "A senior student who speaks your language",
+    "ar": "طالب أقدم يتحدث لغتك"
+   }
+  },
+  {
+   "slug": "internships",
+   "group": "work",
+   "icon": "badge",
+   "categories": [
+    "internships"
+   ],
+   "name": {
+    "tr": "Stajlar",
+    "en": "Internships",
+    "ar": "التدريب العملي"
+   },
+   "blurb": {
+    "tr": "Bölümüne göre staj ilanları",
+    "en": "Internships filtered by your degree",
+    "ar": "فرص تدريب حسب تخصصك"
+   }
+  },
+  {
+   "slug": "shifts",
+   "group": "work",
+   "icon": "clock",
+   "categories": [
+    "shifts"
+   ],
+   "name": {
+    "tr": "Vardiyalı ve sezonluk iş",
+    "en": "Shift and seasonal work",
+    "ar": "عمل بنظام المناوبات والموسمي"
+   },
+   "blurb": {
+    "tr": "Otel, kafe ve kumarhane vardiyaları",
+    "en": "Shifts at hotels, cafés and casinos",
+    "ar": "مناوبات في الفنادق والمقاهي والكازينوهات"
+   }
+  },
+  {
+   "slug": "airport-board",
+   "group": "work",
+   "icon": "plane",
+   "categories": [
+    "airport"
+   ],
+   "name": {
+    "tr": "Havalimanı panosu",
+    "en": "Airport day board",
+    "ar": "لوحة المطار"
+   },
+   "blurb": {
+    "tr": "Bugün kim uçuyor: taksi paylaş, paket taşı",
+    "en": "Who flies today: share a taxi, carry a parcel",
+    "ar": "من يسافر اليوم: شارك سيارة أجرة أو احمل طرداً"
+   }
+  },
+  {
+   "slug": "coworking",
+   "group": "work",
+   "icon": "desk",
+   "categories": [
+    "coworking"
+   ],
+   "name": {
+    "tr": "Ortak çalışma ve ofis",
+    "en": "Coworking and offices",
+    "ar": "مساحات عمل ومكاتب"
+   },
+   "blurb": {
+    "tr": "Günlük veya aylık masa, ofis, toplantı odası",
+    "en": "Desks, offices and meeting rooms by day or month",
+    "ar": "مكاتب وغرف اجتماعات باليوم أو الشهر"
+   }
+  },
+  {
+   "slug": "experiences",
+   "group": "outing",
+   "icon": "compass",
+   "categories": [
+    "experiences"
+   ],
+   "name": {
+    "tr": "Turlar ve aktiviteler",
+    "en": "Tours and experiences",
+    "ar": "جولات وتجارب"
+   },
+   "blurb": {
+    "tr": "Tekne turları, dalış, geziler, transferler",
+    "en": "Boat trips, diving, tours, transfers",
+    "ar": "رحلات بحرية، غوص، جولات، تنقلات"
+   }
+  },
+  {
+   "slug": "restaurants",
+   "group": "outing",
+   "icon": "fork",
+   "categories": [
+    "restaurants"
+   ],
+   "name": {
+    "tr": "Restoran ve kafeler",
+    "en": "Restaurants and cafés",
+    "ar": "مطاعم ومقاهٍ"
+   },
+   "blurb": {
+    "tr": "Öğrenci fırsatları ve üç dilde menüler",
+    "en": "Student deals and menus in three languages",
+    "ar": "عروض للطلاب وقوائم بثلاث لغات"
+   }
+  },
+  {
+   "slug": "events",
+   "group": "outing",
+   "icon": "calendar",
+   "categories": [
+    "events"
+   ],
+   "name": {
+    "tr": "Bu hafta neler var",
+    "en": "What's on this week",
+    "ar": "ماذا يحدث هذا الأسبوع"
+   },
+   "blurb": {
+    "tr": "Ücretsiz etkinlikler, konserler, festivaller",
+    "en": "Free events, concerts, festivals",
+    "ar": "فعاليات مجانية، حفلات، مهرجانات"
+   }
+  },
+  {
+   "slug": "deals",
+   "group": "outing",
+   "icon": "percent",
+   "categories": [
+    "deals"
+   ],
+   "name": {
+    "tr": "Haftanın fırsatları",
+    "en": "Deals of the week",
+    "ar": "عروض الأسبوع"
+   },
+   "blurb": {
+    "tr": "Market ve mağaza indirimleri, şehre göre",
+    "en": "Supermarket and shop offers, by city",
+    "ar": "عروض المتاجر والسوبرماركت، حسب المدينة"
+   }
+  },
+  {
+   "slug": "clinics",
+   "group": "outing",
+   "icon": "cross",
+   "categories": [
+    "clinics"
+   ],
+   "name": {
+    "tr": "Klinikler ve diş hekimleri",
+    "en": "Clinics and dentists",
+    "ar": "عيادات وأطباء أسنان"
+   },
+   "blurb": {
+    "tr": "Ziyaretçiler için kendi dilinde bilgi",
+    "en": "Information for visitors in their own language",
+    "ar": "معلومات للزوار بلغتهم"
+   }
+  },
+  {
+   "slug": "notices",
+   "group": "community",
+   "icon": "megaphone",
+   "categories": [
+    "notices"
+   ],
+   "name": {
+    "tr": "Mahalle panosu",
+    "en": "Neighbourhood notices",
+    "ar": "لوحة الحي"
+   },
+   "blurb": {
+    "tr": "Duyurular, öneriler, kayıp ve bulunan",
+    "en": "Notices, recommendations, lost and found",
+    "ar": "إعلانات، توصيات، مفقودات"
+   }
+  },
+  {
+   "slug": "language-exchange",
+   "group": "community",
+   "icon": "chat2",
+   "categories": [
+    "language-exchange"
+   ],
+   "name": {
+    "tr": "Dil değişimi",
+    "en": "Language exchange",
+    "ar": "تبادل اللغات"
+   },
+   "blurb": {
+    "tr": "Türkçe, Arapça, İngilizce, Rusça pratik arkadaşı",
+    "en": "Practise Turkish, Arabic, English, Russian together",
+    "ar": "تدرّب على التركية والعربية والإنجليزية والروسية"
+   }
+  }
+ ],
+ "tools": [
+  {
+   "href": "emergency",
+   "icon": "siren",
+   "name": {
+    "tr": "Acil durum",
+    "en": "Emergency",
+    "ar": "الطوارئ"
+   },
+   "blurb": {
+    "tr": "Polis, ambulans, itfaiye, nöbetçi eczane",
+    "en": "Police, ambulance, fire, duty pharmacy",
+    "ar": "الشرطة، الإسعاف، الإطفاء، الصيدلية المناوبة"
+   }
+  },
+  {
+   "href": "help",
+   "icon": "chat2",
+   "name": {
+    "tr": "Öğrenci soruları",
+    "en": "Student questions",
+    "ar": "أسئلة الطلاب"
+   },
+   "blurb": {
+    "tr": "Banka hesabı, depozito, vize ve oturma izni",
+    "en": "Bank accounts, deposits, visas and permits",
+    "ar": "الحساب البنكي، العربون، التأشيرة والإقامة"
+   }
+  },
+  {
+   "href": "tools/permit",
+   "icon": "calendar",
+   "name": {
+    "tr": "Oturma iznim",
+    "en": "My residence permit",
+    "ar": "تصريح إقامتي"
+   },
+   "blurb": {
+    "tr": "Kalan gün, takvim hatırlatması, belge listesi",
+    "en": "Days left, calendar reminders, papers checklist",
+    "ar": "الأيام المتبقية، تذكيرات، قائمة الأوراق"
+   }
+  },
+  {
+   "href": "plan",
+   "icon": "map",
+   "name": {
+    "tr": "Varış planım",
+    "en": "My arrival plan",
+    "ar": "خطة وصولي"
+   },
+   "blurb": {
+    "tr": "Şehir, bütçe, tarih: gerçek ilanlarla bir plan",
+    "en": "City, budget, date: a plan built from real ads",
+    "ar": "المدينة والميزانية والتاريخ: خطة من إعلانات حقيقية"
+   }
+  },
+  {
+   "href": "books",
+   "icon": "book",
+   "name": {
+    "tr": "Ders koduyla kitap",
+    "en": "Books by course code",
+    "ar": "كتب حسب رمز المادة"
+   },
+   "blurb": {
+    "tr": "MATH101 yaz: kitap, not, hesap makinesi",
+    "en": "Type MATH101: books, notes, calculators",
+    "ar": "اكتب MATH101: كتب، ملخصات، آلات حاسبة"
+   }
+  },
+  {
+   "href": "prices",
+   "icon": "chart",
+   "name": {
+    "tr": "Ortalama fiyatlar",
+    "en": "Typical prices",
+    "ar": "الأسعار المعتادة"
+   },
+   "blurb": {
+    "tr": "Şehre göre kira, yurt ve araç fiyatları",
+    "en": "Rents, dorms and cars, by city",
+    "ar": "الإيجارات والسكن والسيارات، حسب المدينة"
+   }
+  },
+  {
+   "href": "tools/split",
+   "icon": "calculator",
+   "name": {
+    "tr": "Fatura bölüşme",
+    "en": "Split the bills",
+    "ar": "تقسيم الفواتير"
+   },
+   "blurb": {
+    "tr": "Ev arkadaşları arasında kim kime ne borçlu",
+    "en": "Who owes whom in a shared flat",
+    "ar": "من يدين لمن في الشقة المشتركة"
+   }
+  },
+  {
+   "href": "tools/deposit",
+   "icon": "check",
+   "name": {
+    "tr": "Depozitonu geri al",
+    "en": "Get your deposit back",
+    "ar": "استرجع عربونك"
+   },
+   "blurb": {
+    "tr": "Giriş-çıkış listesi ve ev sahibine mektup",
+    "en": "Move-in/out checklist and a letter to the landlord",
+    "ar": "قائمة الدخول والخروج ورسالة إلى المالك"
+   }
+  },
+  {
+   "href": "tools/receipt",
+   "icon": "receipt",
+   "name": {
+    "tr": "Kira makbuzu",
+    "en": "Rent receipt",
+    "ar": "إيصال الإيجار"
+   },
+   "blurb": {
+    "tr": "İki dilde, tarihli, yazdırılabilir makbuz",
+    "en": "A dated receipt in two languages, ready to print",
+    "ar": "إيصال مؤرخ بلغتين، جاهز للطباعة"
+   }
+  },
+  {
+   "href": "guides",
+   "icon": "doc",
+   "name": {
+    "tr": "Rehberler",
+    "en": "Guides",
+    "ar": "أدلة"
+   },
+   "blurb": {
+    "tr": "Varış, adres, faturalar, SIM, izinler, araç",
+    "en": "Arrival, address, utilities, SIM, permits, cars",
+    "ar": "الوصول، العنوان، الفواتير، الشريحة، التصاريح، السيارات"
+   }
+  }
+ ],
+ "guides": [
+  {
+   "slug": "arrival",
+   "icon": "plane",
+   "title": {
+    "tr": "Varış kontrol listesi",
+    "en": "Arrival checklist",
+    "ar": "قائمة الوصول"
+   },
+   "intro": {
+    "tr": "Kabul mektubundan ilk evine kadar, sırayla.",
+    "en": "From your acceptance letter to your first flat, in order.",
+    "ar": "من رسالة القبول إلى أول سكن لك، بالترتيب."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Üniversiteden kabul mektubunu ve öğrenci numaranı al.",
+      "en": "Get your acceptance letter and student number from the university.",
+      "ar": "احصل على رسالة القبول ورقمك الجامعي من الجامعة."
+     }
+    },
+    {
+     "link": "c/arrival",
+     "text": {
+      "tr": "Uçmadan önce havalimanı transferini ayarla (Ercan veya Larnaka).",
+      "en": "Book an airport pickup before you fly (Ercan or Larnaca).",
+      "ar": "احجز الاستقبال من المطار قبل السفر (أرجان أو لارنكا)."
+     }
+    },
+    {
+     "link": "c/viewing",
+     "text": {
+      "tr": "İlk gecelerini ayarla. Görmediğin bir ev için depozito ödeme.",
+      "en": "Book your first nights. Never pay a deposit for a flat you have not seen.",
+      "ar": "احجز لياليك الأولى. لا تدفع عربوناً لشقة لم ترها."
+     }
+    },
+    {
+     "link": "guides/sim",
+     "text": {
+      "tr": "Havalimanında veya şehirde yerel bir SIM kart al.",
+      "en": "Buy a local SIM card at the airport or in town.",
+      "ar": "اشترِ شريحة محلية في المطار أو في المدينة."
+     }
+    },
+    {
+     "link": "guides/residence",
+     "text": {
+      "tr": "İlk haftalarda üniversitenin uluslararası ofisi üzerinden oturma iznine başvur.",
+      "en": "In your first weeks, apply for your residence permit through the university's international office.",
+      "ar": "في أسابيعك الأولى، قدّم على تصريح الإقامة عبر المكتب الدولي في الجامعة."
+     }
+    },
+    {
+     "link": "c/flats",
+     "text": {
+      "tr": "Evini veya yurdunu bul, gez, sonra imzala.",
+      "en": "Find your flat or dorm, visit it, then sign.",
+      "ar": "ابحث عن شقتك أو سكنك، زُره، ثم وقّع."
+     }
+    },
+    {
+     "link": "guides/utilities",
+     "text": {
+      "tr": "Gerekiyorsa elektrik, su ve interneti bağlat.",
+      "en": "Set up electricity, water and internet if the flat needs it.",
+      "ar": "اشترك في الكهرباء والماء والإنترنت إذا احتاجت الشقة."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "address",
+   "icon": "map",
+   "title": {
+    "tr": "Adres nasıl yazılır (Mersin 10)",
+    "en": "How to write your address (Mersin 10)",
+    "ar": "كيف تكتب عنوانك (مرسين 10)"
+   },
+   "intro": {
+    "tr": "Kuzey Kıbrıs'a posta ve kargo Türkiye üzerinden gelir. Son satır bu yüzden \"Mersin 10 – Turkey\" olur.",
+    "en": "Post and parcels to North Cyprus travel through Turkey. That is why the last line is \"Mersin 10 – Turkey\".",
+    "ar": "يصل البريد والطرود إلى شمال قبرص عبر تركيا، لذلك يكون السطر الأخير \"Mersin 10 – Turkey\"."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Adın ve telefon numaran.",
+      "en": "Your name and phone number.",
+      "ar": "اسمك ورقم هاتفك."
+     }
+    },
+    {
+     "text": {
+      "tr": "Sokak, bina ve daire numarası, ardından semt (örneğin Karakol).",
+      "en": "Street, building and flat number, then the area (for example Karakol).",
+      "ar": "الشارع ورقم المبنى والشقة، ثم الحي (مثلاً كاراكول)."
+     }
+    },
+    {
+     "text": {
+      "tr": "Şehir, Türkçe adıyla (Gazimağusa, Lefkoşa, Girne).",
+      "en": "The town, by its Turkish name (Gazimağusa, Lefkoşa, Girne).",
+      "ar": "المدينة باسمها التركي (غازي ماغوسا، لفكوشا، غيرنه)."
+     }
+    },
+    {
+     "text": {
+      "tr": "\"KKTC\" ve son satıra \"Mersin 10 – Turkey\".",
+      "en": "\"KKTC\", and on the last line \"Mersin 10 – Turkey\".",
+      "ar": "\"KKTC\"، وفي السطر الأخير \"Mersin 10 – Turkey\"."
+     }
+    },
+    {
+     "link": "c/shop-turkey",
+     "text": {
+      "tr": "Bazı mağazalar KKTC'ye göndermez veya ek ücret alır; sipariş vermeden sor.",
+      "en": "Some shops do not deliver to North Cyprus or charge extra; ask before you order.",
+      "ar": "بعض المتاجر لا توصل إلى شمال قبرص أو تأخذ رسوماً إضافية؛ اسأل قبل الطلب."
+     }
+    }
+   ],
+   "example": "Ahmad K.  +90 5xx xxx xx xx\nSalamis Yolu, Blok B, Daire 4, Karakol\nGazimağusa, KKTC\nMersin 10 – Turkey"
+  },
+  {
+   "slug": "utilities",
+   "icon": "sparkle",
+   "title": {
+    "tr": "Elektrik, su ve internet",
+    "en": "Electricity, water and internet",
+    "ar": "الكهرباء والماء والإنترنت"
+   },
+   "intro": {
+    "tr": "Taşınırken neyi kimden, nasıl açtıracağın.",
+    "en": "What to set up, with whom, when you move in.",
+    "ar": "ما الذي تشترك فيه ومع من، عند الانتقال."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Elektrik KIB-TEK'ten gelir. Sayacın senin adına mı ev sahibinin adına mı olduğunu sor.",
+      "en": "Electricity comes from KIB-TEK. Ask whether the meter is in your name or the landlord's.",
+      "ar": "الكهرباء من شركة KIB-TEK. اسأل هل العداد باسمك أم باسم المالك."
+     }
+    },
+    {
+     "text": {
+      "tr": "Su, şehrinin belediyesinden gelir.",
+      "en": "Water comes from your town's municipality.",
+      "ar": "الماء من بلدية مدينتك."
+     }
+    },
+    {
+     "text": {
+      "tr": "Ev interneti için önce evde ne olduğunu sor; yeni bağlantı birkaç gün sürebilir.",
+      "en": "For home internet, first ask what the flat already has; a new line can take days.",
+      "ar": "للإنترنت المنزلي، اسأل أولاً عمّا في الشقة؛ الخط الجديد قد يستغرق أياماً."
+     }
+    },
+    {
+     "text": {
+      "tr": "Pasaportunu ve kira sözleşmeni yanında götür.",
+      "en": "Take your passport and your tenancy contract.",
+      "ar": "خذ معك جواز سفرك وعقد الإيجار."
+     }
+    },
+    {
+     "link": "tools/deposit",
+     "text": {
+      "tr": "Girişte ve çıkışta sayaçların fotoğrafını çek; her makbuzu sakla.",
+      "en": "Photograph the meters when you move in and out; keep every receipt.",
+      "ar": "صوّر العدادات عند الدخول والخروج؛ واحتفظ بكل إيصال."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "sim",
+   "icon": "phone",
+   "title": {
+    "tr": "SIM kart ve mobil internet",
+    "en": "SIM cards and mobile data",
+    "ar": "الشرائح وبيانات الهاتف"
+   },
+   "intro": {
+    "tr": "Adada iki mobil operatör var. Hangisinin senin için daha iyi olduğu, paketine ve semtine bağlı.",
+    "en": "There are two mobile operators on the island. Which is better for you depends on the package and your area.",
+    "ar": "في الجزيرة شركتا اتصالات. الأفضل لك يعتمد على الباقة ومنطقتك."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Operatörler: KKTCELL ve Telsim (Vodafone).",
+      "en": "The operators: KKTCELL and Telsim (Vodafone).",
+      "ar": "الشركتان: KKTCELL وTelsim (فودافون)."
+     }
+    },
+    {
+     "text": {
+      "tr": "Mağazalarından veya bayilerden al; pasaportunu götür.",
+      "en": "Buy at their shops or dealers; take your passport.",
+      "ar": "اشترِ من متاجرهما أو الوكلاء؛ خذ جواز سفرك."
+     }
+    },
+    {
+     "text": {
+      "tr": "Öğrenciler çoğunlukla ön ödemeli internet paketi kullanır; aylık GB'yi karşılaştır.",
+      "en": "Students mostly use prepaid data packs; compare the GB per month.",
+      "ar": "يستخدم الطلاب غالباً باقات مسبقة الدفع؛ قارن الغيغابايت شهرياً."
+     }
+    },
+    {
+     "text": {
+      "tr": "Türkiye hattı çalışır ama dolaşımda olabilir; fiyatı sor.",
+      "en": "A Turkish SIM works but may be roaming; ask the price.",
+      "ar": "الشريحة التركية تعمل لكنها قد تكون بالتجوال؛ اسأل عن السعر."
+     }
+    },
+    {
+     "link": "guides/utilities",
+     "text": {
+      "tr": "Ev interneti için: elektrik, su ve internet rehberi.",
+      "en": "For home internet: the electricity, water and internet guide.",
+      "ar": "للإنترنت المنزلي: دليل الكهرباء والماء والإنترنت."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "residence",
+   "icon": "doc",
+   "title": {
+    "tr": "Öğrenci oturma izni",
+    "en": "Student residence permit",
+    "ar": "تصريح إقامة الطالب"
+   },
+   "intro": {
+    "tr": "Güncel adımları ve son tarihleri üniversitenin uluslararası ofisi verir. Bu sayfa ne bekleyeceğini anlatır.",
+    "en": "Your university's international office gives the current steps and deadlines. This page tells you what to expect.",
+    "ar": "المكتب الدولي في جامعتك يعطيك الخطوات والمواعيد الحالية. هذه الصفحة تشرح ما تتوقعه."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "İlk haftalarda uluslararası ofise git.",
+      "en": "Go to the international office in your first weeks.",
+      "ar": "اذهب إلى المكتب الدولي في أسابيعك الأولى."
+     }
+    },
+    {
+     "text": {
+      "tr": "Genellikle istenenler: pasaport, öğrenci belgesi, fotoğraf, sağlık kontrolü, sigorta.",
+      "en": "Usually needed: passport, student certificate, photos, a health check, insurance.",
+      "ar": "المطلوب عادة: جواز السفر، شهادة الطالب، صور، فحص صحي، تأمين."
+     }
+    },
+    {
+     "text": {
+      "tr": "Sağlık kontrolü devlet hastanesinde yapılır; ofis söyleyince randevu al.",
+      "en": "The health check is at a state hospital; book it when the office tells you.",
+      "ar": "الفحص الصحي في مستشفى حكومي؛ احجزه حين يخبرك المكتب."
+     }
+    },
+    {
+     "text": {
+      "tr": "Her belgenin kopyasını sakla; iznini veya makbuzunu yanında taşı.",
+      "en": "Keep copies of everything; carry your permit or its receipt.",
+      "ar": "احتفظ بنسخ من كل شيء؛ واحمل التصريح أو إيصاله."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "work-permit",
+   "icon": "badge",
+   "title": {
+    "tr": "Çalışma izni",
+    "en": "Work permit",
+    "ar": "تصريح العمل"
+   },
+   "intro": {
+    "tr": "Çalışmadan önce izin gerekir. İzni işveren başlatır.",
+    "en": "You need a permit before you work. The employer starts it.",
+    "ar": "تحتاج إلى تصريح قبل العمل. صاحب العمل يبدأ الإجراءات."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "İşveren, Çalışma Dairesi'ne başvurur.",
+      "en": "The employer applies, usually at the Labour Department (Çalışma Dairesi).",
+      "ar": "يقدّم صاحب العمل الطلب، عادة لدى دائرة العمل (Çalışma Dairesi)."
+     }
+    },
+    {
+     "text": {
+      "tr": "Öğrencilerin çalışmasında sınırlar olabilir; başlamadan önce üniversiteye ve işverene sor.",
+      "en": "Students may have limits on work; ask your university and the employer before you start.",
+      "ar": "قد تكون هناك قيود على عمل الطلاب؛ اسأل جامعتك وصاحب العمل قبل البدء."
+     }
+    },
+    {
+     "text": {
+      "tr": "İzinsiz çalışma, oturma iznini riske atabilir.",
+      "en": "Working without a permit can put your residence at risk.",
+      "ar": "العمل دون تصريح قد يعرّض إقامتك للخطر."
+     }
+    },
+    {
+     "link": "c/jobs",
+     "text": {
+      "tr": "İş ilanları: yarı zamanlı ve tam zamanlı.",
+      "en": "Jobs: part-time and full-time.",
+      "ar": "الوظائف: بدوام جزئي وكامل."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "car",
+   "icon": "car",
+   "title": {
+    "tr": "İkinci el araç alırken",
+    "en": "Buying and registering a used car",
+    "ar": "شراء سيارة مستعملة وتسجيلها"
+   },
+   "intro": {
+    "tr": "Para vermeden önce kontrol et, sonra devri resmi yap.",
+    "en": "Check before you pay, then make the transfer official.",
+    "ar": "افحص قبل أن تدفع، ثم اجعل نقل الملكية رسمياً."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Ruhsattaki ismin satıcının kimliğiyle aynı olduğunu kontrol et.",
+      "en": "Check the name on the registration matches the seller's ID.",
+      "ar": "تأكد أن الاسم في رخصة السيارة يطابق هوية البائع."
+     }
+    },
+    {
+     "text": {
+      "tr": "Yol vergisi, sigorta ve muayene tarihine bak.",
+      "en": "Check the road tax, insurance and inspection date.",
+      "ar": "تحقق من ضريبة الطريق والتأمين وموعد الفحص."
+     }
+    },
+    {
+     "text": {
+      "tr": "Devri iki taraf birlikte, karayolları dairesinde yapar.",
+      "en": "Buyer and seller do the transfer together at the road transport office.",
+      "ar": "يتم نقل الملكية بحضور البائع والمشتري في دائرة النقل البري."
+     }
+    },
+    {
+     "text": {
+      "tr": "Sürmeden önce kendi sigortanı yaptır.",
+      "en": "Get your own insurance before you drive.",
+      "ar": "استخرج تأمينك الخاص قبل القيادة."
+     }
+    },
+    {
+     "link": "c/cars",
+     "text": {
+      "tr": "Satılık araçlar.",
+      "en": "Cars for sale.",
+      "ar": "سيارات للبيع."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "bank",
+   "icon": "receipt",
+   "title": {
+    "tr": "Banka hesabı açmak",
+    "en": "Opening a bank account",
+    "ar": "فتح حساب بنكي"
+   },
+   "intro": {
+    "tr": "Öğrencilerin çoğu ilk ayında açar. İstekler bankaya göre değişir; bu genel bir yoldur.",
+    "en": "Most students open one in their first month. Each bank asks for slightly different things; this is the usual path.",
+    "ar": "يفتح معظم الطلاب حساباً في شهرهم الأول. تختلف الطلبات من بنك لآخر؛ هذا هو الطريق المعتاد."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Pasaportunu, öğrenci belgeni ve varsa oturma iznini veya başvuru makbuzunu hazırla.",
+      "en": "Have your passport, student certificate and, if you have it, your residence permit or its application receipt.",
+      "ar": "جهّز جواز سفرك وشهادة الطالب، وتصريح الإقامة أو إيصال طلبه إن وُجد."
+     }
+    },
+    {
+     "link": "guides/sim",
+     "text": {
+      "tr": "Yerel bir telefon numarası al; bankalar çoğu zaman ister.",
+      "en": "Get a local phone number first; banks often ask for one.",
+      "ar": "احصل على رقم هاتف محلي أولاً؛ كثيراً ما تطلبه البنوك."
+     }
+    },
+    {
+     "text": {
+      "tr": "İki üç bankaya sor: öğrenci hesabı, kart ücreti, döviz hesabı ve havale ücretleri.",
+      "en": "Ask two or three banks: student accounts, card fees, foreign-currency accounts and transfer fees.",
+      "ar": "اسأل بنكين أو ثلاثة: حسابات الطلاب، رسوم البطاقة، الحساب بالعملة الأجنبية، ورسوم الحوالات."
+     }
+    },
+    {
+     "text": {
+      "tr": "Kira sterlinse bir döviz hesabı da açmayı düşün.",
+      "en": "If your rent is in pounds, think about a foreign-currency account too.",
+      "ar": "إن كان إيجارك بالجنيه ففكّر في حساب بالعملة الأجنبية أيضاً."
+     }
+    },
+    {
+     "text": {
+      "tr": "IBAN ve SWIFT/BIC bilgilerini ailene gönder; ilk havalenin geldiğini kontrol et.",
+      "en": "Send your IBAN and SWIFT/BIC to your family, and check the first transfer arrives.",
+      "ar": "أرسل رقم IBAN وSWIFT/BIC لأهلك، وتأكد من وصول أول حوالة."
+     }
+    },
+    {
+     "link": "help",
+     "text": {
+      "tr": "Daha fazla soru: öğrenci soruları sayfası.",
+      "en": "More questions: the student questions page.",
+      "ar": "أسئلة أخرى: صفحة أسئلة الطلاب."
+     }
+    }
+   ]
+  },
+  {
+   "slug": "leaving",
+   "icon": "plane",
+   "title": {
+    "tr": "Adadan ayrılırken",
+    "en": "Leaving the island",
+    "ar": "عند مغادرة الجزيرة"
+   },
+   "intro": {
+    "tr": "Okul bittiğinde veya taşındığında, hiçbir şeyi geride bırakmamak için.",
+    "en": "When you finish your studies or move away, so nothing is left behind.",
+    "ar": "عند إنهاء الدراسة أو الانتقال، كي لا يبقى شيء معلّقاً."
+   },
+   "steps": [
+    {
+     "text": {
+      "tr": "Diplomanı, transkriptini ve gerekiyorsa tasdikli kopyalarını al.",
+      "en": "Collect your diploma, transcript and, if you need them, certified copies.",
+      "ar": "استلم شهادتك وكشف العلامات، ونسخاً مصدّقة إن احتجت."
+     }
+    },
+    {
+     "link": "c/buy-sell",
+     "text": {
+      "tr": "Götürmeyeceklerini sat; tümünü tek bağlantıda paylaş.",
+      "en": "Sell what you will not take, and share it all in one link.",
+      "ar": "بِع ما لن تأخذه، وشارك كل شيء برابط واحد."
+     }
+    },
+    {
+     "link": "tools/deposit",
+     "text": {
+      "tr": "Evi teslim et ve depozitonu yazılı iste.",
+      "en": "Hand back the flat and ask for your deposit in writing.",
+      "ar": "سلّم الشقة واطلب العربون كتابةً."
+     }
+    },
+    {
+     "text": {
+      "tr": "Son faturaları öde; elektrik ve interneti kapattır.",
+      "en": "Pay the last bills and close electricity and internet.",
+      "ar": "ادفع آخر الفواتير وأغلق الكهرباء والإنترنت."
+     }
+    },
+    {
+     "text": {
+      "tr": "Banka hesabını kapat ya da yurt dışından kullanabilecek misin, sor.",
+      "en": "Close your bank account, or ask whether you can use it from abroad.",
+      "ar": "أغلق حسابك البنكي أو اسأل هل يمكنك استخدامه من الخارج."
+     }
+    },
+    {
+     "text": {
+      "tr": "İzninin iptal edilmesi gerekip gerekmediğini uluslararası ofise sor.",
+      "en": "Ask the international office whether your permit must be cancelled.",
+      "ar": "اسأل المكتب الدولي هل يجب إلغاء تصريحك."
+     }
+    },
+    {
+     "link": "c/storage",
+     "text": {
+      "tr": "Geri döneceksen eşyanı yaz boyunca sakla.",
+      "en": "Coming back? Store your things over the summer.",
+      "ar": "ستعود؟ خزّن أغراضك خلال الصيف."
+     }
+    }
+   ]
+  }
+ ],
+ "emergency": [
+  {
+   "number": "155",
+   "name": {
+    "tr": "Polis",
+    "en": "Police",
+    "ar": "الشرطة"
+   }
+  },
+  {
+   "number": "112",
+   "name": {
+    "tr": "Ambulans",
+    "en": "Ambulance",
+    "ar": "الإسعاف"
+   }
+  },
+  {
+   "number": "199",
+   "name": {
+    "tr": "İtfaiye",
+    "en": "Fire",
+    "ar": "الإطفاء"
+   }
+  },
+  {
+   "number": "177",
+   "name": {
+    "tr": "Orman yangını",
+    "en": "Forest fire",
+    "ar": "حرائق الغابات"
+   }
+  },
+  {
+   "number": "158",
+   "name": {
+    "tr": "Sahil güvenlik",
+    "en": "Coast guard",
+    "ar": "خفر السواحل"
+   }
+  }
+ ],
+ "help": [
+  {
+   "slug": "money",
+   "icon": "receipt",
+   "title": {
+    "tr": "Banka ve para",
+    "en": "Banks and money",
+    "ar": "البنوك والمال"
+   },
+   "answers": [
+    {
+     "q": {
+      "tr": "Yabancı öğrenci olarak banka hesabı açabilir miyim?",
+      "en": "Can I open a bank account as a foreign student?",
+      "ar": "هل يمكنني فتح حساب بنكي كطالب أجنبي؟"
+     },
+     "a": {
+      "tr": "Genellikle evet. Bankaların çoğu pasaport, üniversiteden öğrenci belgesi ve çoğu zaman oturma izni veya başvuru makbuzu ile yerel bir telefon numarası ister. İstekler bankadan bankaya değişir; iki üç bankaya sor.",
+      "en": "Usually, yes. Most banks ask for your passport, a student certificate from your university, and often your residence permit (or its application receipt) and a local phone number. Requirements differ from bank to bank, so ask two or three.",
+      "ar": "غالباً نعم. تطلب معظم البنوك جواز السفر وشهادة طالب من الجامعة، وكثيراً تصريح الإقامة (أو إيصال طلبه) ورقم هاتف محلي. تختلف الشروط من بنك لآخر، فاسأل بنكين أو ثلاثة."
+     },
+     "link": "guides/bank"
+    },
+    {
+     "q": {
+      "tr": "Hesabım hangi para biriminde olmalı?",
+      "en": "Which currency should my account be in?",
+      "ar": "بأي عملة يجب أن يكون حسابي؟"
+     },
+     "a": {
+      "tr": "Hesaplar Türk lirası, sterlin, avro veya dolar olabilir. Kira çoğu zaman sterlin, günlük alışveriş lira olur. Döviz çevirme ve havale ücretlerini sor.",
+      "en": "Accounts can be in Turkish lira, pounds, euros or dollars. Rent is often in pounds and daily shopping in lira. Ask about the fees for changing money and for transfers.",
+      "ar": "يمكن أن تكون الحسابات بالليرة التركية أو الجنيه أو اليورو أو الدولار. الإيجار غالباً بالجنيه والتسوق اليومي بالليرة. اسأل عن رسوم تحويل العملات والحوالات."
+     }
+    },
+    {
+     "q": {
+      "tr": "Ailemden nasıl para alırım?",
+      "en": "How do I receive money from home?",
+      "ar": "كيف أستلم المال من أهلي؟"
+     },
+     "a": {
+      "tr": "En yaygın yol, buradaki hesabına uluslararası havaledir. Toplam maliyeti karşılaştır: ücret, döviz kuru ve buradaki bankanın alım ücreti. Gönderenin bankasının istediği bilgileri (IBAN, SWIFT/BIC) bankandan al.",
+      "en": "The usual way is an international transfer to your account here. Compare the total cost: the fee, the exchange rate and what your bank here charges to receive it. Get the details the sender's bank needs (IBAN, SWIFT/BIC) from your bank.",
+      "ar": "الطريقة المعتادة حوالة دولية إلى حسابك هنا. قارن التكلفة الكاملة: الرسوم وسعر الصرف وما يأخذه بنكك هنا للاستلام. خذ من بنكك البيانات التي يحتاجها بنك المرسل (IBAN وSWIFT/BIC)."
+     }
+    },
+    {
+     "q": {
+      "tr": "Her yerde kartla ödeyebilir miyim?",
+      "en": "Can I pay by card everywhere?",
+      "ar": "هل أستطيع الدفع بالبطاقة في كل مكان؟"
+     },
+     "a": {
+      "tr": "Marketler, zincir mağazalar ve restoranların çoğu kart kabul eder. Küçük dükkanlar, bazı ev sahipleri ve taksiler çoğu zaman nakit ister. Yanında biraz nakit bulundur, büyük miktar değil.",
+      "en": "Supermarkets, chain shops and most restaurants take cards. Small shops, some landlords and taxis often want cash. Keep some cash with you, but not large amounts.",
+      "ar": "تقبل البطاقات في السوبرماركت والمتاجر الكبرى ومعظم المطاعم. المحلات الصغيرة وبعض المالكين وسيارات الأجرة تطلب غالباً نقداً. احمل بعض النقود، لا مبالغ كبيرة."
+     }
+    },
+    {
+     "q": {
+      "tr": "Kirayı nakit mi ödemeliyim?",
+      "en": "Should I pay rent in cash?",
+      "ar": "هل أدفع الإيجار نقداً؟"
+     },
+     "a": {
+      "tr": "Mümkünse havaleyle öde; kayıt kalır. Nakit ödersen her ay imzalı makbuz al.",
+      "en": "If you can, pay by transfer: it leaves a record. If you pay cash, get a signed receipt every month.",
+      "ar": "إن أمكن ادفع بالتحويل لأنه يترك سجلاً. وإن دفعت نقداً فاحصل على إيصال موقّع كل شهر."
+     },
+     "link": "tools/receipt"
+    }
+   ]
+  },
+  {
+   "slug": "deposits",
+   "icon": "key",
+   "title": {
+    "tr": "Kira depozitosu",
+    "en": "Rent deposits",
+    "ar": "عربون الإيجار"
+   },
+   "answers": [
+    {
+     "q": {
+      "tr": "Ev sahipleri ne kadar depozito ister?",
+      "en": "How much deposit do landlords ask for?",
+      "ar": "كم عربوناً يطلب المالكون؟"
+     },
+     "a": {
+      "tr": "Çoğu zaman bir aylık kira, bazen daha fazla; emlakçılar ayrıca komisyon alabilir. Gezmeden önce sor ve tutarları yazılı al.",
+      "en": "Often one month's rent, sometimes more; agencies may also charge a commission. Ask before you visit, and get the amounts in writing.",
+      "ar": "غالباً إيجار شهر، وأحياناً أكثر؛ وقد تأخذ المكاتب عمولة أيضاً. اسأل قبل الزيارة واحصل على المبالغ مكتوبة."
+     }
+    },
+    {
+     "q": {
+      "tr": "Evi görmeden depozito ödemeli miyim?",
+      "en": "Should I pay a deposit before I see the flat?",
+      "ar": "هل أدفع العربون قبل أن أرى الشقة؟"
+     },
+     "a": {
+      "tr": "Hayır. Senin veya güvendiğin birinin görmediği bir ev için para ödeme. Yurt dışındaysan bizden görüntülü ev gezisi iste.",
+      "en": "No. Never pay for a flat that you, or someone you trust, have not seen. If you are abroad, ask us for a video viewing.",
+      "ar": "لا. لا تدفع لشقة لم تزرها أنت أو شخص تثق به. إن كنت في الخارج فاطلب منا معاينة بالفيديو."
+     },
+     "link": "c/viewing"
+    },
+    {
+     "q": {
+      "tr": "Depozitomu geri aldığımdan nasıl emin olurum?",
+      "en": "How do I make sure I get my deposit back?",
+      "ar": "كيف أضمن استرجاع عربوني؟"
+     },
+     "a": {
+      "tr": "Yazılı sözleşme ve depozito makbuzu al, ilk gün her şeyin fotoğrafını çek ve çıkış listesini uygula.",
+      "en": "Get a written contract and a receipt for the deposit, photograph everything on the first day, and follow the move-out checklist.",
+      "ar": "احصل على عقد مكتوب وإيصال للعربون، وصوّر كل شيء في اليوم الأول، واتبع قائمة المغادرة."
+     },
+     "link": "tools/deposit"
+    },
+    {
+     "q": {
+      "tr": "Ev sahibi depozitomu vermiyor. Ne yapabilirim?",
+      "en": "The landlord will not return my deposit. What can I do?",
+      "ar": "المالك لا يعيد عربوني. ماذا أفعل؟"
+     },
+     "a": {
+      "tr": "Depozito aracımızdaki mektupla yazılı iste ve tüm mesajları sakla. Yine verilmezse üniversitenin öğrenci ofisiyle veya bir avukatla konuş.",
+      "en": "Ask in writing with the letter from our deposit tool, and keep every message. If it is still not returned, talk to your university's student office or a lawyer.",
+      "ar": "اطلبه كتابةً بالرسالة من أداة العربون واحتفظ بكل الرسائل. وإن لم يُعَد، تحدّث مع مكتب الطلاب في جامعتك أو مع محامٍ."
+     },
+     "link": "c/contract-check"
+    }
+   ]
+  },
+  {
+   "slug": "immigration",
+   "icon": "doc",
+   "title": {
+    "tr": "Vize, oturma izni ve göç",
+    "en": "Visas, permits and immigration",
+    "ar": "التأشيرات والإقامة والهجرة"
+   },
+   "answers": [
+    {
+     "q": {
+      "tr": "Kuzey Kıbrıs'a gelmek için vize gerekir mi?",
+      "en": "Do I need a visa to come to North Cyprus?",
+      "ar": "هل أحتاج تأشيرة للقدوم إلى شمال قبرص؟"
+     },
+     "a": {
+      "tr": "Uyruğuna bağlı. Bazıları pasaportla girer, bazılarının yola çıkmadan onay alması gerekir. Bilet almadan önce üniversitenin uluslararası ofisine sor.",
+      "en": "It depends on your nationality. Some people enter with a passport; others need approval before they travel. Ask your university's international office before you buy a ticket.",
+      "ar": "يعتمد على جنسيتك. بعضهم يدخل بجواز السفر، وآخرون يحتاجون موافقة قبل السفر. اسأل المكتب الدولي في جامعتك قبل شراء التذكرة."
+     }
+    },
+    {
+     "q": {
+      "tr": "Türkiye üzerinden Ercan'a uçuyorum. Türkiye vizesi gerekir mi?",
+      "en": "I fly to Ercan through Turkey. Do I need a Turkish visa?",
+      "ar": "أسافر إلى أرجان عبر تركيا. هل أحتاج تأشيرة تركية؟"
+     },
+     "a": {
+      "tr": "Havalimanından çıkmadan aktarma yapıyorsan çoğu zaman gerekmez; ama kurallar uyruğa ve havalimanından çıkıp çıkmamana göre değişir. Bilet almadan önce pasaportun için Türkiye'nin kurallarına bak.",
+      "en": "If you change planes without leaving the airport, usually not, but it depends on your nationality and on whether you leave the airport. Check Turkey's rules for your passport before you book.",
+      "ar": "إن بدّلت الطائرة دون مغادرة المطار فغالباً لا، لكن ذلك يعتمد على جنسيتك وعلى خروجك من المطار. تحقق من قواعد تركيا لجوازك قبل الحجز."
+     }
+    },
+    {
+     "q": {
+      "tr": "Öğrenci oturma izni nedir, ne zaman başvururum?",
+      "en": "What is a student residence permit, and when do I apply?",
+      "ar": "ما تصريح إقامة الطالب ومتى أقدّم عليه؟"
+     },
+     "a": {
+      "tr": "Okurken burada yaşamanı sağlar. İlk haftalarda üniversitenin uluslararası ofisi üzerinden başvurursun; güncel belge listesini onlar verir.",
+      "en": "It lets you live here while you study. You apply in your first weeks through your university's international office; they give you the current list of papers.",
+      "ar": "يسمح لك بالعيش هنا أثناء الدراسة. تقدّم في أسابيعك الأولى عبر المكتب الدولي في جامعتك، وهم يعطونك قائمة الأوراق الحالية."
+     },
+     "link": "guides/residence"
+    },
+    {
+     "q": {
+      "tr": "İznimi ne zaman yenilemeliyim?",
+      "en": "When must I renew my permit?",
+      "ar": "متى يجب أن أجدد تصريحي؟"
+     },
+     "a": {
+      "tr": "Genellikle her yıl, bitmeden önce. Erken başla: dönem başlarında ofisler çok yoğun olur. İzin aracımız sana hatırlatır.",
+      "en": "Usually every year, before it ends. Start early: offices get busy at the start of each term. Our permit tool reminds you.",
+      "ar": "عادة كل سنة، قبل انتهائه. ابدأ مبكراً لأن المكاتب تزدحم في بداية كل فصل. أداة التصريح عندنا تذكّرك."
+     },
+     "link": "tools/permit"
+    },
+    {
+     "q": {
+      "tr": "İznimin süresi geçerse ne olur?",
+      "en": "What if my permit runs out?",
+      "ar": "ماذا لو انتهى تصريحي؟"
+     },
+     "a": {
+      "tr": "Süresi bittikten sonra kalmak cezaya ve ileride girişte sorunlara yol açabilir. Geç kaldıysan hemen uluslararası ofise git ve ne yapman gerektiğini sor.",
+      "en": "Staying after it ends can mean fines and problems entering again later. If you are late, go to the international office at once and ask what to do.",
+      "ar": "البقاء بعد انتهائه قد يعني غرامات ومشاكل في الدخول لاحقاً. إن تأخرت فاذهب فوراً إلى المكتب الدولي واسأل ماذا تفعل."
+     }
+    },
+    {
+     "q": {
+      "tr": "Okurken çalışabilir miyim?",
+      "en": "Can I work while I study?",
+      "ar": "هل يمكنني العمل أثناء الدراسة؟"
+     },
+     "a": {
+      "tr": "Sadece çalışma izniyle; öğrenciler için sınırlar olabilir. Önce üniversitene sor.",
+      "en": "Only with a work permit, and students may have limits. Ask your university first.",
+      "ar": "فقط بتصريح عمل، وقد توجد قيود على الطلاب. اسأل جامعتك أولاً."
+     },
+     "link": "guides/work-permit"
+    },
+    {
+     "q": {
+      "tr": "Güneye (Kıbrıs Cumhuriyeti) geçebilir miyim?",
+      "en": "Can I visit the south (the Republic of Cyprus)?",
+      "ar": "هل يمكنني زيارة الجنوب (جمهورية قبرص)؟"
+     },
+     "a": {
+      "tr": "Geçiş kapıları açık, ama geçiş kuralları uyruğuna ve adaya nasıl girdiğine bağlı. Gezi planlamadan önce sor; geçebileceğini varsayma.",
+      "en": "The crossing points are open, but the rules depend on your nationality and on how you entered the island. Ask before you plan a trip; do not assume you can cross.",
+      "ar": "المعابر مفتوحة، لكن القواعد تعتمد على جنسيتك وعلى طريقة دخولك إلى الجزيرة. اسأل قبل التخطيط لرحلة ولا تفترض أنك تستطيع العبور."
+     }
+    },
+    {
+     "q": {
+      "tr": "Okulu bitiriyorum. Ayrılmadan önce ne yapmalıyım?",
+      "en": "I am finishing my studies. What should I do before I leave?",
+      "ar": "أنهيت دراستي. ماذا أفعل قبل المغادرة؟"
+     },
+     "a": {
+      "tr": "Diplomanı ve transkriptini al, banka hesabını kapat ya da koru, evi teslim edip depozitonu al, götürmeyeceklerini sat ve iznin iptal edilmesi gerekip gerekmediğini ofise sor.",
+      "en": "Get your diploma and transcript, close or keep your bank account, hand back the flat and get your deposit, sell what you will not take, and ask the office whether your permit must be cancelled.",
+      "ar": "خذ شهادتك وكشف علاماتك، أغلق حسابك البنكي أو احتفظ به، سلّم الشقة واسترجع العربون، بِع ما لن تأخذه، واسأل المكتب هل يجب إلغاء تصريحك."
+     },
+     "link": "guides/leaving"
+    }
+   ]
+  }
+ ],
+ "parseWords": {
+  "categories": [
+   [
+    "roommates",
+    [
+     "ev arkadas*",
+     "oda arkadas*",
+     "flatmate*",
+     "roommate*",
+     "housemate*",
+     "devren*",
+     "take over",
+     "lease takeover",
+     "شريك سكن",
+     "شريكة سكن",
+     "تنازل"
+    ]
+   ],
+   [
+    "rooms",
+    [
+     "daire*",
+     "kiralik*",
+     "oda",
+     "odali",
+     "stüdyo*",
+     "studyo*",
+     "rezidans*",
+     "yurt*",
+     "flat",
+     "flats",
+     "apartment*",
+     "room",
+     "rooms",
+     "studio*",
+     "dorm*",
+     "1+1",
+     "2+1",
+     "3+1",
+     "شقة",
+     "شقق",
+     "غرف",
+     "سكن",
+     "استوديو"
+    ]
+   ],
+   [
+    "appliances",
+    [
+     "buzdolab*",
+     "camasir makine*",
+     "bulasik makine*",
+     "firin*",
+     "mikrodalga*",
+     "klima*",
+     "isitici*",
+     "supurge*",
+     "utu",
+     "kettle*",
+     "fridge*",
+     "freezer*",
+     "washing machine*",
+     "microwave*",
+     "oven*",
+     "heater*",
+     "vacuum*",
+     "air condition*",
+     "ثلاجة",
+     "غسالة",
+     "ميكروويف",
+     "فرن",
+     "مكيف",
+     "سخان",
+     "مكنسة"
+    ]
+   ],
+   [
+    "electronics",
+    [
+     "telefon*",
+     "bilgisayar*",
+     "laptop*",
+     "tablet*",
+     "kulaklik*",
+     "iphone*",
+     "ipad*",
+     "samsung*",
+     "xiaomi*",
+     "macbook*",
+     "playstation*",
+     "ps4",
+     "ps5",
+     "xbox*",
+     "monitor*",
+     "tv",
+     "televizyon*",
+     "phone*",
+     "headphone*",
+     "airpods",
+     "camera*",
+     "kamera*",
+     "هاتف",
+     "جوال",
+     "موبايل",
+     "لابتوب",
+     "حاسوب",
+     "كمبيوتر",
+     "سماعة",
+     "شاشة",
+     "تلفزيون"
+    ]
+   ],
+   [
+    "furniture",
+    [
+     "masa*",
+     "sandalye*",
+     "koltuk*",
+     "kanepe*",
+     "yatak*",
+     "dolap*",
+     "gardirop*",
+     "kitaplik*",
+     "komodin*",
+     "desk*",
+     "chair*",
+     "sofa*",
+     "couch*",
+     "bed",
+     "beds",
+     "mattress*",
+     "wardrobe*",
+     "shelf",
+     "shelves",
+     "table*",
+     "طاولة",
+     "مكتب",
+     "كرسي",
+     "كنبة",
+     "سرير",
+     "خزانة",
+     "مرتبة"
+    ]
+   ],
+   [
+    "books",
+    [
+     "kitap*",
+     "ders not*",
+     "textbook*",
+     "book",
+     "books",
+     "novel*",
+     "notes",
+     "كتاب",
+     "كتب",
+     "مذكرات"
+    ]
+   ],
+   [
+    "clothes",
+    [
+     "mont*",
+     "ceket*",
+     "elbise*",
+     "ayakkabi*",
+     "kazak*",
+     "pantolon*",
+     "gomlek*",
+     "jacket*",
+     "coat*",
+     "dress*",
+     "shoes",
+     "sneakers",
+     "trainers",
+     "jeans",
+     "shirt*",
+     "hoodie*",
+     "ملابس",
+     "جاكيت",
+     "فستان",
+     "حذاء",
+     "بنطال",
+     "قميص"
+    ]
+   ]
+  ],
+  "cities": [
+   [
+    "famagusta",
+    [
+     "famagusta*",
+     "gazimagusa*",
+     "magusa*",
+     "magosa*",
+     "ammochostos",
+     "فاماغوستا",
+     "فماغوستا",
+     "ماغوسا",
+     "مغوسا"
+    ]
+   ],
+   [
+    "nicosia",
+    [
+     "nicosia*",
+     "lefkosa*",
+     "lefkose*",
+     "lefkosia",
+     "نيقوسيا",
+     "لفكوشا"
+    ]
+   ],
+   [
+    "kyrenia",
+    [
+     "kyrenia*",
+     "girne*",
+     "keryneia",
+     "كيرينيا",
+     "جيرنه",
+     "غيرنه"
+    ]
+   ],
+   [
+    "iskele",
+    [
+     "iskele*",
+     "trikomo*",
+     "long beach",
+     "longbeach",
+     "إسكيله",
+     "اسكيلة",
+     "اسكلة"
+    ]
+   ],
+   [
+    "guzelyurt",
+    [
+     "guzelyurt*",
+     "morphou",
+     "morfou",
+     "غوزليورت",
+     "مورفو"
+    ]
+   ],
+   [
+    "lefke",
+    [
+     "lefke",
+     "lefkede",
+     "lefkeye",
+     "lefka",
+     "ليفكه",
+     "لفكة"
+    ]
+   ]
+  ],
+  "wanted": [
+   "ariyorum",
+   "ariyoruz",
+   "araniyor",
+   "aranir",
+   "alinir",
+   "almak istiyorum",
+   "looking for",
+   "wanted",
+   "wtb",
+   "iso",
+   "in search of",
+   "need a",
+   "need an",
+   "anyone selling",
+   "مطلوب",
+   "أبحث",
+   "ابحث",
+   "ادور",
+   "أدور",
+   "محتاج"
+  ],
+  "women": [
+   "women only",
+   "female only",
+   "females only",
+   "girls only",
+   "ladies only",
+   "female student*",
+   "girl student*",
+   "sadece kiz*",
+   "sadece bayan*",
+   "kiz ogrenci*",
+   "bayan ogrenci*",
+   "kizlara",
+   "bayanlara",
+   "للبنات",
+   "للطالبات",
+   "للنساء",
+   "بنات فقط"
+  ],
+  "free": [
+   "bedava",
+   "ucretsiz",
+   "free",
+   "giveaway",
+   "مجانا",
+   "مجاناً",
+   "مجاني",
+   "ببلاش"
+  ]
+ }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "Island Market",
+    "short_name": "Island Market",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#13232B",
+    "theme_color": "#0E7C74",
+    "description": "Buy, sell, rent and find services in North Cyprus. Demo with sample ads.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

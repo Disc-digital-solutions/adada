@@ -1,11 +1,11 @@
 {
-    "name": "island_market",
-    "short_name": "island_market",
+    "name": "Island Market",
+    "short_name": "Island Market",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#13232B",
     "theme_color": "#0E7C74",
-    "description": "A new Flutter project.",
+    "description": "Buy, sell, rent and find services in North Cyprus. Demo with sample ads.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
