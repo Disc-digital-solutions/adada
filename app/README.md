@@ -56,8 +56,8 @@ the sample ads. To put it online:
    repositories is a paid feature).
 2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, pick `main` and
    either folder, then **Save**.
-3. After a minute or two it is live at https://disc-digital-solutions.github.io/adada/ (with the root
-   folder, that address forwards to `/adada/docs/`).
+3. After a minute or two the app demo is live at https://disc-digital-solutions.github.io/adada/docs/.
+   The main address, https://disc-digital-solutions.github.io/adada/, opens the website (`/adada/site/`).
 
 To rebuild it after changing the app, run in this folder `tool/build_pages.sh` and commit `docs/`, `index.html`
 and `.nojekyll`. The build uses a relative base, so it keeps working if the repository is renamed or moved to a

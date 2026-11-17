@@ -33,8 +33,8 @@ version that would go online, and fails if a page breaks the framework's rules.
 
 ## The static copy on GitHub Pages
 
-https://disc-digital-solutions.github.io/adada/ opens this website on a computer and the phone app on
-phones. The website there is a static copy in `../site`, built with:
+https://disc-digital-solutions.github.io/adada/ opens this website on every device (the Flutter app's web demo
+stays at /adada/docs/). The website there is a static copy in `../site`, built with:
 
 ```bash
 node scripts/build-pages.mjs
